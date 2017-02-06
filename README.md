@@ -1,2 +1,9 @@
 # EEPROM-Storage
-Generic class to wrap an EEPROM variable on the Particle platform.
+
+A Particle library for EEPROM-Storage
+
+
+## LICENSE
+Copyright 2017 Daniel Porrey
+
+Licensed under the GPL-3.0 license
