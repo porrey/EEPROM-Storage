@@ -92,6 +92,10 @@ Using the previous example, assigning a value to the instance is as simple as th
 
     myInt = 100; 
 
+The `EEPROMStorage` class also defines a `set()` method that can be used.
+
+	myInt.set(100);
+
 ## Retrieving ##
 To get the instance value, simply assign it to a variable, as shown below,
 
@@ -100,6 +104,10 @@ To get the instance value, simply assign it to a variable, as shown below,
 or pass it as an argument in any function that takes an int argument as shown below.
 
 	Serial.print("myInt = "); Serial.println(myInt);
+
+The `EEPROMStorage` class also defines a `get()` method that can be used.
+
+	int x = myInt.get();
 
 ## LICENSE
 *Copyright 2017 Daniel Porrey*
