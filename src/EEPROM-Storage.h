@@ -72,22 +72,6 @@ class EEPROMStorage
     }
 
     // ***
-    // *** + operator
-    // ***
-    T operator + (const EEPROMStorage<T> value)
-    {
-      return this->get() + value->get();
-    }
-
-    // ***
-    // *** - operator
-    // ***
-    T operator - (const EEPROMStorage<T> value)
-    {
-      return this->get() - value->get();
-    }
-
-    // ***
     // *** ++ postfix
     // ***
     T operator ++ (int)
@@ -148,6 +132,56 @@ class EEPROMStorage
       this->set(newValue);
       return newValue;
     }
+
+		// ***
+    // *** *= operator
+    // ***
+    T operator *= (T value)
+    {
+      T newValue = this->get() * value;
+      this->set(newValue);
+      return newValue;
+    }
+
+		// ***
+    // *** /= operator
+    // ***
+    T operator /= (T value)
+    {
+      T newValue = this->get() / value;
+      this->set(newValue);
+      return newValue;
+    }
+
+		// ***
+    // *** %= operator
+    // ***
+    T operator %= (T value)
+    {
+      T newValue = this->get() % value;
+      this->set(newValue);
+      return newValue;
+    }
+
+		// ***
+    // *** &= operator
+    // ***
+    T operator &= (T value)
+    {
+      T newValue = this->get() & value;
+      this->set(newValue);
+      return newValue;
+    }
+
+		// ***
+	  // *** |= operator
+	  // ***
+	  T operator |= (T value)
+	  {
+	    T newValue = this->get() | value;
+	    this->set(newValue);
+	    return newValue;
+	  }
 
     // ***
     // *** > operator
