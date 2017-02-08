@@ -17,6 +17,11 @@
 // see http://www.gnu.org/licenses/.
 //
 
+// ******************************************************************************************
+// *** This example runs tests on the EEEPROMStorage
+// *** library with various data types.
+// ******************************************************************************************
+
 #include "EEPROM-Storage.h"
 
 // ***
