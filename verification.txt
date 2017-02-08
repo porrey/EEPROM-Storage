@@ -1,0 +1,13 @@
+How to verify this library
+
+1. Load the sketch named tests.ino.
+
+2. Connect the device to your compute via a USB cable.
+
+3. Push the firmware to the device. Note that in cases the tests may take more RAM that is available.
+
+4. Run the command "particle serial monitor". There is a 5 second delay built into the firmware to allow time to get the serial port monitor attached.
+
+5. Check the output of the serial device for the number of passed tests. 100% of the tests should pass.
+
+NOTE: In this case comment out some of the tests and push the firmware. After a successful run change the commented sections and push the firmware again.
