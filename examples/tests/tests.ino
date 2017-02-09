@@ -38,6 +38,12 @@ void setup()
   // ***
   Serial.begin(115200);
 
+	// ***
+	// *** wait for serial port to connect. Needed
+	// *** for native USB port only
+	// ***
+	while (!Serial);
+
   // ***
   // *** Initialize the random number generator.
   // ***
