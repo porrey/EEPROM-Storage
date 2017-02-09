@@ -273,22 +273,6 @@ class EEPROMStorage
       EEPROM.update(this->checksumAddress(), checksum);
     }
 
-/*
-#if defined(SPARK)
-    // ***
-    // *** Save a bool value to EEPROM.
-    // ***
-    void set(bool &value)
-    {
-      // ***
-      // *** Set the value in EEPROM using the
-      // *** update method.
-      // ***
-      EEPROM.put(this->_address, value);
-    }
-#endif
-*/
-
     // ***
     // *** Determines if the variable has been
     // *** initialized or not by comparing the
