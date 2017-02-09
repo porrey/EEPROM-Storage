@@ -206,7 +206,7 @@ template <typename T> void checksumCheck(String name, EEPROMStorage<T> item)
 
   T value = item.get();
 
-  uint8_t checksum1 = item.checksum(value);
+  uint8_t checksum1 = Checksum<T>::get(value);
   Serial.print("The Calculated checksum for the value "); Serial.print(value); Serial.print(" is "); displayPaddedHexByte(checksum1); Serial.println(".");
 
   uint8_t checksum2 = item.checksum();
