@@ -269,7 +269,7 @@ class EEPROMStorage
       // ***
       // *** Write the checksum.
       // ***
-      uint8_t checksum = this->checksum(value);
+      uint8_t checksum = Checksum<T>::get(value);
       EEPROM.update(this->checksumAddress(), checksum);
     }
 
@@ -333,15 +333,6 @@ class EEPROMStorage
       byte data[MAX_VARIABLE_LENGTH];
       this->copyTo(data, sizeof(T));
       return Checksum<T>::get(data, sizeof(T));
-    }
-
-    // ***
-    // *** Calculate the checksum of a
-    // *** given value.
-    // ***
-    uint8_t checksum(T value)
-    {
-      return Checksum<T>::get(value);
     }
 
     // ***
