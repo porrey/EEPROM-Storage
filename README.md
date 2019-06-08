@@ -30,11 +30,11 @@ Each variable requires enough memory to store the underlying type plus one addit
 
 Consider the following variable definitions.
 
-    EEPROMStorage<uint8_t>  v1(0, 0);		// 2 bytes (1 + 1 checksum), positions 0 and 1
-    EEPROMStorage<uint16_t> v2(2, 0);		// 3 bytes (2 + 1 checksum), positions 2, 3 and 4
-    EEPROMStorage<uint32_t> v3(5, 0);		// 5 bytes (4 + 1 checksum), positions 5, 6, 6, 8 and 9
-	EEPROMStorage<float>    v4(10, 0.0);	// 5 bytes (4 + 1 checksum), positions 10, 11, 12, 13 and 14
-	EEPROMStorage<bool>		v5(15, false);	// 2 bytes (1 + 1 checksum), positions 15, 16, 17, 18 and 19
+	EEPROMStorage<uint8_t>	v1(0, 0);		// 2 bytes (1 + 1 checksum), positions 0 and 1
+	EEPROMStorage<uint16_t>	v2(2, 0);		// 3 bytes (2 + 1 checksum), positions 2, 3 and 4
+	EEPROMStorage<uint32_t>	v3(5, 0);		// 5 bytes (4 + 1 checksum), positions 5, 6, 6, 8 and 9
+	EEPROMStorage<float>	v4(10, 0.0);		// 5 bytes (4 + 1 checksum), positions 10, 11, 12, 13 and 14
+	EEPROMStorage<bool>	v5(15, false);		// 2 bytes (1 + 1 checksum), positions 15, 16, 17, 18 and 19
 
 The best way to think about EEPROM memory is to think about it as a large byte array with a base index of 0. In fact, the Arduino libraries construct access to EEPROM in this manner. 
 
@@ -85,12 +85,12 @@ Specifies the value that will be returned by the instance when the EEPROM memory
 ### Example ###
 To initialize an instance with an underlying data type of int located in position 50 of the EEPROM and a default value of 10, the syntax would be as follows:
 
-    EEPROMStorage<int> myInt(50, 10);
+	EEPROMStorage<int> myInt(50, 10);
 
 ## Assignment ##
 Using the previous example, assigning a value to the instance is as simple as the assignment shown here.
 
-    myInt = 100; 
+	myInt = 100; 
 
 The `EEPROMStorage` class also defines a `set()` method that can be used.
 
