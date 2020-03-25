@@ -4,23 +4,51 @@ The EEPROM Storage library provides the ability to access variables stored in EE
 
 Once defined, a variable can be used in in the same manner as it's underlying type. For example, a variable defined as an integer (int) would be defined as follows:
 
-    int i = 0;
+	// ***
+	// *** Define i as an int with the default value of 0;
+	// ***
+	int i = 0;
+	
+	// ***
+	// *** Set i to 12.
+	// ***
+	i = 12;
+	
+	// ***
+	// *** Increment i.
+	// ***
+	i++;
+	
+	// ***
+	// *** Set the value of a = t the current value of i.
+	// ***
+	int a = i;
 
-Throughout the code this variable can be read and written in various ways. For example, to increment the variable, we would use the statement
+This is all very obvious to even the novice programmer, but is used here to show the simplicity of the EEPROM Storage class. An integer variable stored in EEPROM would be defined and used in code as shown below.
 
-    i++;
-
-To set the value to a specific value we would, for example, use the statement
-
-    i = 12;
-
-This is all very obvious to even the novice programmer, but is used here to show the simplicity of the EEPROM Storage class. An integer variable stored in EEPROM would be defined in the following manner:
-
-    EEPROMStorage<int> i(0, 0);
-
-where the first parameter of the constructor defines the address of the variable in EEPROM and the second parameter defines the default value.
-
-After the definition, the variable `i` can be used in the same manner, `i++` and `i = 12` will work the same way they did before, but now the value is stored and retrieved to and from EEPROM.
+	// ***
+	// *** Define i as an int with a default value of 0 at EEPROM address 0.
+	// ***
+	EEPROMStorage<int> i(0, 0);
+	
+	// ***
+	// *** Set i to 12.
+	// ***
+	i = 12;
+	
+	// ***
+	// *** Increment i.
+	// ***
+	i++;
+	
+	// ***
+	// *** Set the value of a = t the current value of i.
+	// ***
+	int a = i;
+	
+The first parameter of the constructor defines the address of the variable in EEPROM and the second parameter defines the default value when the EEPROM has been initialized or erased.
+ 
+After the definition, the variable `i` can be used in the same way as before, but now the value is stored and retrieved to and from EEPROM.
 
 ## EEPROM Address ##
 ### Memory Requirement ###
@@ -30,11 +58,11 @@ Each variable requires enough memory to store the underlying type plus one addit
 
 Consider the following variable definitions.
 
-	EEPROMStorage<uint8_t>	v1(0, 0);		// 2 bytes (1 + 1 checksum), positions 0 and 1
-	EEPROMStorage<uint16_t>	v2(2, 0);		// 3 bytes (2 + 1 checksum), positions 2, 3 and 4
-	EEPROMStorage<uint32_t>	v3(5, 0);		// 5 bytes (4 + 1 checksum), positions 5, 6, 6, 8 and 9
-	EEPROMStorage<float>	v4(10, 0.0);		// 5 bytes (4 + 1 checksum), positions 10, 11, 12, 13 and 14
-	EEPROMStorage<bool>	v5(15, false);		// 2 bytes (1 + 1 checksum), positions 15, 16, 17, 18 and 19
+	EEPROMStorage<uint8_t> v1(0, 0);      // 2 bytes (1 + 1 checksum), positions 0 and 1
+	EEPROMStorage<uint16_t>	 v2(2, 0);    // 3 bytes (2 + 1 checksum), positions 2, 3 and 4
+	EEPROMStorage<uint32_t>	 v3(5, 0);    // 5 bytes (4 + 1 checksum), positions 5, 6, 6, 8 and 9
+	EEPROMStorage<float> v4(10, 0.0);     // 5 bytes (4 + 1 checksum), positions 10, 11, 12, 13 and 14
+	EEPROMStorage<bool> v5(15, false);    // 2 bytes (1 + 1 checksum), positions 15, 16, 17, 18 and 19
 
 The best way to think about EEPROM memory is to think about it as a large byte array with a base index of 0. In fact, the Arduino libraries construct access to EEPROM in this manner. 
 
@@ -110,6 +138,6 @@ The `EEPROMStorage` class also defines a `get()` method that can be used.
 	int x = myInt.get();
 
 ## LICENSE
-*Copyright 2017 Daniel Porrey*
+*Copyright 2017-2020 Daniel Porrey*
 
-*Licensed under the GPL-3.0 license*
+*Licensed under the LGPL-3.0 license*
