@@ -1,4 +1,4 @@
-// Copyright © 2017 Daniel Porrey. All Rights Reserved.
+// Copyright © 2017-2020 Daniel Porrey. All Rights Reserved.
 //
 // This file is part of the  library.
 //
@@ -23,7 +23,7 @@
 #include "Checksum.h"
 
 // ***
-// *** Cross-compatiable
+// *** Cross-compatable
 // *** with Arduino, GNU C++ for tests, and Particle.
 // ***
 #if defined(ARDUINO) && ARDUINO >= 100
@@ -34,8 +34,8 @@
 #endif
 
 // ***
-// *** Maximum buffer size to use when transfer
-// *** the EEPROM contents to a byte arry.
+// *** Maximum buffer size to use when transfering
+// *** the EEPROM contents to a byte array.
 // ***
 #define MAX_VARIABLE_LENGTH 16
 
@@ -56,7 +56,7 @@ class EEPROMStorage
     // *** Allows the variable to be used on the left side of
     // *** the equal sign.
     // ***
-    T operator = (T value)
+    T operator = (T const& value) const
     {
       this->set(value);
       return this->get();
@@ -116,7 +116,7 @@ class EEPROMStorage
     // ***
     // *** += operator
     // ***
-    T operator += (T value)
+    T operator += (T const& value) const
     {
       T newValue = this->get() + value;
       this->set(newValue);
@@ -126,7 +126,7 @@ class EEPROMStorage
     // ***
     // *** -= operator
     // ***
-    T operator -= (T value)
+    T operator -= (T const& value) const
     {
       T newValue = this->get() - value;
       this->set(newValue);
@@ -136,7 +136,7 @@ class EEPROMStorage
 		// ***
     // *** *= operator
     // ***
-    T operator *= (T value)
+    T operator *= (T const& value) const
     {
       T newValue = this->get() * value;
       this->set(newValue);
@@ -146,7 +146,7 @@ class EEPROMStorage
 		// ***
     // *** /= operator
     // ***
-    T operator /= (T value)
+    T operator /= (T const& value) const
     {
       T newValue = this->get() / value;
       this->set(newValue);
@@ -156,7 +156,7 @@ class EEPROMStorage
 		// ***
     // *** %= operator
     // ***
-    T operator %= (T value)
+    T operator %= (T const& value) const
     {
       T newValue = this->get() % value;
       this->set(newValue);
@@ -166,7 +166,7 @@ class EEPROMStorage
 		// ***
     // *** &= operator
     // ***
-    T operator &= (T value)
+    T operator &= (T const& value) const
     {
       T newValue = this->get() & value;
       this->set(newValue);
@@ -176,7 +176,7 @@ class EEPROMStorage
 		// ***
 	  // *** |= operator
 	  // ***
-	  T operator |= (T value)
+	  T operator |= (T const& value) const
 	  {
 	    T newValue = this->get() | value;
 	    this->set(newValue);
@@ -186,7 +186,7 @@ class EEPROMStorage
     // ***
     // *** > operator
     // ***
-    bool operator > (T value)
+    bool operator > (T const& value) const
     {
       return this->get() > value;
     }
@@ -194,7 +194,7 @@ class EEPROMStorage
     // ***
     // *** < operator
     // ***
-    bool operator < (T value)
+    bool operator < (T const& value) const
     {
       return this->get() < value;
     }
@@ -202,7 +202,7 @@ class EEPROMStorage
     // ***
     // *** >= operator
     // ***
-    bool operator >= (T value)
+    bool operator >= (T const& value) const
     {
       return this->get() >= value;
     }
@@ -210,7 +210,7 @@ class EEPROMStorage
     // ***
     // *** <= operator
     // ***
-    bool operator <= (T value)
+    bool operator <= (T const& value) const
     {
       return this->get() <= value;
     }
@@ -218,7 +218,7 @@ class EEPROMStorage
     // ***
     // *** == operator
     // ***
-    bool operator == (T value)
+    bool operator == (T const& value) const
     {
       return this->get() == value;
     }
@@ -258,7 +258,7 @@ class EEPROMStorage
     // ***
     // *** Save the value to EEPROM.
     // ***
-    void set(T &value)
+    void set(T const& value) const
     {
       // ***
       // *** Set the value in EEPROM using the
