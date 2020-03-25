@@ -20,7 +20,7 @@ Once defined, a variable can be used in in the same manner as it's underlying ty
 	i++;
 	
 	// ***
-	// *** Set the value of a = t the current value of i.
+	// *** Set the value of a to the current value of i.
 	// ***
 	int a = i;
 
@@ -42,7 +42,7 @@ This is all very obvious to even the novice programmer, but is used here to show
 	i++;
 	
 	// ***
-	// *** Set the value of a = t the current value of i.
+	// *** Set the value of a to the current value of i.
 	// ***
 	int a = i;
 	
