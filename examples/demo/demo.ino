@@ -1,4 +1,4 @@
-// Copyright © 2017 Daniel Porrey. All Rights Reserved.
+// Copyright © 2017-2020 Daniel Porrey. All Rights Reserved.
 //
 // This file is part of the  library.
 //
@@ -18,8 +18,8 @@
 //
 
 // ******************************************************************************************
-// *** This example demonstrates the usageof the
-// *** EEPROMStorage library.
+// *** This example demonstrates the usage of the
+// *** EEPROM-Storage library.
 // ******************************************************************************************
 
 #include "EEPROM-Storage.h"
@@ -122,7 +122,7 @@ void setup()
   // *** Demonstrates a local variable taking on the value
   // *** of a previously defined global variable. This one
   // *** will use the same address as _v4. Note the same data
-  // *** type must be used or we will get unexpcted values.
+  // *** type must be used or we will get unexpected values.
   // ***
   EEPROMStorage<float> v6(V6_ADR, 0.0);
   scopeCheck("V6", v6, "V4", _v4);
@@ -158,7 +158,7 @@ void clearEEPROM()
 }
 
 // ***
-// *** Displays the cntents of the EEPROM
+// *** Displays the contents of the EEPROM
 // ***
 void displayEEPROM()
 {

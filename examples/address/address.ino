@@ -1,4 +1,4 @@
-// Copyright © 2017 Daniel Porrey. All Rights Reserved.
+// Copyright © 2017-2020 Daniel Porrey. All Rights Reserved.
 //
 // This file is part of the  library.
 //
@@ -20,7 +20,7 @@
 // ******************************************************************************************
 // *** This example will calculate the address and
 // *** create initialization code for one or more
-// *** EEPROMStorage variables. Just follow the steps
+// *** EEPROM-Storage variables. Just follow the steps
 // *** outlined below.
 // ******************************************************************************************
 
@@ -95,7 +95,7 @@ void setup()
   // ***
   // *** STEP 1 of 3:
   // ***
-  // *** Create a list of definitions that eqach contain the data type and the default value.
+  // *** Create a list of definitions that each contain the data type and the default value.
   // ***
   definition myDefinitions[] =
   {
@@ -111,7 +111,7 @@ void setup()
   // *** STEP 2 of 3:
   // ***
   // *** Define the starting address in EEPROM. If you are manually string other data in EEPROM this
-  // *** address could be defined at thae end of that data.
+  // *** address could be defined at the end of that data.
   // ***
   int myFirstAddress = 0;
 
@@ -126,7 +126,7 @@ void setup()
   // ******************************************************************************************
   // ******************************************************************************************
   // ***
-  // *** This will output declarations thorugh the serial port.
+  // *** This will output declarations through the serial port.
   // ***
   // ******************************************************************************************
   // ******************************************************************************************

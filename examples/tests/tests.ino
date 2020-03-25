@@ -18,7 +18,7 @@
 //
 
 // ******************************************************************************************
-// *** This example runs tests on the EEEPROMStorage
+// *** This example runs tests on the EEEPROM-Storage
 // *** library with various data types.
 // ******************************************************************************************
 
@@ -51,7 +51,7 @@ void setup()
 
   // **********************************************************************
   // ***
-  // *** There may not be enough memeory to run all of the tests. Uncomment
+  // *** There may not be enough memory to run all of the tests. Uncomment
   // *** sections to run tests on the various data types.
   // ***
   // **********************************************************************
