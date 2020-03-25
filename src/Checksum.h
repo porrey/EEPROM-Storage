@@ -1,4 +1,4 @@
-// Copyright © 2017 Daniel Porrey. All Rights Reserved.
+// Copyright © 2017-2020 Daniel Porrey. All Rights Reserved.
 //
 // This file is part of the  library.
 //
@@ -21,7 +21,7 @@
 #define CHECKSUM_H
 
 // ***
-// *** Cross-compatiable
+// *** Cross-compatable
 // *** with Arduino, GNU C++ for tests, and Particle.
 // ***
 #if defined(ARDUINO) && ARDUINO >= 100
@@ -56,7 +56,7 @@ class Checksum
       }
 
       // ***
-      // *** Do not let the chcksum be 0xFF
+      // *** Do not let the checksum be 0xFF
       // ***
       if (returnValue == 0xFF)
       {
