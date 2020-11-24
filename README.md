@@ -2,7 +2,7 @@
 ## Overview
 The EEPROM Storage library provides the ability to access variables stored in EEPROM just as if they were stored in normal RAM. This makes it easy to create static variables that must be restored after a reboot and manage them in your code just like any other variable.
 
-Once defined, a variable can be used in in the same manner as its underlying type. For example, a variable defined as an integer (int) would be defined as shown below.
+Once defined, a variable can be used in the same manner as its underlying type. For example, a variable defined as an integer (int) would be defined as shown below.
 
 
 	// ***
@@ -28,9 +28,9 @@ Once defined, a variable can be used in in the same manner as its underlying typ
 This is all very obvious to even the novice programmer but is used here to show the simplicity of the EEPROM Storage class. An integer variable stored in EEPROM would be defined and used in code as shown below.
 
 	// ***
-	// *** Define i as an int with a default value of 0 at EEPROM address 0.
+	// *** Define i as an int with a default value of 10 at EEPROM address 0.
 	// ***
-	EEPROMStorage<int> i(0, 0);
+	EEPROMStorage<int> i(0, 10);
 	
 	// ***
 	// *** Set i to 12.
@@ -43,7 +43,7 @@ This is all very obvious to even the novice programmer but is used here to show 
 	i++;
 	
 	// ***
-	// *** Set the value of a to the current value of i.
+	// *** Set the value of 'a' to the current value of i.
 	// ***
 	int a = i;
 	
@@ -60,14 +60,13 @@ If you attempt to write the current value back to EEPROM, the library will not p
 ### Reading Values
 Reading a value from EEPROM is faster than writing a value to EEPROM, but the read from EEPROM is slower than a variable read from flash memory.
 ### Tips
-The following are suggestions and not necessary things you must avoid.
+The following are recommendations:
 
 1. Avoid excessive writes to a variable
 2. Avoid writes in loops where the same variable is updated several times. Instead save the value once at the end of the loop.
 3. Avoid reading or writing an EEPROM variable in time sensitive code.
 4. Know the write limits for your particular platform/microcontroller. Write your code in such a way that you will not exceed the limit in the lifetime of your application.
 
-I recommend if you must do any of these above, test them first.
 ## EEPROM Address
 ### Memory Requirement
 When defining an EEPROM Storage variable, it is important to understand the number of bytes required for the underlying type and ensuring that the variables are spaced appropriately so they do not collide.
@@ -102,11 +101,11 @@ To see a full demonstration of this, open the example sketch called **sizeof.ino
 ## EEPROM Storage Initialization
 When data has never been stored EEPROM on a micro-controller the memory is in an uninitialized state. Since each byte of memory must have a value between 0 and 255, it is not always possible to detect an uninitialized byte. This behavior could have unexpected side effects if you define a variable and fail to detect whether or not the instance has been initialized.
 
-For this reason, the EEPROM Storage library uses a one-byte checksum to determine if the instance has been initialized or not. When an instance is constructed, a default value is specified. This default value is always returned until a value is explicitly written. The first tme a value is written, the variable is initialized and its checksum is calculated. Each write operation to EEPROM will update the checksum.
+For this reason, the EEPROM Storage library uses a one-byte checksum to determine if the instance has been initialized or not. When an instance is constructed, a default value is specified. This default value is always returned until a value is explicitly written. The first time a value is written, the variable is initialized and its checksum is calculated. Each write operation to EEPROM will update the checksum.
 ## Scope
 It is important to note that since `EEPROMStorage` variables are stored in the micro-controllers EEPROM. The scope of these variables is always global. In fact, it is possible to instantiate more than one instance using the same address. Both instances will share the same value keeping the two instances in sync.
 
-This behavoir can be good and bad depending on your scenario. If two instances are created with a different base type, the result may be unexpected.
+This behavior can be good and bad depending on your scenario. If two instances are created with a different base type, the result may be unexpected.
 
 > The **EEPROMStorage** variable never caches the value internally and will read the value from EEPROM each time it is requested.
 > 
