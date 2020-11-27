@@ -276,7 +276,7 @@ class EEPROMStorage
     // ***
     // *** Determines if the variable has been
     // *** initialized or not by comparing the
-    // *** stored hecksum to the actual checksum
+    // *** stored checksum to the actual checksum
     // *** of the bytes stored.
     // ***
     bool isInitialized()
