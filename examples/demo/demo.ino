@@ -22,7 +22,7 @@
 // *** EEPROM-Storage library.
 // ******************************************************************************************
 
-#include "EEPROM-Storage.h"
+#include <EEPROM-Storage.h>
 
 // ***
 // *** Addresses
@@ -70,6 +70,12 @@ void setup()
   // *** device the baud rate will be ignored.
   // ***
   Serial.begin(115200);
+
+  // ***
+  // *** Wait for serial port to connect. Needed
+  // *** for native USB port only
+  // ***
+  while (!Serial);
 
   // ***
   // *** Initialize the random number generator.

@@ -29,6 +29,12 @@
 void setup()
 {
 	Serial.begin(115200);
+  
+  // ***
+  // *** Wait for serial port to connect. Needed
+  // *** for native USB port only
+  // ***
+  while (!Serial);
 
 	Serial.print("The size of byte is "); Serial.print(sizeof(byte)); Serial.println(".");
 	Serial.print("The size of char is "); Serial.print(sizeof(char)); Serial.println(".");

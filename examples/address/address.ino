@@ -93,6 +93,12 @@ void setup()
   Serial.begin(115200);
 
   // ***
+  // *** Wait for serial port to connect. Needed
+  // *** for native USB port only
+  // ***
+  while (!Serial);
+
+  // ***
   // *** STEP 1 of 3:
   // ***
   // *** Create a list of definitions that each contain the data type and the default value.
@@ -121,7 +127,6 @@ void setup()
   // *** Set the value below to true to display comments and false to hide the comments.
   // ***
   bool showComments = true;
-
 
   // ******************************************************************************************
   // ******************************************************************************************
