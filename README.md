@@ -2,7 +2,7 @@
 ## Overview ##
 The EEPROM Storage library provides the ability to access variables stored in EEPROM just as if they were stored in normal RAM.
 
-Once defined, a variable can be used in in the same manner as it's underlying type. For example, a variable defined as an integer (int) would be defined as follows:
+Once defined, a variable can be used in in the same manner as its underlying type. For example, a variable defined as an integer (int) would be defined as follows:
 
     int i = 0;
 
@@ -14,11 +14,11 @@ To set the value to a specific value we would, for example, use the statement
 
     i = 12;
 
-This is all very obvious to even the novice programmer, but is used here to show the simplicity of the EEPROM Storage class. An integer variable stored in EEPROM would be defined in the following manner:
+This is all very obvious to even the novice programmer but is used here to show the simplicity of the EEPROM Storage class. An integer variable stored in EEPROM would be defined in the following manner:
 
     EEPROMStorage<int> i(0, 0);
 
-where the first parameter of the constructor defines the address of the variable in EEPROM and the second parameter defines the default value.
+where the first parameter of the constructor defines the address of the variable in EEPROM, and the second parameter defines the default value.
 
 After the definition, the variable `i` can be used in the same manner, `i++` and `i = 12` will work the same way they did before, but now the value is stored and retrieved to and from EEPROM.
 
@@ -38,9 +38,9 @@ Consider the following variable definitions.
 
 The best way to think about EEPROM memory is to think about it as a large byte array with a base index of 0. In fact, the Arduino libraries construct access to EEPROM in this manner. 
 
-In the above definitions, `v1` is stored at position 0 and occupies two bytes. The first byte is for the data type and the second byte is for the one byte checksum. The variable `v1` requires two bytes and thus occupies EEPROM memory locations 0 and 1,
+In the above definitions, `v1` is stored at position 0 and occupies two bytes. The first byte is for the data type and the second byte is for the one-byte checksum. The variable `v1` requires two bytes and thus occupies EEPROM memory locations 0 and 1,
 
-The next variable, `v2`, is located in the position 2, immediately following `v1`, and occupies three bytes. The variables `v3`, `v4` and `v5` follow in the same contiguous manner, ensuring that no two variables occupy the same memory positions.
+The next variable, `v2`, is in the position 2, immediately following `v1`, and occupies three bytes. The variables `v3`, `v4` and `v5` follow in the same contiguous manner, ensuring that no two variables occupy the same memory positions.
 
 > Aligning variables at the beginning of memory or aligning them in a contiguous nature is not required. This just makes it easier, in my opinion, to keep track. You are free to arrange them in any manner that suits your needs.
 
@@ -56,12 +56,12 @@ When using the `sizeof` operator to determine the number of bytes to preserve re
 To see a full demonstration of this, open the example sketch called **sizeof.ino**.
 
 ## EEPROM Storage Initialization ##
-When data has never been stored EEPROM on a micro-controller the memory is in an uninitialized state. Since each byte of memory must have a value between 0 and 255, it is not always possible to detect an uninitialized byte. This behavior could have unexpected side effects if your define a variable and fail to detect whether or not the instance has been initialized.
+When data has never been stored EEPROM on a micro-controller the memory is in an uninitialized state. Since each byte of memory must have a value between 0 and 255, it is not always possible to detect an uninitialized byte. This behavior could have unexpected side effects if you define a variable and fail to detect whether the instance has been initialized.
 
-For this reason, the EEPROM Storage library uses a one byte checksum to determine if the instance has been initialized or not. When an instance is constructed, a default value is specified. This default value is always returned until a value is set thus initializing the  location. Each write operation to EEPROM will update the checksum.
+For this reason, the EEPROM Storage library uses a one-byte checksum to determine if the instance has been initialized or not. When an instance is constructed, a default value is specified. This default value is always returned until a value is set thus initializing the location. Each write operation to EEPROM will update the checksum.
 
 ## Scope ##
-It is important to note that since `EEPROMStorage` variables are in fact stored in the Micro-controllers EEPROM, the scope of these variables is always global. In fact it is possible to instantiate more than one instance using the same address that as a result will keep the two instances in sync.
+It is important to note that since `EEPROMStorage` variables are in fact, stored in the Micro-controllers EEPROM, the scope of these variables is always global. In fact it is possible to instantiate more than one instance using the same address that as a result will keep the two instances in sync.
 
 > The `EEPROMStorage` variable never caches the value internally and will read the value from EEPROM each time it is requested. Similarly, each time the instance value is updated it is written directly to EEPROM.
 
