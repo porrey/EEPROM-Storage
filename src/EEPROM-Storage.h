@@ -1,4 +1,4 @@
-// Copyright © 2017-2020 Daniel Porrey. All Rights Reserved.
+// Copyright © 2017-2025 Daniel Porrey. All Rights Reserved.
 //
 // This file is part of the EEPROM-Storage library.
 //
@@ -22,10 +22,10 @@
 
 #include "Checksum.h"
 
-// ***
-// *** Cross-compatable
-// *** with Arduino, GNU C++ for tests, and Particle.
-// ***
+//
+// Cross-compatable
+// with Arduino, GNU C++ for tests, and Particle.
+//
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
 #include <EEPROM.h>
@@ -33,15 +33,15 @@
 #include "Particle.h"
 #endif
 
-// ***
-// *** Maximum buffer size to use when transfering
-// *** the EEPROM contents to a byte array.
-// ***
+//
+// Maximum buffer size to use when transfering
+// the EEPROM contents to a byte array.
+//
 #define MAX_VARIABLE_LENGTH 16
 
-// ***
-// *** Generic class to wrap an EEPROM variable.
-// ***
+//
+// Generic class to wrap an EEPROM variable.
+//
 template <typename T>
 class EEPROMStorage
 {
@@ -52,28 +52,36 @@ class EEPROMStorage
       this->_defaultValue = defaultValue;
     }
 
-    // ***
-    // *** Allows the variable to be used on the left side of
-    // *** the equal sign.
-    // ***
-    T operator = (T const& value) const
+    //
+    // Accounts for EEPROMStorage<T> = T
+    //
+    EEPROMStorage<T> operator = (T const& value) const
     {
       this->set(value);
-      return this->get();
+      return *this;
     }
 
-    // ***
-    // *** Allows the variable to be used on the right side of
-    // *** the equal sign.
-    // ***
-    operator T()
+    //
+    // Accounts for EEPROMStorage<T> = EEPROMStorage<T>
+    //
+    EEPROMStorage<T> operator = (EEPROMStorage<T> const& value) const
+    {
+      this->set(value);
+      return *this;
+    }
+
+    //
+    // Allows the variable to be used on the right side of
+    // the equal sign.
+    //
+    operator T() const
     {
       return this->get();
     }
 
-    // ***
-    // *** ++ postfix
-    // ***
+    //
+    // ++ postfix
+    //
     T operator ++ (int)
     {
       T oldValue = this->get();
@@ -82,9 +90,9 @@ class EEPROMStorage
       return oldValue;
     }
 
-    // ***
-    // *** ++ prefix
-    // ***
+    //
+    // ++ prefix
+    //
     T operator ++ ()
     {
       T newValue = this->get() + 1;
@@ -92,9 +100,9 @@ class EEPROMStorage
       return newValue;
     }
 
-    // ***
-    // *** -- postifx
-    // ***
+    //
+    // -- postifx
+    //
     T operator -- (int)
     {
       T oldValue = this->get();
@@ -103,9 +111,9 @@ class EEPROMStorage
       return oldValue;
     }
 
-    // ***
-    // *** -- prefix
-    // ***
+    //
+    // -- prefix
+    //
     T operator -- ()
     {
       T newValue = this->get() - 1;
@@ -113,9 +121,9 @@ class EEPROMStorage
       return newValue;
     }
 
-    // ***
-    // *** += operator
-    // ***
+    //
+    // += operator
+    //
     T operator += (T const& value) const
     {
       T newValue = this->get() + value;
@@ -123,9 +131,9 @@ class EEPROMStorage
       return newValue;
     }
 
-    // ***
-    // *** -= operator
-    // ***
+    //
+    // -= operator
+    //
     T operator -= (T const& value) const
     {
       T newValue = this->get() - value;
@@ -133,9 +141,9 @@ class EEPROMStorage
       return newValue;
     }
 
-		// ***
-    // *** *= operator
-    // ***
+		//
+    // *= operator
+    //
     T operator *= (T const& value) const
     {
       T newValue = this->get() * value;
@@ -143,9 +151,9 @@ class EEPROMStorage
       return newValue;
     }
 
-		// ***
-    // *** /= operator
-    // ***
+		//
+    // /= operator
+    //
     T operator /= (T const& value) const
     {
       T newValue = this->get() / value;
@@ -153,9 +161,9 @@ class EEPROMStorage
       return newValue;
     }
 
-		// ***
-    // *** %= operator
-    // ***
+		//
+    // %= operator
+    //
     T operator %= (T const& value) const
     {
       T newValue = this->get() % value;
@@ -163,9 +171,9 @@ class EEPROMStorage
       return newValue;
     }
 
-		// ***
-    // *** &= operator
-    // ***
+		//
+    // &= operator
+    //
     T operator &= (T const& value) const
     {
       T newValue = this->get() & value;
@@ -173,9 +181,9 @@ class EEPROMStorage
       return newValue;
     }
 
-		// ***
-	  // *** |= operator
-	  // ***
+		//
+	  // |= operator
+	  //
 	  T operator |= (T const& value) const
 	  {
 	    T newValue = this->get() | value;
@@ -183,124 +191,124 @@ class EEPROMStorage
 	    return newValue;
 	  }
 
-    // ***
-    // *** > operator
-    // ***
+    //
+    // > operator
+    //
     bool operator > (T const& value) const
     {
       return this->get() > value;
     }
 
-    // ***
-    // *** < operator
-    // ***
+    //
+    // < operator
+    //
     bool operator < (T const& value) const
     {
       return this->get() < value;
     }
 
-    // ***
-    // *** >= operator
-    // ***
+    //
+    // >= operator
+    //
     bool operator >= (T const& value) const
     {
       return this->get() >= value;
     }
 
-    // ***
-    // *** <= operator
-    // ***
+    //
+    // <= operator
+    //
     bool operator <= (T const& value) const
     {
       return this->get() <= value;
     }
 
-    // ***
-    // *** == operator
-    // ***
+    //
+    // == operator
+    //
     bool operator == (T const& value) const
     {
       return this->get() == value;
     }
 
-    // ***
-    // *** Get the value from EEPROM.
-    // ***
-    T get()
+    //
+    // Get the value from EEPROM.
+    //
+    T get() const
     {
       T returnValue;
 
-      // ***
-      // *** Check if the variable has been set or not
-      // *** by comparing the value to the not set value
-      // *** specified in the constructor.
-      // ***
+      //
+      // Check if the variable has been set or not
+      // by comparing the value to the not set value
+      // specified in the constructor.
+      //
       if (this->isInitialized())
       {
-        // ***
-        // *** Get the variable from EEPROM
-        // *** using the address this->_address.
-        // ***
+        //
+        // Get the variable from EEPROM
+        // using the address this->_address.
+        //
         EEPROM.get(this->_address, returnValue);
       }
       else
       {
-        // ***
-        // *** Return the default value specified in
-        // *** the constructor.
-        // ***
+        //
+        // Return the default value specified in
+        // the constructor.
+        //
         returnValue = this->_defaultValue;
       }
 
       return returnValue;
     }
 
-    // ***
-    // *** Save the value to EEPROM.
-    // ***
+    //
+    // Save the value to EEPROM.
+    //
     void set(T const& value) const
     {
-      // ***
-      // *** Set the value in EEPROM using the
-      // *** update method.
-      // ***
+      //
+      // Set the value in EEPROM using the
+      // update method.
+      //
       EEPROM.put(this->_address, value);
 
-      // ***
-      // *** Write the checksum.
-      // ***
+      //
+      // Write the checksum.
+      //
       uint8_t checksum = Checksum<T>::get(value);
       EEPROM.update(this->checksumAddress(), checksum);
     }
 
-    // ***
-    // *** Determines if the variable has been
-    // *** initialized or not by comparing the
-    // *** stored checksum to the actual checksum
-    // *** of the bytes stored.
-    // ***
-    bool isInitialized()
+    //
+    // Determines if the variable has been
+    // initialized or not by comparing the
+    // stored checksum to the actual checksum
+    // of the bytes stored.
+    //
+    bool isInitialized() const
     {
       return (this->checksum() == this->checksumByte());
     }
 
-    // ***
-    // *** Returns the number of EEPROM bytes
-    // *** used by this instance.
-    // ***
-    uint16_t length()
+    //
+    // Returns the number of EEPROM bytes
+    // used by this instance.
+    //
+    uint16_t length() const
     {
-      // ***
-      // *** The extra byte is the checksum byte.
-      // ***
+      //
+      // The extra byte is the checksum byte.
+      //
       return sizeof(T) + 1;
     }
 
-    // ***
-    // *** Unset the variable (return the EEPROM values
-    // *** back to 0xff).
-    // ***
-    void unset(byte unsetValue = 0xff)
+    //
+    // Unset the variable (return the EEPROM values
+    // back to 0xff).
+    //
+    void unset(byte unsetValue = 0xff) const
     {
       for ( int i = 0; i < this->length(); i++)
       {
@@ -308,38 +316,38 @@ class EEPROMStorage
       }
     }
 
-    // ***
-    // *** Gets the address of the checksum byte.
-    // ***
-    uint16_t checksumAddress()
+    //
+    // Gets the address of the checksum byte.
+    //
+    uint16_t checksumAddress() const
     {
       return this->_address + this->length() - 1;
     }
 
-    // ***
-    // *** Gets the stored checksum byte.
-    // ***
-    uint16_t checksumByte()
+    //
+    // Gets the stored checksum byte.
+    //
+    uint16_t checksumByte() const
     {
       return EEPROM.read(this->checksumAddress());
     }
 
-    // ***
-    // *** Calcuate the checksum of the
-    // *** data in the EEPROM for this instance.
-    // ***
-    uint8_t checksum()
+    //
+    // Calcuate the checksum of the
+    // data in the EEPROM for this instance.
+    //
+    uint8_t checksum() const
     {
       byte data[MAX_VARIABLE_LENGTH];
       this->copyTo(data, sizeof(T));
       return Checksum<T>::get(data, sizeof(T));
     }
 
-    // ***
-    // *** Copy the EEPROM bytes of this instance to
-    // *** a byte array.
-    // ***
-    void copyTo(byte* data, uint32_t length)
+    //
+    // Copy the EEPROM bytes of this instance to
+    // a byte array.
+    //
+    void copyTo(byte* data, uint32_t length) const
     {
       for (int i = 0; i < length; i++)
       {
@@ -347,26 +355,35 @@ class EEPROMStorage
       }
     }
 
-    uint16_t getAddress()
+    //
+    // The the EEPROM address of the variable represented
+    // in this instance .
+    //
+    uint16_t getAddress() const
     {
       return this->_address;
     }
 
-    T getDefaultValue()
+    //
+    // Return the default value for this instance.
+    //
+    T getDefaultValue() const
     {
       return this->_defaultValue;
     }
 
   private:
-    // ***
-    // *** The address of this variable in the EEPROM.
-    // ***
+    //
+    // The address of this variable in the EEPROM. This variable
+    // cannot/will not be modified after the class is initialized.
+    //
     uint16_t _address = 0;
 
-    // ***
-    // *** The default value to return when the EEPROM
-    // *** has not been initialized.
-    // ***
+    //
+    // The default value to return when the EEPROM has not been 
+    // initialized.  This variable cannot/will not be modified 
+    // after the class is initialized.
+    //
     T _defaultValue;
 };
 #endif

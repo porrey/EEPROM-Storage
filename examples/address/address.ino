@@ -1,4 +1,4 @@
-// Copyright © 2017-2020 Daniel Porrey. All Rights Reserved.
+// Copyright © 2017-2025 Daniel Porrey. All Rights Reserved.
 //
 // This file is part of the EEPROM-Storage library.
 //
@@ -17,20 +17,18 @@
 // see http://www.gnu.org/licenses/.
 //
 
-// ******************************************************************************************
-// *** This example will calculate the address and
-// *** create initialization code for one or more
-// *** EEPROM-Storage variables. Just follow the steps
-// *** outlined below.
-// ******************************************************************************************
+// ***************************************************************************************
+// This example will calculate the address and
+// create initialization code for one or more
+// EEPROM-Storage variables. Just follow the steps
+// outlined below.
+// ***************************************************************************************
 
-// ******************************************************************************************
-// ******************************************************************************************
-// ***
-// *** Complete Steps 1 through 3 (below) for your project.
-// ***
-// ******************************************************************************************
-// ******************************************************************************************
+// ***************************************************************************************
+//
+// Complete Steps 1 through 3 (below) for your project.
+//
+// ***************************************************************************************
 
 #if defined(SPARK)
 #define word short
@@ -87,22 +85,22 @@ struct definition
 
 void setup()
 {
-  // ***
-  // *** Initialize the serial port.
-  // ***
+  //
+  // Initialize the serial port.
+  //
   Serial.begin(115200);
 
-  // ***
-  // *** Wait for serial port to connect. Needed
-  // *** for native USB port only
-  // ***
+  //
+  // Wait for serial port to connect. Needed
+  // for native USB port only
+  //
   while (!Serial);
 
-  // ***
-  // *** STEP 1 of 3:
-  // ***
-  // *** Create a list of definitions that each contain the data type and the default value.
-  // ***
+  //
+  // STEP 1 of 3:
+  //
+  // Create a list of definitions that each contain the data type and the default value.
+  //
   definition myDefinitions[] =
   {
     { DT_INT, 0 },
@@ -113,28 +111,28 @@ void setup()
     { DT_INT, 10 }
   };
 
-  // ***
-  // *** STEP 2 of 3:
-  // ***
-  // *** Define the starting address in EEPROM. If you are manually string other data in EEPROM this
-  // *** address could be defined at the end of that data.
-  // ***
+  //
+  // STEP 2 of 3:
+  //
+  // Define the starting address in EEPROM. If you are manually string other data in EEPROM this
+  // address could be defined at the end of that data.
+  //
   int myFirstAddress = 0;
 
-  // ***
-  // *** STEP 3 of 3:
-  // ***
-  // *** Set the value below to true to display comments and false to hide the comments.
-  // ***
+  //
+  // STEP 3 of 3:
+  //
+  // Set the value below to true to display comments and false to hide the comments.
+  //
   bool showComments = true;
 
-  // ******************************************************************************************
-  // ******************************************************************************************
-  // ***
-  // *** This will output declarations through the serial port.
-  // ***
-  // ******************************************************************************************
-  // ******************************************************************************************
+  //***************************************************************************************
+  //***************************************************************************************
+  //
+  // This will output declarations through the serial port.
+  //
+  //***************************************************************************************
+  //***************************************************************************************
   int items = sizeof(myDefinitions) / sizeof(definition);
   Serial.print("The number of declarations defined is "); Serial.println(items);
   Serial.println();
@@ -144,9 +142,9 @@ void setup()
   {
     if (showComments)
     {
-      Serial.println("// ***");
-      Serial.print("// *** Total length = "); Serial.print(_size[myDefinitions[i].type] + 1); Serial.print(" [Addresses "); Serial.print(nextAddress); Serial.print(" through "); Serial.print(nextAddress + _size[myDefinitions[i].type]); Serial.println("]");
-      Serial.println("// ***");
+      Serial.println("//");
+      Serial.print("// Total length = "); Serial.print(_size[myDefinitions[i].type] + 1); Serial.print(" [Addresses "); Serial.print(nextAddress); Serial.print(" through "); Serial.print(nextAddress + _size[myDefinitions[i].type]); Serial.println("]");
+      Serial.println("//");
     }
 
     Serial.print("EEPROMStorage<"); Serial.print(_name[myDefinitions[i].type]); Serial.print(">("); Serial.print(nextAddress); Serial.print(", "); Serial.print(myDefinitions[i].defaultValue); Serial.println(");");
@@ -158,8 +156,8 @@ void setup()
 
 void loop()
 {
-  // ***
-  // *** Delay 2 seconds.
-  // ***
+  //
+  // Delay 2 seconds.
+  //
   delay(2000);
 }

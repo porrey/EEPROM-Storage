@@ -1,4 +1,4 @@
-// Copyright © 2017-2020 Daniel Porrey. All Rights Reserved.
+// Copyright © 2017-2025 Daniel Porrey. All Rights Reserved.
 //
 // This file is part of the EEPROM-Storage library.
 //
@@ -20,10 +20,10 @@
 #ifndef CHECKSUM_H
 #define CHECKSUM_H
 
-// ***
-// *** Cross-compatable
-// *** with Arduino, GNU C++ for tests, and Particle.
-// ***
+//
+// Cross-compatable
+// with Arduino, GNU C++ for tests, and Particle.
+//
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
 #elif defined(SPARK)
@@ -40,10 +40,10 @@ class Checksum
 
       if (length == 1)
       {
-        // ***
-        // *** For a single byte use the bit
-        // *** pattern 0xAA (10101010).
-        // ***
+        //
+        // For a single byte use the bit
+        // pattern 0xAA (10101010).
+        //
         returnValue = 0xAA ^ data[0];
       }
       else
@@ -55,9 +55,9 @@ class Checksum
         }
       }
 
-      // ***
-      // *** Do not let the checksum be 0xFF
-      // ***
+      //
+      // Do not let the checksum be 0xFF
+      //
       if (returnValue == 0xFF)
       {
         returnValue <<= 1;
@@ -68,10 +68,10 @@ class Checksum
 
     static uint8_t get(T value)
     {
-      // ***
-      // *** Get a pointer to the bytes in memory
-      // *** for the variable value.
-      // ***
+      //
+      // Get a pointer to the bytes in memory
+      // for the variable value.
+      //
       uint8_t *ptr = (uint8_t*) &value;
       return Checksum<T>::get(ptr, sizeof(T));
     }
