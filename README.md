@@ -1,6 +1,6 @@
 # EEPROM-Storage Library
 ## Overview ##
-The EEPROM Storage library provides the ability to access variables stored in EEPROM just as if they would stored in normal RAM.
+The EEPROM Storage library provides the ability to access variables stored in EEPROM just as if they were stored in normal RAM.
 
 Once defined, a variable can be used in in the same manner as it's underlying type. For example, a variable defined as an integer (int) would be defined as follows:
 
