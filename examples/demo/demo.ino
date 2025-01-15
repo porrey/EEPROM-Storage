@@ -1,4 +1,4 @@
-// Copyright © 2017-2020 Daniel Porrey. All Rights Reserved.
+// Copyright © 2017-2025 Daniel Porrey. All Rights Reserved.
 //
 // This file is part of the EEPROM-Storage library.
 //
@@ -17,16 +17,16 @@
 // see http://www.gnu.org/licenses/.
 //
 
-// ******************************************************************************************
-// *** This example demonstrates the usage of the
-// *** EEPROM-Storage library.
-// ******************************************************************************************
+// ***************************************************************************************
+// This example demonstrates the usage of the
+// EEPROM-Storage library.
+// ***************************************************************************************
 
 #include <EEPROM-Storage.h>
 
-// ***
-// *** Addresses
-// ***
+//
+// Addresses
+//
 #define V1_ADR  0
 #define V2_ADR  V1_ADR + 4 + 1
 #define V3_ADR  V2_ADR + 4 + 1
@@ -34,22 +34,22 @@
 #define V5_ADR  V4_ADR + 4 + 1
 #define V6_ADR  V4_ADR
 
-// ***
-// *** Create variables to be stored in EEPROM. The first parameter is the
-// *** address or location in EEPROM. The second parameter is the default
-// *** value to return when the variable has not been initialized. Each
-// *** variable requires enough bytes to hold the data type plus one additional
-// *** byte for a checksum.
-// ***
+//
+// Create variables to be stored in EEPROM. The first parameter is the
+// address or location in EEPROM. The second parameter is the default
+// value to return when the variable has not been initialized. Each
+// variable requires enough bytes to hold the data type plus one additional
+// byte for a checksum.
+//
 EEPROMStorage<uint32_t> _v1(V1_ADR, 0);       // This variable is stored in EEPROM at positions 0, 1, 2, 3 and 4 (5 bytes)
 EEPROMStorage<uint32_t> _v2(V2_ADR, 0);       // This variable is stored in EEPROM at positions 5, 6, 7, 8 and 9 (5 bytes)
 EEPROMStorage<float>    _v3(V3_ADR, 0.0);     // This variable is stored in EEPROM at positions 10, 11, 12, 13 and 14 (5 bytes)
 EEPROMStorage<float>    _v4(V4_ADR, 0.0);     // This variable is stored in EEPROM at positions 15, 16, 17, 18 and 19 (5 bytes)
 EEPROMStorage<bool>     _v5(V5_ADR, false);   // This variable is stored in EEPROM at positions 20 and 21 (2 bytes)
 
-// ***
-// *** Funtion header
-// ***
+//
+// Funtion header
+//
 void displayPaddedHexByte(byte value, bool showPrefix);
 void clearEEPROM();
 void displayEEPROM();
@@ -65,26 +65,26 @@ void booleanCheck(String name, EEPROMStorage<bool> item);
 
 void setup()
 {
-  // ***
-  // *** Initialize the serial port. On a Particle
-  // *** device the baud rate will be ignored.
-  // ***
+  //
+  // Initialize the serial port. On a Particle
+  // device the baud rate will be ignored.
+  //
   Serial.begin(115200);
 
-  // ***
-  // *** Wait for serial port to connect. Needed
-  // *** for native USB port only
-  // ***
+  //
+  // Wait for serial port to connect. Needed
+  // for native USB port only
+  //
   while (!Serial);
 
-  // ***
-  // *** Initialize the random number generator.
-  // ***
+  //
+  // Initialize the random number generator.
+  //
   randomSeed(analogRead(0));
 
-  // ***
-  // *** Display the contents of EEPROM;
-  // ***
+  //
+  // Display the contents of EEPROM;
+  //
   clearEEPROM();
   printHeader("EEPROM Contents (" + String(EEPROM.length()) + " bytes)");
   displayEEPROM(); Serial.println(); Serial.println();
@@ -124,12 +124,12 @@ void setup()
 
   booleanCheck("V5", _v5); Serial.println();
 
-  // ***
-  // *** Demonstrates a local variable taking on the value
-  // *** of a previously defined global variable. This one
-  // *** will use the same address as _v4. Note the same data
-  // *** type must be used or we will get unexpected values.
-  // ***
+  //
+  // Demonstrates a local variable taking on the value
+  // of a previously defined global variable. This one
+  // will use the same address as _v4. Note the same data
+  // type must be used or we will get unexpected values.
+  //
   EEPROMStorage<float> v6(V6_ADR, 0.0);
   scopeCheck("V6", v6, "V4", _v4);
 
@@ -139,9 +139,9 @@ void setup()
 
 void loop()
 {
-  // ***
-  // *** Wait for 2 seconds.
-  // ***
+  //
+  // Wait for 2 seconds.
+  //
   delay(2000);
 }
 
@@ -152,9 +152,9 @@ void displayPaddedHexByte(byte value, bool showPrefix = true)
   Serial.print(value, HEX);
 }
 
-// ***
-// *** Resets the contents of EEPROM to 0xFF
-// ***
+//
+// Resets the contents of EEPROM to 0xFF
+//
 void clearEEPROM()
 {
   for (int i = 0; i < EEPROM.length(); i++)
@@ -163,22 +163,22 @@ void clearEEPROM()
   }
 }
 
-// ***
-// *** Displays the contents of the EEPROM
-// ***
+//
+// Displays the contents of the EEPROM
+//
 void displayEEPROM()
 {
-  // ***
-  // *** Get every byte rom EEPROM
-  // ***
+  //
+  // Get every byte rom EEPROM
+  //
   for (int i = 0; i < EEPROM.length(); i++)
   {
     displayPaddedHexByte(EEPROM[i], false);
     Serial.print(" ");
 
-    // ***
-    // *** Start a new line
-    // ***
+    //
+    // Start a new line
+    //
     if ((i + 1) % 32 == 0)
     {
       Serial.println();
@@ -232,9 +232,9 @@ template <typename T> void initializationCheck(String name, EEPROMStorage<T> ite
     Serial.print("The variable "); Serial.print(name); Serial.println(" IS initialized.");
     displayCurrentValue<T>(name, item);
 
-    // ***
-    // *** Change the variable value.
-    // ***
+    //
+    // Change the variable value.
+    //
     Serial.print("Changing variable "); Serial.print(name); Serial.print(" to "); Serial.print(initValue); Serial.println(".");
     item = initValue;
   }
@@ -242,14 +242,14 @@ template <typename T> void initializationCheck(String name, EEPROMStorage<T> ite
   {
     Serial.print("The variable "); Serial.print(name); Serial.println(" is NOT initialized.");
 
-    // ***
-    // *** The default will match the value specified in the constructor.
-    // ***
+    //
+    // The default will match the value specified in the constructor.
+    //
     Serial.print("The default value is "); Serial.print(item); Serial.println(".");
 
-    // ***
-    // *** Initialize the variable value.
-    // ***
+    //
+    // Initialize the variable value.
+    //
     Serial.print("Initializing variable "); Serial.print(name); Serial.print(" to "); Serial.print(initValue); Serial.println(".");
     item = initValue;
   }
@@ -295,9 +295,9 @@ template <typename T> void comparisonCheck(String name1, EEPROMStorage<T> item1,
   displayCurrentValue<T>(name1, item1);
   displayCurrentValue<T>(name2, item2);
 
-  // ***
-  // *** Greater than
-  // ***
+  //
+  // Greater than
+  //
   if (item1 > item2)
   {
     Serial.print(name1); Serial.print(" is GREATER THAN "); Serial.print(name2); Serial.println(".");
@@ -307,9 +307,9 @@ template <typename T> void comparisonCheck(String name1, EEPROMStorage<T> item1,
     Serial.print(name2); Serial.print(" is GREATER THAN "); Serial.print(name1); Serial.println(".");
   }
 
-  // ***
-  // *** Less than
-  // ***
+  //
+  // Less than
+  //
   if (item1 < item2)
   {
     Serial.print(name1); Serial.print(" is LESS THAN "); Serial.print(name2); Serial.println(".");
@@ -319,9 +319,9 @@ template <typename T> void comparisonCheck(String name1, EEPROMStorage<T> item1,
     Serial.print(name2); Serial.print(" is LESS THAN "); Serial.print(name1); Serial.println(".");
   }
 
-  // ***
-  // *** Greater than or equal to
-  // ***
+  //
+  // Greater than or equal to
+  //
   if (item1 >= item2)
   {
     Serial.print(name1); Serial.print(" is GREATER THAN or EQUAL TO "); Serial.print(name2); Serial.println(".");
@@ -331,9 +331,9 @@ template <typename T> void comparisonCheck(String name1, EEPROMStorage<T> item1,
     Serial.print(name2); Serial.print(" is GREATER THAN or EQUAL TO "); Serial.print(name1); Serial.println(".");
   }
 
-  // ***
-  // *** Less than or equal to
-  // ***
+  //
+  // Less than or equal to
+  //
   if (item1 < item2)
   {
     Serial.print(name1); Serial.print(" is LESS THAN or EQUAL TO "); Serial.print(name2); Serial.println(".");
@@ -343,9 +343,9 @@ template <typename T> void comparisonCheck(String name1, EEPROMStorage<T> item1,
     Serial.print(name2); Serial.print(" is LESS THAN or EQUAL TO "); Serial.print(name1); Serial.println(".");
   }
 
-  // ***
-  // *** Equal to
-  // ***
+  //
+  // Equal to
+  //
   if (item1 == item2)
   {
     Serial.print(name1); Serial.print(" is EQUAL TO "); Serial.print(name2); Serial.println(".");

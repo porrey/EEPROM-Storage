@@ -17,40 +17,40 @@
 // see http://www.gnu.org/licenses/.
 //
 
-// ***
-// *** For Particle platform only.
-// ***
+// ***************************************************************************************
+// For Particle platform only.
+// ***************************************************************************************
 
 #include <EEPROM-Storage.h>
 
-// ***
-// *** Define a 32-bit integer at adress 0 (first argument) with a
-// *** default value of 11 (second agument).
-// ***
+//
+// Define a 32-bit integer at adress 0 (first argument) with a
+// default value of 11 (second agument).
+//
 EEPROMStorage<int32_t> _cloudVariable(0, 11);
 
 void setup()
 {
-  // ***
-  // *** Initial the serial port.
-  // ***
+  //
+  // Initial the serial port.
+  //
   Serial.begin(115200);
 
-  // ***
-  // *** Wait for serial port to connect. Needed
-  // *** for native USB port only
-  // ***
+  //
+  // Wait for serial port to connect. Needed
+  // for native USB port only
+  //
   while (!Serial);
 
-  // ***
-  // *** Initial the cloud variables and functions.
-  // ***
+  //
+  // Initial the cloud variables and functions.
+  //
   Particle.function("SetVariable", setVariable);
   Particle.function("GetVariable", getVariable);
 
-  // ***
-  // *** Display the variable value.
-  // ***
+  //
+  // Display the variable value.
+  //
   Serial.print("Cloud Variable value is "); Serial.println(_cloudVariable);
 }
 
@@ -58,9 +58,9 @@ void loop()
 {
 }
 
-// ***
-// *** Sets the variable value.
-// ***
+//
+// Sets the variable value.
+//
 int setVariable(String data)
 {
   int returnValue = 0;
@@ -75,9 +75,9 @@ int setVariable(String data)
   return returnValue;
 }
 
-// ***
-// *** Gets the variable value.
-// ***
+//
+// Gets the variable value.
+//
 int getVariable(String data)
 {
   return _cloudVariable;

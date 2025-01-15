@@ -17,10 +17,10 @@
 // see http://www.gnu.org/licenses/.
 //
 
-// ******************************************************************************************
-// *** This example displays the sizes of various
-// *** dat types to the Serial output.
-// ******************************************************************************************
+// ***************************************************************************************
+// This example displays the sizes of various
+// data types to the Serial output.
+// ***************************************************************************************
 
 #if defined(SPARK)
 #define word short
@@ -30,10 +30,10 @@ void setup()
 {
 	Serial.begin(115200);
   
-  // ***
-  // *** Wait for serial port to connect. Needed
-  // *** for native USB port only
-  // ***
+  //
+  // Wait for serial port to connect. Needed
+  // for native USB port only
+  //
   while (!Serial);
 
 	Serial.print("The size of byte is "); Serial.print(sizeof(byte)); Serial.println(".");
@@ -71,8 +71,8 @@ void setup()
 
 void loop()
 {
-  // ***
-  // *** Delay 2 seconds.
-  // ***
+  //
+  // Delay 2 seconds.
+  //
   delay(2000);
 }

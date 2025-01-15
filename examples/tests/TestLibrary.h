@@ -1,6 +1,25 @@
-// ***
-// *** Results
-// ***
+// Copyright © 2017-2020 Daniel Porrey. All Rights Reserved.
+//
+// This file is part of the EEPROM-Storage library.
+//
+// EEPROM-Storage library is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// EEPROM-Storage library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public License
+// along with EEPROM-Storage library. If not,
+// see http://www.gnu.org/licenses/.
+//
+
+//
+// Results
+//
 unsigned int _totalTests = 0;
 unsigned int _totalPassed = 0;
 
@@ -82,17 +101,17 @@ template <typename T> bool assertAreNotEqual(EEPROMStorage<T> item1, T item2)
 
 template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRandomValue, long maxRandomValue)
 {
-  // ***
-  // *** Uninitialize test
-  // ***
+  //
+  // Uninitialize test
+  //
   displayTestHeader("Uninitialized");
   item.unset();
   _totalPassed += assertIsFalse(item.isInitialized());
   Serial.println();
 
-  // ***
-  // *** Initialize test
-  // ***
+  //
+  // Initialize test
+  //
   {
     displayTestHeader("Initialized Value");
     T initValue = (T)random(minRandomValue, maxRandomValue);
@@ -105,9 +124,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** Addition test
-  // ***
+  //
+  // Addition test
+  //
   {
     displayTestHeader("Addition");
     T value = item;
@@ -117,9 +136,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** Subtraction test
-  // ***
+  //
+  // Subtraction test
+  //
   {
     displayTestHeader("Subtraction");
     T value = (T)10;
@@ -130,9 +149,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** Multiplication test
-  // ***
+  //
+  // Multiplication test
+  //
   {
     displayTestHeader("Multiplication");
     T value = (T)10;
@@ -143,9 +162,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** Division test
-  // ***
+  //
+  // Division test
+  //
   {
     displayTestHeader("Multiplication");
     T value = (T)10;
@@ -156,9 +175,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** ++ postfix test
-  // ***
+  //
+  // ++ postfix test
+  //
   {
     displayTestHeader("++ postfix");
     T value = (T)60;
@@ -169,9 +188,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** -- postfix test
-  // ***
+  //
+  // -- postfix test
+  //
   {
     displayTestHeader("-- postfix");
     T value = (T)60;
@@ -182,9 +201,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** ++ prefix test
-  // ***
+  //
+  // ++ prefix test
+  //
   {
     displayTestHeader("++ prefix");
     T value = (T)60;
@@ -195,9 +214,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** -- postfix test
-  // ***
+  //
+  // -- postfix test
+  //
   {
     displayTestHeader("-- prefix");
     T value = (T)60;
@@ -208,9 +227,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** += test
-  // ***
+  //
+  // += test
+  //
   {
     displayTestHeader("+=");
     T value = (T)60;
@@ -221,9 +240,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** -= test
-  // ***
+  //
+  // -= test
+  //
   {
     displayTestHeader("-=");
     T value = (T)60;
@@ -234,9 +253,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** *= test
-  // ***
+  //
+  // *= test
+  //
   {
     displayTestHeader("*=");
     T value = (T)60;
@@ -247,9 +266,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** /= test
-  // ***
+  //
+  // /= test
+  //
   {
     displayTestHeader("/=");
     T value = (T)60;
@@ -260,9 +279,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** > test
-  // ***
+  //
+  // > test
+  //
   {
     displayTestHeader("> x");
     item = 100;
@@ -270,9 +289,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** > test
-  // ***
+  //
+  // > test
+  //
   {
     displayTestHeader("x >");
     item = (T)100;
@@ -280,9 +299,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** < test
-  // ***
+  //
+  // < test
+  //
   {
     displayTestHeader("< x");
     item = (T)100;
@@ -290,9 +309,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** > test
-  // ***
+  //
+  // > test
+  //
   {
     displayTestHeader("x <");
     item = (T)100;
@@ -300,9 +319,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** >= test (different)
-  // ***
+  //
+  // >= test (different)
+  //
   {
     displayTestHeader(">= x (different)");
     item = (T)100;
@@ -310,9 +329,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** >= test (different)
-  // ***
+  //
+  // >= test (different)
+  //
   {
     displayTestHeader("x >= (different)");
     item = (T)100;
@@ -320,9 +339,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** <= test (different)
-  // ***
+  //
+  // <= test (different)
+  //
   {
     displayTestHeader("<= x (different)");
     item = (T)100;
@@ -330,9 +349,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** >= test (different)
-  // ***
+  //
+  // >= test (different)
+  //
   {
     displayTestHeader("x <= (different)");
     item = 100;
@@ -340,9 +359,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** >= test (same)
-  // ***
+  //
+  // >= test (same)
+  //
   {
     displayTestHeader(">= x (same)");
     item = (T)100;
@@ -350,9 +369,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** >= test (same)
-  // ***
+  //
+  // >= test (same)
+  //
   {
     displayTestHeader("x >= (same)");
     item = (T)100;
@@ -360,9 +379,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** <= test (same)
-  // ***
+  //
+  // <= test (same)
+  //
   {
     displayTestHeader("<= x (same)");
     item = (T)100;
@@ -370,9 +389,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** >= test (same)
-  // ***
+  //
+  // >= test (same)
+  //
   {
     displayTestHeader("x <= (same)");
     item = (T)100;
@@ -383,9 +402,9 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
 
 template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRandomValue, long maxRandomValue)
 {
-  // ***
-  // *** Modulo test
-  // ***
+  //
+  // Modulo test
+  //
   {
     displayTestHeader("Modulo");
     T value = (T)10;
@@ -396,9 +415,9 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** %= test
-  // ***
+  //
+  // %= test
+  //
   {
     displayTestHeader("%=");
     T value = (T)10;
@@ -409,9 +428,9 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** &= test
-  // ***
+  //
+  // &= test
+  //
   {
     displayTestHeader("&=");
     T value = (T)129191;
@@ -422,9 +441,9 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** |= test
-  // ***
+  //
+  // |= test
+  //
   {
     displayTestHeader("|=");
     T value = (T)129191;
@@ -435,9 +454,9 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** == test
-  // ***
+  //
+  // == test
+  //
   {
     displayTestHeader("==");
     T value = (T)random(minRandomValue, maxRandomValue);
@@ -446,9 +465,9 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** != test
-  // ***
+  //
+  // != test
+  //
   {
     displayTestHeader("!=");
     T value = (T)random(minRandomValue, maxRandomValue);
@@ -457,9 +476,9 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** Bitwise AND (&)
-  // ***
+  //
+  // Bitwise AND (&)
+  //
   {
     displayTestHeader("Bitwise AND (&)");
     T value = (T)random(minRandomValue, maxRandomValue);
@@ -470,9 +489,9 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** Bitwise OR (|)
-  // ***
+  //
+  // Bitwise OR (|)
+  //
   {
     displayTestHeader("Bitwise OR (|)");
     T value = (T)random(minRandomValue, maxRandomValue);
@@ -483,9 +502,9 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** Bitwise XOR (^)
-  // ***
+  //
+  // Bitwise XOR (^)
+  //
   {
     displayTestHeader("Bitwise XOR (^)");
     T value = (T)random(minRandomValue, maxRandomValue);
@@ -496,9 +515,9 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** Bitwise NOT (~)
-  // ***
+  //
+  // Bitwise NOT (~)
+  //
   {
     displayTestHeader("Bitwise NOT (~)");
     T value = (T)random(minRandomValue, maxRandomValue);
@@ -509,9 +528,9 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** Bitshift Left (<<)
-  // ***
+  //
+  // Bitshift Left (<<)
+  //
   {
     displayTestHeader("Bitshift Left (<<)");
     T value = (T)random(minRandomValue, maxRandomValue);
@@ -522,9 +541,9 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     Serial.println();
   }
 
-  // ***
-  // *** Bitshift Right (>>)
-  // ***
+  //
+  // Bitshift Right (>>)
+  //
   {
     displayTestHeader("Bitshift Right (>>)");
     T value = (T)random(minRandomValue, maxRandomValue);
@@ -538,18 +557,18 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
 
 template <typename T> void testProxyStandard(String typeName, int address, long minRandomValue, long maxRandomValue)
 {
-  // ***
-  // *** Run tests on data type [double]
-  // ***
+  //
+  // Run standard tests on data type.
+  //
   EEPROMStorage<T> var(address, 0);
 
   Serial.println("*********************************************");
   Serial.print("Running standard tests on ["); Serial.print(typeName); Serial.println("]");
   Serial.println("*********************************************");
 
-  // ***
-  // *** Run standard tests.
-  // ***
+  //
+  // Run standard tests.
+  //
   runStandardTests<T>(var, minRandomValue, maxRandomValue);
 
   Serial.println();
@@ -557,18 +576,18 @@ template <typename T> void testProxyStandard(String typeName, int address, long 
 
 template <typename T> void testProxyAdvanced(String typeName, int address, long minRandomValue, long maxRandomValue)
 {
-  // ***
-  // *** Run tests on data type [double]
-  // ***
+  //
+  // Run advanced tests on data type.
+  //
   EEPROMStorage<T> var(address, 0);
 
   Serial.println("*********************************************");
   Serial.print("Running advanced tests on ["); Serial.print(typeName); Serial.println("]");
   Serial.println("*********************************************");
 
-  // ***
-  // *** Run standard tests.
-  // ***
+  //
+  // Run standard tests.
+  //
   runAdvancedTests<T>(var, minRandomValue, maxRandomValue);
 
   Serial.println();

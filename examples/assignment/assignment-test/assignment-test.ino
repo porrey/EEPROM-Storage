@@ -18,7 +18,7 @@
 //
 
 // ***************************************************************************************
-// This example runs a series of tests for the library.
+// This example tests the assignment of one EEPROM variable to another.
 // ***************************************************************************************
 
 #include <EEPROM-Storage.h>
