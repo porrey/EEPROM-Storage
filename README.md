@@ -110,6 +110,6 @@ The `EEPROMStorage` class also defines a `get()` method that can be used.
 	int x = myInt.get();
 
 ## LICENSE
-*Copyright 2017 Daniel Porrey*
+*Copyright 2017-2025 Daniel Porrey*
 
 *Licensed under the GPL-3.0 license*
