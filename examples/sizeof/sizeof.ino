@@ -18,8 +18,7 @@
 //
 
 // ***************************************************************************************
-// This example displays the sizes of various
-// data types to the Serial output.
+// This example displays the sizes of various data types to the Serial output.
 // ***************************************************************************************
 
 #if defined(SPARK)
@@ -28,13 +27,16 @@
 
 void setup()
 {
+	//
+	// Initialize the serial port.
+	//
 	Serial.begin(115200);
-  
-  //
-  // Wait for serial port to connect. Needed
-  // for native USB port only
-  //
-  while (!Serial);
+
+	//
+	// Wait for serial port to connect. Needed
+	// for native USB port only
+	//
+	while (!Serial);
 
 	Serial.print("The size of byte is "); Serial.print(sizeof(byte)); Serial.println(".");
 	Serial.print("The size of char is "); Serial.print(sizeof(char)); Serial.println(".");
@@ -71,8 +73,8 @@ void setup()
 
 void loop()
 {
-  //
-  // Delay 2 seconds.
-  //
-  delay(2000);
+	//
+	// Delay 2 seconds.
+	//
+	delay(2000);
 }

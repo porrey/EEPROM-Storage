@@ -20,6 +20,7 @@
 #ifndef EEPROM_STORAGE_H
 #define EEPROM_STORAGE_H
 
+#include "eeprom-functions.h"
 #include "Checksum.h"
 
 //
@@ -33,10 +34,6 @@
 #include "Particle.h"
 #endif
 
-//
-// Maximum buffer size to use when transfering
-// the EEPROM contents to a byte array.
-//
 #define MAX_VARIABLE_LENGTH 16
 
 //
@@ -232,7 +229,7 @@ class EEPROMStorage
     }
 
     //
-    // Get the value from EEPROM.
+    // Get the variable value from the EEPROM.
     //
     T get() const
     {
@@ -254,8 +251,7 @@ class EEPROMStorage
       else
       {
         //
-        // Return the default value specified in
-        // the constructor.
+        // Return the default value.
         //
         returnValue = this->_defaultValue;
       }
@@ -264,7 +260,7 @@ class EEPROMStorage
     }
 
     //
-    // Save the value to EEPROM.
+    // Save the variable value to the EEPROM.
     //
     void set(T const& value) const
     {
@@ -370,6 +366,15 @@ class EEPROMStorage
     T getDefaultValue() const
     {
       return this->_defaultValue;
+    }
+
+    //
+    // Get the next EEPROM address after this variable. This can be used to set the
+    // address of another EEPROM variable.
+    //
+    uint16_t nextAddress() const
+    {
+      return this->getAddress() + this->length() + 1;
     }
 
   private:

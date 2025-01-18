@@ -18,21 +18,10 @@
 //
 
 // ***************************************************************************************
-// This example demonstrates the usage of the
-// EEPROM-Storage library.
+// This example demonstrates the usage of the EEPROM-Storage library.
 // ***************************************************************************************
 
 #include <EEPROM-Storage.h>
-
-//
-// Addresses
-//
-#define V1_ADR  0
-#define V2_ADR  V1_ADR + 4 + 1
-#define V3_ADR  V2_ADR + 4 + 1
-#define V4_ADR  V3_ADR + 4 + 1
-#define V5_ADR  V4_ADR + 4 + 1
-#define V6_ADR  V4_ADR
 
 //
 // Create variables to be stored in EEPROM. The first parameter is the
@@ -41,18 +30,15 @@
 // variable requires enough bytes to hold the data type plus one additional
 // byte for a checksum.
 //
-EEPROMStorage<uint32_t> _v1(V1_ADR, 0);       // This variable is stored in EEPROM at positions 0, 1, 2, 3 and 4 (5 bytes)
-EEPROMStorage<uint32_t> _v2(V2_ADR, 0);       // This variable is stored in EEPROM at positions 5, 6, 7, 8 and 9 (5 bytes)
-EEPROMStorage<float>    _v3(V3_ADR, 0.0);     // This variable is stored in EEPROM at positions 10, 11, 12, 13 and 14 (5 bytes)
-EEPROMStorage<float>    _v4(V4_ADR, 0.0);     // This variable is stored in EEPROM at positions 15, 16, 17, 18 and 19 (5 bytes)
-EEPROMStorage<bool>     _v5(V5_ADR, false);   // This variable is stored in EEPROM at positions 20 and 21 (2 bytes)
+EEPROMStorage<uint32_t> _v1(0, 0);                       // This variable is stored in EEPROM at positions 0, 1, 2, 3 and 4 (5 bytes)
+EEPROMStorage<uint32_t> _v2(_v1.nextAddress(), 0);       // This variable is stored in EEPROM at positions 5, 6, 7, 8 and 9 (5 bytes)
+EEPROMStorage<float>    _v3(_v2.nextAddress(), 0.0);     // This variable is stored in EEPROM at positions 10, 11, 12, 13 and 14 (5 bytes)
+EEPROMStorage<float>    _v4(_v3.nextAddress(), 0.0);     // This variable is stored in EEPROM at positions 15, 16, 17, 18 and 19 (5 bytes)
+EEPROMStorage<bool>     _v5(_v4.nextAddress(), false);   // This variable is stored in EEPROM at positions 20 and 21 (2 bytes)
 
 //
 // Funtion header
 //
-void displayPaddedHexByte(byte value, bool showPrefix);
-void clearEEPROM();
-void displayEEPROM();
 void printHeader(String description);
 template <typename T> void displayVariableAddress(String name, EEPROMStorage<T> item);
 template <typename T> void displayCurrentValue(String name, EEPROMStorage<T> item);
@@ -130,7 +116,7 @@ void setup()
   // will use the same address as _v4. Note the same data
   // type must be used or we will get unexpected values.
   //
-  EEPROMStorage<float> v6(V6_ADR, 0.0);
+  EEPROMStorage<float> v6(_v4.get(), 0.0);
   scopeCheck("V6", v6, "V4", _v4);
 
   printHeader("EEPROM Contents (" + String(EEPROM.length()) + " bytes)");
@@ -143,47 +129,6 @@ void loop()
   // Wait for 2 seconds.
   //
   delay(2000);
-}
-
-void displayPaddedHexByte(byte value, bool showPrefix = true)
-{
-  if (showPrefix) Serial.print("0x");
-  if (value <= 0x0F) Serial.print("0");
-  Serial.print(value, HEX);
-}
-
-//
-// Resets the contents of EEPROM to 0xFF
-//
-void clearEEPROM()
-{
-  for (int i = 0; i < EEPROM.length(); i++)
-  {
-    EEPROM.update(i, 0xFF);
-  }
-}
-
-//
-// Displays the contents of the EEPROM
-//
-void displayEEPROM()
-{
-  //
-  // Get every byte rom EEPROM
-  //
-  for (int i = 0; i < EEPROM.length(); i++)
-  {
-    displayPaddedHexByte(EEPROM[i], false);
-    Serial.print(" ");
-
-    //
-    // Start a new line
-    //
-    if ((i + 1) % 32 == 0)
-    {
-      Serial.println();
-    }
-  }
 }
 
 void printHeader(String description)

@@ -24,16 +24,31 @@
 #include <EEPROM-Storage.h>
 
 EEPROMStorage<int> a(0, 0);
-EEPROMStorage<int> b(sizeof(int) + 1, 0);
+EEPROMStorage<int> b(a.nextAddress(), 0);
 
 void setup() 
 {
+  //
+  // Initialize the serial port.
+  //
   Serial.begin(115200);
 
+  //
+  // Wait for serial port to connect. Needed
+  // for native USB port only
+  //
+  while (!Serial);
+
+  //
+  // Display the values of a and b.
+  //
   Serial.println("Values at startup: ");
   Serial.print("a: "); Serial.println(a);
   Serial.print("b: "); Serial.println(b);
 
+  //
+  // Check if the two values are the same.
+  //
   if (a == b)
   {
     Serial.println("Test passed!");
@@ -57,15 +72,24 @@ void loop()
   //
   if(a % 5 == 0)
   {
+    //
+    // Asign the value of a to b.
+    //
     Serial.println("Assigning b the value of a.");
     b = a;
     Serial.println("Assigned a to b!");
 
+    //
+    // Display the new values.
+    //
     Serial.println("New values: ");
     Serial.print("a: "); Serial.println(a);
     Serial.print("b: "); Serial.println(b);
     Serial.println("Reset the arduino now, the value of b at startup should be the same as a.");
 
+    //
+    // Loop forever so the microcontroller can be rebooted.
+    //
     while(true) delay(100);
   }
 }
