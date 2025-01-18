@@ -21,14 +21,13 @@
 // This example demonstrates simple usage.
 // ***************************************************************************************
 
-#include <EEPROM-Storage.h>
+#include "EEPROM-Storage.h"
 
 //
-// Create a variable to be stored in EEPROM. The first parameter is the
-// address or location in EEPROM. The second parameter is the default
-// value to return when the variable has not been initialized.
+// Create two variables to be stored in EEPROM.
 //
-EEPROMStorage<uint32_t> _myInt(0, 0);  // This variable is stored in EEPROM at positions 0, 1, 2, 3 and 4 (5 bytes)
+EEPROMStorage<uint32_t> _myInt1(0, 0);
+EEPROMStorage<uint32_t> _myInt2(_myInt1.nextAddress(), 0);
 
 void setup()
 {
@@ -38,27 +37,52 @@ void setup()
   //
   Serial.begin(115200);
 
-  //
-  // Wait for serial port to connect. Needed
-  // for native USB port only
-  //
-  while (!Serial);
+	//
+	// wait for serial port to connect. Needed
+	// for native USB port only
+	//
+	while (!Serial);
 
-  Serial.print("Assigning _myInt the value of 128.");
-  _myInt = 128;
-  Serial.print("_myInt = "); Serial.println(_myInt);
+  //
+  // Set the value of _myInt1 to 10.
+  //
+  _myInt1 = 10;
 
-  displayEEPROM();
+  //
+  // Set the value of _myInt2 to 20.
+  //
+  _myInt2 = 20;
+
+  //
+  // Create a variable i and set the value to 10.
+  int i = 10;
+
+  //
+  // Increment iby the value of _myInt2.
+  //
+  i += _myInt2;
+  Serial.print("i = "); Serial.println(i);
+
+  //
+  // Display the value of _myInt2.
+  //
+  Serial.print("_myInt2 = "); Serial.println(_myInt2);
+
+  //
+  // Multiply the value of _myInt2 by 10.
+  //
+  _myInt2 *= 10;
+
+  //
+  // Display the new value of _myInt2.
+  //
+  Serial.print("_myInt2 = "); Serial.println(_myInt2);
 }
 
 void loop()
 {
   //
-  // Wait for 2 seconds.
+  // Delay 2 seconds.
   //
   delay(2000);
-
-  Serial.print("Incrementing _myInt.");
-  _myInt++;
-  Serial.print("_myInt = "); Serial.println(_myInt);
 }

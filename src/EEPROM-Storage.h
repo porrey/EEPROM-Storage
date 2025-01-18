@@ -24,8 +24,7 @@
 #include "Checksum.h"
 
 //
-// Cross-compatable
-// with Arduino, GNU C++ for tests, and Particle.
+// Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
@@ -40,6 +39,7 @@
 // Generic class to wrap an EEPROM variable.
 //
 template <typename T>
+
 class EEPROMStorage
 {
   public:
@@ -47,7 +47,7 @@ class EEPROMStorage
     {
       this->_address = address;
       this->_defaultValue = defaultValue;
-    }
+    };
 
     //
     // Accounts for EEPROMStorage<T> = T
@@ -189,46 +189,6 @@ class EEPROMStorage
 	  }
 
     //
-    // > operator
-    //
-    bool operator > (T const& value) const
-    {
-      return this->get() > value;
-    }
-
-    //
-    // < operator
-    //
-    bool operator < (T const& value) const
-    {
-      return this->get() < value;
-    }
-
-    //
-    // >= operator
-    //
-    bool operator >= (T const& value) const
-    {
-      return this->get() >= value;
-    }
-
-    //
-    // <= operator
-    //
-    bool operator <= (T const& value) const
-    {
-      return this->get() <= value;
-    }
-
-    //
-    // == operator
-    //
-    bool operator == (T const& value) const
-    {
-      return this->get() == value;
-    }
-
-    //
     // Get the variable value from the EEPROM.
     //
     T get() const
@@ -279,7 +239,7 @@ class EEPROMStorage
 
     //
     // Determines if the variable has been
-    // initialized or not by comparing the
+    // initialized by comparing the
     // stored checksum to the actual checksum
     // of the bytes stored.
     //

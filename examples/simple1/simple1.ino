@@ -18,7 +18,7 @@
 //
 
 // ***************************************************************************************
-// This example demonstrates how one variable can shadow another.
+// This example demonstrates simple usage.
 // ***************************************************************************************
 
 #include <EEPROM-Storage.h>
@@ -28,7 +28,7 @@
 // address or location in EEPROM. The second parameter is the default
 // value to return when the variable has not been initialized.
 //
-EEPROMStorage<uint32_t> _myVar(0, 0);  // This variable is stored in EEPROM at positions 0, 1, 2, 3 and 4 (5 bytes)
+EEPROMStorage<uint32_t> _myInt(0, 0);  // This variable is stored in EEPROM at positions 0, 1, 2, 3 and 4 (5 bytes)
 
 void setup()
 {
@@ -45,41 +45,20 @@ void setup()
   while (!Serial);
 
   //
-  // Demonstrates a local variable taking on the value
-  // of a previously defined global variable. This one
-  // will use the same address as _myVar. Note the same data
-  // type must be used or we will get unexpected values.
+  // Assign the value of 128 to _myInt.
   //
-  EEPROMStorage<uint32_t> shadowVar(_myVar.getAddress(), 0);
+  Serial.print("Assigning _myInt the value of 128.");
+  _myInt = 128;
 
   //
-  // Assign the value of 16 to _myVar.
+  // Display the value of _myInt.
   //
-  Serial.println("Assigning _myVar the value of 16.");
-  _myVar = 16;
+  Serial.print("_myInt = "); Serial.println(_myInt);
 
   //
   // Display the EEPROM contents.
   //
   displayEEPROM();
-
-  //
-  // Display the values of _myVar and shadowVar.
-  //
-  Serial.print("_myVar    = "); Serial.println(_myVar);
-  Serial.print("shadowVar = "); Serial.println(_myVar);
-
-  //
-  // Assign the value of 11 to shadowVar.
-  //
-  Serial.println("Assigning shadowVar the value of 11.");
-  shadowVar = 11;
-
-  //
-  // Display the values of _myVar and shadowVar.
-  //
-  Serial.print("_myVar    = "); Serial.println(_myVar);
-  Serial.print("shadowVar = "); Serial.println(_myVar);
 }
 
 void loop()
@@ -88,4 +67,15 @@ void loop()
   // Wait for 2 seconds.
   //
   delay(2000);
+
+  //
+  // Increment the value of _myInt by 1.
+  //
+  Serial.print("Incrementing _myInt.");
+  _myInt++;
+
+  //
+  // Display the value of _myInt.
+  //
+  Serial.print("_myInt = "); Serial.println(_myInt);
 }

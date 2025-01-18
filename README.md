@@ -69,7 +69,7 @@ When data has never been stored EEPROM on a micro-controller the memory is in an
 For this reason, the EEPROM Storage library uses a one-byte checksum to determine if the instance has been initialized or not. When an instance is constructed, a default value is specified. This default value is always returned until a value is set thus initializing the location. Each write operation to EEPROM will update the checksum.
 
 ## Scope ##
-It is important to note that since `EEPROMStorage` variables are in fact, stored in the Micro-controllers EEPROM, the scope of these variables is always global. In fact it is possible to instantiate more than one instance using the same address that as a result will keep the two instances in sync. The second variable will **shadow** the first.
+It is important to note that since `EEPROMStorage` variables are in fact, stored in the Micro-controllers EEPROM, the scope of these variables is always global. In fact it is possible to instantiate more than one instance using the same address that as a result will keep the two instances in sync.
 
 > The `EEPROMStorage` variable never caches the value internally and will read the value from EEPROM each time it is requested. Similarly, each time the instance value is updated it is written directly to EEPROM.
 

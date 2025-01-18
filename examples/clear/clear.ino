@@ -36,6 +36,9 @@ void setup()
 	//
 	while (!Serial);
 
+    //
+    // Display the EEPROM contents.
+    //
     Serial.println("EEPROM contents before clearing:");
     displayEEPROM();
 
@@ -44,6 +47,9 @@ void setup()
     //
     clearEEPROM();
 
+    //
+    // Display the EEPROM contents.
+    //
     Serial.println("\r\nEEPROM contents after clearing:");
     displayEEPROM();
 }
