@@ -16,6 +16,9 @@
 // along with EEPROM-Storage library. If not,
 // see http://www.gnu.org/licenses/.
 //
+#pragma once
+#ifndef TEST_LIBRARY_H
+#define TEST_LIBRARY_H
 
 //
 // Results
@@ -470,9 +473,10 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("!=");
-    T value = (T)random(minRandomValue, maxRandomValue);
+    T value = random(minRandomValue, maxRandomValue);
     item = value;
-    _totalPassed += assertAreNotEqual(item, (T)(value + (T)10));
+    value += 10;
+    _totalPassed += assertAreNotEqual(item, value);
     Serial.println();
   }
 
@@ -592,3 +596,4 @@ template <typename T> void testProxyAdvanced(String typeName, int address, long 
 
   Serial.println();
 }
+#endif

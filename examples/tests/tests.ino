@@ -17,9 +17,9 @@
 // see http://www.gnu.org/licenses/.
 //
 
-// ***************************************************************************************
+// ---------------------------------------------------------------------------------------
 // This example runs tests on the EEEPROM-Storage library with various data types.
-// ***************************************************************************************
+// ---------------------------------------------------------------------------------------
 
 #include "EEPROM-Storage.h"
 
@@ -515,7 +515,7 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     displayTestHeader("!=");
     T value = random(minRandomValue, maxRandomValue);
     item = value;
-    _totalPassed += assertAreNotEqual(item, (value + 10));
+    _totalPassed += assertAreNotEqual(item, (T)(value + 10));
     Serial.println();
   }
 

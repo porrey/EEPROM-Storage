@@ -17,7 +17,7 @@
 // see http://www.gnu.org/licenses/.
 //
 
-// ***************************************************************************************
+// ---------------------------------------------------------------------------------------
 // This example will calculate the address and
 // create initialization code for one or more
 // EEPROM-Storage variables. Just follow the steps
@@ -25,7 +25,7 @@
 //
 // Complete Steps 1 through 3 (below) for your project.
 //
-// ***************************************************************************************
+// ---------------------------------------------------------------------------------------
 
 #if defined(SPARK)
 #define word short
