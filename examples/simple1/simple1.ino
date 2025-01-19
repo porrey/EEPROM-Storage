@@ -58,7 +58,7 @@ void setup()
   //
   // Display the EEPROM contents.
   //
-  displayEEPROM();
+  EEPROMUtil.displayEEPROM();
 }
 
 void loop()

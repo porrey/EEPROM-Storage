@@ -20,7 +20,7 @@
 #ifndef EEPROM_STORAGE_H
 #define EEPROM_STORAGE_H
 
-#include "eeprom-functions.h"
+#include "EEPROM-Util.h"
 #include "Checksum.h"
 
 //
@@ -225,8 +225,10 @@ class EEPROMStorage
     void set(T const& value) const
     {
       //
-      // Set the value in EEPROM using the
-      // update method.
+      // Set the value in EEPROM using the put method. 
+      // Put uses EEPROM.update() to perform the write, 
+      // so it will not rewrite the value if it didn't 
+      // change.
       //
       EEPROM.put(this->_address, value);
 

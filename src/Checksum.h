@@ -30,6 +30,9 @@
 #include "Particle.h"
 #endif
 
+//
+// Computes a single-byte checksum on any data type.
+//
 template <typename T>
 class Checksum
 {

@@ -61,7 +61,7 @@ void setup()
   //
   // Display the EEPROM contents.
   //
-  displayEEPROM();
+  EEPROMUtil.displayEEPROM();
 
   //
   // Display the values of _myVar and shadowVar.

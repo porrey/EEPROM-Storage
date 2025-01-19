@@ -37,21 +37,26 @@ void setup()
 	while (!Serial);
 
     //
+    // Set the serial port for the EEPROM Utility class.
+    //
+    EEPROMUtil.setSerial(&Serial);
+
+    //
     // Display the EEPROM contents.
     //
     Serial.println("EEPROM contents before clearing:");
-    displayEEPROM();
+    EEPROMUtil.displayEEPROM();
 
     //
     // Cleat the EEPROM contents.
     //
-    clearEEPROM();
+    EEPROMUtil.clearEEPROM();
 
     //
     // Display the EEPROM contents.
     //
     Serial.println("\r\nEEPROM contents after clearing:");
-    displayEEPROM();
+    EEPROMUtil.displayEEPROM();
 }
 
 void loop() 

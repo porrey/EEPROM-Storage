@@ -71,9 +71,9 @@ void setup()
   //
   // Display the contents of EEPROM;
   //
-  clearEEPROM();
+  EEPROMUtil.clearEEPROM();
   printHeader("EEPROM Contents (" + String(EEPROM.length()) + " bytes)");
-  displayEEPROM(); Serial.println(); Serial.println();
+  EEPROMUtil.displayEEPROM(); Serial.println(); Serial.println();
 
   printHeader("EEPROM Variable Addresses/Locations");
   displayVariableAddress("V1", _v1);
@@ -120,7 +120,7 @@ void setup()
   scopeCheck("V6", v6, "V4", _v4);
 
   printHeader("EEPROM Contents (" + String(EEPROM.length()) + " bytes)");
-  displayEEPROM();
+  EEPROMUtil.displayEEPROM();
 }
 
 void loop()
@@ -158,13 +158,13 @@ template <typename T> void checksumCheck(String name, EEPROMStorage<T> item)
   T value = item.get();
 
   uint8_t checksum1 = Checksum<T>::get(value);
-  Serial.print("The Calculated checksum for the value "); Serial.print(value); Serial.print(" is "); displayPaddedHexByte(checksum1); Serial.println(".");
+  Serial.print("The Calculated checksum for the value "); Serial.print(value); Serial.print(" is "); EEPROMUtil.displayPaddedHexByte(checksum1); Serial.println(".");
 
   uint8_t checksum2 = item.checksum();
-  Serial.print("The Calculated checksum for the variable "); Serial.print(name); Serial.print(" is "); displayPaddedHexByte(checksum2); Serial.println(".");
+  Serial.print("The Calculated checksum for the variable "); Serial.print(name); Serial.print(" is "); EEPROMUtil.displayPaddedHexByte(checksum2); Serial.println(".");
 
   uint8_t checksum3 = item.checksumByte();
-  Serial.print("The Stored checksum for the variable "); Serial.print(name); Serial.print(" is "); displayPaddedHexByte(checksum3); Serial.println(".");
+  Serial.print("The Stored checksum for the variable "); Serial.print(name); Serial.print(" is "); EEPROMUtil.displayPaddedHexByte(checksum3); Serial.println(".");
   Serial.print("The Stored checksum for the variable "); Serial.print(name); Serial.print(" is at address "); Serial.print(item.checksumAddress()); Serial.println(".");
 }
 
