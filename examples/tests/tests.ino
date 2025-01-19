@@ -515,7 +515,8 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
     displayTestHeader("!=");
     T value = random(minRandomValue, maxRandomValue);
     item = value;
-    _totalPassed += assertAreNotEqual(item, (T)(value + 10));
+    value += 10;
+    _totalPassed += assertAreNotEqual(item, value);
     Serial.println();
   }
 

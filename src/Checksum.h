@@ -59,9 +59,9 @@ class Checksum
       }
 
       //
-      // Do not let the checksum be 0xFF
+      // Do not let the checksum be UNSET_VALUE
       //
-      if (returnValue == 0xFF)
+      if (returnValue == UNSET_VALUE)
       {
         returnValue <<= 1;
       }
@@ -76,6 +76,10 @@ class Checksum
       // for the variable value.
       //
       uint8_t *ptr = (uint8_t*) &value;
+
+      //
+      // Calculate and return the checksim.
+      //
       return Checksum<T>::get(ptr, sizeof(T));
     }
 };

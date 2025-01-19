@@ -117,7 +117,7 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("Initialized Value");
-    T initValue = (T)random(minRandomValue, maxRandomValue);
+    T initValue = random(minRandomValue, maxRandomValue);
     item = initValue;
     _totalPassed += assertAreEqual(item, initValue);
     Serial.println();
@@ -133,8 +133,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   {
     displayTestHeader("Addition");
     T value = item;
-    value = value + (T)5;
-    item = item + (T)5;
+    value = value + 5;
+    item = item + 5;
     _totalPassed += assertAreEqual(item, value);
     Serial.println();
   }
@@ -144,10 +144,10 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("Subtraction");
-    T value = (T)10;
-    item = (T)10;
-    value = value - (T)5;
-    item = item - (T)5;
+    T value = 10;
+    item = 10;
+    value = value - 5;
+    item = item - 5;
     _totalPassed += assertAreEqual<T>(item, value);
     Serial.println();
   }
@@ -157,10 +157,10 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("Multiplication");
-    T value = (T)10;
-    item = (T)10;
-    value = value * (T)5;
-    item = item * (T)5;
+    T value = 10;
+    item = 10;
+    value = value * 5;
+    item = item * 5;
     _totalPassed += assertAreEqual(item, value);
     Serial.println();
   }
@@ -170,10 +170,10 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("Multiplication");
-    T value = (T)10;
-    item = (T)10;
-    value = value / (T)5;
-    item = item / (T)5;
+    T value = 10;
+    item = 10;
+    value = value / 5;
+    item = item / 5;
     _totalPassed += assertAreEqual(item, value);
     Serial.println();
   }
@@ -183,8 +183,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("++ postfix");
-    T value = (T)60;
-    item = (T)60;
+    T value = 60;
+    item = 60;
     value++;
     item++;
     _totalPassed += assertAreEqual(item, value);
@@ -196,8 +196,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("-- postfix");
-    T value = (T)60;
-    item = (T)60;
+    T value = 60;
+    item = 60;
     value--;
     item--;
     _totalPassed += assertAreEqual(item, value);
@@ -209,8 +209,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("++ prefix");
-    T value = (T)60;
-    item = (T)60;
+    T value = 60;
+    item = 60;
     ++value;
     ++item;
     _totalPassed += assertAreEqual(item, value);
@@ -222,8 +222,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("-- prefix");
-    T value = (T)60;
-    item = (T)60;
+    T value = 60;
+    item = 60;
     --value;
     --item;
     _totalPassed += assertAreEqual(item, value);
@@ -235,10 +235,10 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("+=");
-    T value = (T)60;
-    item = (T)60;
-    value += (T)10;
-    item += (T)10;
+    T value = 60;
+    item = 60;
+    value += 10;
+    item += 10;
     _totalPassed += assertAreEqual(item, value);
     Serial.println();
   }
@@ -248,10 +248,10 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("-=");
-    T value = (T)60;
-    item = (T)60;
-    value -= (T)10;
-    item -= (T)10;
+    T value = 60;
+    item = 60;
+    value -= 10;
+    item -= 10;
     _totalPassed += assertAreEqual(item, value);
     Serial.println();
   }
@@ -261,10 +261,10 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("*=");
-    T value = (T)60;
-    item = (T)60;
-    value *= (T)10;
-    item *= (T)10;
+    T value = 60;
+    item = 60;
+    value *= 10;
+    item *= 10;
     _totalPassed += assertAreEqual(item, value);
     Serial.println();
   }
@@ -274,10 +274,10 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("/=");
-    T value = (T)60;
-    item = (T)60;
-    value /= (T)30;
-    item /= (T)30;
+    T value = 60;
+    item = 60;
+    value /= 30;
+    item /= 30;
     _totalPassed += assertAreEqual(item, value);
     Serial.println();
   }
@@ -288,7 +288,7 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   {
     displayTestHeader("> x");
     item = 100;
-    _totalPassed += assertIsTrue(item > (T)1);
+    _totalPassed += assertIsTrue(item > 1);
     Serial.println();
   }
 
@@ -297,8 +297,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("x >");
-    item = (T)100;
-    _totalPassed += assertIsTrue((T)101 > item);
+    item = 100;
+    _totalPassed += assertIsTrue(101 > item);
     Serial.println();
   }
 
@@ -307,8 +307,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("< x");
-    item = (T)100;
-    _totalPassed += assertIsTrue(item < (T)101);
+    item = 100;
+    _totalPassed += assertIsTrue(item < 101);
     Serial.println();
   }
 
@@ -317,8 +317,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("x <");
-    item = (T)100;
-    _totalPassed += assertIsTrue((T)1 < item);
+    item = 100;
+    _totalPassed += assertIsTrue(1 < item);
     Serial.println();
   }
 
@@ -327,8 +327,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader(">= x (different)");
-    item = (T)100;
-    _totalPassed += assertIsTrue(item >= (T)1);
+    item = 100;
+    _totalPassed += assertIsTrue(item >= 1);
     Serial.println();
   }
 
@@ -337,8 +337,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("x >= (different)");
-    item = (T)100;
-    _totalPassed += assertIsTrue((T)101 >= item);
+    item = 100;
+    _totalPassed += assertIsTrue(101 >= item);
     Serial.println();
   }
 
@@ -347,8 +347,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("<= x (different)");
-    item = (T)100;
-    _totalPassed += assertIsTrue(item <= (T)101);
+    item = 100;
+    _totalPassed += assertIsTrue(item <= 101);
     Serial.println();
   }
 
@@ -358,7 +358,7 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   {
     displayTestHeader("x <= (different)");
     item = 100;
-    _totalPassed += assertIsTrue((T)1 <= item);
+    _totalPassed += assertIsTrue(1 <= item);
     Serial.println();
   }
 
@@ -367,8 +367,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader(">= x (same)");
-    item = (T)100;
-    _totalPassed += assertIsTrue(item >= (T)100);
+    item = 100;
+    _totalPassed += assertIsTrue(item >= 100);
     Serial.println();
   }
 
@@ -377,8 +377,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("x >= (same)");
-    item = (T)100;
-    _totalPassed += assertIsTrue((T)100 >= item);
+    item = 100;
+    _totalPassed += assertIsTrue(100 >= item);
     Serial.println();
   }
 
@@ -387,8 +387,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("<= x (same)");
-    item = (T)100;
-    _totalPassed += assertIsTrue(item <= (T)100);
+    item = 100;
+    _totalPassed += assertIsTrue(item <= 100);
     Serial.println();
   }
 
@@ -397,8 +397,8 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("x <= (same)");
-    item = (T)100;
-    _totalPassed += assertIsTrue((T)100 <= item);
+    item = 100;
+    _totalPassed += assertIsTrue(100 <= item);
     Serial.println();
   }
 }
@@ -410,10 +410,10 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("Modulo");
-    T value = (T)10;
-    item = (T)10;
-    value = value % (T)6;
-    item = item % (T)6;
+    T value = 10;
+    item = 10;
+    value = value % 6;
+    item = item % 6;
     _totalPassed += assertAreEqual(item, value);
     Serial.println();
   }
@@ -423,10 +423,10 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("%=");
-    T value = (T)10;
-    item = (T)10;
-    value %= (T)6;
-    item %= (T)6;
+    T value = 10;
+    item = 10;
+    value %= 6;
+    item %= 6;
     _totalPassed += assertAreEqual(item, value);
     Serial.println();
   }
@@ -436,10 +436,10 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("&=");
-    T value = (T)129191;
-    item = (T)129191;
-    value &= (T)45234;
-    item &= (T)45234;
+    T value = 129191;
+    item = 129191;
+    value &= 45234;
+    item &= 45234;
     _totalPassed += assertAreEqual(item, value);
     Serial.println();
   }
@@ -449,10 +449,10 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("|=");
-    T value = (T)129191;
-    item = (T)129191;
-    value &= (T)45234;
-    item &= (T)45234;
+    T value = 129191;
+    item = 129191;
+    value &= 45234;
+    item &= 45234;
     _totalPassed += assertAreEqual(item, value);
     Serial.println();
   }
@@ -462,7 +462,7 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("==");
-    T value = (T)random(minRandomValue, maxRandomValue);
+    T value = random(minRandomValue, maxRandomValue);
     item = value;
     _totalPassed += assertAreEqual(item, value);
     Serial.println();
@@ -485,7 +485,7 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("Bitwise AND (&)");
-    T value = (T)random(minRandomValue, maxRandomValue);
+    T value = random(minRandomValue, maxRandomValue);
     item = value;
     value = value & 0xAAAA;
     item = item & 0xAAAA;
@@ -498,7 +498,7 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("Bitwise OR (|)");
-    T value = (T)random(minRandomValue, maxRandomValue);
+    T value = random(minRandomValue, maxRandomValue);
     item = value;
     value = value | 0xAAAA;
     item = item | 0xAAAA;
@@ -511,7 +511,7 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("Bitwise XOR (^)");
-    T value = (T)random(minRandomValue, maxRandomValue);
+    T value = random(minRandomValue, maxRandomValue);
     item = value;
     value = value ^ 0xAAAA;
     item = item ^ 0xAAAA;
@@ -524,7 +524,7 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("Bitwise NOT (~)");
-    T value = (T)random(minRandomValue, maxRandomValue);
+    T value = random(minRandomValue, maxRandomValue);
     item = value;
     value = ~value;
     item = ~item;
@@ -537,7 +537,7 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("Bitshift Left (<<)");
-    T value = (T)random(minRandomValue, maxRandomValue);
+    T value = random(minRandomValue, maxRandomValue);
     item = value;
     value = value << 2;
     item = item << 2;
@@ -550,7 +550,7 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   //
   {
     displayTestHeader("Bitshift Right (>>)");
-    T value = (T)random(minRandomValue, maxRandomValue);
+    T value = random(minRandomValue, maxRandomValue);
     item = value;
     value = value >> 2;
     item = item >> 2;

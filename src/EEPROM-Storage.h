@@ -20,9 +20,6 @@
 #ifndef EEPROM_STORAGE_H
 #define EEPROM_STORAGE_H
 
-#include "EEPROM-Util.h"
-#include "Checksum.h"
-
 //
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
@@ -32,6 +29,9 @@
 #elif defined(SPARK)
 #include "Particle.h"
 #endif
+
+#include "EEPROM-Util.h"
+#include "Checksum.h"
 
 #define MAX_VARIABLE_LENGTH 16
 
@@ -264,9 +264,9 @@ class EEPROMStorage
 
     //
     // Unset the variable (return the EEPROM values
-    // back to 0xff).
+    // back to UNSET_VALUE).
     //
-    void unset(byte unsetValue = 0xff) const
+    void unset(byte unsetValue = UNSET_VALUE) const
     {
       for ( int i = 0; i < this->length(); i++)
       {

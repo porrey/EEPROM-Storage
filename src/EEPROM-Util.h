@@ -30,6 +30,8 @@
 #include "Particle.h"
 #endif
 
+#include "EEPROM-Var.h"
+
 class EEPROMUtilClass
 {
   public:
@@ -46,9 +48,9 @@ class EEPROMUtilClass
     }
 
     //
-    // Resets the contents of EEPROM to 0xFF
+    // Resets the contents of EEPROM to UNSET_VALUE
     //
-    void clearEEPROM(uint16_t value = 0xFF)
+    void clearEEPROM(uint16_t value = UNSET_VALUE)
     {
       for (int i = 0; i < EEPROM.length(); i++)
       {
