@@ -56,7 +56,7 @@ void setup()
   // *******************************************************************
 
   //
-  // Use te same address for all tests. Need to be careful no to write
+  // Use the same address for all tests. Need to be careful no to write
   // to often to the same address.
   //
   int address = EEPROM.length() - 10;

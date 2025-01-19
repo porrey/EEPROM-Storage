@@ -49,6 +49,11 @@ class EEPROMStorage
       this->_defaultValue = defaultValue;
     };
 
+    EEPROMStorage(const uint16_t address)
+    {
+      this->_address = address;
+    };
+
     //
     // Accounts for EEPROMStorage<T> = T
     //
@@ -259,7 +264,19 @@ class EEPROMStorage
       //
       // The extra byte is the checksum byte.
       //
-      return sizeof(T) + 1;
+      return this->size() + 1;
+    }
+
+    //
+    // Returns the number of EEPROM bytes
+    // used by T.
+    //
+    uint16_t size() const
+    {
+      //
+      // The extra byte is the checksum byte.
+      //
+      return sizeof(T);
     }
 
     //
@@ -336,7 +353,7 @@ class EEPROMStorage
     //
     uint16_t nextAddress() const
     {
-      return this->getAddress() + this->length() + 1;
+      return this->getAddress() + this->length();
     }
 
   private:

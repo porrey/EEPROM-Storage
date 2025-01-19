@@ -44,7 +44,6 @@ void setup()
     //
     // Display the EEPROM contents.
     //
-    Serial.println("EEPROM contents before clearing:");
     EEPROMUtil.displayEEPROM();
 
     //
@@ -55,7 +54,6 @@ void setup()
     //
     // Display the EEPROM contents.
     //
-    Serial.println("\r\nEEPROM contents after clearing:");
     EEPROMUtil.displayEEPROM();
 }
 
