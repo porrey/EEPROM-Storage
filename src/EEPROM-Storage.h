@@ -33,26 +33,47 @@
 #include "EEPROM-Util.h"
 #include "Checksum.h"
 
-#define MAX_VARIABLE_LENGTH 16
-
 //
 // Generic class to wrap an EEPROM variable.
 //
 template <typename T>
-
 class EEPROMStorage
 {
   public:
+    //
+    // Initialize an instance of EEPROM<T> with the specified address
+    // and default value.
+    //
     EEPROMStorage(const uint16_t address, T defaultValue)
     {
       this->_address = address;
       this->_defaultValue = defaultValue;
     };
 
+    //
+    // Initialize an instance of EEPROM<T> with the specified address.
+    //
     EEPROMStorage(const uint16_t address)
     {
       this->_address = address;
     };
+
+    //
+    // Treating the variable as a byte array, get the byte
+    // at position index where index is between 0 and
+    // length.
+    //
+    byte operator[] (const int index)
+    {
+      byte returnValue = 0;
+
+      if (index >= 0 && index < this->length())
+      {
+        returnValue = EEPROM[this->getAddress() + index];
+      }
+
+      return returnValue; 
+    }
 
     //
     // Accounts for EEPROMStorage<T> = T
@@ -313,9 +334,7 @@ class EEPROMStorage
     //
     uint8_t checksum() const
     {
-      byte data[MAX_VARIABLE_LENGTH];
-      this->copyTo(data, sizeof(T));
-      return Checksum<T>::get(data, sizeof(T));
+      return Checksum<T>::getEEPROM(this->getAddress(), sizeof(T));
     }
 
     //

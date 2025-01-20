@@ -22,9 +22,10 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
+#include "functions.h"
 
-EEPROMStorage<int> a(0, 0);
-EEPROMStorage<int> b(a.nextAddress(), 0);
+EEPROMStorage<uint32_t> a(0, 04);
+EEPROMStorage<uint32_t> b(b.nextAddress(), 0);
 
 void setup() 
 {
@@ -38,24 +39,61 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
+  Serial.println();
 
   //
-  // Display the values of a and b.
+  // Clear EEPROM. 
   //
-  Serial.println("Values at startup: ");
-  Serial.print("a: "); Serial.println(a);
-  Serial.print("b: "); Serial.println(b);
+  // Uncomment this line of code and run once. Afterwards comment the line again.
+  //
+  //EEPROMUtil.clearEEPROM();
 
   //
-  // Check if the two values are the same.
+  // Display the EEPROM properties.
   //
-  if (a == b)
+  displayHeader();
+  display("a", a);
+  display("b", b);
+
+  if (a.isInitialized() && b.isInitialized())
   {
-    Serial.println("Test passed!");
+    //
+    // Display the values of a and b.
+    //
+    Serial.println();
+    Serial.println("Values at startup: ");
+    Serial.print("a: "); Serial.println(a);
+    Serial.print("b: "); Serial.println(b);
+
+    //
+    // Check if the two values are the same.
+    //
+    if (a == b)
+    {
+      Serial.println();
+      Serial.println("Test passed!");
+    }
+    else
+    {
+      Serial.println();
+      Serial.println("Test failed!");
+    }
   }
   else
   {
-    Serial.println("Test failed!");
+    Serial.println();
+    Serial.println("Clearing EEPROM and resetting variables.");
+
+    //
+    // Clear EEPROM.
+    //
+    EEPROMUtil.clearEEPROM();
+
+    //
+    // Initialize the values.
+    //
+    a = 5;
+    b = 5;
   }
 }
 
@@ -75,6 +113,7 @@ void loop()
     //
     // Asign the value of a to b.
     //
+    Serial.println();
     Serial.println("Assigning b the value of a.");
     b = a;
     Serial.println("Assigned a to b!");
@@ -82,9 +121,12 @@ void loop()
     //
     // Display the new values.
     //
+    Serial.println();
     Serial.println("New values: ");
     Serial.print("a: "); Serial.println(a);
     Serial.print("b: "); Serial.println(b);
+
+    Serial.println();
     Serial.println("Reset the arduino now, the value of b at startup should be the same as a.");
 
     //

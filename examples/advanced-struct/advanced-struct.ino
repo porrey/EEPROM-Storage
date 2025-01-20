@@ -22,6 +22,7 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
+#include "functions.h"
 
 //
 // Define a complex structure to store in EEPROM.
@@ -114,33 +115,6 @@ void loop()
   // Delay 2 seconds.
   //
   delay(2000);
-}
-
-template<typename T>
-void display(String name, EEPROMStorage<T> value)
-{
-  Serial.print(name);
-  Serial.print(": Variable Size: ");
-  print2digits(value.size());
-  Serial.print(", Memory Length = ");
-  print2digits(value.length());
-  Serial.print(", Start Address = ");
-  print2digits(value.getAddress());
-  Serial.print(", Checksum Address = ");
-  print2digits(value.checksumAddress());
-  Serial.print(", Checksum Value = ");
-  EEPROMUtil.displayPaddedHexByte(value.checksumByte());
-  Serial.println();
-}
-
-void print2digits(int number)
-{
-  if (number < 10)
-  {
-    Serial.print(" ");
-  }
-
-  Serial.print(number);
 }
 
 void displayStruct(String label, String prefix, Matrix m)

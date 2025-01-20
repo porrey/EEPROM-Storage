@@ -18,24 +18,16 @@
 //
 
 // ---------------------------------------------------------------------------------------
-// Displays the placement of EEPROM variables in memory when using nextAddress()
+// This example demonstrates the checksum function.
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
-#include "functions.h"
 
-//
-// Define the EEPROM variables.
-//
-EEPROMStorage<uint8_t> a(0, 0);
-EEPROMStorage<uint16_t> b(a.nextAddress(), 0);
-EEPROMStorage<uint32_t> c(b.nextAddress(), 0);
-EEPROMStorage<uint64_t> d(c.nextAddress(), 0);
-EEPROMStorage<float> e(d.nextAddress(), 0);
-EEPROMStorage<double> f(e.nextAddress(), 0);
-EEPROMStorage<char> g(f.nextAddress(), ' ');
+#define VALUE 1395478
 
-void setup()
+EEPROMStorage<uint32_t> a(0, 0);
+
+void setup() 
 {
   //
   // Initialize the serial port.
@@ -53,40 +45,30 @@ void setup()
   // Clear EEPROM.
   //
   EEPROMUtil.clearEEPROM();
-  
-  //
-  // Initialize the random number generator.
-  //
-  randomSeed(analogRead(0));
 
   //
-  // Set random values to each EEPROM variable.
+  // Display the checksum and state of the EEPROM variable before a value is set.
   //
-  a = random(1, 255);
-  b = random(1, 1000);
-  c = random(1, 10000);
-  d = random(1, 100000);
-  e = random(1, 100);
-  f = random(1, 100);
-  g = 'y';
+  Serial.print("Checksum for EEPROM variable a is "); Serial.println(a.checksumByte());
+  Serial.print("The EEPROM variable a"); Serial.print(a.isInitialized() ? " is " : " is NOT "); Serial.println("initialized.");
 
   //
-  // Display the EEPROM properties.
+  // Set the vaue of the EEPROM variable.
   //
-  displayHeader();
-  display("a", a);
-  display("b", b);
-  display("c", c);
-  display("d", d);
-  display("e", e);
-  display("f", f);
-  display("g", g);
+  Serial.print("Setting EEPROM variable value to "); Serial.println(VALUE);
+  a = VALUE;
+  Serial.print("The EEPROM variable a"); Serial.print(a.isInitialized() ? " is " : " is NOT "); Serial.println("initialized.");
 
   //
-  // Display the EEPROM contents.
+  // Calculate the check sum of the value.
   //
-  Serial.println();
-  EEPROMUtil.displayEEPROM();
+  uint8_t checksum = Checksum<uint32_t>::get(VALUE);
+  Serial.print("Expected checksum for "); Serial.print(VALUE); Serial.print(" is "); Serial.println(checksum);
+
+  //
+  // Display the checksum of the EEPROM variable.
+  //
+  Serial.print("Checksum for EEPROM variable a is "); Serial.println(a.checksumByte());
 }
 
 void loop()

@@ -31,7 +31,8 @@
 #endif
 
 //
-// Computes a single-byte checksum on any data type.
+// Computes a single-byte checksum on any data type or directly
+// from an EEPROM address.
 //
 template <typename T>
 class Checksum
@@ -54,6 +55,38 @@ class Checksum
         for (int i = 0; i < length ; i++)
         {
           byte b = data[i];
+          returnValue ^= b;
+        }
+      }
+
+      //
+      // Do not let the checksum be UNSET_VALUE
+      //
+      if (returnValue == UNSET_VALUE)
+      {
+        returnValue <<= 1;
+      }
+
+      return returnValue;
+    }
+
+    static uint8_t getEEPROM(uint16_t address, uint32_t length)
+    {
+      uint8_t returnValue = 0;
+
+      if (length == 1)
+      {
+        //
+        // For a single byte use the bit
+        // pattern 0xAA (10101010).
+        //
+        returnValue = 0xAA ^ EEPROM[address];
+      }
+      else
+      {
+        for (int i = 0; i < length ; i++)
+        {
+          byte b = EEPROM[address + i];
           returnValue ^= b;
         }
       }

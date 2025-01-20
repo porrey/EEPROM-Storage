@@ -27,13 +27,7 @@
 //
 // Define the EEPROM variables.
 //
-EEPROMStorage<uint8_t> a(0, 0);
-EEPROMStorage<uint16_t> b(a.nextAddress(), 0);
-EEPROMStorage<uint32_t> c(b.nextAddress(), 0);
-EEPROMStorage<uint64_t> d(c.nextAddress(), 0);
-EEPROMStorage<float> e(d.nextAddress(), 0);
-EEPROMStorage<double> f(e.nextAddress(), 0);
-EEPROMStorage<char> g(f.nextAddress(), ' ');
+EEPROMStorage<uint64_t> a(0, 0);
 
 void setup()
 {
@@ -53,34 +47,32 @@ void setup()
   // Clear EEPROM.
   //
   EEPROMUtil.clearEEPROM();
-  
-  //
-  // Initialize the random number generator.
-  //
-  randomSeed(analogRead(0));
 
   //
   // Set random values to each EEPROM variable.
   //
-  a = random(1, 255);
-  b = random(1, 1000);
-  c = random(1, 10000);
-  d = random(1, 100000);
-  e = random(1, 100);
-  f = random(1, 100);
-  g = 'y';
+  a = 98718472918565687689393;
 
   //
   // Display the EEPROM properties.
   //
   displayHeader();
   display("a", a);
-  display("b", b);
-  display("c", c);
-  display("d", d);
-  display("e", e);
-  display("f", f);
-  display("g", g);
+
+  //
+  // Disply the byte values of the variable.
+  //
+  Serial.println();
+  Serial.println("byte values of EEROM variable a:");
+  Serial.print("byte at a[0] is "); Serial.println(a[0], HEX);
+  Serial.print("byte at a[1] is "); Serial.println(a[1], HEX);
+  Serial.print("byte at a[2] is "); Serial.println(a[2], HEX);
+  Serial.print("byte at a[3] is "); Serial.println(a[3], HEX);
+  Serial.print("byte at a[4] is "); Serial.println(a[4], HEX);
+  Serial.print("byte at a[5] is "); Serial.println(a[5], HEX);
+  Serial.print("byte at a[6] is "); Serial.println(a[6], HEX);
+  Serial.print("byte at a[7] is "); Serial.println(a[7], HEX);
+  Serial.print("byte at a[8] is "); Serial.println(a[8], HEX);
 
   //
   // Display the EEPROM contents.
