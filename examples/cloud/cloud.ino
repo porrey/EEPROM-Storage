@@ -41,7 +41,8 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-
+  Serial.println();
+  
   //
   // Initial the cloud variables and functions.
   //

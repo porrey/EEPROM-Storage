@@ -92,6 +92,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
+  Serial.println();
 
   //
   // STEP 1 of 3:

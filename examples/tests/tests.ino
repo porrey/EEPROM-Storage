@@ -42,7 +42,8 @@ void setup()
 	// for native USB port only
 	//
 	while (!Serial);
-
+  Serial.println();
+  
   //
   // Initialize the random number generator.
   //

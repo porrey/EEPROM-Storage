@@ -86,7 +86,7 @@ void setup()
   // Display the EEPROM contents.
   //
   Serial.println();
-  EEPROMUtil.displayEEPROM();
+  EEPROMDisplay.displayEEPROM();
 }
 
 void loop()

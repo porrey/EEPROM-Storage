@@ -28,7 +28,7 @@
 // address or location in EEPROM. The second parameter is the default
 // value to return when the variable has not been initialized.
 //
-EEPROMStorage<uint32_t> _myInt(0, 0);  // This variable is stored in EEPROM at positions 0, 1, 2, 3 and 4 (5 bytes)
+EEPROMStorage<uint32_t> a(0, 0);  // This variable is stored in EEPROM at positions 0, 1, 2, 3 and 4 (5 bytes)
 
 void setup()
 {
@@ -43,22 +43,23 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
+  Serial.println();
+  
+  //
+  // Assign the value of 128 to a.
+  //
+  Serial.print("Assigning a the value of 128.");
+  a = 128;
 
   //
-  // Assign the value of 128 to _myInt.
+  // Display the value of a.
   //
-  Serial.print("Assigning _myInt the value of 128.");
-  _myInt = 128;
-
-  //
-  // Display the value of _myInt.
-  //
-  Serial.print("_myInt = "); Serial.println(_myInt);
+  Serial.print("a = "); Serial.println(a);
 
   //
   // Display the EEPROM contents.
   //
-  EEPROMUtil.displayEEPROM();
+  EEPROMDisplay.displayEEPROM();
 }
 
 void loop()
@@ -71,11 +72,11 @@ void loop()
   //
   // Increment the value of _myInt by 1.
   //
-  Serial.print("Incrementing _myInt.");
-  _myInt++;
+  Serial.print("Incrementing a. ");
+  a++;
 
   //
-  // Display the value of _myInt.
+  // Display the value of a.
   //
-  Serial.print("_myInt = "); Serial.println(_myInt);
+  Serial.print("The value of a is "); Serial.println(a);
 }

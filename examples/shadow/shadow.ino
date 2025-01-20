@@ -28,7 +28,7 @@
 // address or location in EEPROM. The second parameter is the default
 // value to return when the variable has not been initialized.
 //
-EEPROMStorage<uint32_t> _myVar(0, 0);  // This variable is stored in EEPROM at positions 0, 1, 2, 3 and 4 (5 bytes)
+EEPROMStorage<uint32_t> a(0, 0);  // This variable is stored in EEPROM at positions 0, 1, 2, 3 and 4 (5 bytes)
 
 void setup()
 {
@@ -43,31 +43,32 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-
+  Serial.println();
+  
   //
   // Demonstrates a local variable taking on the value
   // of a previously defined global variable. This one
   // will use the same address as _myVar. Note the same data
   // type must be used or we will get unexpected values.
   //
-  EEPROMStorage<uint32_t> shadowVar(_myVar.getAddress(), 0);
+  EEPROMStorage<uint32_t> shadowVar(a.getAddress(), 0);
 
   //
-  // Assign the value of 16 to _myVar.
+  // Assign the value of 16 to a.
   //
-  Serial.println("Assigning _myVar the value of 16.");
-  _myVar = 16;
+  Serial.println("Assigning a the value of 16.");
+  a = 16;
 
   //
   // Display the EEPROM contents.
   //
-  EEPROMUtil.displayEEPROM();
+  EEPROMDisplay.displayEEPROM();
 
   //
-  // Display the values of _myVar and shadowVar.
+  // Display the values of a and shadowVar.
   //
-  Serial.print("_myVar    = "); Serial.println(_myVar);
-  Serial.print("shadowVar = "); Serial.println(_myVar);
+  Serial.print("a = "); Serial.println(a);
+  Serial.print("shadowVar = "); Serial.println(a);
 
   //
   // Assign the value of 11 to shadowVar.
@@ -78,8 +79,8 @@ void setup()
   //
   // Display the values of _myVar and shadowVar.
   //
-  Serial.print("_myVar    = "); Serial.println(_myVar);
-  Serial.print("shadowVar = "); Serial.println(_myVar);
+  Serial.print("a = "); Serial.println(a);
+  Serial.print("shadowVar = "); Serial.println(a);
 }
 
 void loop()

@@ -26,8 +26,8 @@
 //
 // Create two variables to be stored in EEPROM.
 //
-EEPROMStorage<uint32_t> _myInt1(0, 0);
-EEPROMStorage<uint32_t> _myInt2(_myInt1.nextAddress(), 0);
+EEPROMStorage<uint32_t> a(0, 0);
+EEPROMStorage<uint32_t> b(_myInt1.nextAddress(), 0);
 
 void setup()
 {
@@ -42,41 +42,43 @@ void setup()
 	// for native USB port only
 	//
 	while (!Serial);
+  Serial.println();
+  
+  //
+  // Set the value of a to 10.
+  //
+  a = 10;
 
   //
-  // Set the value of _myInt1 to 10.
+  // Set the value of b to 20.
   //
-  _myInt1 = 10;
-
-  //
-  // Set the value of _myInt2 to 20.
-  //
-  _myInt2 = 20;
+  b = 20;
 
   //
   // Create a variable i and set the value to 10.
+  /
   int i = 10;
 
   //
-  // Increment iby the value of _myInt2.
+  // Increment i by the value of b.
   //
-  i += _myInt2;
+  i += b;
   Serial.print("i = "); Serial.println(i);
 
   //
-  // Display the value of _myInt2.
+  // Display the value of b.
   //
-  Serial.print("_myInt2 = "); Serial.println(_myInt2);
+  Serial.print("b = "); Serial.println(b);
 
   //
-  // Multiply the value of _myInt2 by 10.
+  // Multiply the value of b by 10.
   //
-  _myInt2 *= 10;
+  b *= 10;
 
   //
-  // Display the new value of _myInt2.
+  // Display the new value of b.
   //
-  Serial.print("_myInt2 = "); Serial.println(_myInt2);
+  Serial.print("b = "); Serial.println(b);
 }
 
 void loop()

@@ -31,6 +31,7 @@
 #endif
 
 #include "EEPROM-Util.h"
+#include "EEPROM-Display.h"
 #include "Checksum.h"
 
 //

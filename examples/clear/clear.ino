@@ -35,26 +35,30 @@ void setup()
 	// for native USB port only
 	//
 	while (!Serial);
-
+    Serial.println();
+    
     //
     // Set the serial port for the EEPROM Utility class.
     //
-    EEPROMUtil.setSerial(&Serial);
+    EEPROMDisplay.setSerial(&Serial);
 
     //
     // Display the EEPROM contents.
     //
-    EEPROMUtil.displayEEPROM();
+    Serial.println();
+    EEPROMDisplay.displayEEPROM();
 
     //
     // Cleat the EEPROM contents.
     //
+    Serial.println("\r\nClearing EEPROM contents.");
     EEPROMUtil.clearEEPROM();
 
     //
     // Display the EEPROM contents.
     //
-    EEPROMUtil.displayEEPROM();
+    Serial.println();
+    EEPROMDisplay.displayEEPROM();
 }
 
 void loop() 

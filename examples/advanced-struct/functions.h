@@ -49,7 +49,7 @@ void display(String name, EEPROMStorage<T> value)
   Serial.print(", Checksum Address = ");
   print2digits(value.checksumAddress());
   Serial.print(", Checksum Value = ");
-  EEPROMUtil.displayPaddedHexByte(value.checksumByte());
+  EEPROMDisplay.displayPaddedHexByte(value.checksumByte());
   Serial.print(", Initialized = ");
   Serial.print(value.isInitialized() ? "Yes" : "No");
   Serial.println();

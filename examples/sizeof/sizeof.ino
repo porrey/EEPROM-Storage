@@ -37,7 +37,8 @@ void setup()
 	// for native USB port only
 	//
 	while (!Serial);
-
+	Serial.println();
+	
 	Serial.print("The size of byte is "); Serial.print(sizeof(byte)); Serial.println(".");
 	Serial.print("The size of char is "); Serial.print(sizeof(char)); Serial.println(".");
 	Serial.print("The size of bool is "); Serial.print(sizeof(bool)); Serial.println(".");
