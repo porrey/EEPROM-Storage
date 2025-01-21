@@ -43,21 +43,26 @@ void setup()
 	//
 	while (!Serial);
   Serial.println();
-  
+
+  //
+  // On ESP8266 platforms EEPROM must be initialized.
+  //
+  #if defined(ESP8266)
+  EEPROM.begin(4096);
+  #endif
+
   //
   // Initialize the random number generator.
   //
   randomSeed(analogRead(0));
 
-  // *******************************************************************
-  //
+  // ---------------------------------------------------------------------------------------
   // There may not be enough memory to run all of the tests. Uncomment
   // sections to run tests on the various data types.
-  //
-  // *******************************************************************
+  // ---------------------------------------------------------------------------------------
 
   //
-  // Use the same address for all tests. Need to be careful no to write
+  // Use the same address for all tests. Need to be careful not to write
   // to often to the same address.
   //
   int address = EEPROM.length() - 10;

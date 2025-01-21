@@ -25,18 +25,25 @@
 
 void setup() 
 {
-	//
-	// Initialize the serial port.
-	//
-	Serial.begin(115200);
+    //
+    // Initialize the serial port.
+    //
+    Serial.begin(115200);
 
-	//
-	// Wait for serial port to connect. Needed
-	// for native USB port only
-	//
-	while (!Serial);
+    //
+    // Wait for serial port to connect. Needed
+    // for native USB port only
+    //
+    while (!Serial);
     Serial.println();
-    
+
+    //
+    // On ESP8266 platforms EEPROM must be initialized.
+    //
+    #if defined(ESP8266)
+    EEPROM.begin(4096);
+    #endif
+
     //
     // Set the serial port for the EEPROM Utility class.
     //

@@ -31,7 +31,6 @@
 #endif
 
 #include "EEPROM-Util.h"
-#include "EEPROM-Display.h"
 #include "Checksum.h"
 
 //
@@ -49,7 +48,7 @@ class EEPROMStorage
     {
       this->_address = address;
       this->_defaultValue = defaultValue;
-    };
+    }
 
     //
     // Initialize an instance of EEPROM<T> with the specified address.
@@ -57,7 +56,7 @@ class EEPROMStorage
     EEPROMStorage(const uint16_t address)
     {
       this->_address = address;
-    };
+    }
 
     //
     // Treating the variable as a byte array, get the byte
@@ -263,7 +262,7 @@ class EEPROMStorage
       // Write the checksum.
       //
       uint8_t checksum = Checksum<T>::get(value);
-      EEPROM.update(this->checksumAddress(), checksum);
+      EEPROMUtil.updateEEPROM(this->checksumAddress(), checksum);
     }
 
     //
@@ -302,14 +301,14 @@ class EEPROMStorage
     }
 
     //
-    // Unset the variable (return the EEPROM values
+    // Unset the variable (change the EEPROM values
     // back to UNSET_VALUE).
     //
     void unset(byte unsetValue = UNSET_VALUE) const
     {
       for ( int i = 0; i < this->length(); i++)
       {
-        EEPROM.update(this->_address + i, unsetValue);
+        EEPROMUtil.updateEEPROM(this->_address + i, unsetValue);
       }
     }
 

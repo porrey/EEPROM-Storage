@@ -37,6 +37,13 @@ void setup()
   Serial.begin(115200);
 
   //
+  // On ESP8266 platforms EEPROM must be initialized.
+  //
+  #if defined(ESP8266)
+  EEPROM.begin(4096);
+  #endif
+
+  //
   // Wait for serial port to connect. Needed
   // for native USB port only
   //
@@ -49,9 +56,9 @@ void setup()
   EEPROMUtil.clearEEPROM();
 
   //
-  // Set random values to each EEPROM variable.
+  // Set the EEPROM variable value.
   //
-  a = 98718472918565687689393;
+  a = 987184729185656876;
 
   //
   // Display the EEPROM properties.
@@ -64,15 +71,15 @@ void setup()
   //
   Serial.println();
   Serial.println("byte values of EEROM variable a:");
-  Serial.print("byte at a[0] is "); Serial.println(a[0], HEX);
-  Serial.print("byte at a[1] is "); Serial.println(a[1], HEX);
-  Serial.print("byte at a[2] is "); Serial.println(a[2], HEX);
-  Serial.print("byte at a[3] is "); Serial.println(a[3], HEX);
-  Serial.print("byte at a[4] is "); Serial.println(a[4], HEX);
-  Serial.print("byte at a[5] is "); Serial.println(a[5], HEX);
-  Serial.print("byte at a[6] is "); Serial.println(a[6], HEX);
-  Serial.print("byte at a[7] is "); Serial.println(a[7], HEX);
-  Serial.print("byte at a[8] is "); Serial.println(a[8], HEX);
+  Serial.print("byte at a[0] is "); EEPROMDisplay.displayPaddedHexByte(a[0]); Serial.println();
+  Serial.print("byte at a[1] is "); EEPROMDisplay.displayPaddedHexByte(a[1]); Serial.println();
+  Serial.print("byte at a[2] is "); EEPROMDisplay.displayPaddedHexByte(a[2]); Serial.println();
+  Serial.print("byte at a[3] is "); EEPROMDisplay.displayPaddedHexByte(a[3]); Serial.println();
+  Serial.print("byte at a[4] is "); EEPROMDisplay.displayPaddedHexByte(a[4]); Serial.println();
+  Serial.print("byte at a[5] is "); EEPROMDisplay.displayPaddedHexByte(a[5]); Serial.println();
+  Serial.print("byte at a[6] is "); EEPROMDisplay.displayPaddedHexByte(a[6]); Serial.println();
+  Serial.print("byte at a[7] is "); EEPROMDisplay.displayPaddedHexByte(a[7]); Serial.println();
+  Serial.print("byte at a[8] is "); EEPROMDisplay.displayPaddedHexByte(a[8]); Serial.println();
 
   //
   // Display the EEPROM contents.

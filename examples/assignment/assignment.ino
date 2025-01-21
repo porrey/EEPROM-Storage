@@ -42,6 +42,13 @@ void setup()
   Serial.println();
 
   //
+  // On ESP8266 platforms EEPROM must be initialized.
+  //
+  #if defined(ESP8266)
+  EEPROM.begin(4096);
+  #endif
+  
+  //
   // Clear EEPROM. 
   //
   // Uncomment this line of code and run once. Afterwards comment the line again.

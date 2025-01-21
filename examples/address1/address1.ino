@@ -95,6 +95,13 @@ void setup()
   Serial.println();
 
   //
+  // On ESP8266 platforms EEPROM must be initialized.
+  //
+  #if defined(ESP8266)
+  EEPROM.begin(4096);
+  #endif
+  
+  //
   // STEP 1 of 3:
   //
   // Create a list of definitions that each contain the data type and the default value.

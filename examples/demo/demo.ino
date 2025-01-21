@@ -63,6 +63,13 @@ void setup()
   //
   while (!Serial);
   Serial.println();
+
+  //
+  // On ESP8266 platforms EEPROM must be initialized.
+  //
+  #if defined(ESP8266)
+  EEPROM.begin(4096);
+  #endif
   
   //
   // Initialize the random number generator.

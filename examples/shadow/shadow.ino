@@ -46,6 +46,13 @@ void setup()
   Serial.println();
   
   //
+  // On ESP8266 platforms EEPROM must be initialized.
+  //
+  #if defined(ESP8266)
+  EEPROM.begin(4096);
+  #endif
+
+  //
   // Demonstrates a local variable taking on the value
   // of a previously defined global variable. This one
   // will use the same address as _myVar. Note the same data

@@ -38,7 +38,14 @@ void setup()
 	//
 	while (!Serial);
 	Serial.println();
-	
+
+	//
+	// On ESP8266 platforms EEPROM must be initialized.
+	//
+	#if defined(ESP8266)
+	EEPROM.begin(4096);
+	#endif
+
 	Serial.print("The size of byte is "); Serial.print(sizeof(byte)); Serial.println(".");
 	Serial.print("The size of char is "); Serial.print(sizeof(char)); Serial.println(".");
 	Serial.print("The size of bool is "); Serial.print(sizeof(bool)); Serial.println(".");

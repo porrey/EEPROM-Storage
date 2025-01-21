@@ -20,6 +20,8 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
+#include "EEPROM-Display.h"
+
 void displayLine()
 {
   //----------
@@ -34,6 +36,15 @@ void displayHeader()
   Serial.println();
   Serial.println("EEPROM<T> Properties:");
   displayLine();
+}
+
+void print2digits(uint16_t number)
+{
+  if (number < 10) {
+    Serial.print(" ");
+  }
+
+  Serial.print(number);
 }
 
 template<typename T>
@@ -53,14 +64,5 @@ void display(String name, EEPROMStorage<T> value)
   Serial.print(", Initialized = ");
   Serial.print(value.isInitialized() ? "Yes" : "No");
   Serial.println();
-}
-
-void print2digits(int number)
-{
-  if (number < 10) {
-    Serial.print(" ");
-  }
-
-  Serial.print(number);
 }
 #endif

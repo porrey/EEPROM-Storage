@@ -42,8 +42,17 @@ class EEPROMUtilClass
     {
       for (int i = 0; i < EEPROM.length(); i++)
       {
-        EEPROM.update(i, value);
+        this->updateEEPROM(i, value);
       }
+    }
+      
+    void updateEEPROM(int address, uint8_t value)
+    {
+      #if defined(ESP8266)
+      EEPROM.write(address, value);
+      #else
+      EEPROM.update(address, value);
+      #endif
     }
 };
 
