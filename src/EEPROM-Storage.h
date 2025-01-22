@@ -198,15 +198,15 @@ class EEPROMStorage
       return newValue;
     }
 
-		//
-	  // |= operator
-	  //
-	  T operator |= (T const& value) const
-	  {
-	    T newValue = this->get() | value;
-	    this->set(newValue);
-	    return newValue;
-	  }
+    //
+    // |= operator
+    //
+    T operator |= (T const& value) const
+    {
+      T newValue = this->get() | value;
+      this->set(newValue);
+      return newValue;
+    }
 
     //
     // Get the variable value from the EEPROM.
