@@ -53,7 +53,7 @@ class EEPROMDisplayClass
     //
     // Displays the contents of the EEPROM
     //
-    void displayEEPROM(uint16_t width = 32)
+    void displayEEPROM(uint width = 32)
     {
       this->getSerial()->println("EEPROM Contents:");
 
@@ -81,7 +81,7 @@ class EEPROMDisplayClass
       //
       // Get every byte from EEPROM
       //
-      uint16_t lineNumber = 0;
+      uint lineNumber = 0;
       this->displayLineNumber(lineNumber);
       
       for (int i = 0; i < EEPROM.length(); i++)
@@ -144,7 +144,7 @@ class EEPROMDisplayClass
       // two positions with the text aligned to the
       // right padded with spaces.
       //
-      void display2Digits(uint16_t number)
+      void display2Digits(uint number)
       {
         if (number < 10)
         {
@@ -159,7 +159,7 @@ class EEPROMDisplayClass
       // four positions with the text aligned to the
       // right padded with spaces.
       //
-      void display4Digits(uint16_t number)
+      void display4Digits(uint number)
       {
         if (number < 10)
         {
@@ -181,7 +181,7 @@ class EEPROMDisplayClass
       // Dispays the line number down the 
       // left side of the grid.
       //
-      void displayLineNumber(uint16_t lineNumber)
+      void displayLineNumber(uint lineNumber)
       {
         display4Digits(lineNumber);
         this->getSerial()->print(" | ");
@@ -190,7 +190,7 @@ class EEPROMDisplayClass
       //
       // Draw a line using dashes with the given width.
       //
-      void drawLine(uint16_t width)
+      void drawLine(uint width)
       {
         for(int i = 0; i < width; i++)
         {

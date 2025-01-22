@@ -38,7 +38,7 @@ void displayHeader()
   displayLine();
 }
 
-void print2digits(uint16_t number)
+void print2digits(uint number)
 {
   if (number < 10) {
     Serial.print(" ");

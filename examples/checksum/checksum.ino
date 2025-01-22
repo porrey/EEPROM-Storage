@@ -69,7 +69,7 @@ void setup()
   //
   // Calculate the check sum of the value.
   //
-  uint8_t checksum = Checksum<uint32_t>::get(VALUE);
+  byte checksum = Checksum<uint32_t>::get(VALUE);
   Serial.print("Expected checksum for "); Serial.print(VALUE); Serial.print(" is "); Serial.println(checksum);
 
   //

@@ -44,7 +44,7 @@ class EEPROMStorage
     // Initialize an instance of EEPROM<T> with the specified address
     // and default value.
     //
-    EEPROMStorage(const uint16_t address, T defaultValue)
+    EEPROMStorage(const uint address, T defaultValue)
     {
       this->_address = address;
       this->_defaultValue = defaultValue;
@@ -53,7 +53,7 @@ class EEPROMStorage
     //
     // Initialize an instance of EEPROM<T> with the specified address.
     //
-    EEPROMStorage(const uint16_t address)
+    EEPROMStorage(const uint address)
     {
       this->_address = address;
     }
@@ -63,7 +63,7 @@ class EEPROMStorage
     // at position index where index is between 0 and
     // length.
     //
-    byte operator[] (const int index)
+    byte operator[] (const uint index) const
     {
       byte returnValue = 0;
 
@@ -261,7 +261,7 @@ class EEPROMStorage
       //
       // Write the checksum.
       //
-      uint8_t checksum = Checksum<T>::get(value);
+      byte checksum = Checksum<T>::get(value);
       EEPROMUtil.updateEEPROM(this->checksumAddress(), checksum);
     }
 
@@ -280,7 +280,7 @@ class EEPROMStorage
     // Returns the number of EEPROM bytes
     // used by this instance.
     //
-    uint16_t length() const
+    uint length() const
     {
       //
       // The extra byte is the checksum byte.
@@ -292,7 +292,7 @@ class EEPROMStorage
     // Returns the number of EEPROM bytes
     // used by T.
     //
-    uint16_t size() const
+    uint size() const
     {
       //
       // The extra byte is the checksum byte.
@@ -315,7 +315,7 @@ class EEPROMStorage
     //
     // Gets the address of the checksum byte.
     //
-    uint16_t checksumAddress() const
+    uint checksumAddress() const
     {
       return this->_address + this->length() - 1;
     }
@@ -323,7 +323,7 @@ class EEPROMStorage
     //
     // Gets the stored checksum byte.
     //
-    uint16_t checksumByte() const
+    uint checksumByte() const
     {
       return EEPROM.read(this->checksumAddress());
     }
@@ -332,7 +332,7 @@ class EEPROMStorage
     // Calcuate the checksum of the
     // data in the EEPROM for this instance.
     //
-    uint8_t checksum() const
+    byte checksum() const
     {
       return Checksum<T>::getEEPROM(this->getAddress(), sizeof(T));
     }
@@ -341,9 +341,9 @@ class EEPROMStorage
     // Copy the EEPROM bytes of this instance to
     // a byte array.
     //
-    void copyTo(byte* data, uint32_t length) const
+    void copyTo(byte* data, uint length) const
     {
-      for (int i = 0; i < length; i++)
+      for (uint i = 0; i < length; i++)
       {
         data[i] = EEPROM[this->_address + i];
       }
@@ -353,7 +353,7 @@ class EEPROMStorage
     // The the EEPROM address of the variable represented
     // in this instance .
     //
-    uint16_t getAddress() const
+    uint getAddress() const
     {
       return this->_address;
     }
@@ -370,7 +370,7 @@ class EEPROMStorage
     // Get the next EEPROM address after this variable. This can be used to set the
     // address of another EEPROM variable.
     //
-    uint16_t nextAddress() const
+    uint nextAddress() const
     {
       return this->getAddress() + this->length();
     }
@@ -380,7 +380,7 @@ class EEPROMStorage
     // The address of this variable in the EEPROM. This variable
     // cannot/will not be modified after the class is initialized.
     //
-    uint16_t _address = 0;
+    uint _address = 0;
 
     //
     // The default value to return when the EEPROM has not been 

@@ -102,7 +102,7 @@ template <typename T> bool assertAreNotEqual(EEPROMStorage<T> item1, T item2)
   return returnValue;
 }
 
-template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRandomValue, long maxRandomValue)
+template <typename T> void runStandardTests(EEPROMStorage<T> item, ulong minRandomValue, ulong maxRandomValue)
 {
   //
   // Uninitialize test
@@ -403,7 +403,7 @@ template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRando
   }
 }
 
-template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRandomValue, long maxRandomValue)
+template <typename T> void runAdvancedTests(EEPROMStorage<T> item, ulong minRandomValue, ulong maxRandomValue)
 {
   //
   // Modulo test
@@ -559,7 +559,7 @@ template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRando
   }
 }
 
-template <typename T> void testProxyStandard(String typeName, int address, long minRandomValue, long maxRandomValue)
+template <typename T> void testProxyStandard(String typeName, uint address, ulong minRandomValue, ulong maxRandomValue)
 {
   //
   // Run standard tests on data type.
@@ -578,7 +578,7 @@ template <typename T> void testProxyStandard(String typeName, int address, long 
   Serial.println();
 }
 
-template <typename T> void testProxyAdvanced(String typeName, int address, long minRandomValue, long maxRandomValue)
+template <typename T> void testProxyAdvanced(String typeName, uint address, ulong minRandomValue, ulong maxRandomValue)
 {
   //
   // Run advanced tests on data type.

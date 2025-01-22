@@ -38,17 +38,17 @@ class EEPROMUtilClass
     //
     // Resets the contents of EEPROM to UNSET_VALUE
     //
-    void clearEEPROM(uint16_t value = UNSET_VALUE)
+    void clearEEPROM(uint value = UNSET_VALUE)
     {
-      for (int i = 0; i < EEPROM.length(); i++)
+      for (uint i = 0; i < EEPROM.length(); i++)
       {
         this->updateEEPROM(i, value);
       }
     }
       
-    void updateEEPROM(int address, uint8_t value)
+    void updateEEPROM(uint address, byte value)
     {
-      #if defined(ESP8266)
+      #if defined(ESP8266) || defined(ESP32)
       EEPROM.write(address, value);
       #else
       EEPROM.update(address, value);

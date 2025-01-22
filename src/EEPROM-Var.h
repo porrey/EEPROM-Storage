@@ -20,6 +20,7 @@
 #ifndef EEPROM_VAR_H
 #define EEPROM_VAR_H
 
+#define uint unsigned int
 #define UNSET_VALUE 0xFF
 
 #endif

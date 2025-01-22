@@ -38,9 +38,9 @@ template <typename T>
 class Checksum
 {
   public:
-    static uint8_t get(byte* data, uint32_t length)
+    static byte get(byte* data, uint length)
     {
-      uint8_t returnValue = 0;
+      byte returnValue = 0;
 
       if (length == 1)
       {
@@ -52,7 +52,7 @@ class Checksum
       }
       else
       {
-        for (int i = 0; i < length ; i++)
+        for (uint i = 0; i < length ; i++)
         {
           byte b = data[i];
           returnValue ^= b;
@@ -70,9 +70,9 @@ class Checksum
       return returnValue;
     }
 
-    static uint8_t getEEPROM(uint16_t address, uint32_t length)
+    static byte getEEPROM(uint address, uint length)
     {
-      uint8_t returnValue = 0;
+      byte returnValue = 0;
 
       if (length == 1)
       {
@@ -84,7 +84,7 @@ class Checksum
       }
       else
       {
-        for (int i = 0; i < length ; i++)
+        for (uint i = 0; i < length ; i++)
         {
           byte b = EEPROM[address + i];
           returnValue ^= b;
@@ -102,13 +102,13 @@ class Checksum
       return returnValue;
     }
 
-    static uint8_t get(T value)
+    static byte get(T value)
     {
       //
       // Get a pointer to the bytes in memory
       // for the variable value.
       //
-      uint8_t *ptr = (uint8_t*) &value;
+      byte *ptr = (byte*) &value;
 
       //
       // Calculate and return the checksim.

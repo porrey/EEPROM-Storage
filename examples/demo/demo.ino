@@ -165,13 +165,13 @@ template <typename T> void checksumCheck(String name, EEPROMStorage<T> item)
 
   T value = item.get();
 
-  uint8_t checksum1 = Checksum<T>::get(value);
+  byte checksum1 = Checksum<T>::get(value);
   Serial.print("The Calculated checksum for the value "); Serial.print(value); Serial.print(" is "); EEPROMDisplay.displayPaddedHexByte(checksum1); Serial.println(".");
 
-  uint8_t checksum2 = item.checksum();
+  byte checksum2 = item.checksum();
   Serial.print("The Calculated checksum for the variable "); Serial.print(name); Serial.print(" is "); EEPROMDisplay.displayPaddedHexByte(checksum2); Serial.println(".");
 
-  uint8_t checksum3 = item.checksumByte();
+  byte checksum3 = item.checksumByte();
   Serial.print("The Stored checksum for the variable "); Serial.print(name); Serial.print(" is "); EEPROMDisplay.displayPaddedHexByte(checksum3); Serial.println(".");
   Serial.print("The Stored checksum for the variable "); Serial.print(name); Serial.print(" is at address "); Serial.print(item.checksumAddress()); Serial.println(".");
 }
