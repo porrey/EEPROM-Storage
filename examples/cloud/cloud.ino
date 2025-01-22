@@ -24,7 +24,7 @@
 #include <EEPROM-Storage.h>
 
 //
-// Define a 32-bit integer at adress 0 (first argument) with a
+// Define a 32-bit integer at address 0 (first argument) with a
 // default value of 11 (second agument).
 //
 EEPROMStorage<int32_t> _cloudVariable(0, 11);
@@ -32,27 +32,10 @@ EEPROMStorage<int32_t> _cloudVariable(0, 11);
 void setup()
 {
   //
-  // Initial the serial port.
-  //
-  Serial.begin(115200);
-
-  //
-  // Wait for serial port to connect. Needed
-  // for native USB port only
-  //
-  while (!Serial);
-  Serial.println();
-  
-  //
   // Initial the cloud variables and functions.
   //
   Particle.function("SetVariable", setVariable);
   Particle.function("GetVariable", getVariable);
-
-  //
-  // Display the variable value.
-  //
-  Serial.print("Cloud Variable value is "); Serial.println(_cloudVariable);
 }
 
 void loop()
