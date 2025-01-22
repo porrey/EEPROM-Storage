@@ -20,7 +20,13 @@
 #ifndef EEPROM_VAR_H
 #define EEPROM_VAR_H
 
+//
+// Cross-compatable with Arduino, GNU C++ for tests, and Particle.
+//
+#if defined(ARDUINO) && ARDUINO >= 100
 #define uint unsigned int
+#endif
+
 #define UNSET_VALUE 0xFF
 
 #endif
