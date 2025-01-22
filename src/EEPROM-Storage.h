@@ -391,21 +391,6 @@ class EEPROMStorage
     uint normalizeAddress(uint address) const
     {
       return min(address, EEPROM.length() - 1);
-
-      /*
-      uint returnValue = address;
-
-      if (address < EEPROM.length())
-      {
-        this->_address = address;
-      }
-      else
-      {
-        this->_address = EEPROM.length() - 1;
-      }
-
-      return returnValue;
-      */
     }
 };
 #endif
