@@ -306,7 +306,7 @@ class EEPROMStorage
     //
     void unset(byte unsetValue = UNSET_VALUE) const
     {
-      for ( int i = 0; i < this->length(); i++)
+      for (uint i = 0; i < this->length(); i++)
       {
         EEPROMUtil.updateEEPROM(this->_address + i, unsetValue);
       }

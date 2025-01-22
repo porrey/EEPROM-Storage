@@ -66,11 +66,13 @@ class EEPROMDisplayClass
       // Display header addresses
       //
       this->getSerial()->print("     | ");
-      for(int i = 0; i < width; i++)
+      
+      for(uint i = 0; i < width; i++)
       {
         this->display2Digits(i);
         this->getSerial()->print(" ");
       }
+
       this->getSerial()->println();
 
       //
@@ -84,7 +86,7 @@ class EEPROMDisplayClass
       uint lineNumber = 0;
       this->displayLineNumber(lineNumber);
       
-      for (int i = 0; i < EEPROM.length(); i++)
+      for (uint i = 0; i < EEPROM.length(); i++)
       {
         //
         // Display the byt in HEX with the leading 0x.
@@ -192,7 +194,7 @@ class EEPROMDisplayClass
       //
       void drawLine(uint width)
       {
-        for(int i = 0; i < width; i++)
+        for(uint i = 0; i < width; i++)
         {
           this->getSerial()->print("---");
         }
