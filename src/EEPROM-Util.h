@@ -48,7 +48,7 @@ class EEPROMUtilClass
       
     void updateEEPROM(uint address, byte value)
     {
-      #if defined(ESP8266) || defined(ESP32)
+      #if defined(ESP8266)
       EEPROM.write(address, value);
       #else
       EEPROM.update(address, value);
