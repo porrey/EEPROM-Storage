@@ -158,7 +158,7 @@ class EEPROMStorage
       return newValue;
     }
 
-		//
+	  //
     // *= operator
     //
     T operator *= (T const& value) const
@@ -168,7 +168,7 @@ class EEPROMStorage
       return newValue;
     }
 
-		//
+	  //
     // /= operator
     //
     T operator /= (T const& value) const
@@ -178,7 +178,7 @@ class EEPROMStorage
       return newValue;
     }
 
-		//
+	  //
     // %= operator
     //
     T operator %= (T const& value) const
@@ -188,7 +188,7 @@ class EEPROMStorage
       return newValue;
     }
 
-		//
+	  //
     // &= operator
     //
     T operator &= (T const& value) const
