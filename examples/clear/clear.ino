@@ -22,56 +22,62 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
+#include <EEPROM-Display.h>
 
-void setup() 
+void setup()
 {
-    //
-    // Initialize the serial port.
-    //
-    Serial.begin(115200);
+  //
+  // Initialize the serial port.
+  //
+  Serial.begin(115200);
 
-    //
-    // Wait for serial port to connect. Needed
-    // for native USB port only
-    //
-    while (!Serial);
-    Serial.println();
+  //
+  // Wait for serial port to connect. Needed
+  // for native USB port only
+  //
+  while (!Serial);
+  Serial.println();
 
-    //
-    // On ESP8266 platforms EEPROM must be initialized.
-    //
-    #if defined(ESP8266)
-    EEPROM.begin(4096);
-    #endif
+  //
+  // On ESP8266 platforms EEPROM must be initialized.
+  //
+  #if defined(ESP8266)
+  EEPROM.begin(4096);
+  #endif
 
-    //
-    // Set the serial port for the EEPROM Utility class.
-    //
-    EEPROMDisplay.setSerial(&Serial);
+  //
+  // Display the EEPROM size.
+  //
+  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  
+  //
+  // Set the serial port for the EEPROM Utility class.
+  //
+  EEPROMDisplay.setSerial(&Serial);
 
-    //
-    // Display the EEPROM contents.
-    //
-    Serial.println();
-    EEPROMDisplay.displayEEPROM();
+  //
+  // Display the EEPROM contents.
+  //
+  Serial.println();
+  EEPROMDisplay.displayEEPROM();
 
-    //
-    // Cleat the EEPROM contents.
-    //
-    Serial.println("\r\nClearing EEPROM contents.");
-    EEPROMUtil.clearEEPROM();
+  //
+  // Cleat the EEPROM contents.
+  //
+  Serial.println("\r\nClearing EEPROM contents.");
+  EEPROMUtil.clearEEPROM();
 
-    //
-    // Display the EEPROM contents.
-    //
-    Serial.println();
-    EEPROMDisplay.displayEEPROM();
+  //
+  // Display the EEPROM contents.
+  //
+  Serial.println();
+  EEPROMDisplay.displayEEPROM();
 }
 
-void loop() 
+void loop()
 {
-    //
-    // Delay 2 seconds.
-    //
-    delay(2000);
+  //
+  // Delay 2 seconds.
+  //
+  delay(2000);
 }

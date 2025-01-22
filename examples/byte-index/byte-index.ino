@@ -22,7 +22,7 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
-#include "functions.h"
+#include <EEPROM-Display.h>
 
 //
 // Define the EEPROM variables.
@@ -37,12 +37,24 @@ void setup()
   Serial.begin(115200);
 
   //
+  // Wait for serial port to connect. Needed
+  // for native USB port only
+  //
+  while (!Serial);
+  Serial.println();
+  
+  //
   // On ESP8266 platforms EEPROM must be initialized.
   //
   #if defined(ESP8266)
   EEPROM.begin(4096);
   #endif
 
+  //
+  // Display the EEPROM size.
+  //
+  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  
   //
   // Wait for serial port to connect. Needed
   // for native USB port only
@@ -63,8 +75,8 @@ void setup()
   //
   // Display the EEPROM properties.
   //
-  displayHeader();
-  display("a", a);
+  EEPROMDisplay.displayHeader();
+  EEPROMDisplay.displayVariable("a", a);
 
   //
   // Disply the byte values of the variable.

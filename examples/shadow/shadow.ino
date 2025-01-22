@@ -22,6 +22,7 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
+#include <EEPROM-Display.h>
 
 //
 // Create a variable to be stored in EEPROM. The first parameter is the
@@ -52,6 +53,11 @@ void setup()
   EEPROM.begin(4096);
   #endif
 
+  //
+  // Display the EEPROM size.
+  //
+  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  
   //
   // Demonstrates a local variable taking on the value
   // of a previously defined global variable. This one

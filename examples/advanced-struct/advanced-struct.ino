@@ -22,7 +22,7 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
-#include "functions.h"
+#include <EEPROM-Display.h>
 
 //
 // Define a complex structure to store in EEPROM.
@@ -62,6 +62,11 @@ void setup()
   #if defined(ESP8266)
   EEPROM.begin(4096);
   #endif
+
+  //
+  // Display the EEPROM size.
+  //
+  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
   
   //
   // Clear EEPROM.
@@ -90,7 +95,7 @@ void setup()
   Serial.println();
   Serial.println("EEPROM<T> Properties:");
   Serial.println("--------------------------------------------------------------------------------------------------------------");
-  display("a", a);
+  EEPROMDisplay.displayVariable("a", a);
 
   //
   // Display the struct property values.

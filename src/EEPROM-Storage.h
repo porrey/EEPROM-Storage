@@ -46,7 +46,7 @@ class EEPROMStorage
     //
     EEPROMStorage(const uint address, T defaultValue)
     {
-      this->_address = address;
+      this->_address = this->normalizeAddress(address);
       this->_defaultValue = defaultValue;
     }
 
@@ -55,7 +55,7 @@ class EEPROMStorage
     //
     EEPROMStorage(const uint address)
     {
-      this->_address = address;
+      this->_address = this->normalizeAddress(address);
     }
 
     //
@@ -65,14 +65,8 @@ class EEPROMStorage
     //
     byte operator[] (const uint index) const
     {
-      byte returnValue = 0;
-
-      if (index >= 0 && index < this->length())
-      {
-        returnValue = EEPROM[this->getAddress() + index];
-      }
-
-      return returnValue; 
+      uint address = this->normalizeAddress(this->getAddress() + index);
+      return EEPROM[address];
     }
 
     //
@@ -308,7 +302,8 @@ class EEPROMStorage
     {
       for (uint i = 0; i < this->length(); i++)
       {
-        EEPROMUtil.updateEEPROM(this->_address + i, unsetValue);
+        uint address = this->normalizeAddress(this->_address + i);
+        EEPROMUtil.updateEEPROM(address, unsetValue);
       }
     }
 
@@ -317,7 +312,7 @@ class EEPROMStorage
     //
     uint checksumAddress() const
     {
-      return this->_address + this->length() - 1;
+      return this->normalizeAddress(this->_address + this->length() - 1);
     }
 
     //
@@ -345,13 +340,14 @@ class EEPROMStorage
     {
       for (uint i = 0; i < length; i++)
       {
-        data[i] = EEPROM[this->_address + i];
+        uint address = this->normalizeAddress(this->_address + i);
+        data[i] = EEPROM[address];
       }
     }
 
     //
     // The the EEPROM address of the variable represented
-    // in this instance .
+    // in this instance.
     //
     uint getAddress() const
     {
@@ -372,7 +368,7 @@ class EEPROMStorage
     //
     uint nextAddress() const
     {
-      return this->getAddress() + this->length();
+      return this->normalizeAddress(this->getAddress() + this->length());
     }
 
   private:
@@ -388,5 +384,28 @@ class EEPROMStorage
     // after the class is initialized.
     //
     T _defaultValue;
+
+    //
+    // Don't allow an address to go beyond the end of the EEPROM space.
+    //
+    uint normalizeAddress(uint address) const
+    {
+      return min(address, EEPROM.length() - 1);
+
+      /*
+      uint returnValue = address;
+
+      if (address < EEPROM.length())
+      {
+        this->_address = address;
+      }
+      else
+      {
+        this->_address = EEPROM.length() - 1;
+      }
+
+      return returnValue;
+      */
+    }
 };
 #endif

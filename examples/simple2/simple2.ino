@@ -21,13 +21,13 @@
 // This example demonstrates simple usage.
 // ---------------------------------------------------------------------------------------
 
-#include "EEPROM-Storage.h"
+#include <EEPROM-Storage.h>
 
 //
 // Create two variables to be stored in EEPROM.
 //
 EEPROMStorage<uint32_t> a(0, 0);
-EEPROMStorage<uint32_t> b(_myInt1.nextAddress(), 0);
+EEPROMStorage<uint32_t> b(a.nextAddress(), 0);
 
 void setup()
 {
@@ -50,6 +50,11 @@ void setup()
   #if defined(ESP8266)
   EEPROM.begin(4096);
   #endif
+
+  //
+  // Display the EEPROM size.
+  //
+  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
   
   //
   // Set the value of a to 10.
@@ -63,7 +68,7 @@ void setup()
 
   //
   // Create a variable i and set the value to 10.
-  /
+  //
   int i = 10;
 
   //

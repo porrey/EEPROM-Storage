@@ -52,6 +52,11 @@ void setup()
   #endif
 
   //
+  // Display the EEPROM size.
+  //
+  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  
+  //
   // Initialize the random number generator.
   //
   randomSeed(analogRead(0));
@@ -62,10 +67,12 @@ void setup()
   // ---------------------------------------------------------------------------------------
 
   //
-  // Use the same address for all tests. Need to be careful not to write
-  // to often to the same address.
+  // Use the a random address for all tests. Need to be careful not to write
+  // too often to the same address.
   //
-  int address = EEPROM.length() - 10;
+  uint address = EEPROM.length() - random(20, EEPROM.length() / 2);
+  Serial.print("Using address "); Serial.print(address); Serial.println(" for the test variables.");
+  Serial.println();
 
   testProxyStandard<int>("int", address, -99999, 99999);
   testProxyAdvanced<int>("int", address, -99999, 99999);

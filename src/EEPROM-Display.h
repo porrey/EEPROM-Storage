@@ -117,6 +117,38 @@ class EEPROMDisplayClass
     }
 
     //
+    //
+    //
+    template<typename T>
+    void displayVariable(String name, EEPROMStorage<T> value)
+    {
+      this->getSerial()->print(name);
+      this->getSerial()->print(": Variable Size: ");
+      this->display2Digits(value.size());
+      this->getSerial()->print(", Memory Length = ");
+      this->display2Digits(value.length());
+      this->getSerial()->print(", Start Address = ");
+      this->display2Digits(value.getAddress());
+      this->getSerial()->print(", Checksum Address = ");
+      this->display2Digits(value.checksumAddress());
+      this->getSerial()->print(", Checksum Value = ");
+      this->displayPaddedHexByte(value.checksumByte());
+      this->getSerial()->print(", Initialized = ");
+      this->getSerial()->print(value.isInitialized() ? "Yes" : "No");
+      this->getSerial()->println();
+    }
+
+    void displayHeader()
+    {
+      //
+      // Display the EEPROM properties.
+      //
+      this->getSerial()->println();
+      this->getSerial()->println("EEPROM<T> Properties:");
+      this->drawLine(50);
+    }
+
+    //
     // Get a pointer to serial device
     // being used by this instance.
     //

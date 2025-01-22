@@ -22,7 +22,7 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
-#include "functions.h"
+#include <EEPROM-Display.h>
 
 //
 // Define the EEPROM variables.
@@ -55,6 +55,11 @@ void setup()
   #if defined(ESP8266)
   EEPROM.begin(4096);
   #endif
+
+  //
+  // Display the EEPROM size.
+  //
+  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
   
   //
   // Clear EEPROM.
@@ -80,14 +85,14 @@ void setup()
   //
   // Display the EEPROM properties.
   //
-  displayHeader();
-  display("a", a);
-  display("b", b);
-  display("c", c);
-  display("d", d);
-  display("e", e);
-  display("f", f);
-  display("g", g);
+  EEPROMDisplay.displayHeader();
+  EEPROMDisplay.displayVariable("a", a);
+  EEPROMDisplay.displayVariable("b", b);
+  EEPROMDisplay.displayVariable("c", c);
+  EEPROMDisplay.displayVariable("d", d);
+  EEPROMDisplay.displayVariable("e", e);
+  EEPROMDisplay.displayVariable("f", f);
+  EEPROMDisplay.displayVariable("g", g);
 
   //
   // Display the EEPROM contents.

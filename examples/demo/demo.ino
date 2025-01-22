@@ -22,6 +22,7 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
+#include <EEPROM-Display.h>
 
 //
 // Create variables to be stored in EEPROM. The first parameter is the
@@ -70,6 +71,11 @@ void setup()
   #if defined(ESP8266)
   EEPROM.begin(4096);
   #endif
+
+  //
+  // Display the EEPROM size.
+  //
+  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
   
   //
   // Initialize the random number generator.
