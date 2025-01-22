@@ -21,13 +21,13 @@
 // This example runs tests on the EEEPROM-Storage library with various data types.
 // ---------------------------------------------------------------------------------------
 
-#include "EEPROM-Storage.h"
+#include <EEPROM-Storage.h>
 
 //
 // Results
 //
-unsigned int _totalTests = 0;
-unsigned int _totalPassed = 0;
+uint _totalTests = 0;
+uint _totalPassed = 0;
 
 void setup()
 {
@@ -117,7 +117,7 @@ void loop()
   delay(2000);
 }
 
-template <typename T> void testProxyStandard(String typeName, int address, long minRandomValue, long maxRandomValue)
+template <typename T> void testProxyStandard(String typeName, uint address, long minRandomValue, long maxRandomValue)
 {
   //
   // Run tests on data type [double]
@@ -136,7 +136,7 @@ template <typename T> void testProxyStandard(String typeName, int address, long 
   Serial.println();
 }
 
-template <typename T> void testProxyAdvanced(String typeName, int address, long minRandomValue, long maxRandomValue)
+template <typename T> void testProxyAdvanced(String typeName, uint address, long minRandomValue, long maxRandomValue)
 {
   //
   // Run tests on data type [double]

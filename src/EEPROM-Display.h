@@ -117,7 +117,7 @@ class EEPROMDisplayClass
     }
 
     //
-    //
+    // Display the properties of a variable.
     //
     template<typename T>
     void displayVariable(String name, EEPROMStorage<T> value)
@@ -138,6 +138,9 @@ class EEPROMDisplayClass
       this->getSerial()->println();
     }
 
+    //
+    // Display a header that can be used for listing variable properties.
+    //
     void displayHeader()
     {
       //
@@ -149,8 +152,7 @@ class EEPROMDisplayClass
     }
 
     //
-    // Get a pointer to serial device
-    // being used by this instance.
+    // Get a pointer to serial device being used by this instance.
     //
     HardwareSerial* getSerial()
     {
@@ -158,8 +160,7 @@ class EEPROMDisplayClass
     }
 
     //
-    // Set a pointer to serial device
-    // being used by this instance.
+    // Set a pointer to serial device being used by this instance.
     //
     void setSerial(HardwareSerial* serial)
     {
@@ -168,15 +169,14 @@ class EEPROMDisplayClass
 
     private:
       //
-      // A pointer to a serial device. This instance
-      // will write all output to this serial device.
+      // A pointer to a serial device. This instance will write all
+      // output to this serial device.
       //
       HardwareSerial* _serial;
 
       //
-      // Display a number of the serial port to use
-      // two positions with the text aligned to the
-      // right padded with spaces.
+      // Display a number of the serial port to use two positions with
+      // the text aligned to the right padded with spaces.
       //
       void display2Digits(uint number)
       {
@@ -189,9 +189,8 @@ class EEPROMDisplayClass
       }
 
       //
-      // Display a number of the serial port to use
-      // four positions with the text aligned to the
-      // right padded with spaces.
+      // Display a number of the serial port to use four positions with
+      // the text aligned to the right padded with spaces.
       //
       void display4Digits(uint number)
       {
@@ -212,8 +211,7 @@ class EEPROMDisplayClass
       }
 
       //
-      // Dispays the line number down the 
-      // left side of the grid.
+      // Dispays the line number down the left side of the grid.
       //
       void displayLineNumber(uint lineNumber)
       {
