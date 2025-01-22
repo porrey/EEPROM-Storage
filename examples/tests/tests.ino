@@ -22,91 +22,141 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
+#include "TestLibrary.h"
 
 //
 // Results
 //
-uint _totalTests = 0;
-uint _totalPassed = 0;
+unsigned int _totalTests = 0;
+unsigned int _totalPassed = 0;
 
 void setup()
 {
-  //
-  // Initialize the serial port. On a Particle
-  // device the baud rate will be ignored.
-  //
-  Serial.begin(115200);
+    //
+    // Initialize the serial port. On a Particle
+    // device the baud rate will be ignored.
+    //
+    Serial.begin(115200);
+    
+    //
+    // wait for serial port to connect. Needed
+    // for native USB port only
+    //
+    while (!Serial);
+    Serial.println();
+    
+    //
+    // On ESP8266 platforms EEPROM must be initialized.
+    //
+    #if defined(ESP8266)
+    EEPROM.begin(4096);
+    #endif
+    
+    //
+    // Display the EEPROM size.
+    //
+    Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+    
+    // ---------------------------------------------------------------------------------------
+    // There may not be enough memory to run all of the tests. Comment
+    // sections to only run tests on the various data types.
+    // ---------------------------------------------------------------------------------------
+    
+    //
+    // Use the a random address for all tests. Need to be careful not to write
+    // too often to the same address.
+    //
+    uint address = EEPROM.length() - random(20, EEPROM.length() / 2);
+    Serial.print("Using address "); Serial.print(address); Serial.println(" for the test variables.");
+    Serial.println();
+    
+    //
+    // Type: int
+    //
+    TestLibrary<int> t1;
+    t1.TestStandard("int", address, -99999, 99999);
+    t1.TestAdvanced("int", address, -99999, 99999);
+    _totalTests += t1.totalTests;
+    _totalPassed += t1.totalPassed;
+    
+    //
+    // Type: unsigned int
+    //
+    TestLibrary<unsigned int> t2;
+    t2.TestStandard("unsigned int", address, 0, 99999);
+    t2.TestAdvanced("unsigned int", address, 0, 99999);
+    _totalTests += t2.totalTests;
+    _totalPassed += t2.totalPassed;
+    
+    //
+    // Type: long
+    //
+    TestLibrary<long> t3;
+    t3.TestStandard("long", address, -99999, 99999);
+    t3.TestAdvanced("long", address, -99999, 99999);
+    _totalTests += t3.totalTests;
+    _totalPassed += t3.totalPassed;
 
-	//
-	// wait for serial port to connect. Needed
-	// for native USB port only
-	//
-	while (!Serial);
-  Serial.println();
+    //
+    // Type: unsigned long
+    //
+    TestLibrary<unsigned long> t4;
+    t4.TestStandard("unsigned long", address, 0, 99999);
+    t4.TestAdvanced("unsigned long", address, 0, 99999);
+    _totalTests += t4.totalTests;
+    _totalPassed += t4.totalPassed;
 
-  //
-  // On ESP8266 platforms EEPROM must be initialized.
-  //
-  #if defined(ESP8266)
-  EEPROM.begin(4096);
-  #endif
+    //
+    // Type: byte
+    //
+    TestLibrary<byte> t5;
+    t5.TestStandard("byte", address, 0, 255);
+    t5.TestAdvanced("byte", address, 0, 255);
+    _totalTests += t5.totalTests;
+    _totalPassed += t5.totalPassed;
 
-  //
-  // Display the EEPROM size.
-  //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
-  
-  //
-  // Initialize the random number generator.
-  //
-  randomSeed(analogRead(0));
+    //
+    // Type: char
+    //
+    TestLibrary<char> t6;
+    t6.TestStandard("char", address, -128, 128);
+    t6.TestAdvanced("char", address, -128, 128);
+    _totalTests += t6.totalTests;
+    _totalPassed += t6.totalPassed;
 
-  // ---------------------------------------------------------------------------------------
-  // There may not be enough memory to run all of the tests. Uncomment
-  // sections to run tests on the various data types.
-  // ---------------------------------------------------------------------------------------
+    //
+    // Type: unsigned char
+    //
+    TestLibrary<unsigned char> t7;
+    t7.TestStandard("unsigned char", address, 0, 255); // Same as byte
+    t7.TestAdvanced("unsigned char", address, 0, 255); // Same as byte
+    _totalTests += t7.totalTests;
+    _totalPassed += t7.totalPassed;
 
-  //
-  // Use the a random address for all tests. Need to be careful not to write
-  // too often to the same address.
-  //
-  uint address = EEPROM.length() - random(20, EEPROM.length() / 2);
-  Serial.print("Using address "); Serial.print(address); Serial.println(" for the test variables.");
-  Serial.println();
+    //
+    // Type: float
+    //
+    TestLibrary<float> t8;
+    t8.TestStandard("float", address, 0, 99999);
+    _totalTests += t8.totalTests;
+    _totalPassed += t8.totalPassed;
 
-  testProxyStandard<int>("int", address, -99999, 99999);
-  testProxyAdvanced<int>("int", address, -99999, 99999);
+    //
+    // Type: double
+    //
+    TestLibrary<double> t9;
+    t9.TestStandard("double", address, 0, 99999);
+    _totalTests += t9.totalTests;
+    _totalPassed += t9.totalPassed;
 
-  testProxyStandard<unsigned int>("unsigned int", address, 0, 99999);
-  testProxyAdvanced<unsigned int>("unsigned int", address, 0, 99999);
-
-  testProxyStandard<long>("long", address, -99999, 99999);
-  testProxyAdvanced<long>("long", address, -99999, 99999);
-
-  testProxyStandard<unsigned long>("unsigned long", address, 0, 99999);
-  testProxyAdvanced<unsigned long>("unsigned long", address, 0, 99999);
-
-  testProxyStandard<byte>("byte", address, 0, 255);
-  testProxyAdvanced<byte>("byte", address, 0, 255);
-
-  testProxyStandard<char>("char", address, -128, 128);
-  testProxyAdvanced<char>("char", address, -128, 128);
-
-  testProxyStandard<unsigned char>("unsigned char", address, 0, 255); // Same as byte
-  testProxyAdvanced<unsigned char>("unsigned char", address, 0, 255); // Same as byte
-
-  testProxyStandard<float>("float", address, 0, 99999);
-
-  testProxyStandard<double>("double", address, 0, 99999);
-
-  //
-  // Display results.
-  //
-  int totalFailed = _totalTests - _totalPassed;
-  Serial.println();
-  Serial.print("Ran a total of "); Serial.print(_totalTests); Serial.println(" test(s).");
-  Serial.print(_totalPassed); Serial.print(" of "); Serial.print(_totalTests); Serial.print(" test(s) passed ["); Serial.print(_totalPassed / _totalTests * 100); Serial.println("%].");
-  Serial.print(totalFailed); Serial.print(" of "); Serial.print(_totalTests); Serial.print(" test(s) failed ["); Serial.print(totalFailed / _totalTests * 100); Serial.println("%].");
+    //
+    // Display results.
+    //
+    int totalFailed = _totalTests - _totalPassed;
+    Serial.println();
+    Serial.print("Ran a total of "); Serial.print(_totalTests); Serial.println(" test(s).");
+    Serial.print(_totalPassed); Serial.print(" of "); Serial.print(_totalTests); Serial.print(" test(s) passed ["); Serial.print(_totalPassed / _totalTests * 100); Serial.println("%].");
+    Serial.print(totalFailed); Serial.print(" of "); Serial.print(_totalTests); Serial.print(" test(s) failed ["); Serial.print(totalFailed / _totalTests * 100); Serial.println("%].");
 }
 
 void loop()
@@ -115,575 +165,4 @@ void loop()
   // Delay 2 seconds.
   //
   delay(2000);
-}
-
-template <typename T> void testProxyStandard(String typeName, uint address, long minRandomValue, long maxRandomValue)
-{
-  //
-  // Run tests on data type [double]
-  //
-  EEPROMStorage<T> var(address, 0);
-
-  Serial.println("*********************************************");
-  Serial.print("Running standard tests on ["); Serial.print(typeName); Serial.println("]");
-  Serial.println("*********************************************");
-
-  //
-  // Run standard tests.
-  //
-  runStandardTests<T>(var, minRandomValue, maxRandomValue);
-
-  Serial.println();
-}
-
-template <typename T> void testProxyAdvanced(String typeName, uint address, long minRandomValue, long maxRandomValue)
-{
-  //
-  // Run tests on data type [double]
-  //
-  EEPROMStorage<T> var(address, 0);
-
-  Serial.println("*********************************************");
-  Serial.print("Running advanced tests on ["); Serial.print(typeName); Serial.println("]");
-  Serial.println("*********************************************");
-
-  //
-  // Run standard tests.
-  //
-  runAdvancedTests<T>(var, minRandomValue, maxRandomValue);
-
-  Serial.println();
-}
-
-template <typename T> void runStandardTests(EEPROMStorage<T> item, long minRandomValue, long maxRandomValue)
-{
-  //
-  // Uninitialize test
-  //
-  displayTestHeader("Uninitialized");
-  item.unset();
-  _totalPassed += assertIsFalse(item.isInitialized());
-  Serial.println();
-
-  //
-  // Initialize test
-  //
-  {
-    displayTestHeader("Initialized Value");
-    T initValue = random(minRandomValue, maxRandomValue);
-    item = initValue;
-    _totalPassed += assertAreEqual(item, initValue);
-    Serial.println();
-
-    displayTestHeader("Is Initialized");
-    _totalPassed += assertIsTrue(item.isInitialized());
-    Serial.println();
-  }
-
-  //
-  // Addition test
-  //
-  {
-    displayTestHeader("Addition");
-    T value = item;
-    value = value + 5;
-    item = item + 5;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // Subtraction test
-  //
-  {
-    displayTestHeader("Subtraction");
-    T value = 10;
-    item = 10;
-    value = value - 5;
-    item = item - 5;
-    _totalPassed += assertAreEqual<T>(item, value);
-    Serial.println();
-  }
-
-  //
-  // Multiplication test
-  //
-  {
-    displayTestHeader("Multiplication");
-    T value = 10;
-    item = 10;
-    value = value * 5;
-    item = item * 5;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // Division test
-  //
-  {
-    displayTestHeader("Multiplication");
-    T value = 10;
-    item = 10;
-    value = value / 5;
-    item = item / 5;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // ++ postfix test
-  //
-  {
-    displayTestHeader("++ postfix");
-    T value = 60;
-    item = 60;
-    value++;
-    item++;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // -- postfix test
-  //
-  {
-    displayTestHeader("-- postfix");
-    T value = 60;
-    item = 60;
-    value--;
-    item--;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // ++ prefix test
-  //
-  {
-    displayTestHeader("++ prefix");
-    T value = 60;
-    item = 60;
-    ++value;
-    ++item;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // -- postfix test
-  //
-  {
-    displayTestHeader("-- prefix");
-    T value = 60;
-    item = 60;
-    --value;
-    --item;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // += test
-  //
-  {
-    displayTestHeader("+=");
-    T value = 60;
-    item = 60;
-    value += 10;
-    item += 10;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // -= test
-  //
-  {
-    displayTestHeader("-=");
-    T value = 60;
-    item = 60;
-    value -= 10;
-    item -= 10;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // *= test
-  //
-  {
-    displayTestHeader("*=");
-    T value = 60;
-    item = 60;
-    value *= 10;
-    item *= 10;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // /= test
-  //
-  {
-    displayTestHeader("/=");
-    T value = 60;
-    item = 60;
-    value /= 30;
-    item /= 30;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // > test
-  //
-  {
-    displayTestHeader("> x");
-    item = 100;
-    _totalPassed += assertIsTrue(item > 1);
-    Serial.println();
-  }
-
-  //
-  // > test
-  //
-  {
-    displayTestHeader("x >");
-    item = 100;
-    _totalPassed += assertIsTrue(101 > item);
-    Serial.println();
-  }
-
-  //
-  // < test
-  //
-  {
-    displayTestHeader("< x");
-    item = 100;
-    _totalPassed += assertIsTrue(item < 101);
-    Serial.println();
-  }
-
-  //
-  // > test
-  //
-  {
-    displayTestHeader("x <");
-    item = 100;
-    _totalPassed += assertIsTrue(1 < item);
-    Serial.println();
-  }
-
-  //
-  // >= test (different)
-  //
-  {
-    displayTestHeader(">= x (different)");
-    item = 100;
-    _totalPassed += assertIsTrue(item >= 1);
-    Serial.println();
-  }
-
-  //
-  // >= test (different)
-  //
-  {
-    displayTestHeader("x >= (different)");
-    item = 100;
-    _totalPassed += assertIsTrue(101 >= item);
-    Serial.println();
-  }
-
-  //
-  // <= test (different)
-  //
-  {
-    displayTestHeader("<= x (different)");
-    item = 100;
-    _totalPassed += assertIsTrue(item <= 101);
-    Serial.println();
-  }
-
-  //
-  // >= test (different)
-  //
-  {
-    displayTestHeader("x <= (different)");
-    item = 100;
-    _totalPassed += assertIsTrue(1 <= item);
-    Serial.println();
-  }
-
-  //
-  // >= test (same)
-  //
-  {
-    displayTestHeader(">= x (same)");
-    item = 100;
-    _totalPassed += assertIsTrue(item >= 100);
-    Serial.println();
-  }
-
-  //
-  // >= test (same)
-  //
-  {
-    displayTestHeader("x >= (same)");
-    item = 100;
-    _totalPassed += assertIsTrue(100 >= item);
-    Serial.println();
-  }
-
-  //
-  // <= test (same)
-  //
-  {
-    displayTestHeader("<= x (same)");
-    item = 100;
-    _totalPassed += assertIsTrue(item <= 100);
-    Serial.println();
-  }
-
-  //
-  // >= test (same)
-  //
-  {
-    displayTestHeader("x <= (same)");
-    item = 100;
-    _totalPassed += assertIsTrue(100 <= item);
-    Serial.println();
-  }
-}
-
-template <typename T> void runAdvancedTests(EEPROMStorage<T> item, long minRandomValue, long maxRandomValue)
-{
-  //
-  // Modulo test
-  //
-  {
-    displayTestHeader("Modulo");
-    T value = 10;
-    item = 10;
-    value = value % 6;
-    item = item % 6;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // %= test
-  //
-  {
-    displayTestHeader("%=");
-    T value = 10;
-    item = 10;
-    value %= 6;
-    item %= 6;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // &= test
-  //
-  {
-    displayTestHeader("&=");
-    T value = 129191;
-    item = 129191;
-    value &= 45234;
-    item &= 45234;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // |= test
-  //
-  {
-    displayTestHeader("|=");
-    T value = 129191;
-    item = 129191;
-    value &= 45234;
-    item &= 45234;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // == test
-  //
-  {
-    displayTestHeader("==");
-    T value = random(minRandomValue, maxRandomValue);
-    item = value;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // != test
-  //
-  {
-    displayTestHeader("!=");
-    T value = random(minRandomValue, maxRandomValue);
-    item = value;
-    value += 10;
-    _totalPassed += assertAreNotEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // Bitwise AND (&)
-  //
-  {
-    displayTestHeader("Bitwise AND (&)");
-    T value = random(minRandomValue, maxRandomValue);
-    item = value;
-    value = value & 0xAAAA;
-    item = item & 0xAAAA;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // Bitwise OR (|)
-  //
-  {
-    displayTestHeader("Bitwise OR (|)");
-    T value = random(minRandomValue, maxRandomValue);
-    item = value;
-    value = value | 0xAAAA;
-    item = item | 0xAAAA;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // Bitwise XOR (^)
-  //
-  {
-    displayTestHeader("Bitwise XOR (^)");
-    T value = random(minRandomValue, maxRandomValue);
-    item = value;
-    value = value ^ 0xAAAA;
-    item = item ^ 0xAAAA;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // Bitwise NOT (~)
-  //
-  {
-    displayTestHeader("Bitwise NOT (~)");
-    T value = random(minRandomValue, maxRandomValue);
-    item = value;
-    value = ~value;
-    item = ~item;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // Bitshift Left (<<)
-  //
-  {
-    displayTestHeader("Bitshift Left (<<)");
-    T value = random(minRandomValue, maxRandomValue);
-    item = value;
-    value = value << 2;
-    item = item << 2;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-
-  //
-  // Bitshift Right (>>)
-  //
-  {
-    displayTestHeader("Bitshift Right (>>)");
-    T value = random(minRandomValue, maxRandomValue);
-    item = value;
-    value = value >> 2;
-    item = item >> 2;
-    _totalPassed += assertAreEqual(item, value);
-    Serial.println();
-  }
-}
-
-void displayTestHeader(String testName)
-{
-  Serial.print("TEST: ["); Serial.print(testName); Serial.print("]");
-  _totalTests++;
-}
-
-bool assertIsTrue(const bool item)
-{
-  bool returnValue = false;
-
-  if (item)
-  {
-    Serial.print(" -PASSED!");
-    returnValue = true;
-  }
-  else
-  {
-    Serial.print(" -FAILED!");
-  }
-
-  return returnValue;
-}
-
-bool assertIsFalse(const bool item)
-{
-  bool returnValue = false;
-
-  if (!item)
-  {
-    Serial.print(" -PASSED!");
-    returnValue = true;
-  }
-  else
-  {
-    Serial.print(" -FAILED!");
-  }
-
-  return returnValue;
-}
-
-template <typename T> bool assertAreEqual(EEPROMStorage<T> item1, T item2)
-{
-  bool returnValue = false;
-
-  if (item1.get() == item2)
-  {
-    Serial.print(" -PASSED!"); Serial.print("  ["); Serial.print(item1.get()); Serial.print(" == "); Serial.print(item2); Serial.print("]");
-    returnValue = true;
-  }
-  else
-  {
-    Serial.print(" -FAILED!");
-    Serial.print("  ["); Serial.print(item1.get()); Serial.print(" != "); Serial.print(item2); Serial.print("]");
-  }
-
-  return returnValue;
-}
-
-template <typename T> bool assertAreNotEqual(EEPROMStorage<T> item1, T item2)
-{
-  bool returnValue = false;
-
-  if (item1.get() != item2)
-  {
-    Serial.print(" -PASSED!"); Serial.print("  ["); Serial.print(item1.get()); Serial.print(" != "); Serial.print(item2); Serial.print("]");
-    returnValue = true;
-  }
-  else
-  {
-    Serial.print(" -FAILED!");
-    Serial.print("  ["); Serial.print(item1.get()); Serial.print(" == "); Serial.print(item2); Serial.print("]");
-  }
-
-  return returnValue;
 }
