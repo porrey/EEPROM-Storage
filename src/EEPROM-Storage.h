@@ -179,6 +179,16 @@ class EEPROMStorage
     }
 
     //
+    // ^= operator (NEW)
+    //
+    T operator ^= (T const& value) const
+    {
+      T newValue = this->get() ^ value;
+      this->set(newValue);
+      return newValue;
+    }
+
+    //
     // %= operator
     //
     T operator %= (T const& value) const
@@ -204,6 +214,26 @@ class EEPROMStorage
     T operator |= (T const& value) const
     {
       T newValue = this->get() | value;
+      this->set(newValue);
+      return newValue;
+    }
+
+    //
+    // <<= operator (NEW)
+    //
+    T operator <<= (T const& value) const
+    {
+      T newValue = this->get() << value;
+      this->set(newValue);
+      return newValue;
+    }
+
+    //
+    // >>= operator (NEW)
+    //
+    T operator >>= (T const& value) const
+    {
+      T newValue = this->get() >> value;
       this->set(newValue);
       return newValue;
     }
