@@ -17,18 +17,17 @@
 // see http://www.gnu.org/licenses/.
 //
 
-// ***************************************************************************************
+// ---------------------------------------------------------------------------------------
 // This example will calculate the address and
 // create initialization code for one or more
 // EEPROM-Storage variables. Just follow the steps
 // outlined below.
-// ***************************************************************************************
-
-// ***************************************************************************************
 //
 // Complete Steps 1 through 3 (below) for your project.
 //
-// ***************************************************************************************
+// ---------------------------------------------------------------------------------------
+
+#include <EEPROM-Storage.h>
 
 #if defined(SPARK)
 #define word short
@@ -95,7 +94,20 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
+  Serial.println();
 
+  //
+  // On ESP8266 platforms EEPROM must be initialized.
+  //
+  #if defined(ESP8266)
+  EEPROM.begin(4096);
+  #endif
+
+  //
+  // Display the EEPROM size.
+  //
+  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  
   //
   // STEP 1 of 3:
   //
@@ -126,13 +138,13 @@ void setup()
   //
   bool showComments = true;
 
-  //***************************************************************************************
-  //***************************************************************************************
+  // ***************************************************************************************
+  // ***************************************************************************************
   //
   // This will output declarations through the serial port.
   //
-  //***************************************************************************************
-  //***************************************************************************************
+  // ***************************************************************************************
+  // ***************************************************************************************
   int items = sizeof(myDefinitions) / sizeof(definition);
   Serial.print("The number of declarations defined is "); Serial.println(items);
   Serial.println();

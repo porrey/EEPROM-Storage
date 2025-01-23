@@ -1,0 +1,35 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+EEPROMStorage	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+get	KEYWORD2
+set	KEYWORD2
+isInitialized	KEYWORD2
+length	KEYWORD2
+unset	KEYWORD2
+checksumAddress	KEYWORD2
+checksumByte	KEYWORD2
+checksum	KEYWORD2
+copyTo	KEYWORD2
+getAddress	KEYWORD2
+getDefaultValue	KEYWORD2
+nextAddress	KEYWORD2
+clearEEPROM KEYWORD2
+displayEEPROM KEYWORD2
+displayPaddedHexByte KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+
+MAX_VARIABLE_LENGTH LITERAL1

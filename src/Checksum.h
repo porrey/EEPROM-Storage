@@ -21,8 +21,7 @@
 #define CHECKSUM_H
 
 //
-// Cross-compatable
-// with Arduino, GNU C++ for tests, and Particle.
+// Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
@@ -30,13 +29,17 @@
 #include "Particle.h"
 #endif
 
+//
+// Computes a single-byte checksum on any data type or directly
+// from an EEPROM address.
+//
 template <typename T>
 class Checksum
 {
   public:
-    static uint8_t get(byte* data, uint32_t length)
+    static byte get(byte* data, uint length)
     {
-      uint8_t returnValue = 0;
+      byte returnValue = 0;
 
       if (length == 1)
       {
@@ -48,7 +51,7 @@ class Checksum
       }
       else
       {
-        for (int i = 0; i < length ; i++)
+        for (uint i = 0; i < length ; i++)
         {
           byte b = data[i];
           returnValue ^= b;
@@ -56,9 +59,9 @@ class Checksum
       }
 
       //
-      // Do not let the checksum be 0xFF
+      // Do not let the checksum be UNSET_VALUE
       //
-      if (returnValue == 0xFF)
+      if (returnValue == UNSET_VALUE)
       {
         returnValue <<= 1;
       }
@@ -66,13 +69,49 @@ class Checksum
       return returnValue;
     }
 
-    static uint8_t get(T value)
+    static byte getEEPROM(uint address, uint length)
+    {
+      byte returnValue = 0;
+
+      if (length == 1)
+      {
+        //
+        // For a single byte use the bit
+        // pattern 0xAA (10101010).
+        //
+        returnValue = 0xAA ^ EEPROM[address];
+      }
+      else
+      {
+        for (uint i = 0; i < length ; i++)
+        {
+          byte b = EEPROM[address + i];
+          returnValue ^= b;
+        }
+      }
+
+      //
+      // Do not let the checksum be UNSET_VALUE
+      //
+      if (returnValue == UNSET_VALUE)
+      {
+        returnValue <<= 1;
+      }
+
+      return returnValue;
+    }
+
+    static byte get(T value)
     {
       //
       // Get a pointer to the bytes in memory
       // for the variable value.
       //
-      uint8_t *ptr = (uint8_t*) &value;
+      byte *ptr = (byte*) &value;
+
+      //
+      // Calculate and return the checksim.
+      //
       return Checksum<T>::get(ptr, sizeof(T));
     }
 };

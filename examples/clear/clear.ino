@@ -18,51 +18,66 @@
 //
 
 // ---------------------------------------------------------------------------------------
-// For Particle platform only.
+// This example demonstrates displaying and clearing EEPROM contents.
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
-
-//
-// Define a 32-bit integer at address 0 (first argument) with a
-// default value of 11 (second agument).
-//
-EEPROMStorage<int32_t> _cloudVariable(0, 11);
+#include <EEPROM-Display.h>
 
 void setup()
 {
   //
-  // Initial the cloud variables and functions.
+  // Initialize the serial port.
   //
-  Particle.function("SetVariable", setVariable);
-  Particle.function("GetVariable", getVariable);
+  Serial.begin(115200);
+
+  //
+  // Wait for serial port to connect. Needed
+  // for native USB port only
+  //
+  while (!Serial);
+  Serial.println();
+
+  //
+  // On ESP8266 platforms EEPROM must be initialized.
+  //
+  #if defined(ESP8266)
+  EEPROM.begin(4096);
+  #endif
+
+  //
+  // Display the EEPROM size.
+  //
+  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  
+  //
+  // Set the serial port for the EEPROM Utility class.
+  //
+  EEPROMDisplay.setSerial(&Serial);
+
+  //
+  // Display the EEPROM contents.
+  //
+  Serial.println();
+  EEPROMDisplay.displayEEPROM();
+
+  //
+  // Cleat the EEPROM contents.
+  //
+  Serial.println("\r\nClearing EEPROM contents.");
+  EEPROMUtil.clearEEPROM();
+
+  //
+  // Display the EEPROM contents.
+  //
+  Serial.println();
+  EEPROMDisplay.displayEEPROM();
 }
 
 void loop()
 {
-}
-
-//
-// Sets the variable value.
-//
-int setVariable(String data)
-{
-  int returnValue = 0;
-
-  if (data.trim() != "")
-  {
-    int value = data.toInt();
-    _cloudVariable = value;
-    returnValue = 1;
-  }
-
-  return returnValue;
-}
-
-//
-// Gets the variable value.
-//
-int getVariable(String data)
-{
-  return _cloudVariable;
+  //
+  // Delay 2 seconds.
+  //
+  delay(2000);
 }
