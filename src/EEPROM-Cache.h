@@ -46,15 +46,37 @@ class EEPROMCache : public EEPROMBase<T>
     //
     EEPROMCache(const uint address) : EEPROMBase<T>(address)
     {
+      //
+      // Read the current value from EEPROM.
+      //
+      this->restore();
     }
 
     //
     // Initialize an instance of EEPROMCache<T> with the specified address
     // and value.
     //
-    EEPROMCache(const uint address, T value) : EEPROMCache(address, value)
+    EEPROMCache(const uint address, T value) : EEPROMBase<T>(address, value)
     {
       this->_value = value;
+    }
+    
+    //
+    // Accounts for EEPROMCache<T> = T
+    //
+    EEPROMCache<T> operator = (T const& value)
+    {
+      this->set(value);
+      return *this;
+    }
+
+    //
+    // Accounts for EEPROMCache<T> = EEPROMCache<T>
+    //
+    EEPROMCache<T> operator = (EEPROMCache<T> const& value)
+    {
+      this->set(value);
+      return *this;
     }
 
     //
@@ -68,30 +90,31 @@ class EEPROMCache : public EEPROMBase<T>
     //
     // Save the variable value to memory.
     //
-    void set(T const& value)
+    T set(T const& value)
     {
       this->_value = value;
+      return this->_value;
     }
 
     //
-    // Write the value stored in memory to the EEPROM
-    // using the address in this instance.
+    // Restores the value by reading from EEPROM.
     //
-    virtual void commit()
+    T restore()
     {
       //
-      // Set the value in EEPROM using the put method. 
-      // Put uses EEPROM.update() to perform the write 
-      // so it will not rewrite the value if it didn't 
-      // change.
+      // Read the current value from EEPROM.
       //
-      EEPROM.put(this->_address, this->_value);
+      this->_value = this->read();
+      return this->_value;
+    }
 
-      //
-      // Write the checksum.
-      //
-      byte checksum = Checksum<T>::get(this->_value);
-      EEPROMUtil.updateEEPROM(this->checksumAddress(), checksum);
+    //
+    // Commit the cached value to the EEPROM.
+    //
+    T commit()
+    {
+      this->write(this->_value);
+      return this->_value;
     }
 
   protected:
