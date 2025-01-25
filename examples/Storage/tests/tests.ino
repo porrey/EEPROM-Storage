@@ -22,6 +22,7 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
+#include <EEPROM-Util.h>
 #include "TestLibrary.h"
 
 //
@@ -51,7 +52,17 @@ void setup()
   #if defined(ESP8266)
   EEPROM.begin(4096);
   #endif
-  
+ 
+  //
+  // Clear the EEPROM.
+  //
+  EEPROMUtil.clearEEPROM();
+
+  //
+  // Initialize the random number generator.
+  //
+  randomSeed(analogRead(0));
+
   //
   // Display the EEPROM size.
   //
