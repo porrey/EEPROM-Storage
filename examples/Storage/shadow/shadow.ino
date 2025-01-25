@@ -18,7 +18,7 @@
 //
 
 // ---------------------------------------------------------------------------------------
-// This example demonstrates simple usage.
+// This example demonstrates how one variable can shadow another.
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
@@ -45,7 +45,7 @@ void setup()
   //
   while (!Serial);
   Serial.println();
-
+  
   //
   // On ESP8266 platforms EEPROM must be initialized.
   //
@@ -59,20 +59,43 @@ void setup()
   Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
   
   //
-  // Assign the value of 128 to a.
+  // Demonstrates a local variable taking on the value
+  // of a previously defined global variable. This one
+  // will use the same address as a. Note the same data
+  // type must be used or we will get unexpected values.
   //
-  Serial.print("Assigning a the value of 128.");
-  a = 128;
+  EEPROMStorage<uint32_t> shadowVar(a.getAddress(), 0);
 
   //
-  // Display the value of a.
+  // Assign the value of 16 to a.
   //
-  Serial.print("a = "); Serial.println(a);
+  Serial.println("Assigning a the value of 16.");
+  a = 16;
 
   //
   // Display the EEPROM contents.
   //
   EEPROMDisplay.displayEEPROM();
+
+  //
+  // Display the values of a and shadowVar. Both
+  // variables will have the value of 16.
+  //
+  Serial.print("a = "); Serial.println(a);
+  Serial.print("shadowVar = "); Serial.println(a);
+
+  //
+  // Assign the value of 11 to shadowVar.
+  //
+  Serial.println("Assigning shadowVar the value of 11.");
+  shadowVar = 11;
+
+  //
+  // Display the values of a and shadowVar. Both variables
+  // will have the value of 11.
+  //
+  Serial.print("a = "); Serial.println(a);
+  Serial.print("shadowVar = "); Serial.println(a);
 }
 
 void loop()
@@ -81,15 +104,4 @@ void loop()
   // Wait for 2 seconds.
   //
   delay(2000);
-
-  //
-  // Increment the value of _myInt by 1.
-  //
-  Serial.print("Incrementing a. ");
-  a++;
-
-  //
-  // Display the value of a.
-  //
-  Serial.print("The value of a is "); Serial.println(a);
 }

@@ -18,20 +18,13 @@
 //
 
 // ---------------------------------------------------------------------------------------
-// This example demonstrates how one variable can shadow another.
+// Demonstrates how two variables in different scopes can share a value.
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
 #include <EEPROM-Display.h>
 
-//
-// Create a variable to be stored in EEPROM. The first parameter is the
-// address or location in EEPROM. The second parameter is the default
-// value to return when the variable has not been initialized.
-//
-EEPROMStorage<uint32_t> a(0, 0);  // This variable is stored in EEPROM at positions 0, 1, 2, 3 and 4 (5 bytes)
-
-void setup()
+void setup() 
 {
   //
   // Initialize the serial port. On a Particle
@@ -45,7 +38,7 @@ void setup()
   //
   while (!Serial);
   Serial.println();
-  
+
   //
   // On ESP8266 platforms EEPROM must be initialized.
   //
@@ -56,50 +49,42 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
-  
-  //
-  // Demonstrates a local variable taking on the value
-  // of a previously defined global variable. This one
-  // will use the same address as _myVar. Note the same data
-  // type must be used or we will get unexpected values.
-  //
-  EEPROMStorage<uint32_t> shadowVar(a.getAddress(), 0);
+  Serial.print("The total size of EEPROM on this device is ");
+  Serial.print(EEPROM.length());
+  Serial.println(" bytes.");
 
   //
-  // Assign the value of 16 to a.
+  // Initialize the random number generator.
   //
-  Serial.println("Assigning a the value of 16.");
-  a = 16;
+  randomSeed(analogRead(0));
 
   //
-  // Display the EEPROM contents.
+  // Create a local variable scoped to the
+  // setup method.
   //
-  EEPROMDisplay.displayEEPROM();
+  EEPROMStorage<uint32_t> x(0, 0);
 
   //
-  // Display the values of a and shadowVar.
+  // Assign a random value to the EEPROM variable x.
   //
-  Serial.print("a = "); Serial.println(a);
-  Serial.print("shadowVar = "); Serial.println(a);
-
-  //
-  // Assign the value of 11 to shadowVar.
-  //
-  Serial.println("Assigning shadowVar the value of 11.");
-  shadowVar = 11;
-
-  //
-  // Display the values of _myVar and shadowVar.
-  //
-  Serial.print("a = "); Serial.println(a);
-  Serial.print("shadowVar = "); Serial.println(a);
+  uint32_t value = random(1, 99999);
+  Serial.print("Assigning EEPROM variable x the value of "); Serial.print(value); Serial.println(".");
+  x = value;
+  Serial.print("The value of the EEPROM variable x is "); Serial.print(x); Serial.println(".");
 }
 
-void loop()
+void loop() 
 {
   //
-  // Wait for 2 seconds.
+  // Create a local variable scoped to the
+  // loop method. The value will match the
+  // value of the variable x.
   //
-  delay(2000);
+  EEPROMStorage<uint32_t> y(0, 0);
+  Serial.print("The value of the EEPROM variable y is "); Serial.print(y); Serial.println(".");
+
+  //
+  // Loop forever.
+  //
+  while (true) delay(100);
 }

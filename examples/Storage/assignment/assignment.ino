@@ -24,7 +24,7 @@
 #include <EEPROM-Storage.h>
 #include <EEPROM-Display.h>
 
-EEPROMStorage<uint32_t> a(0, 04);
+EEPROMStorage<uint32_t> a(0, 0);
 EEPROMStorage<uint32_t> b(b.nextAddress(), 0);
 
 void setup() 
@@ -117,8 +117,8 @@ void loop()
   a++;
 
   //
-  // When a mod 5 is 0 then assign the value stored in a
-  // to the value stored in b.
+  // When variable a mod 5 is 0 then assign the value stored in 
+  // variable a to the value stored in variable b.
   //
   if(a % 5 == 0)
   {
