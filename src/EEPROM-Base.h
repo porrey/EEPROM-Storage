@@ -58,194 +58,207 @@ class EEPROMBase
     }
 
     //
+    // Allows the variable to be used on the right side of
+    // the equal sign.
+    //
+    operator T()
+    {
+      return this->get();
+    }
+
+    //
     // Treating the variable as a byte array, get the byte
     // at position index where index is between 0 and
     // length.
     //
-    virtual byte operator[] (const uint index)
+    byte operator[] (const uint index)
     {
       uint address = this->normalizeAddress(this->getAddress() + index);
       return EEPROM[address];
     }
 
     //
-    // Accounts for EEPROMBase<T> = T
-    //
-    EEPROMBase<T> operator = (T const& value)
-    {
-      this->set(value);
-      return *this;
-    }
-
-    //
-    // Accounts for EEPROMBase<T> = EEPROMBase<T>
-    //
-    EEPROMBase<T> operator = (EEPROMBase<T> const& value)
-    {
-      this->set(value);
-      return *this;
-    }
-
-    //
-    // Allows the variable to be used on the right side of
-    // the equal sign.
-    //
-    virtual operator T()
-    {
-      return this->get();
-    }
-
-    //
     // ++ postfix
     //
-    virtual T operator ++ (int)
+    T operator ++ (int)
     {
       T oldValue = this->get();
-      T newValue = oldValue + 1;
-      this->set(newValue);
+      this->set(oldValue + 1);
       return oldValue;
     }
 
     //
     // ++ prefix
     //
-    virtual T operator ++ ()
+    T operator ++ ()
     {
-      T newValue = this->get() + 1;
-      this->set(newValue);
-      return newValue;
+      return this->set(this->get() + 1);
     }
 
     //
     // -- postifx
     //
-    virtual T operator -- (int)
+    T operator -- (int)
     {
       T oldValue = this->get();
-      T newValue = oldValue - 1;
-      this->set(newValue);
+      this->set(this->get() - 1);
       return oldValue;
     }
 
     //
     // -- prefix
     //
-    virtual T operator -- ()
+    T operator -- ()
     {
-      T newValue = this->get() - 1;
-      this->set(newValue);
-      return newValue;
+      return this->set(this->get() - 1);
     }
 
     //
     // += operator
     //
-    virtual T operator += (T const& value)
+    T operator += (T const& value)
     {
-      T newValue = this->get() + value;
-      this->set(newValue);
-      return newValue;
+      return this->set(this->get() + value);
     }
 
     //
     // -= operator
     //
-    virtual T operator -= (T const& value)
+    T operator -= (T const& value)
     {
-      T newValue = this->get() - value;
-      this->set(newValue);
-      return newValue;
+      return this->set(this->get() - value);
     }
 
     //
     // *= operator
     //
-    virtual T operator *= (T const& value)
+    T operator *= (T const& value)
     {
-      T newValue = this->get() * value;
-      this->set(newValue);
-      return newValue;
+      return this->set(this->get() * value);
     }
 
     //
     // /= operator
     //
-    virtual T operator /= (T const& value)
+    T operator /= (T const& value)
     {
-      T newValue = this->get() / value;
-      this->set(newValue);
-      return newValue;
+      return this->set(this->get() / value);
     }
 
     //
     // ^= operator (NEW)
     //
-    virtual T operator ^= (T const& value)
+    T operator ^= (T const& value)
     {
-      T newValue = this->get() ^ value;
-      this->set(newValue);
-      return newValue;
+      return this->set(this->get() ^ value);
     }
 
     //
     // %= operator
     //
-    virtual T operator %= (T const& value)
+    T operator %= (T const& value)
     {
-      T newValue = this->get() % value;
-      this->set(newValue);
-      return newValue;
+      return this->set(this->get() % value);
     }
 
     //
     // &= operator
     //
-    virtual T operator &= (T const& value)
+    T operator &= (T const& value)
     {
-      T newValue = this->get() & value;
-      this->set(newValue);
-      return newValue;
+      return this->set(this->get() & value);
     }
 
     //
     // |= operator
     //
-    virtual T operator |= (T const& value)
+    T operator |= (T const& value)
     {
-      T newValue = this->get() | value;
-      this->set(newValue);
-      return newValue;
+      return this->set(this->get() | value);
     }
 
     //
     // <<= operator (NEW)
     //
-    virtual T operator <<= (T const& value)
+    T operator <<= (T const& value)
     {
-      T newValue = this->get() << value;
-      this->set(newValue);
-      return newValue;
+      return this->set(this->get() << value);
     }
 
     //
     // >>= operator (NEW)
     //
-    virtual T operator >>= (T const& value)
+    T operator >>= (T const& value)
     {
-      T newValue = this->get() >> value;
-      this->set(newValue);
-      return newValue;
+      return this->set(this->get() >> value);
     }
 
     //
-    // Get the variable value from the EEPROM.
+    // Get the variable value.
     //
-    virtual T get() const;
+    virtual T get() const
+    {
+    }
 
     //
-    // Save the variable value to the EEPROM.
+    // Save the variable value.
     //
-    virtual void set(T const& value);
+    virtual T set(T const& value)
+    {
+    }
+
+    //
+    // Read the variable value from the EEPROM
+    // using the address in this instance.
+    //
+    T read() const
+    {
+      T returnValue;
+
+      //
+      // Check if the variable has been set or not
+      // by comparing the value to the not set value
+      // specified in the constructor.
+      //
+      if (this->isInitialized())
+      {
+        //
+        // Get the variable from EEPROM
+        // using the address this->_address.
+        //
+        EEPROM.get(this->_address, returnValue);
+      }
+      else
+      {
+        //
+        // Return the default value.
+        //
+        returnValue = this->_defaultValue;
+      }
+
+      return returnValue;
+    }
+
+    //
+    // Write the value to the EEPROM
+    // using the address in this instance.
+    //
+    void write(T const& value) const
+    {
+      //
+      // Write the value to EEPROM using the put method. 
+      // Put uses EEPROM.update() to perform the write 
+      // so it will not rewrite the value if it didn't 
+      // change.
+      //
+      EEPROM.put(this->_address, value);
+
+      //
+      // Write the checksum.
+      //
+      byte checksum = Checksum<T>::get(value);
+      EEPROMUtil.updateEEPROM(this->checksumAddress(), checksum);
+    }
 
     //
     // Determines if the variable has been
@@ -253,7 +266,7 @@ class EEPROMBase
     // stored checksum to the actual checksum
     // of the bytes stored.
     //
-    virtual bool isInitialized()
+    bool isInitialized() const
     {
       return (this->checksum() == this->checksumByte());
     }
@@ -262,7 +275,7 @@ class EEPROMBase
     // Returns the number of EEPROM bytes
     // used by this instance.
     //
-    virtual uint length() const
+    uint length() const
     {
       //
       // The extra byte is the checksum byte.
@@ -274,7 +287,7 @@ class EEPROMBase
     // Returns the number of EEPROM bytes
     // used by T.
     //
-    virtual uint size() const
+    uint size() const
     {
       //
       // The extra byte is the checksum byte.
@@ -286,7 +299,7 @@ class EEPROMBase
     // Unset the variable (change the EEPROM values
     // back to UNSET_VALUE).
     //
-    virtual void unset(byte unsetValue = UNSET_VALUE)
+    void unset(byte unsetValue = UNSET_VALUE)
     {
       for (uint i = 0; i < this->length(); i++)
       {
@@ -298,7 +311,7 @@ class EEPROMBase
     //
     // Gets the address of the checksum byte.
     //
-    virtual uint checksumAddress() const
+    uint checksumAddress() const
     {
       return this->normalizeAddress(this->_address + this->length() - 1);
     }
@@ -306,7 +319,7 @@ class EEPROMBase
     //
     // Gets the stored checksum byte.
     //
-    virtual uint checksumByte() const
+    uint checksumByte() const
     {
       return EEPROM.read(this->checksumAddress());
     }
@@ -315,7 +328,7 @@ class EEPROMBase
     // Calcuate the checksum of the
     // data in the EEPROM for this instance.
     //
-    virtual byte checksum() const
+    byte checksum() const
     {
       return Checksum<T>::getEEPROM(this->getAddress(), sizeof(T));
     }
@@ -324,7 +337,7 @@ class EEPROMBase
     // Copy the EEPROM bytes of this instance to
     // a byte array.
     //
-    virtual void copyTo(byte* data, uint length) const
+    void copyTo(byte* data, uint length) const
     {
       for (uint i = 0; i < length; i++)
       {
@@ -337,7 +350,7 @@ class EEPROMBase
     // The the EEPROM address of the variable represented
     // in this instance.
     //
-    virtual uint getAddress() const
+    uint getAddress() const
     {
       return this->_address;
     }
@@ -346,7 +359,7 @@ class EEPROMBase
     // Get the next EEPROM address after this variable. This can be used to set the
     // address of another EEPROM variable.
     //
-    virtual uint nextAddress() const
+    uint nextAddress() const
     {
       return this->normalizeAddress(this->getAddress() + this->length());
     }
@@ -354,7 +367,7 @@ class EEPROMBase
     //
     // Return the default value for this instance.
     //
-    virtual T getDefaultValue() const
+    T getDefaultValue() const
     {
       return this->_defaultValue;
     }
@@ -376,7 +389,7 @@ class EEPROMBase
     //
     // Don't allow an address to go beyond the end of the EEPROM space.
     //
-    virtual uint normalizeAddress(uint address) const
+    uint normalizeAddress(uint address) const
     {
       return min(address, EEPROM.length() - 1);
     }
