@@ -29,9 +29,9 @@
 // address or location in EEPROM. The second parameter is the default
 // value to return when the variable has not been initialized.
 //
-// This variable is stored in memory unit committed. When it
-// is committed to EEPROM, it is save to EEPROM positions 0, 
-// 1, 2, 3 and 4 (5 bytes).
+// This variable is stored in memory unil committed. When it
+// is committed, it is save to EEPROM positions 0, 1, 2, 3 
+// and 4 (5 bytes).
 //
 EEPROMCache<uint32_t> a(0);
 
