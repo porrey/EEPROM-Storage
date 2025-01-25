@@ -120,7 +120,7 @@ class EEPROMDisplayClass
     // Display the properties of a variable.
     //
     template<typename T>
-    void displayVariable(String name, EEPROMCache<T> value)
+    void displayVariable(String name, EEPROMBase<T> value)
     {
       this->getSerial()->print(name);
       this->getSerial()->print(": Variable Size: ");
