@@ -18,27 +18,17 @@
 //
 
 // ---------------------------------------------------------------------------------------
-// Displays the placement of EEPROM variables in memory when using nextAddress()
+// Demonstrates how two variables in different scopes can share a value.
 // ---------------------------------------------------------------------------------------
 
-#include <EEPROM-Storage.h>
+#include <EEPROM-Cache.h>
 #include <EEPROM-Display.h>
 
-//
-// Define the EEPROM variables.
-//
-EEPROMStorage<uint8_t> a(0, 0);
-EEPROMStorage<uint16_t> b(a.nextAddress(), 0);
-EEPROMStorage<uint32_t> c(b.nextAddress(), 0);
-EEPROMStorage<uint64_t> d(c.nextAddress(), 0);
-EEPROMStorage<float> e(d.nextAddress(), 0);
-EEPROMStorage<double> f(e.nextAddress(), 0);
-EEPROMStorage<char> g(f.nextAddress(), ' ');
-
-void setup()
+void setup() 
 {
   //
-  // Initialize the serial port.
+  // Initialize the serial port. On a Particle
+  // device the baud rate will be ignored.
   //
   Serial.begin(115200);
 
@@ -59,48 +49,45 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
-  
-  //
-  // Clear EEPROM.
-  //
-  EEPROMUtil.clearEEPROM();
-  
+  Serial.print("The total size of EEPROM on this device is ");
+  Serial.print(EEPROM.length());
+  Serial.println(" bytes.");
+
   //
   // Initialize the random number generator.
   //
   randomSeed(analogRead(0));
 
   //
-  // Set random values to each EEPROM variable.
+  // Create a local variable scoped to the
+  // setup method.
   //
-  a = random(1, 255);
-  b = random(1, 1000);
-  c = random(1, 10000);
-  d = random(1, 100000);
-  e = random(1, 100);
-  f = random(1, 100);
-  g = 'y';
+  EEPROMCache<uint32_t> x(0, 0);
 
   //
-  // Display the EEPROM properties.
+  // Assign a random value to the EEPROM variable x.
   //
-  EEPROMDisplay.displayHeader();
-  EEPROMDisplay.displayVariable("a", a);
-  EEPROMDisplay.displayVariable("b", b);
-  EEPROMDisplay.displayVariable("c", c);
-  EEPROMDisplay.displayVariable("d", d);
-  EEPROMDisplay.displayVariable("e", e);
-  EEPROMDisplay.displayVariable("f", f);
-  EEPROMDisplay.displayVariable("g", g);
-
-  //
-  // Display the EEPROM contents.
-  //
-  Serial.println();
-  EEPROMDisplay.displayEEPROM();
+  uint32_t value = random(1, 99999);
+  Serial.print("Assigning EEPROM variable x the value of "); Serial.print(value); Serial.println(".");
+  x = value;
+  x.commit();
+  Serial.print("The value of the EEPROM variable x is "); Serial.print(x); Serial.println(".");
 }
 
-void loop()
+void loop() 
 {
+  //
+  // Create a local variable scoped to the
+  // loop method. The value will match the
+  // value of the variable x.
+  //
+  EEPROMCache<uint32_t> y(0, 0);
+  y.restore();
+  
+  Serial.print("The value of the EEPROM variable y is "); Serial.print(y); Serial.println(".");
+
+  //
+  // Loop forever.
+  //
+  while (true) delay(100);
 }

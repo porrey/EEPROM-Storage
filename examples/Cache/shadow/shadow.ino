@@ -18,7 +18,7 @@
 //
 
 // ---------------------------------------------------------------------------------------
-// This example demonstrates simple usage.
+// This example demonstrates how one variable can shadow another.
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Cache.h>
@@ -29,11 +29,7 @@
 // address or location in EEPROM. The second parameter is the default
 // value to return when the variable has not been initialized.
 //
-// This variable is stored in memory unil committed. When it
-// is committed, it is save to EEPROM positions 0, 1, 2, 3 
-// and 4 (5 bytes).
-//
-EEPROMCache<uint32_t> a(0);
+EEPROMCache<uint32_t> a(0, 0);  // This variable is stored in EEPROM at positions 0, 1, 2, 3 and 4 (5 bytes)
 
 void setup()
 {
@@ -49,7 +45,7 @@ void setup()
   //
   while (!Serial);
   Serial.println();
-
+  
   //
   // On ESP8266 platforms EEPROM must be initialized.
   //
@@ -63,70 +59,58 @@ void setup()
   Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
   
   //
-  // If initialized, retrieve the stored value.
+  // Demonstrates a local variable taking on the value
+  // of a previously defined global variable. This one
+  // will use the same address as a. Note the same data
+  // type must be used or we will get unexpected values.
   //
-  if (a.isInitialized())
-  {
-    a.restore();
-    Serial.print("The restored value of EEPROM variable a is "); Serial.print(a); Serial.println(".");
-  }
+  EEPROMCache<uint32_t> shadowVar(a.getAddress(), 0);
 
   //
-  // Increment the value of a.
+  // Assign the value of 16 to a and commit the value.
   //
-  Serial.println("Incrementing the EEPROM variable a by 1.");
-  a++;
+  Serial.println("Assigning a the value of 16.");
+  a = 16;
+  a.commit();
 
   //
-  // Display the value of a.
+  // Display the EEPROM contents.
+  //
+  EEPROMDisplay.displayEEPROM();
+
+  //
+  // Display the values of a and shadowVar. Both
+  // variables will have the value of 16.
   //
   Serial.print("a = "); Serial.println(a);
 
   //
-  // Display the EEPROM contents before commit.
+  // Restore the value of shadowVar from EEPROM.
   //
-  EEPROMDisplay.displayEEPROM();
+  shadowVar.restore();
+  Serial.print("shadowVar = "); Serial.println(a);
 
   //
-  // Commit the value to EEPROM.
+  // Assign the value of 11 to shadowVar and commit 
+  // the value to the EEPROM..
   //
-  a.commit();
+  Serial.println("Assigning shadowVar the value of 11.");
+  shadowVar = 11;
+  shadowVar.commit();
 
   //
-  // Display the EEPROM contents after commit.
+  // Restore the value of a from EEPROM.
   //
-  EEPROMDisplay.displayEEPROM();
+  a.restore();
+  
+  //
+  // Display the values of a and shadowVar. Both variables
+  // will have the value of 11.
+  //
+  Serial.print("a = "); Serial.println(a);
+  Serial.print("shadowVar = "); Serial.println(a);
 }
 
 void loop()
 {
-  //
-  // Increment the value of a by 1.
-  //
-  Serial.print("Incrementing a. ");
-  a++;
-
-  //
-  // Display the value of a.
-  //
-  Serial.print("The value of a, from memory, is "); Serial.println(a);
-
-  //
-  // Commit the value to EEPROM.
-  //
-  if (a % 100 == 0)
-  {
-    Serial.println("Committing variable to EEPROM memory.");
-    a.commit();
-
-    //
-    // Display the EEPROM contents after commit.
-    //
-    EEPROMDisplay.displayEEPROM();
-  }
-
-  //
-  // Wait for 2 seconds.
-  //
-  delay(750);
 }
