@@ -24,14 +24,6 @@ template <typename T>
 class TestLibrary
 {
   public:
-    TestLibrary()
-    {
-        //
-        // Initialize the random number generator.
-        //
-        randomSeed(analogRead(0));
-    }
-    
     void TestStandard(String typeName, uint address, T minRandomValue, T maxRandomValue)
     {
       //
