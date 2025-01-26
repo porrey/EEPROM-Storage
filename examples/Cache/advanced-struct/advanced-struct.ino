@@ -132,10 +132,6 @@ void setup()
 
 void loop()
 {
-  //
-  // Delay 2 seconds.
-  //
-  delay(2000);
 }
 
 void displayStruct(String label, String prefix, Matrix m)

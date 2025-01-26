@@ -102,8 +102,4 @@ void setup()
 
 void loop()
 {
-  //
-  // Delay 2 seconds.
-  //
-  delay(2000);
 }

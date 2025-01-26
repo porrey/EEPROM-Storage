@@ -100,8 +100,4 @@ void setup()
 
 void loop()
 {
-  //
-  // Wait for 2 seconds.
-  //
-  delay(2000);
 }
