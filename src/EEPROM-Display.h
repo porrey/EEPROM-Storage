@@ -30,6 +30,7 @@
 #include "Particle.h"
 #endif
 
+#include "EEPROM-Base.h"
 #include "EEPROM-Var.h"
 
 class EEPROMDisplayClass

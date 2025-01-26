@@ -21,11 +21,11 @@
 // This example tests the assignment of one EEPROM variable to another.
 // ---------------------------------------------------------------------------------------
 
-#include <EEPROM-Storage.h>
+#include <EEPROM-Cache.h>
 #include <EEPROM-Display.h>
 
-EEPROMStorage<uint32_t> a(0, 0);
-EEPROMStorage<uint32_t> b(b.nextAddress(), 0);
+EEPROMCache<uint32_t> a(0, 0);
+EEPROMCache<uint32_t> b(b.nextAddress(), 0);
 
 void setup() 
 {
@@ -53,22 +53,21 @@ void setup()
   //
   Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
   
-  //
-  // Clear EEPROM. 
-  //
-  // Uncomment this line of code and run once. Afterwards comment the line again.
-  //
-  //EEPROMUtil.clearEEPROM();
-
-  //
-  // Display the EEPROM properties.
-  //
-  EEPROMDisplay.displayHeader();
-  EEPROMDisplay.displayVariable("a", a);
-  EEPROMDisplay.displayVariable("b", b);
-
   if (a.isInitialized() && b.isInitialized())
   {
+    //
+    // Restore the values from EEPROM.
+    //
+    a.restore();
+    b.restore();
+
+    //
+    // Display the EEPROM properties.
+    //
+    EEPROMDisplay.displayHeader();
+    EEPROMDisplay.displayVariable("a", a);
+    EEPROMDisplay.displayVariable("b", b);
+
     //
     // Display the values of a and b.
     //
@@ -106,8 +105,11 @@ void setup()
     //
     Serial.println("Initializing value of a to 5.");
     a = 5;
+    a.commit();
+
     Serial.println("Initializing value of b to 5.");
     b = 5;
+    b.commit();
   }
 }
 
@@ -116,7 +118,9 @@ void loop()
   //
   // Increment a.
   //
+  a.restore();
   a++;
+  a.commit();
 
   //
   // When variable a mod 5 is 0 then assign the value stored in 
@@ -129,7 +133,9 @@ void loop()
     //
     Serial.println();
     Serial.println("Assigning b the value of a.");
+
     b = a;
+    b.commit();
     Serial.println("Assigned a to b!");
 
     //

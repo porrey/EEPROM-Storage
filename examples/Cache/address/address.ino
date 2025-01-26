@@ -18,11 +18,22 @@
 //
 
 // ---------------------------------------------------------------------------------------
-// This example demonstrates displaying and clearing EEPROM contents.
+// Displays the placement of EEPROM variables in memory when using nextAddress()
 // ---------------------------------------------------------------------------------------
 
-#include <EEPROM-Storage.h>
+#include <EEPROM-Cache.h>
 #include <EEPROM-Display.h>
+
+//
+// Define the EEPROM variables.
+//
+EEPROMCache<uint8_t> a(0, 0);
+EEPROMCache<uint16_t> b(a.nextAddress(), 0);
+EEPROMCache<uint32_t> c(b.nextAddress(), 0);
+EEPROMCache<uint64_t> d(c.nextAddress(), 0);
+EEPROMCache<float> e(d.nextAddress(), 0);
+EEPROMCache<double> f(e.nextAddress(), 0);
+EEPROMCache<char> g(f.nextAddress(), ' ');
 
 void setup()
 {
@@ -51,21 +62,38 @@ void setup()
   Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
   
   //
-  // Set the serial port for the EEPROM Utility class.
+  // Clear EEPROM.
   //
-  EEPROMDisplay.setSerial(&Serial);
-
-  //
-  // Display the EEPROM contents.
-  //
-  Serial.println();
-  EEPROMDisplay.displayEEPROM();
-
-  //
-  // Cleat the EEPROM contents.
-  //
-  Serial.println("\r\nClearing EEPROM contents.");
   EEPROMUtil.clearEEPROM();
+  
+  //
+  // Initialize the random number generator.
+  //
+  randomSeed(analogRead(0));
+
+  //
+  // Set random values to each EEPROM variable. Commit
+  // the values to the EEPROM.
+  //
+  a = random(1, 255); a.commit();
+  b = random(1, 1000); b.commit();
+  c = random(1, 10000); c.commit();
+  d = random(1, 100000); d.commit();
+  e = random(1, 100); e.commit();
+  f = random(1, 100); f.commit();
+  g = 'y'; g.commit();
+
+  //
+  // Display the EEPROM properties.
+  //
+  EEPROMDisplay.displayHeader();
+  EEPROMDisplay.displayVariable("a", a);
+  EEPROMDisplay.displayVariable("b", b);
+  EEPROMDisplay.displayVariable("c", c);
+  EEPROMDisplay.displayVariable("d", d);
+  EEPROMDisplay.displayVariable("e", e);
+  EEPROMDisplay.displayVariable("f", f);
+  EEPROMDisplay.displayVariable("g", g);
 
   //
   // Display the EEPROM contents.
@@ -76,8 +104,4 @@ void setup()
 
 void loop()
 {
-  //
-  // Delay 2 seconds.
-  //
-  delay(2000);
 }

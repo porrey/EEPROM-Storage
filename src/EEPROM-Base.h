@@ -31,7 +31,7 @@
 #endif
 
 #include "EEPROM-Util.h"
-#include "Checksum.h"
+#include "EEPROM-Checksum.h"
 
 //
 // Generic class to wrap an EEPROM variable.

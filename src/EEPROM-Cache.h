@@ -73,9 +73,9 @@ class EEPROMCache : public EEPROMBase<T>
     //
     // Accounts for EEPROMCache<T> = EEPROMCache<T>
     //
-    EEPROMCache<T> operator = (EEPROMCache<T> const& value)
+    EEPROMCache<T> operator = (EEPROMCache<T> const& item)
     {
-      this->set(value);
+      this->set(item.get());
       return *this;
     }
 

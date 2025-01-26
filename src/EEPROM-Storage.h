@@ -67,9 +67,9 @@ class EEPROMStorage : public EEPROMBase<T>
     //
     // Accounts for EEPROMStorage<T> = EEPROMStorage<T>
     //
-    EEPROMStorage<T> operator = (EEPROMStorage<T> const& value)
+    EEPROMStorage<T> operator = (EEPROMStorage<T> const& item)
     {
-      this->set(value);
+      this->set(item.get());
       return *this;
     }
 
