@@ -20,6 +20,8 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#include <EEPROM-Var.h>
+
 #if defined(SPARK)
 #define word short
 #endif

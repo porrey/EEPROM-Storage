@@ -27,8 +27,8 @@
 //
 // ---------------------------------------------------------------------------------------
 
-#include <EEPROM-Storage.h>
 #include "Types.h"
+#include <EEPROM.h>
 
 void setup()
 {
@@ -89,12 +89,12 @@ void setup()
   //
   // This will output declarations through the serial port.
   //
-  int items = sizeof(myDefinitions) / sizeof(definition);
-  Serial.print("The number of declarations defined is "); Serial.println(items);
+  int itemCount = sizeof(myDefinitions) / sizeof(definition);
+  Serial.print("The number of definiions defined is "); Serial.println(itemCount);
   Serial.println();
   int nextAddress = myFirstAddress;
 
-  for (int i = 0; i < items; i++)
+  for (int i = 0; i < itemCount; i++)
   {
     if (showComments)
     {
