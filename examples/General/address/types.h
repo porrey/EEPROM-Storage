@@ -22,10 +22,6 @@
 
 #include <EEPROM-Var.h>
 
-#if defined(SPARK)
-#define word short
-#endif
-
 #define DT_BYTE      0
 #define DT_CHAR      1
 #define DT_BOOL      2
