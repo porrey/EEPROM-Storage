@@ -27,6 +27,10 @@
 #define uint unsigned int
 #endif
 
+#if defined(SPARK)
+#define word short
+#endif
+
 #define UNSET_VALUE 0xFF
 
 #endif
