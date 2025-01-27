@@ -88,8 +88,8 @@ class AdditionTest : public RunOnceTest<T>
       item.restore();
       #endif
 
-      value = value + 5;
-      item = item + 5;
+      value = value + 1;
+      item = item + 1;
 
       #if defined(TARGET_CACHE)
       item.commit();
@@ -126,8 +126,8 @@ class SubtractionTest : public RunOnceTest<T>
       item.restore();
       #endif
 
-      value = value - 5;
-      item = item - 5;
+      value = value - 1;
+      item = item - 1;
 
       #if defined(TARGET_CACHE)
       item.commit();
@@ -394,8 +394,8 @@ class PlusEqualTest : public RunOnceTest<T>
       item.restore();
       #endif
 
-      value += 10;
-      item += 10;
+      value += 2;
+      item += 2;
 
       #if defined(TARGET_CACHE)
       item.commit();
@@ -432,8 +432,8 @@ class MinusEqualTest : public RunOnceTest<T>
       item.restore();
       #endif
 
-      value -= 10;
-      item -= 10;
+      value -= 2;
+      item -= 2;
 
       #if defined(TARGET_CACHE)
       item.commit();
@@ -470,8 +470,8 @@ class MultiplyEqualTest : public RunOnceTest<T>
       item.restore();
       #endif
 
-      value *= 10;
-      item *= 10;
+      value *= 2;
+      item *= 2;
 
       #if defined(TARGET_CACHE)
       item.commit();
@@ -508,8 +508,8 @@ class DivideEqualTest : public RunOnceTest<T>
       item.restore();
       #endif
 
-      value /= 10;
-      item /= 10;
+      value /= 2;
+      item /= 2;
 
       #if defined(TARGET_CACHE)
       item.commit();
@@ -817,7 +817,7 @@ class NotEqualityTest : public RunOnceTest<T>
       //
       TARGET_LIBRARY item(this->_address);
       T randomValue = random(this->_minValue, this->_maxValue);
-      T value = randomValue + 10;
+      T value = randomValue + 1;
       item = randomValue;
 
       #if defined(TARGET_CACHE)
