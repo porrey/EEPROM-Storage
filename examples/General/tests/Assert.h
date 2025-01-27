@@ -49,8 +49,6 @@ class AssertClass
     bool AreEqual(const float, const float);
     bool AreEqual(const double, const double);
 
-    //template <typename T> bool AreNotEqual(const T, const T);
-
     bool AreNotEqual(const bool, const bool);
     bool AreNotEqual(const unsigned char, const unsigned char);
     bool AreNotEqual(const char, const char);
