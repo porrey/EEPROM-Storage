@@ -33,13 +33,19 @@ class TestRunnerClass
       // Run predefined tests.
       //
       {
-        TestDirector<unsigned char> t("unsigned char", address, 0, 255);
+        TestDirector<bool> t("bool", address, 0, 1);
         returnValue.add(t.runArithmeticTests());
         returnValue.add(t.runBinaryTests());
       }
 
       {
         TestDirector<char> t("char", address, 0, 127);
+        returnValue.add(t.runArithmeticTests());
+        returnValue.add(t.runBinaryTests());
+      }
+
+      {
+        TestDirector<unsigned char> t("unsigned char", address, 0, 255);
         returnValue.add(t.runArithmeticTests());
         returnValue.add(t.runBinaryTests());
       }
@@ -88,6 +94,45 @@ class TestRunnerClass
       {
         TestDirector<double> t("double", address, -150000, 150000);
         returnValue.add(t.runArithmeticTests());
+      }
+
+      //
+      // Test the int types for completeness.
+      //
+      {
+        TestDirector<int8_t> t("int8_t", address, -100, 100);
+        returnValue.add(t.runArithmeticTests());
+        returnValue.add(t.runBinaryTests());
+      }
+
+      {
+        TestDirector<uint8_t> t("uint8_t", address, 0, 200);
+        returnValue.add(t.runArithmeticTests());
+        returnValue.add(t.runBinaryTests());
+      }
+
+      {
+        TestDirector<int16_t> t("int16_t", address, -9999, 9999);
+        returnValue.add(t.runArithmeticTests());
+        returnValue.add(t.runBinaryTests());
+      }
+
+      {
+        TestDirector<uint16_t> t("uint16_t", address, 0, 19998);
+        returnValue.add(t.runArithmeticTests());
+        returnValue.add(t.runBinaryTests());
+      }
+
+      {
+        TestDirector<int32_t> t("int32_t", address, -199999, 199999);
+        returnValue.add(t.runArithmeticTests());
+        returnValue.add(t.runBinaryTests());
+      }
+
+      {
+        TestDirector<uint32_t> t("uint32_t", address, 0, 399998);
+        returnValue.add(t.runArithmeticTests());
+        returnValue.add(t.runBinaryTests());
       }
 
       return returnValue;
