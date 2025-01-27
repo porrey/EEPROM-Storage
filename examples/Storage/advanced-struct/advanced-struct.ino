@@ -34,7 +34,7 @@ typedef struct  {
   char sd;
   float se;
   double sf;
-} Matrix, *pmatrix;;
+} Matrix, *pmatrix;
 
 //
 // Define the EEPROM variable. Using the initialization

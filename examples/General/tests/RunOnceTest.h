@@ -17,8 +17,8 @@
 // see http://www.gnu.org/licenses/.
 //
 #pragma once
-#ifndef EEPROM_STORAGE_H
-#define EEPROM_STORAGE_H
+#ifndef RUN_ONCE_TEST_H
+#define RUN_ONCE_TEST_H
 
 //
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
@@ -30,64 +30,79 @@
   #include "Particle.h"
 #endif
 
-#include "EEPROM-Base.h"
+#if defined(TARGET_STORAGE)
+  #include <EEPROM-Storage.h>
+#else
+  #include <EEPROM-Cache.h>
+#endif
 
-//
-// Generic class to wrap an EEPROM variable that reads and writes
-// directly to and from the EEPROm storage.
-//
 template <typename T>
-class EEPROMStorage : public EEPROMBase<T>
+class RunOnceTest
 {
   public:
+    RunOnceTest(const char* name, uint address, T minValue, T maxValue)
+    {
+      //
+      // Save the address and create the variable.
+      //
+      this->_address = address;
+
+      //
+      // Save the name.
+      //
+      this->_name = name;
+
+      //
+      // Save the min and max values.
+      //
+      this->_minValue = minValue;
+      this->_maxValue = maxValue;
+    }
+
+    const char* name()
+    {
+      return this->_name;
+    }
+
     //
-    // Initialize an instance of EEPROMStorage<T> with the specified address.
+    // Prepare to run the test.
     //
-    EEPROMStorage(const uint address) : EEPROMBase<T>(address)
+    virtual void setup()
     {
     }
 
     //
-    // Initialize an instance of EEPROMStorage<T> with the specified address
-    // and default value.
+    // Run the test and return the number
+    // of passed tests.
     //
-    EEPROMStorage(const uint address, T defaultValue) : EEPROMBase<T>(address, defaultValue)
+    virtual int runOnce()
+    {
+      int returnValue = 0;
+
+      Serial.print("TEST: "); Serial.print(this->_name); Serial.print(": ");
+      this->setup();
+      returnValue = this->onRunOnce();
+      Serial.println();
+
+      return returnValue;
+    }
+
+    virtual int onRunOnce()
     {
     }
 
-    //
-    // Accounts for EEPROMStorage<T> = T
-    //
-    EEPROMStorage<T> operator = (T const& value)
+    int totalPassed()
     {
-      this->set(value);
-      return *this;
+      return this->_totalPassed;
     }
 
-    //
-    // Accounts for EEPROMStorage<T> = EEPROMStorage<T>
-    //
-    EEPROMStorage<T> operator = (EEPROMStorage<T> const& item)
-    {
-      this->set(item.get());
-      return *this;
-    }
+    virtual int totalTests();
 
-    //
-    // Get the variable value from the EEPROM.
-    //
-    T get() const
-    {
-      return this->read();
-    }
-
-    //
-    // Save the variable value to the EEPROM.
-    //
-    T set(T const& value)
-    {
-      this->write(value);
-      return this->get();
-    }
+  protected:
+    uint _address;
+    T _minValue;
+    T _maxValue;
+    uint _totalPassed = 0;
+    const char* _name;
 };
 #endif
