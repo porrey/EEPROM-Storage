@@ -24,11 +24,11 @@
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
 #if defined(ARDUINO) && ARDUINO >= 100
-#define uint unsigned int
+  #define uint unsigned int
 #endif
 
 #if defined(SPARK)
-#define word short
+  #define word short
 #endif
 
 #define UNSET_VALUE 0xFF

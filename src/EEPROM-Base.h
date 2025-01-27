@@ -24,14 +24,14 @@
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
 #if defined(ARDUINO) && ARDUINO >= 100
-  #include "Arduino.h"
+  #include <Arduino.h>
   #include <EEPROM.h>
 #elif defined(SPARK)
-  #include "Particle.h"
+  #include <Particle.h>
 #endif
 
-#include "EEPROM-Util.h"
-#include "EEPROM-Checksum.h"
+#include <EEPROM-Util.h>
+#include <EEPROM-Checksum.h>
 
 //
 // Generic class to wrap an EEPROM variable.

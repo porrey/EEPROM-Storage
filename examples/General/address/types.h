@@ -20,7 +20,7 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#include <EEPROM-Var.h>
+#include <EEPROM-Vars.h>
 
 #define DT_BYTE      0
 #define DT_CHAR      1

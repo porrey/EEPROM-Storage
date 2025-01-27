@@ -22,10 +22,7 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM.h>
-
-#if defined(SPARK)
-#define word short
-#endif
+#include <EEPROM-Vars.h>
 
 void setup()
 {
