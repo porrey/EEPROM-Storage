@@ -36,22 +36,21 @@
 #define DT_FLOAT     7
 #define DT_DOUBLE    8
 
-#define DT_UBYTE     9
-#define DT_UCHAR    10
-#define DT_USHORT   11
-#define DT_UWORD    12
-#define DT_UINT     13
-#define DT_ULONG    14
+#define DT_UCHAR     9
+#define DT_USHORT   10
+#define DT_UWORD    11
+#define DT_UINT     12
+#define DT_ULONG    13
 
-#define DT_UINT8_T  15
-#define DT_UINT16_T 16
-#define DT_UINT32_T 17
-#define DT_UINT64_T 18
+#define DT_UINT8_T  14
+#define DT_UINT16_T 15
+#define DT_UINT32_T 16
+#define DT_UINT64_T 17
 
-#define DT_UINT8_T  19
-#define DT_UINT16_T 20
-#define DT_UINT32_T 21
-#define DT_UINT64_T 22
+#define DT_UINT8_T  18
+#define DT_UINT16_T 19
+#define DT_UINT32_T 20
+#define DT_UINT64_T 21
 
 byte _size[] =
 {
@@ -64,7 +63,6 @@ byte _size[] =
   sizeof(long), 
   sizeof(float), 
   sizeof(double),
-  sizeof(unsigned byte), 
   sizeof(unsigned char), 
   sizeof(unsigned short), 
   sizeof(unsigned word), 
@@ -91,7 +89,6 @@ char* _name[] =
   "long", 
   "float", 
   "double",
-  "unsigned byte", 
   "unsigned char", 
   "unsigned short", 
   "unsigned word",
