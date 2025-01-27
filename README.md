@@ -50,11 +50,11 @@ Each variable requires enough memory to store the underlying type plus one addit
 
 Consider the following variable definitions.
 
-	EEPROMStorage<uint8_t> v1(0, 0);		// 2 bytes (1 + 1 checksum), positions 0 and 1
-	EEPROMStorage<uint16_t> v2(2, 0);		// 3 bytes (2 + 1 checksum), positions 2, 3 and 4
-	EEPROMStorage<uint32_t> v3(5, 0);		// 5 bytes (4 + 1 checksum), positions 5, 6, 6, 8 and 9
-	EEPROMStorage<float> v4(10, 0.0);		// 5 bytes (4 + 1 checksum), positions 10, 11, 12, 13 and 14
-	EEPROMStorage<bool> v5(15, false);		// 2 bytes (1 + 1 checksum), positions 15, 16, 17, 18 and 19
+	EEPROMStorage<uint8_t> v1(0, 0);	// 2 bytes (1 + 1 checksum), positions 0 and 1
+	EEPROMStorage<uint16_t> v2(2, 0);	// 3 bytes (2 + 1 checksum), positions 2, 3 and 4
+	EEPROMStorage<uint32_t> v3(5, 0);	// 5 bytes (4 + 1 checksum), positions 5, 6, 6, 8 and 9
+	EEPROMStorage<float> v4(10, 0.0);	// 5 bytes (4 + 1 checksum), positions 10, 11, 12, 13 and 14
+	EEPROMStorage<bool> v5(15, false);	// 2 bytes (1 + 1 checksum), positions 15, 16, 17, 18 and 19
 
 The best way to think about EEPROM memory is to think about it as a large byte array with a base index of 0. In fact, the Arduino libraries construct access to EEPROM in this manner. 
 
@@ -68,7 +68,7 @@ If you need help determining the proper address for your `EEPROMStorage` instanc
 
 Using the nextAddress() method will make it easier to align your variables in memory.
 
-	EEPROMStorage<uint8_t> v1(0, 0);					// 2 bytes (1 + 1 checksum), positions 0 and 1
+	EEPROMStorage<uint8_t> v1(0, 0);			// 2 bytes (1 + 1 checksum), positions 0 and 1
 	EEPROMStorage<uint16_t> v2(v1.nextAddress(), 0);	// 3 bytes (2 + 1 checksum), positions 2, 3 and 4
 	EEPROMStorage<uint32_t> v3(v2.nextAddress(), 0);	// 5 bytes (4 + 1 checksum), positions 5, 6, 6, 8 and 9
 	EEPROMStorage<float> v4(v3.nextAddress(), 0.0);		// 5 bytes (4 + 1 checksum), positions 10, 11, 12, 13 and 14
