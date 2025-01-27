@@ -25,8 +25,8 @@
 // Uncomment one or the other to select
 // the library to test.
 //
-//#define TARGET_STORAGE
-#define TARGET_CACHE
+#define TARGET_STORAGE
+//#define TARGET_CACHE
 
 #include <EEPROM-Util.h>
 #include "TestRunner.h"
