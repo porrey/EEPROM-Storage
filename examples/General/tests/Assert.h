@@ -33,7 +33,6 @@
 class AssertClass
 {
   public:
-    AssertClass();
     bool IsTrue(const bool);
     bool IsFalse(const bool);
     
