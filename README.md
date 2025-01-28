@@ -8,7 +8,6 @@ There are two classes that provide the similar access to EEEPROM. The first is t
 Other than the `restore()` and `commit()` (*see description below*) methods on the cache based class, these objects can be used interchangably.
 
 ### Direct Storage (EEPROMStorage\<T\>)
----
 This class writes directly to the EEPROM whenever the variable value is updated and reads directly from EEPROM when the variable value is accessed.
 
 Within the library, examples of how to use this type of access can be found in the **Storage** folder under **Examples**.
