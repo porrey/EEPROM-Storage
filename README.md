@@ -2,26 +2,24 @@
 ## Overview
 The EEPROM Storage library provides the ability to access variables stored in EEPROM just as if they were stored in normal RAM.
 
-### EEPROMStorage\<T\> vs EEPROMCache\<T\>
----
+## EEPROMStorage\<T\> vs EEPROMCache\<T\>
 There are two classes that provide the similar access to EEEPROM. The first is the Direct Storage class which reads and writes to directly to and from EEPROM. The second is the Cache Access whichs reads and writes from memory and writes to the EEPROM when directed.
 
 Other than the `restore()` and `commit()` (*see description below*) methods on the cache based class, these objects can be used interchangably.
 
-#### Direct Storage (EEPROMStorage\<T\>)
+### Direct Storage (EEPROMStorage\<T\>)
 ---
 This class writes directly to the EEPROM whenever the variable value is updated and reads directly from EEPROM when the variable value is accessed.
 
 Within the library, examples of how to use this type of access can be found in the **Storage** folder under **Examples**.
 
-#### Cached Access (EEPROMCache\<T\>)
+### Cached Access (EEPROMCache\<T\>)
 ---
 This class reads and writes the variable value from RAM and only updates the value from EEPROM when `restore()` is called. Subsequently it only writes to EEPROM when `commit()` is called.
 
 Within the library, examples of how to use this type of access can be found in the **Cache** folder under **Examples**.
 
-### General Usage
----
+## General Usage
 Once defined, a variable can be used in in the same manner as its underlying type. For example, a variable defined as an integer (int) would be defined as follows:
 
     int i = 0;
