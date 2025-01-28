@@ -35,20 +35,16 @@ copyTo	KEYWORD2
 getAddress	KEYWORD2
 nextAddress	KEYWORD2
 getDefaultValue	KEYWORD2
-
 restore	KEYWORD2
 commit KEYWORD2
-
 clearEEPROM KEYWORD2
 updateEEPROM KEYWORD2
-
 displayEEPROM KEYWORD2
 displayVariable KEYWORD2
 displayHeader KEYWORD2
 getSerial KEYWORD2
 setSerial KEYWORD2
 displayPaddedHexByte KEYWORD2
-
 get KEYWORD2
 getEEPROM KEYWORD2
 
