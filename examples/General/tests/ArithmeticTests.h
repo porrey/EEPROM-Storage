@@ -59,9 +59,12 @@ class InitializationTest : public RunOnceTest<T>
       // Assert
       //
       Serial.print("Value Initialized: ");
-      this->_totalPassed += Assert.AreEqual(item, initValue);
+      int returnValue = Assert.AreEqual(item, initValue);
       Serial.print(", Variable Is Initialized: ");
-      this->_totalPassed += Assert.IsTrue(item.isInitialized());
+      returnValue += Assert.IsTrue(item.isInitialized());
+
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -99,7 +102,9 @@ class AdditionTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -137,7 +142,9 @@ class SubtractionTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -175,7 +182,9 @@ class MultiplicationTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -213,7 +222,9 @@ class DivisionTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -251,7 +262,9 @@ class IncrementPostfixTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -289,8 +302,11 @@ class IncrementPrefixTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
-      this->_totalPassed += Assert.AreEqual(v1, v2);
+      int returnValue = Assert.AreEqual(item, value);
+      returnValue += Assert.AreEqual(v1, v2);
+
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -328,7 +344,9 @@ class DecrementPostfixTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -366,8 +384,11 @@ class DecrementPrefixTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
-      this->_totalPassed += Assert.AreEqual(v1, v2);
+      int returnValue = Assert.AreEqual(item, value);
+      returnValue += Assert.AreEqual(v1, v2);
+
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -405,7 +426,9 @@ class PlusEqualTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -443,7 +466,9 @@ class MinusEqualTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -481,7 +506,9 @@ class MultiplyEqualTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -519,7 +546,9 @@ class DivideEqualTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -549,7 +578,9 @@ class GreaterThanValueTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.IsTrue(item > value);
+      int returnValue = Assert.IsTrue(item > value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -579,7 +610,9 @@ class GreaterThanVariableTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.IsTrue(value > item);
+      int returnValue = Assert.IsTrue(value > item);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -609,7 +642,9 @@ class LessThanValueTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.IsTrue(item < value);
+      int returnValue = Assert.IsTrue(item < value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -639,7 +674,9 @@ class LessThanVariableTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.IsTrue(value < item);
+      int returnValue = Assert.IsTrue(value < item);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -670,8 +707,11 @@ class GreaterThanOrEqualToValueTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.IsTrue(item >= value1);
-      this->_totalPassed += Assert.IsTrue(item >= value2);
+      int returnValue = Assert.IsTrue(item >= value1);
+      returnValue += Assert.IsTrue(item >= value2);
+
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -702,8 +742,11 @@ class GreaterThanOrEqualToVariableTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.IsTrue(value1 >= item);
-      this->_totalPassed += Assert.IsTrue(value2 >= item);
+      int returnValue = Assert.IsTrue(value1 >= item);
+      returnValue += Assert.IsTrue(value2 >= item);
+
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -734,8 +777,11 @@ class LessThanOrEqualToValueTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.IsTrue(item <= value1);
-      this->_totalPassed += Assert.IsTrue(item <= value2);
+      int returnValue = Assert.IsTrue(item <= value1);
+      returnValue += Assert.IsTrue(item <= value2);
+
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -766,8 +812,11 @@ class LessThanOrEqualToVariableTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.IsTrue(value1 <= item);
-      this->_totalPassed += Assert.IsTrue(value2 <= item);
+      int returnValue = Assert.IsTrue(value1 <= item);
+      returnValue += Assert.IsTrue(value2 <= item);
+
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -797,8 +846,11 @@ class EqualityTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.IsTrue(value == item);
-      this->_totalPassed += Assert.IsTrue(item == value);
+      int returnValue = Assert.IsTrue(value == item);
+      returnValue += Assert.IsTrue(item == value);
+
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -828,8 +880,11 @@ class NotEqualityTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.IsTrue(value != item);
-      this->_totalPassed += Assert.IsTrue(item != value);
+      int returnValue = Assert.IsTrue(value != item);
+      returnValue += Assert.IsTrue(item != value);
+
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 #endif

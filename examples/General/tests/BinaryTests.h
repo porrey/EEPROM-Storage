@@ -63,7 +63,9 @@ class ModuloTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -101,7 +103,9 @@ class ModuloEqualTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -139,7 +143,9 @@ class BitwiseAndEqualTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -177,7 +183,9 @@ class BitwiseAndTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -215,7 +223,9 @@ class BitwiseOrEqualTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -253,7 +263,9 @@ class BitwiseOrTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -291,7 +303,9 @@ class BitwiseXorEqualTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -329,7 +343,9 @@ class BitwiseXorTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -367,7 +383,9 @@ class BitwiseNotTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -406,7 +424,9 @@ class LeftShiftEqualTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -445,7 +465,9 @@ class LeftShiftTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -483,7 +505,9 @@ class RightShiftEqualTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 
@@ -521,7 +545,9 @@ class RightShiftTest : public RunOnceTest<T>
       //
       // Assert
       //
-      this->_totalPassed += Assert.AreEqual(item, value);
+      int returnValue = Assert.AreEqual(item, value);
+      this->_totalPassed += returnValue;
+      return returnValue;
     }
 };
 #endif

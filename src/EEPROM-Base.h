@@ -198,6 +198,7 @@ class EEPROMBase
     //
     virtual T get() const
     {
+      return (T)0;
     }
 
     //
@@ -205,6 +206,7 @@ class EEPROMBase
     //
     virtual T set(T const& value)
     {
+      return value;
     }
 
     //

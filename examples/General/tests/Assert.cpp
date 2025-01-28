@@ -1,10 +1,5 @@
 #include "Assert.h"
 
-AssertClass::AssertClass(HardwareSerial* serial)
-{
-  this->_serial = serial;
-};
-
 //
 // Boolean
 //
@@ -163,72 +158,72 @@ bool AssertClass::AreNotEqual(const double value1, const double value2)
 //
 bool AssertClass::DebugPassFail(bool value)
 {
-  this->_serial->print((value ? "-PASSED!" : "-FAILED!"));
+  Serial.print((value ? "-PASSED!" : "-FAILED!"));
   return value;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, bool value1, bool value2)
 {
-  this->_serial->print(" ["); this->_serial->print((value1 ? "true" : "false")); this->_serial->print((equal ? " == " : " != ")); this->_serial->print((value2 ? "true" : "false")); this->_serial->print("]");
+  Serial.print(" ["); Serial.print((value1 ? "true" : "false")); Serial.print((equal ? " == " : " != ")); Serial.print((value2 ? "true" : "false")); Serial.print("]");
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, unsigned char value1, unsigned char value2)
 {
-  this->_serial->print(" ["); this->_serial->print(value1); this->_serial->print((equal ? " == " : " != ")); this->_serial->print(value2); this->_serial->print("]");
+  Serial.print(" ["); Serial.print(value1); Serial.print((equal ? " == " : " != ")); Serial.print(value2); Serial.print("]");
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, char value1, char value2)
 {
-  this->_serial->print(" ["); this->_serial->print(value1); this->_serial->print((equal ? " == " : " != ")); this->_serial->print(value2); this->_serial->print("]");
+  Serial.print(" ["); Serial.print(value1); Serial.print((equal ? " == " : " != ")); Serial.print(value2); Serial.print("]");
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, int value1, int value2)
 {
-  this->_serial->print(" ["); this->_serial->print(value1); this->_serial->print((equal ? " == " : " != ")); this->_serial->print(value2); this->_serial->print("]");
+  Serial.print(" ["); Serial.print(value1); Serial.print((equal ? " == " : " != ")); Serial.print(value2); Serial.print("]");
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, unsigned int value1, unsigned int value2)
 {
-  this->_serial->print(" ["); this->_serial->print(value1); this->_serial->print((equal ? " == " : " != ")); this->_serial->print(value2); this->_serial->print("]");
+  Serial.print(" ["); Serial.print(value1); Serial.print((equal ? " == " : " != ")); Serial.print(value2); Serial.print("]");
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, long value1, long value2)
 {
-  this->_serial->print(" ["); this->_serial->print(value1); this->_serial->print((equal ? " == " : " != ")); this->_serial->print(value2); this->_serial->print("]");
+  Serial.print(" ["); Serial.print(value1); Serial.print((equal ? " == " : " != ")); Serial.print(value2); Serial.print("]");
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, unsigned long value1, unsigned long value2)
 {
-  this->_serial->print(" ["); this->_serial->print(value1); this->_serial->print((equal ? " == " : " != ")); this->_serial->print(value2); this->_serial->print("]");
+  Serial.print(" ["); Serial.print(value1); Serial.print((equal ? " == " : " != ")); Serial.print(value2); Serial.print("]");
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, short value1, short value2)
 {
-  this->_serial->print(" ["); this->_serial->print(value1); this->_serial->print((equal ? " == " : " != ")); this->_serial->print(value2); this->_serial->print("]");
+  Serial.print(" ["); Serial.print(value1); Serial.print((equal ? " == " : " != ")); Serial.print(value2); Serial.print("]");
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, unsigned short value1, unsigned short value2)
 {
-  this->_serial->print(" ["); this->_serial->print(value1); this->_serial->print((equal ? " == " : " != ")); this->_serial->print(value2); this->_serial->print("]");
+  Serial.print(" ["); Serial.print(value1); Serial.print((equal ? " == " : " != ")); Serial.print(value2); Serial.print("]");
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, float value1, float value2)
 {
-  this->_serial->print(" ["); this->_serial->print(value1); this->_serial->print((equal ? " == " : " != ")); this->_serial->print(value2); this->_serial->print("]");
+  Serial.print(" ["); Serial.print(value1); Serial.print((equal ? " == " : " != ")); Serial.print(value2); Serial.print("]");
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, double value1, double value2)
 {
-  this->_serial->print(" ["); this->_serial->print(value1); this->_serial->print((equal ? " == " : " != ")); this->_serial->print(value2); this->_serial->print("]");
+  Serial.print(" ["); Serial.print(value1); Serial.print((equal ? " == " : " != ")); Serial.print(value2); Serial.print("]");
   return equal;
 };

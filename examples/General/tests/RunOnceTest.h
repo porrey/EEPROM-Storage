@@ -89,6 +89,7 @@ class RunOnceTest
 
     virtual int onRunOnce()
     {
+      return 0;
     }
 
     int totalPassed()
@@ -96,7 +97,10 @@ class RunOnceTest
       return this->_totalPassed;
     }
 
-    virtual int totalTests();
+    virtual int totalTests()
+    {
+      return 0;
+    }
 
   protected:
     uint _address;

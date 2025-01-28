@@ -24,10 +24,10 @@
 #include <EEPROM-Storage.h>
 
 //
-// Define a 32-bit integer at address 0 (first argument) with a
+// Define an integer at address 0 (first argument) with a
 // default value of 11 (second agument).
 //
-EEPROMStorage<int32_t> _cloudVariable(0, 11);
+EEPROMStorage<int> _cloudVariable(0, 11);
 
 void setup()
 {
@@ -64,5 +64,5 @@ int setVariable(String data)
 //
 int getVariable(String data)
 {
-  return _cloudVariable;
+  return _cloudVariable.get();
 }

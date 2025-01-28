@@ -33,7 +33,7 @@
 class AssertClass
 {
   public:
-    AssertClass(HardwareSerial* serial);
+    AssertClass();
     bool IsTrue(const bool);
     bool IsFalse(const bool);
     
@@ -74,14 +74,7 @@ class AssertClass
       bool DebugEqualNotEqual(bool, unsigned short,unsigned short);
       bool DebugEqualNotEqual(bool, float, float);
       bool DebugEqualNotEqual(bool, double, double);
-
-  private:
-      //
-      // A pointer to a serial device. This instance will write all
-      // output to this serial device.
-      //
-      HardwareSerial* _serial;
 };
 
-static AssertClass Assert(&Serial);
+static AssertClass Assert;
 #endif

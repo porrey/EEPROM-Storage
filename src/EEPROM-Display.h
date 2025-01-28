@@ -234,7 +234,7 @@ class EEPROMDisplayClass
 };
 
 //
-// Create a static instance of EEPROMUtilClass.
+// Create a static instance of EEPROMDisplayClass.
 //
 static EEPROMDisplayClass EEPROMDisplay(&Serial);
 #endif
