@@ -3,21 +3,25 @@
 The EEPROM Storage library provides the ability to access variables stored in EEPROM just as if they were stored in normal RAM.
 
 ### Types of Access
+---
 There are two classes that provide the similar access to EEEPROM. The first is the Direct Storage class which reads and writes to directly to and from EEPROM. The second is the Cache Access whichs reads and writes from memory and writes to the EEPROM when directed.
 
 Other than the `restore()` and `commit()` (*see description below*) methods on the cache based class, these objects can be used interchangably.
 
 #### Direct Storage EEPROMStorage\<T\>
+---
 This class writes directly to the EEPROM whenever the variable value is updated and reads directly from EEPROM when the variable value is accessed.
 
 Within the library, examples of how to use this type of access can be found in the **Storage** folder under **Examples**.
 
 #### Cached Access EEPROMCache\<T\>
+---
 This class reads and writes the variable value from RAM and only updates the value from EEPROM when `restore()` is called. Subsequently it only writes to EEPROM when `commit()` is called.
 
 Within the library, examples of how to use this type of access can be found in the **Cache** folder under **Examples**.
 
 ### General Usage
+---
 Once defined, a variable can be used in in the same manner as its underlying type. For example, a variable defined as an integer (int) would be defined as follows:
 
     int i = 0;
@@ -44,6 +48,7 @@ After the definition, the variable `i` can be used in the same manner, `i++` and
 
 ## EEPROM Address
 ### Memory Requirement
+---
 When defining an EEPROM Storage variable, it is important to understand the number of bytes required for the underlying type and ensuring that the variables are spaced appropriately so they do not collide.
 
 Each variable requires enough memory to store the underlying type plus one additional byte for a checksum.
@@ -75,6 +80,7 @@ Using the nextAddress() method will make it easier to align your variables in me
 	EEPROMStorage<bool> v5(v4.nextAddress(), false);	// 2 bytes (1 + 1 checksum), positions 15, 16, 17, 18 and 19
 
 ### Determining Data Type Size ###
+---
 If you are not sure of the memory requirement for a given data type, you can use the `sizeof` operator. User the Serial port to display the size of any data type.
 
     Serial.print("The size of int is "); Serial.print(sizeof(int)); Serial.println(".");
@@ -102,15 +108,19 @@ The syntax for declaration is as follows:
     EEPROMStorage<data type> variableName(address, default value);
 
 ### Data Type
+---
 Specifies the underlying data type for the given instance.
 
 ### Address
+---
 Specifies the starting index in EEPROM where the value will be stored.
 
 ### Default Value
+---
 Specifies the value that will be returned by the instance when the EEPROM memory location has not been initialized (initialization is determined by the checksum).
 
 ### Example
+---
 To initialize an instance with an underlying data type of int located in position 50 of the EEPROM and a default value of 10, the syntax would be as follows:
 
 	EEPROMStorage<int> myInt(50, 10);
