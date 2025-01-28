@@ -13,7 +13,6 @@ This class writes directly to the EEPROM whenever the variable value is updated 
 Within the library, examples of how to use this type of access can be found in the **Storage** folder under **Examples**.
 
 ### Cached Access (EEPROMCache\<T\>)
----
 This class reads and writes the variable value from RAM and only updates the value from EEPROM when `restore()` is called. Subsequently it only writes to EEPROM when `commit()` is called.
 
 Within the library, examples of how to use this type of access can be found in the **Cache** folder under **Examples**.
