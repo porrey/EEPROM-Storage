@@ -32,8 +32,26 @@
 #include <EEPROM-Util.h>
 #include "TestRunner.h"
 
+#if defined(SPARK)
+//
+// Cloud function variables.
+//
+int _isCompleted = 0;
+int _totalTests = 0;
+int _passedTests = 0;
+#endif
+
 void setup() 
 {
+  #if defined(SPARK)
+  //
+  // Initial the cloud variables and functions.
+  //
+  Particle.function("GetTotalTests", getTotalTests);
+  Particle.function("GetPassedTests", getPassedTests);
+  Particle.function("IsCompleted", isCompleted);
+  #endif
+
   //
   // Initialize the serial port. On a Particle
   // device the baud rate will be ignored.
@@ -84,8 +102,40 @@ void setup()
   Serial.print("Ran a total of "); Serial.print(results.totalTests); Serial.println(" test(s).");
   Serial.print(results.totalPassed); Serial.print(" of "); Serial.print(results.totalTests); Serial.print(" test(s) passed ["); Serial.print((float)results.totalPassed / (float)results.totalTests * 100.0); Serial.println("%].");
   Serial.print(results.totalFailed()); Serial.print(" of "); Serial.print(results.totalTests); Serial.print(" test(s) failed ["); Serial.print((float)results.totalFailed() / (float)results.totalTests * 100.0); Serial.println("%].");
+
+  #if defined(SPARK)
+  _isCompleted = 1;
+  _totalTests = results.totalTests;
+  _passedTests = results.totalPassed;
+  #endif
 }
 
 void loop()
 {
 }
+
+#if defined(SPARK)
+//
+// Returns 1 if the tests completed.
+//
+int isCompleted(String data)
+{
+  return _isCompleted;
+}
+
+//
+// Returns the total number of tests run.
+//
+int getTotalTests(String data)
+{
+  return _totalTests;
+}
+
+//
+// Returns the total number of tests passed.
+//
+int getPassedTests(String data)
+{
+  return _passedTests;
+}
+#endif
