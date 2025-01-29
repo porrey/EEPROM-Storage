@@ -39,6 +39,7 @@
 int _isCompleted = 0;
 int _totalTests = 0;
 int _passedTests = 0;
+int _failedTests = 0;
 #endif
 
 void setup() 
@@ -49,6 +50,7 @@ void setup()
   //
   Particle.function("GetTotalTests", getTotalTests);
   Particle.function("GetPassedTests", getPassedTests);
+  Particle.function("GetFailedTests", getFailedTests);
   Particle.function("IsCompleted", isCompleted);
   #endif
 
@@ -107,6 +109,7 @@ void setup()
   _isCompleted = 1;
   _totalTests = results.totalTests;
   _passedTests = results.totalPassed;
+  _failedTests = results.totalFailed();
   #endif
 }
 
@@ -137,5 +140,13 @@ int getTotalTests(String data)
 int getPassedTests(String data)
 {
   return _passedTests;
+}
+
+//
+// Returns the number of failed tests.
+//
+int getFailedTests(String data)
+{
+  return _failedTests;
 }
 #endif
