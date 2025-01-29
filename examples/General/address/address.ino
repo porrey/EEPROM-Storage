@@ -20,15 +20,12 @@
 // ---------------------------------------------------------------------------------------
 // This example will calculate the address and
 // create initialization code for one or more
-// EEPROM-Storage variables. Just follow the steps
-// outlined below.
-//
-// Complete Steps 1 through 3 (below) for your project.
-//
+// EEPROM-Storage variables.
 // ---------------------------------------------------------------------------------------
 
 #include "Types.h"
 #include <EEPROM.h>
+#include <Arduino_DebugUtils.h>
 
 void setup()
 {
@@ -42,7 +39,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -54,10 +51,8 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
   
-  //
-  // STEP 1 of 3:
   //
   // Create a list of definitions that each contain the data type and the default value.
   //
@@ -72,39 +67,24 @@ void setup()
   };
 
   //
-  // STEP 2 of 3:
-  //
   // Define the starting address in EEPROM. If you are manually storing other data in EEPROM this
   // address could be defined at the end of that data.
   //
   int myFirstAddress = 0;
 
   //
-  // STEP 3 of 3:
-  //
-  // Set the value below to true to display comments and false to hide the comments.
-  //
-  bool showComments = true;
-
-  //
   // This will output declarations through the serial port.
   //
   int itemCount = sizeof(myDefinitions) / sizeof(definition);
-  Serial.print("The number of definiions defined is "); Serial.println(itemCount);
-  Serial.println();
+  DEBUG_INFO("The number of definitons defined is %u.\r\n", itemCount);
   int nextAddress = myFirstAddress;
 
   for (int i = 0; i < itemCount; i++)
   {
-    if (showComments)
-    {
-      Serial.println("//");
-      Serial.print("// Total length = "); Serial.print(_size[myDefinitions[i].type] + 1); Serial.print(" [Addresses "); Serial.print(nextAddress); Serial.print(" through "); Serial.print(nextAddress + _size[myDefinitions[i].type]); Serial.println("]");
-      Serial.println("//");
-    }
-
-    Serial.print("EEPROMStorage<"); Serial.print(_name[myDefinitions[i].type]); Serial.print(">("); Serial.print(nextAddress); Serial.print(", "); Serial.print(myDefinitions[i].defaultValue); Serial.println(");");
-    if (showComments) Serial.println();
+    DEBUG_INFO("//");
+    DEBUG_INFO("// Total length = %u [Addresses %u  through %u]", _size[myDefinitions[i].type] + 1, nextAddress, nextAddress + _size[myDefinitions[i].type]);
+    DEBUG_INFO("//");
+    DEBUG_INFO("EEPROMStorage<%s>(%u, %u)", _name[myDefinitions[i].type], nextAddress, myDefinitions[i].defaultValue);
 
     nextAddress += _size[myDefinitions[i].type] + 1;
   }

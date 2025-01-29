@@ -44,7 +44,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
   
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -56,7 +56,7 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
   
   //
   // Demonstrates a local variable taking on the value
@@ -69,7 +69,7 @@ void setup()
   //
   // Assign the value of 16 to a.
   //
-  Serial.println("Assigning a the value of 16.");
+  DEBUG_INFO("Assigning a the value of 16.");
   a = 16;
 
   //
@@ -81,21 +81,21 @@ void setup()
   // Display the values of a and shadowVar. Both
   // variables will have the value of 16.
   //
-  Serial.print("a = "); Serial.println(a);
-  Serial.print("shadowVar = "); Serial.println(a);
+  Serial.print("\r\na = "); DEBUG_INFO(a);
+  Serial.print("shadowVar = "); DEBUG_INFO(a);
 
   //
   // Assign the value of 11 to shadowVar.
   //
-  Serial.println("Assigning shadowVar the value of 11.");
+  DEBUG_INFO("Assigning shadowVar the value of 11.");
   shadowVar = 11;
 
   //
   // Display the values of a and shadowVar. Both variables
   // will have the value of 11.
   //
-  Serial.print("a = "); Serial.println(a);
-  Serial.print("shadowVar = "); Serial.println(a);
+  Serial.print("a = "); DEBUG_INFO(a);
+  Serial.print("shadowVar = "); DEBUG_INFO(a);
 }
 
 void loop()

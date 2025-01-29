@@ -44,18 +44,30 @@
 
 #include "EEPROM-Base.h"
 #include "EEPROM-Vars.h"
+#include <Arduino_DebugUtils.h>
 
 class EEPROMDisplayClass
 {
   public:
+    void begin()
+    {
+        Debug.timestampOff();
+        Debug.debugLabelOff();
+    }
+
     //
     // Print a byte value in HEX with leading 0x.
     //
     void displayPaddedHexByte(byte value, bool showPrefix = true)
     {
-      if (showPrefix) Serial.print("0x");
-      if (value <= 0x0F) Serial.print("0");
-      Serial.print(value, HEX);
+      if (showPrefix)
+      {
+        DEBUG_INFO("0x%2X ", value);
+      }
+      else
+      {
+        DEBUG_INFO("%2X ", value);
+      }
     }
 
     //
@@ -63,7 +75,7 @@ class EEPROMDisplayClass
     //
     void displayEEPROM(uint width = 32)
     {
-      Serial.println("EEPROM Contents:");
+      DEBUG_INFO("\r\nEEPROM Contents:");
 
       //
       // Draw a line.
@@ -73,15 +85,16 @@ class EEPROMDisplayClass
       //
       // Display header addresses
       //
-      Serial.print("     | ");
+      Debug.newlineOff();
+      DEBUG_INFO("     | ");
       
       for(uint i = 0; i < width; i++)
       {
-        this->display2Digits(i);
-        Serial.print(" ");
+        DEBUG_INFO("%2u ", i);
       }
 
-      Serial.println();
+      Debug.newlineOn();
+      DEBUG_INFO("");
 
       //
       // Draw a line.
@@ -91,20 +104,17 @@ class EEPROMDisplayClass
       //
       // Get every byte from EEPROM
       //
+      Debug.newlineOff();
       uint lineNumber = 0;
-      this->displayLineNumber(lineNumber);
+      DEBUG_INFO("%4d | ", lineNumber);
       
       for (uint i = 0; i < EEPROM.length(); i++)
       {
         //
-        // Display the byt in HEX with the leading 0x.
+        // Display the value in HEX.
         //
-        displayPaddedHexByte(EEPROM[i], false);
-
-        //
-        // Add a space after the HEX.
-        //
-        Serial.print(" ");
+        byte value = EEPROM[i];
+        DEBUG_INFO("%.2X ", value);
 
         //
         // Start a new line when the width is encountered.
@@ -115,35 +125,24 @@ class EEPROMDisplayClass
 
           if (lineNumber < EEPROM.length())
           {
-            Serial.println();
-            this->displayLineNumber(lineNumber);
+            DEBUG_INFO("\r\n");
+            DEBUG_INFO("%4d | ", lineNumber);
           }
         }
       }
 
-      Serial.println();
+      Debug.newlineOn();
+      DEBUG_INFO("");
     }
 
     //
     // Display the properties of a variable.
     //
     template<typename T>
-    void displayVariable(String name, EEPROMBase<T> value)
+    void displayVariable(const char* name, EEPROMBase<T> value)
     {
-      Serial.print(name);
-      Serial.print(": Variable Size: ");
-      this->display2Digits(value.size());
-      Serial.print(", Memory Length = ");
-      this->display2Digits(value.length());
-      Serial.print(", Start Address = ");
-      this->display2Digits(value.getAddress());
-      Serial.print(", Checksum Address = ");
-      this->display2Digits(value.checksumAddress());
-      Serial.print(", Checksum Value = ");
-      this->displayPaddedHexByte(value.checksumByte());
-      Serial.print(", Initialized = ");
-      Serial.print(value.isInitialized() ? "Yes" : "No");
-      Serial.println();
+      DEBUG_INFO("%s: Variable Size: %2d, Memory Length = %2d, Start Address = %2d, Checksum Address = %2d, Checksum Value = %2d, Initialized = %s",
+                  name, value.size(), value.length(), value.getAddress(), value.checksumAddress(), value.checksumByte(), value.isInitialized() ? "Yes" : "No");
     }
 
     //
@@ -154,67 +153,25 @@ class EEPROMDisplayClass
       //
       // Display the EEPROM properties.
       //
-      Serial.println();
-      Serial.println("EEPROM<T> Properties:");
+      DEBUG_INFO("\r\nEEPROM<T> Properties:");
       this->drawLine(50);
     }
 
     private:
       //
-      // Display a number of the serial port to use two positions with
-      // the text aligned to the right padded with spaces.
-      //
-      void display2Digits(uint number)
-      {
-        if (number < 10)
-        {
-          Serial.print(" ");
-        }
-
-        Serial.print(number);
-      }
-
-      //
-      // Display a number of the serial port to use four positions with
-      // the text aligned to the right padded with spaces.
-      //
-      void display4Digits(uint number)
-      {
-        if (number < 10)
-        {
-          Serial.print("   ");
-        }
-        else if (number < 100)
-        {
-          Serial.print("  ");
-        }
-        else if (number < 1000)
-        {
-          Serial.print(" ");
-        }
-
-        Serial.print(number);
-      }
-
-      //
-      // Dispays the line number down the left side of the grid.
-      //
-      void displayLineNumber(uint lineNumber)
-      {
-        display4Digits(lineNumber);
-        Serial.print(" | ");
-      }
-
-      //
       // Draw a line using dashes with the given width.
       //
       void drawLine(uint width)
       {
+        Debug.newlineOff();
+
         for(uint i = 0; i < width; i++)
         {
-          Serial.print("---");
+          DEBUG_INFO("---");
         }
-        Serial.println();
+
+        Debug.newlineOn();
+        DEBUG_INFO("");
       }
 };
 

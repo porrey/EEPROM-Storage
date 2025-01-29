@@ -39,7 +39,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -51,7 +51,7 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
   
   //
   // Clear EEPROM.
@@ -61,26 +61,26 @@ void setup()
   //
   // Display the checksum and state of the EEPROM variable before a value is set.
   //
-  Serial.print("Checksum for EEPROM variable a is "); Serial.println(a.checksumByte());
-  Serial.print("The EEPROM variable a"); Serial.print(a.isInitialized() ? " is " : " is NOT "); Serial.println("initialized.");
+  Serial.print("Checksum for EEPROM variable a is "); DEBUG_INFO(a.checksumByte());
+  Serial.print("The EEPROM variable a"); Serial.print(a.isInitialized() ? " is " : " is NOT "); DEBUG_INFO("initialized.");
 
   //
   // Set the vaue of the EEPROM variable.
   //
-  Serial.print("Setting EEPROM variable value to "); Serial.println(VALUE);
+  Serial.print("Setting EEPROM variable value to "); DEBUG_INFO(VALUE);
   a = VALUE;
-  Serial.print("The EEPROM variable a"); Serial.print(a.isInitialized() ? " is " : " is NOT "); Serial.println("initialized.");
+  Serial.print("The EEPROM variable a"); Serial.print(a.isInitialized() ? " is " : " is NOT "); DEBUG_INFO("initialized.");
 
   //
   // Calculate the check sum of the value.
   //
   byte checksum = Checksum<uint32_t>::get(VALUE);
-  Serial.print("Expected checksum for "); Serial.print(VALUE); Serial.print(" is "); Serial.println(checksum);
+  Serial.print("Expected checksum for "); Serial.print(VALUE); Serial.print(" is "); DEBUG_INFO(checksum);
 
   //
   // Display the checksum of the EEPROM variable.
   //
-  Serial.print("Checksum for EEPROM variable a is "); Serial.println(a.checksumByte());
+  Serial.print("Checksum for EEPROM variable a is "); DEBUG_INFO(a.checksumByte());
 }
 
 void loop()

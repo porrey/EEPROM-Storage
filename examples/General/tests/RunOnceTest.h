@@ -79,10 +79,12 @@ class RunOnceTest
     {
       int returnValue = 0;
 
-      Serial.print("TEST: "); Serial.print(this->_name); Serial.print(": ");
+      Debug.newlineOff();
+      DEBUG_INFO("TEST: %s: ", this->_name);
       this->setup();
       returnValue = this->onRunOnce();
-      Serial.println();
+      Debug.newlineOn();
+      DEBUG_INFO("");
 
       return returnValue;
     }

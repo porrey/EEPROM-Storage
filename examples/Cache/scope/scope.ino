@@ -37,7 +37,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -49,9 +49,7 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is ");
-  Serial.print(EEPROM.length());
-  Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %u bytes.", EEPROM.length());
 
   //
   // Initialize the random number generator.
@@ -68,10 +66,10 @@ void setup()
   // Assign a random value to the EEPROM variable x.
   //
   uint32_t value = random(1, 99999);
-  Serial.print("Assigning EEPROM variable x the value of "); Serial.print(value); Serial.println(".");
+  DEBUG_INFO("Assigning EEPROM variable x the value of %u.", value);
   x = value;
   x.commit();
-  Serial.print("The value of the EEPROM variable x is "); Serial.print(x); Serial.println(".");
+  DEBUG_INFO("The value of the EEPROM variable x is %u.", x.get());
 }
 
 void loop() 
@@ -84,7 +82,7 @@ void loop()
   EEPROMCache<uint32_t> y(0, 0);
   y.restore();
   
-  Serial.print("The value of the EEPROM variable y is "); Serial.print(y); Serial.println(".");
+  DEBUG_INFO("The value of the EEPROM variable y is %u.", y.get());
 
   //
   // Loop forever.

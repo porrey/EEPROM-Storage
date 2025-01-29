@@ -23,18 +23,7 @@
 
 #include <EEPROM-Storage.h>
 #include <EEPROM-Display.h>
-
-//
-// Define a complex structure to store in EEPROM.
-//
-typedef struct  {
-  uint8_t sa;
-  uint16_t sb;
-  uint32_t sc;
-  char sd;
-  float se;
-  double sf;
-} Matrix, *pmatrix;
+#include "struct.h"
 
 //
 // Define the EEPROM variable. Using the initialization
@@ -54,7 +43,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -66,7 +55,7 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
   
   //
   // Clear EEPROM.
@@ -92,9 +81,9 @@ void setup()
   //
   // Display the EEPROM properties.
   //
-  Serial.println();
-  Serial.println("EEPROM<T> Properties:");
-  Serial.println("--------------------------------------------------------------------------------------------------------------");
+  DEBUG_INFO("\r\n");
+  DEBUG_INFO("EEPROM<T> Properties:");
+  DEBUG_INFO("--------------------------------------------------------------------------------------------------------------");
   EEPROMDisplay.displayVariable("a", a);
 
   //
@@ -117,26 +106,9 @@ void setup()
   //
   // Display the EEPROM contents.
   //
-  Serial.println();
   EEPROMDisplay.displayEEPROM();
 }
 
 void loop()
 {
-}
-
-void displayStruct(String label, String prefix, Matrix m)
-{
-  //
-  // Display the struct property values.
-  //
-  Serial.println();
-  Serial.println(label);
-  Serial.println("----------------------------------------");
-  Serial.print(prefix); Serial.print(".sa = "); Serial.println(m.sa);
-  Serial.print(prefix); Serial.print(".sb = "); Serial.println(m.sb);
-  Serial.print(prefix); Serial.print(".sc = "); Serial.println(m.sc);
-  Serial.print(prefix); Serial.print(".sd = "); Serial.println(m.sd);
-  Serial.print(prefix); Serial.print(".se = "); Serial.println(m.se);
-  Serial.print(prefix); Serial.print(".sf = "); Serial.println(m.sf);
 }

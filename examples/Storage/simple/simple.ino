@@ -42,7 +42,7 @@ void setup()
 	// for native USB port only
 	//
 	while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -54,7 +54,7 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
   
   //
   // Assign the value of 128 to a.
@@ -65,7 +65,7 @@ void setup()
   //
   // Display the value of a.
   //
-  Serial.print("a = "); Serial.println(a);
+  Serial.print("a = "); DEBUG_INFO(a);
 
   //
   // Set the value of b to 20.
@@ -81,12 +81,12 @@ void setup()
   // Increment i by the value of b.
   //
   i += b;
-  Serial.print("i = "); Serial.println(i);
+  Serial.print("i = "); DEBUG_INFO(i);
 
   //
   // Display the value of b.
   //
-  Serial.print("b = "); Serial.println(b);
+  Serial.print("b = "); DEBUG_INFO(b);
 
   //
   // Multiply the value of b by 10.
@@ -96,7 +96,7 @@ void setup()
   //
   // Display the new value of b.
   //
-  Serial.print("b = "); Serial.println(b);
+  Serial.print("b = "); DEBUG_INFO(b);
 }
 
 void loop()
@@ -115,5 +115,5 @@ void loop()
   //
   // Display the value of a.
   //
-  Serial.print("The value of a is "); Serial.println(a);
+  Serial.print("The value of a is "); DEBUG_INFO(a);
 }

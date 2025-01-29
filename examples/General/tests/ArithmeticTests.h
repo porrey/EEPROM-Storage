@@ -58,9 +58,9 @@ class InitializationTest : public RunOnceTest<T>
       //
       // Assert
       //
-      Serial.print("Value Initialized: ");
+      DEBUG_INFO("Value Initialized: ");
       int returnValue = Assert.AreEqual(item, initValue);
-      Serial.print(", Variable Is Initialized: ");
+      DEBUG_INFO(", Variable Is Initialized: ");
       returnValue += Assert.IsTrue(item.isInitialized());
 
       this->_totalPassed += returnValue;

@@ -65,7 +65,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -89,8 +89,7 @@ void setup()
   // too often to the same address.
   //
   uint address = EEPROM.length() - random(20, EEPROM.length() / 2);
-  Serial.print("Using address "); Serial.print(address); Serial.println(" for the test variables.");
-  Serial.println();
+  Serial.print("Using address "); Serial.print(address); DEBUG_INFO(" for the test variables.");
 
   //
   // Run predefined tests.
@@ -100,10 +99,9 @@ void setup()
   //
   // Display results.
   //
-  Serial.println();
-  Serial.print("Ran a total of "); Serial.print(results.totalTests); Serial.println(" test(s).");
-  Serial.print(results.totalPassed); Serial.print(" of "); Serial.print(results.totalTests); Serial.print(" test(s) passed ["); Serial.print((float)results.totalPassed / (float)results.totalTests * 100.0); Serial.println("%].");
-  Serial.print(results.totalFailed()); Serial.print(" of "); Serial.print(results.totalTests); Serial.print(" test(s) failed ["); Serial.print((float)results.totalFailed() / (float)results.totalTests * 100.0); Serial.println("%].");
+  DEBUG_INFO("Ran a total of %u tests", results.totalTests);
+  DEBUG_INFO("%u of %u tests passed.", results.totalPassed, results.totalTests);
+  DEBUG_INFO("%u of %u tests failed.",results.totalFailed(), results.totalTests);
 
   #if defined(SPARK)
   _isCompleted = 1;

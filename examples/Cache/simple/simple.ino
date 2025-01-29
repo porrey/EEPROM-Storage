@@ -48,7 +48,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -60,7 +60,7 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
   
   //
   // If initialized, retrieve the stored value.
@@ -68,19 +68,19 @@ void setup()
   if (a.isInitialized())
   {
     a.restore();
-    Serial.print("The restored value of EEPROM variable a is "); Serial.print(a); Serial.println(".");
+    DEBUG_INFO("The restored value of EEPROM variable a is %u.", a.get());
   }
 
   //
   // Increment the value of a.
   //
-  Serial.println("Incrementing the EEPROM variable a by 1.");
+  DEBUG_INFO("Incrementing the EEPROM variable a by 1.");
   a++;
 
   //
   // Display the value of a.
   //
-  Serial.print("a = "); Serial.println(a);
+  DEBUG_INFO("a = %u.", a.get());
 
   //
   // Display the EEPROM contents before commit.
@@ -103,20 +103,20 @@ void loop()
   //
   // Increment the value of a by 1.
   //
-  Serial.print("Incrementing a. ");
+  DEBUG_INFO("Incrementing a.");
   a++;
 
   //
   // Display the value of a.
   //
-  Serial.print("The value of a, from memory, is "); Serial.println(a);
+  DEBUG_INFO("The value of a, from memory, is %u.", a.get());
 
   //
   // Commit the value to EEPROM.
   //
   if (a % 100 == 0)
   {
-    Serial.println("Committing variable to EEPROM memory.");
+    DEBUG_INFO("Committing variable to EEPROM memory.");
     a.commit();
 
     //

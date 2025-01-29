@@ -23,6 +23,7 @@
 
 #include <EEPROM.h>
 #include <EEPROM-Vars.h>
+#include <Arduino_DebugUtils.h>
 
 void setup()
 {
@@ -36,7 +37,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -48,39 +49,39 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
 
-  Serial.print("The size of byte is "); Serial.print(sizeof(byte)); Serial.println(".");
-  Serial.print("The size of char is "); Serial.print(sizeof(char)); Serial.println(".");
-  Serial.print("The size of bool is "); Serial.print(sizeof(bool)); Serial.println(".");
-  Serial.print("The size of boolean is "); Serial.print(sizeof(boolean)); Serial.println(".");
-  Serial.print("The size of short is "); Serial.print(sizeof(short)); Serial.println(".");
-  Serial.print("The size of word is "); Serial.print(sizeof(word)); Serial.println(".");
-  Serial.print("The size of int is "); Serial.print(sizeof(int)); Serial.println(".");
-  Serial.print("The size of long is "); Serial.print(sizeof(long)); Serial.println(".");
-  Serial.print("The size of float is "); Serial.print(sizeof(float)); Serial.println(".");
-  Serial.print("The size of double is "); Serial.print(sizeof(double)); Serial.println(".");
-  Serial.println();
+  DEBUG_INFO("\r\nThe size of byte is %u.", sizeof(byte));
+  DEBUG_INFO("The size of char is %u.", sizeof(char));
+  DEBUG_INFO("The size of bool is %u.", sizeof(bool));
+  DEBUG_INFO("The size of boolean is %u.", sizeof(boolean));
+  DEBUG_INFO("The size of short is %u.", sizeof(short));
+  DEBUG_INFO("The size of word is %u.", sizeof(word));
+  DEBUG_INFO("The size of int is %u.", sizeof(int));
+  DEBUG_INFO("The size of long is %u.", sizeof(long));
+  DEBUG_INFO("The size of float is %u.", sizeof(float));
+  DEBUG_INFO("The size of double is %u.", sizeof(double));
+  DEBUG_INFO("\r\n");
 
-  Serial.print("The size of unsigned char is "); Serial.print(sizeof(unsigned char)); Serial.println(".");
-  Serial.print("The size of unsigned byte is "); Serial.print(sizeof(unsigned byte)); Serial.println(".");
-  Serial.print("The size of unsigned short is "); Serial.print(sizeof(unsigned short)); Serial.println(".");
-  Serial.print("The size of unsigned word is "); Serial.print(sizeof(unsigned word)); Serial.println(".");
-  Serial.print("The size of unsigned int is "); Serial.print(sizeof(unsigned int)); Serial.println(".");
-  Serial.print("The size of unsigned long is "); Serial.print(sizeof(unsigned long)); Serial.println(".");
-  Serial.println();
+  DEBUG_INFO("The size of unsigned char is %u.", sizeof(unsigned char));
+  DEBUG_INFO("The size of unsigned byte is %u.", sizeof(unsigned byte));
+  DEBUG_INFO("The size of unsigned short is %u.", sizeof(unsigned short));
+  DEBUG_INFO("The size of unsigned word is %u.", sizeof(unsigned word));
+  DEBUG_INFO("The size of unsigned int is %u.", sizeof(unsigned int));
+  DEBUG_INFO("The size of unsigned long is %u.", sizeof(unsigned long));
+  DEBUG_INFO("\r\n");
 
-  Serial.print("The size of uint8_t is "); Serial.print(sizeof(uint8_t)); Serial.println(".");
-  Serial.print("The size of uint16_t is "); Serial.print(sizeof(uint16_t)); Serial.println(".");
-  Serial.print("The size of uint32_t is "); Serial.print(sizeof(uint32_t)); Serial.println(".");
-  Serial.print("The size of uint64_t is "); Serial.print(sizeof(uint64_t)); Serial.println(".");
-  Serial.println();
+  DEBUG_INFO("The size of uint8_t is %u.", sizeof(uint8_t));
+  DEBUG_INFO("The size of uint16_t is %u.", sizeof(uint16_t));
+  DEBUG_INFO("The size of uint32_t is %u.", sizeof(uint32_t));
+  DEBUG_INFO("The size of uint64_t is %u.", sizeof(uint64_t));
+  DEBUG_INFO("\r\n");
 
-  Serial.print("The size of int8_t is "); Serial.print(sizeof(int8_t)); Serial.println(".");
-  Serial.print("The size of int16_t is "); Serial.print(sizeof(int16_t)); Serial.println(".");
-  Serial.print("The size of int32_t is "); Serial.print(sizeof(int32_t)); Serial.println(".");
-  Serial.print("The size of int64_t is "); Serial.print(sizeof(int64_t)); Serial.println(".");
-  Serial.println();
+  DEBUG_INFO("The size of int8_t is %u.", sizeof(int8_t));
+  DEBUG_INFO("The size of int16_t is %u.", sizeof(int16_t));
+  DEBUG_INFO("The size of int32_t is %u.", sizeof(int32_t));
+  DEBUG_INFO("The size of int64_t is %u.", sizeof(int64_t));
+  DEBUG_INFO("\r\n");
 }
 
 void loop()

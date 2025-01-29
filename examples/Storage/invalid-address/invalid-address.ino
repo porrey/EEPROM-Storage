@@ -36,7 +36,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -48,7 +48,7 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
 
   //
   // Define a variable that overlaps the end of the EEPROM address space.
@@ -63,22 +63,19 @@ void setup()
   //
   // Display the EEPROM properties.
   //
-  Serial.println();
-  Serial.println("The variable starts 2 bytes before the end of EEPROM which does not allow enough space to hold the value and the checksum.");
-  Serial.println("The variable will not initialize.");
+  DEBUG_INFO("\r\nThe variable starts 2 bytes before the end of EEPROM which does not allow enough space to hold the value and the checksum.");
+  DEBUG_INFO("The variable will not initialize.");
   EEPROMDisplay.displayHeader();
   EEPROMDisplay.displayVariable("a", a);
 
   //
   // Show that the variable does not have a value.
   //
-  Serial.println();
-  Serial.print("Value of EEPROM variable a is "); Serial.print(a); Serial.println(".");
+  Serial.print("\r\nValue of EEPROM variable a is "); Serial.print(a); DEBUG_INFO(".");
    
   //
   // Display the EEPROM contents.
   //
-  Serial.println();
   EEPROMDisplay.displayEEPROM();
 }
 

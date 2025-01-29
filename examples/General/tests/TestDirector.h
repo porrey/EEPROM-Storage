@@ -38,11 +38,9 @@ class TestDirector
 
     TestResults runArithmeticTests()
     {
-      Serial.println("-----------------------------------------------------------------------------------------------------------------------------");
-      Serial.print("Running Arithmetic tests on Type ");
-      Serial.print(this->_typeName);
-      Serial.println(".");
-      Serial.println("-----------------------------------------------------------------------------------------------------------------------------");
+      DEBUG_INFO("-----------------------------------------------------------------------------------------------------------------------------");
+      DEBUG_INFO("Running Arithmetic tests on Type %s.", this->_typeName);
+      DEBUG_INFO("-----------------------------------------------------------------------------------------------------------------------------");
     
       {
         InitializationTest<int> t("Initialization", this->_address, this->_minValue, this->_maxValue);
@@ -170,17 +168,15 @@ class TestDirector
         this->_testResults.totalPassed += t.runOnce();
       }
 
-      Serial.println();
+      DEBUG_INFO("");
       return this->_testResults;
     }
 
     TestResults runBinaryTests()
     {
-      Serial.println("-----------------------------------------------------------------------------------------------------------------------------");
-      Serial.print("Running binary tests on Type ");
-      Serial.print(this->_typeName);
-      Serial.println(".");
-      Serial.println("-----------------------------------------------------------------------------------------------------------------------------");
+      DEBUG_INFO("-----------------------------------------------------------------------------------------------------------------------------");
+      DEBUG_INFO("Running Binary tests on Type %s.", this->_typeName);
+      DEBUG_INFO("-----------------------------------------------------------------------------------------------------------------------------");
     
       {
         ModuloTest<int> t("%", this->_address, this->_minValue, this->_maxValue);
@@ -260,7 +256,7 @@ class TestDirector
         this->_testResults.totalPassed += t.runOnce();
       }
 
-      Serial.println();
+      DEBUG_INFO("");
       return this->_testResults;
     }
 

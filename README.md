@@ -79,7 +79,7 @@ Using the nextAddress() method will make it easier to align your variables in me
 ---
 If you are not sure of the memory requirement for a given data type, you can use the `sizeof` operator. User the Serial port to display the size of any data type.
 
-    Serial.print("The size of int is "); Serial.print(sizeof(int)); Serial.println(".");
+    Serial.print("The size of int is "); Serial.print(sizeof(int)); DEBUG_INFO(".");
 
 When using the `sizeof` operator to determine the number of bytes to preserve remember to add one extra byte for the **checksum**.
 
@@ -137,7 +137,7 @@ To get the instance value, simply assign it to a variable, as shown below,
 
 or pass it as an argument in any function that takes an int argument as shown below.
 
-	Serial.print("myInt = "); Serial.println(myInt);
+	Serial.print("myInt = "); DEBUG_INFO(myInt);
 
 The `EEPROMStorage` class also defines a `get()` method that can be used.
 

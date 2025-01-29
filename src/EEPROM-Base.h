@@ -198,7 +198,9 @@ class EEPROMBase
     //
     virtual T get() const
     {
+      #if defined(SPARK)
       return (T)0;
+      #endif
     }
 
     //

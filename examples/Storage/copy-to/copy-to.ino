@@ -41,7 +41,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
   
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -53,14 +53,14 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
   
   //
   // Wait for serial port to connect. Needed
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // Set the EEPROM variable value.
@@ -86,22 +86,21 @@ void setup()
   //
   // Disply the values of the byte array.
   //
-  Serial.println();
-  Serial.println("Values of byte array:");
-  Serial.print("byte at data[0] is "); EEPROMDisplay.displayPaddedHexByte(data[0]); Serial.println();
-  Serial.print("byte at data[1] is "); EEPROMDisplay.displayPaddedHexByte(data[1]); Serial.println();
-  Serial.print("byte at data[2] is "); EEPROMDisplay.displayPaddedHexByte(data[2]); Serial.println();
-  Serial.print("byte at data[3] is "); EEPROMDisplay.displayPaddedHexByte(data[3]); Serial.println();
-  Serial.print("byte at data[4] is "); EEPROMDisplay.displayPaddedHexByte(data[4]); Serial.println();
-  Serial.print("byte at data[5] is "); EEPROMDisplay.displayPaddedHexByte(data[5]); Serial.println();
-  Serial.print("byte at data[6] is "); EEPROMDisplay.displayPaddedHexByte(data[6]); Serial.println();
-  Serial.print("byte at data[7] is "); EEPROMDisplay.displayPaddedHexByte(data[7]); Serial.println();
-  Serial.print("byte at data[8] is "); EEPROMDisplay.displayPaddedHexByte(data[8]); Serial.println();
+  DEBUG_INFO("\r\n");
+  DEBUG_INFO("Values of byte array:");
+  Serial.print("byte at data[0] is "); EEPROMDisplay.displayPaddedHexByte(data[0]); DEBUG_INFO("\r\n");
+  Serial.print("byte at data[1] is "); EEPROMDisplay.displayPaddedHexByte(data[1]); DEBUG_INFO("\r\n");
+  Serial.print("byte at data[2] is "); EEPROMDisplay.displayPaddedHexByte(data[2]); DEBUG_INFO("\r\n");
+  Serial.print("byte at data[3] is "); EEPROMDisplay.displayPaddedHexByte(data[3]); DEBUG_INFO("\r\n");
+  Serial.print("byte at data[4] is "); EEPROMDisplay.displayPaddedHexByte(data[4]); DEBUG_INFO("\r\n");
+  Serial.print("byte at data[5] is "); EEPROMDisplay.displayPaddedHexByte(data[5]); DEBUG_INFO("\r\n");
+  Serial.print("byte at data[6] is "); EEPROMDisplay.displayPaddedHexByte(data[6]); DEBUG_INFO("\r\n");
+  Serial.print("byte at data[7] is "); EEPROMDisplay.displayPaddedHexByte(data[7]); DEBUG_INFO("\r\n");
+  Serial.print("byte at data[8] is "); EEPROMDisplay.displayPaddedHexByte(data[8]); DEBUG_INFO("\r\n");
 
   //
   // Display the EEPROM contents.
   //
-  Serial.println();
   EEPROMDisplay.displayEEPROM();
 }
 

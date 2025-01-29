@@ -29,6 +29,8 @@
   #include <Particle.h>
 #endif
 
+#include <Arduino_DebugUtils.h>
+
 class AssertClass
 {
   public:

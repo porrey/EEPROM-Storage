@@ -39,7 +39,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -51,7 +51,7 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
   
   //
   // Clear EEPROM. 
@@ -72,29 +72,25 @@ void setup()
     //
     // Display the values of a and b.
     //
-    Serial.println();
-    Serial.println("Values at startup: ");
-    Serial.print("a: "); Serial.println(a);
-    Serial.print("b: "); Serial.println(b);
+    DEBUG_INFO("\r\nValues at startup:");
+    DEBUG_INFO("a: %u", a.get());
+    DEBUG_INFO("b: %u", b.get());
 
     //
     // Check if the two values are the same.
     //
     if (a == b)
     {
-      Serial.println();
-      Serial.println("Test passed!");
+      DEBUG_INFO("\r\nTest passed!");
     }
     else
     {
-      Serial.println();
-      Serial.println("Test failed!");
+      DEBUG_INFO("\r\nTest failed!");
     }
   }
   else
   {
-    Serial.println();
-    Serial.println("Clearing EEPROM and resetting variables.");
+    DEBUG_INFO("\r\nClearing EEPROM and resetting variables.");
 
     //
     // Clear EEPROM.
@@ -104,9 +100,9 @@ void setup()
     //
     // Initialize the values.
     //
-    Serial.println("Initializing value of a to 5.");
+    DEBUG_INFO("Initializing value of a to 5.");
     a = 5;
-    Serial.println("Initializing value of b to 5.");
+    DEBUG_INFO("Initializing value of b to 5.");
     b = 5;
   }
 }
@@ -127,21 +123,17 @@ void loop()
     //
     // Asign the value of a to b.
     //
-    Serial.println();
-    Serial.println("Assigning b the value of a.");
+    DEBUG_INFO("\r\nAssigning b the value of a.");
     b = a;
-    Serial.println("Assigned a to b!");
+    DEBUG_INFO("Assigned a to b!");
 
     //
     // Display the new values.
     //
-    Serial.println();
-    Serial.println("New values: ");
-    Serial.print("a: "); Serial.println(a);
-    Serial.print("b: "); Serial.println(b);
-
-    Serial.println();
-    Serial.println("Reset the arduino now, the value of b at startup should be the same as a.");
+    DEBUG_INFO("\r\nNew values: ");
+    DEBUG_INFO("a: %d", a.get());
+    DEBUG_INFO("b: %d", b.get());
+    DEBUG_INFO("\r\nReset the arduino now, the value of b at startup should be the same as a.");
 
     //
     // Loop forever so the microcontroller can be rebooted.

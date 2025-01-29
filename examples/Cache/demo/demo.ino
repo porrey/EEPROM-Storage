@@ -37,7 +37,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -49,7 +49,7 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
   
   //
   // Initialize the random number generator.
@@ -86,13 +86,13 @@ void setup()
   // it has not been initialized since we have
   // not calle commit() yet.
   //
-  Serial.println("\r\nVariable x BEFORE calling commit():");
+  DEBUG_INFO("\r\nVariable x BEFORE calling commit():");
   EEPROMDisplay.displayVariable("x", x);
 
   //
   // Show the value.
   //
-  Serial.print("The value of variable x is "); Serial.print(x); Serial.println(".");
+  DEBUG_INFO("The value of variable x is %u.", x.get());
 
   //
   // Call commit().
@@ -103,9 +103,9 @@ void setup()
   // Show the state of the variable. Now the 
   // variable will show initialed.
   //
-  Serial.println("\r\nVariable x AFTER calling commit():");
+  DEBUG_INFO("\r\nVariable x AFTER calling commit():");
   EEPROMDisplay.displayVariable("x", x);
-  Serial.print("The value of variable x is "); Serial.print(x); Serial.println(".");
+  DEBUG_INFO("The value of variable x is %u.", x.get());
 
   //
   // Change the value of x to a random
@@ -127,9 +127,9 @@ void setup()
   // Show the values. The will be different because
   // we have not called commit() yet.
   //
-  Serial.println("\r\nVariable x BEFORE calling commit():");
-  Serial.print("The value of x in EEPROM is "); Serial.print(eepromValue); Serial.println(" (the previous value).");
-  Serial.print("The value of x in Memory is "); Serial.print(memoryValue); Serial.println(" (the new value).");
+  DEBUG_INFO("\r\nVariable x BEFORE calling commit():");
+  DEBUG_INFO("The value of x in EEPROM is %u (the previous value).", eepromValue);
+  DEBUG_INFO("The value of x in Memory is %u (the new value).", memoryValue);
 
   //
   // Call commit().
@@ -150,9 +150,9 @@ void setup()
   // Show the values. The will be different because
   // we have not called commit() yet.
   //
-  Serial.println("\r\nVariable x AFTER calling commit():");
-  Serial.print("The value of x in EEPROM is "); Serial.print(eepromValue); Serial.println("(the previous value).");
-  Serial.print("The value of x in memory is "); Serial.print(memoryValue); Serial.println("(the new value).");
+  DEBUG_INFO("\r\nVariable x AFTER calling commit():");
+  DEBUG_INFO("The value of x in EEPROM is %u (the previous value).", eepromValue);
+  DEBUG_INFO("The value of x in Memory is %u (the new value).", memoryValue);
 
   //
   // Restore the value from EEPROM. First change
@@ -160,16 +160,15 @@ void setup()
   // previous value from EEPROM.
   //
   x = random(20000, 30000);
-  Serial.print("\r\nThe new value of x in memory is "); Serial.print(x); Serial.println(".");
-  Serial.println("Restoring EEPROM value...");
+  DEBUG_INFO("\r\nThe new value of x in memory is %u.", x.get());
+  DEBUG_INFO("Restoring EEPROM value...");
 
   x.restore();
-  Serial.print("The value of x in memory after the restore is "); Serial.print(x); Serial.println(".");
+  DEBUG_INFO("The value of x in memory after the restore is %u.", x.get());
   
   //
   // Display the EEPROM contents.
   //
-  Serial.println();
   EEPROMDisplay.displayEEPROM();
 }
 

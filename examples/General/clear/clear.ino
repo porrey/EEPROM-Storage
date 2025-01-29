@@ -36,7 +36,7 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  Serial.println();
+  DEBUG_INFO("\r\n");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -48,7 +48,7 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is "); Serial.print(EEPROM.length()); Serial.println(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
   
   //
   // Set the serial port for the EEPROM Utility class.
@@ -58,19 +58,17 @@ void setup()
   //
   // Display the EEPROM contents.
   //
-  Serial.println();
   EEPROMDisplay.displayEEPROM();
 
   //
   // Cleat the EEPROM contents.
   //
-  Serial.println("\r\nClearing EEPROM contents.");
+  DEBUG_INFO("\r\nClearing EEPROM contents.");
   EEPROMUtil.clearEEPROM();
 
   //
   // Display the EEPROM contents.
   //
-  Serial.println();
   EEPROMDisplay.displayEEPROM();
 }
 
