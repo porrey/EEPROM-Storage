@@ -89,7 +89,7 @@ void setup()
   // too often to the same address.
   //
   uint address = EEPROM.length() - random(20, EEPROM.length() / 2);
-  Serial.print("Using address "); Serial.print(address); DEBUG_INFO(" for the test variables.");
+  DEBUG_INFO("Using address %u  for the test variables.", address);
 
   //
   // Run predefined tests.

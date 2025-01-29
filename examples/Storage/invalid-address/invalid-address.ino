@@ -71,7 +71,7 @@ void setup()
   //
   // Show that the variable does not have a value.
   //
-  Serial.print("\r\nValue of EEPROM variable a is "); Serial.print(a); DEBUG_INFO(".");
+  DEBUG_INFO("\r\nValue of EEPROM variable a is %u.", a.get());
    
   //
   // Display the EEPROM contents.

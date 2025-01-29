@@ -22,6 +22,7 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
+#include <Arduino_DebugUtils.h>
 
 #define VALUE 1395478
 
@@ -61,26 +62,26 @@ void setup()
   //
   // Display the checksum and state of the EEPROM variable before a value is set.
   //
-  Serial.print("Checksum for EEPROM variable a is "); DEBUG_INFO(a.checksumByte());
-  Serial.print("The EEPROM variable a"); Serial.print(a.isInitialized() ? " is " : " is NOT "); DEBUG_INFO("initialized.");
+  DEBUG_INFO("Checksum for EEPROM variable a is %u.", a.checksumByte());
+  DEBUG_INFO("The EEPROM variable a %s initialized.", (a.isInitialized() ? "is" : "is NOT"));
 
   //
   // Set the vaue of the EEPROM variable.
   //
-  Serial.print("Setting EEPROM variable value to "); DEBUG_INFO(VALUE);
+  DEBUG_INFO("Setting EEPROM variable value to %u", VALUE);
   a = VALUE;
-  Serial.print("The EEPROM variable a"); Serial.print(a.isInitialized() ? " is " : " is NOT "); DEBUG_INFO("initialized.");
+  DEBUG_INFO("The EEPROM variable a %s initialized.", (a.isInitialized() ? "is" : "is NOT"));
 
   //
   // Calculate the check sum of the value.
   //
   byte checksum = Checksum<uint32_t>::get(VALUE);
-  Serial.print("Expected checksum for "); Serial.print(VALUE); Serial.print(" is "); DEBUG_INFO(checksum);
+  DEBUG_INFO("Expected checksum for %u is %u.", VALUE, checksum);
 
   //
   // Display the checksum of the EEPROM variable.
   //
-  Serial.print("Checksum for EEPROM variable a is "); DEBUG_INFO(a.checksumByte());
+  DEBUG_INFO("Checksum for EEPROM variable a is %u", a.checksumByte());
 }
 
 void loop()

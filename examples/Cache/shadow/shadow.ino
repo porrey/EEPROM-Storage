@@ -69,7 +69,7 @@ void setup()
   //
   // Assign the value of 16 to a and commit the value.
   //
-  DEBUG_INFO("Assigning a the value of 16.");
+  DEBUG_INFO("Assigning a value of 16 to a.");
   a = 16;
   a.commit();
 

@@ -69,33 +69,33 @@ void setup()
   //
   // Assign the value of 16 to a.
   //
-  DEBUG_INFO("Assigning a the value of 16.");
+  DEBUG_INFO("\r\nAssigning a value of 16 to a.");
   a = 16;
-
-  //
-  // Display the EEPROM contents.
-  //
-  EEPROMDisplay.displayEEPROM();
 
   //
   // Display the values of a and shadowVar. Both
   // variables will have the value of 16.
   //
-  Serial.print("\r\na = "); DEBUG_INFO(a);
-  Serial.print("shadowVar = "); DEBUG_INFO(a);
+  DEBUG_INFO("a = %u.", a.get());
+  DEBUG_INFO("shadowVar = %u.", shadowVar.get());
 
   //
   // Assign the value of 11 to shadowVar.
   //
-  DEBUG_INFO("Assigning shadowVar the value of 11.");
+  DEBUG_INFO("\r\nAssigning shadowVar the value of 11.");
   shadowVar = 11;
 
   //
   // Display the values of a and shadowVar. Both variables
   // will have the value of 11.
   //
-  Serial.print("a = "); DEBUG_INFO(a);
-  Serial.print("shadowVar = "); DEBUG_INFO(a);
+  DEBUG_INFO("a = %u.", a.get());
+  DEBUG_INFO("shadowVar = %u.", shadowVar.get());
+
+  //
+  // Display the EEPROM contents.
+  //
+  EEPROMDisplay.displayEEPROM();
 }
 
 void loop()

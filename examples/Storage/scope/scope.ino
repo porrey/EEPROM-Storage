@@ -49,9 +49,7 @@ void setup()
   //
   // Display the EEPROM size.
   //
-  Serial.print("The total size of EEPROM on this device is ");
-  Serial.print(EEPROM.length());
-  DEBUG_INFO(" bytes.");
+  DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
 
   //
   // Initialize the random number generator.
@@ -62,15 +60,16 @@ void setup()
   // Create a local variable scoped to the
   // setup method.
   //
+  DEBUG_INFO("\r\nCreating a new EEPROM variable x at address 0 in setup().");
   EEPROMStorage<uint32_t> x(0, 0);
 
   //
   // Assign a random value to the EEPROM variable x.
   //
   uint32_t value = random(1, 99999);
-  Serial.print("Assigning EEPROM variable x the value of "); Serial.print(value); DEBUG_INFO(".");
+  DEBUG_INFO("Assigning EEPROM variable x the value of %u.", value);
   x = value;
-  Serial.print("The value of the EEPROM variable x is "); Serial.print(x); DEBUG_INFO(".");
+  DEBUG_INFO("The value of the EEPROM variable x is %u.", x.get());
 }
 
 void loop() 
@@ -80,8 +79,9 @@ void loop()
   // loop method. The value will match the
   // value of the variable x.
   //
+  DEBUG_INFO("\r\nCreating a new EEPROM variable y at address 0 in setup().");
   EEPROMStorage<uint32_t> y(0, 0);
-  Serial.print("The value of the EEPROM variable y is "); Serial.print(y); DEBUG_INFO(".");
+  DEBUG_INFO("The value of the EEPROM variable y is %u.", y.get());
 
   //
   // Loop forever.

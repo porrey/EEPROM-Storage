@@ -54,13 +54,6 @@ void setup()
   // Display the EEPROM size.
   //
   DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
-  
-  //
-  // Wait for serial port to connect. Needed
-  // for native USB port only
-  //
-  while (!Serial);
-  DEBUG_INFO("\r\n");
 
   //
   // Clear EEPROM.

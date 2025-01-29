@@ -56,13 +56,6 @@ void setup()
   DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
   
   //
-  // Wait for serial port to connect. Needed
-  // for native USB port only
-  //
-  while (!Serial);
-  DEBUG_INFO("\r\n");
-
-  //
   // Clear EEPROM.
   //
   EEPROMUtil.clearEEPROM();
@@ -81,17 +74,16 @@ void setup()
   //
   // Disply the byte values of the variable.
   //
-  DEBUG_INFO("\r\n");
-  DEBUG_INFO("byte values of EEROM variable a:");
-  Serial.print("byte at a[0] is "); EEPROMDisplay.displayPaddedHexByte(a[0]); DEBUG_INFO("\r\n");
-  Serial.print("byte at a[1] is "); EEPROMDisplay.displayPaddedHexByte(a[1]); DEBUG_INFO("\r\n");
-  Serial.print("byte at a[2] is "); EEPROMDisplay.displayPaddedHexByte(a[2]); DEBUG_INFO("\r\n");
-  Serial.print("byte at a[3] is "); EEPROMDisplay.displayPaddedHexByte(a[3]); DEBUG_INFO("\r\n");
-  Serial.print("byte at a[4] is "); EEPROMDisplay.displayPaddedHexByte(a[4]); DEBUG_INFO("\r\n");
-  Serial.print("byte at a[5] is "); EEPROMDisplay.displayPaddedHexByte(a[5]); DEBUG_INFO("\r\n");
-  Serial.print("byte at a[6] is "); EEPROMDisplay.displayPaddedHexByte(a[6]); DEBUG_INFO("\r\n");
-  Serial.print("byte at a[7] is "); EEPROMDisplay.displayPaddedHexByte(a[7]); DEBUG_INFO("\r\n");
-  Serial.print("byte at a[8] is "); EEPROMDisplay.displayPaddedHexByte(a[8]); DEBUG_INFO("\r\n");
+  DEBUG_INFO("\r\nbyte values of EEROM variable a:");
+  DEBUG_INFO("byte at a[0] is 0x%.2X", a[0]);
+  DEBUG_INFO("byte at a[1] is 0x%.2X", a[1]);
+  DEBUG_INFO("byte at a[2] is 0x%.2X", a[2]);
+  DEBUG_INFO("byte at a[3] is 0x%.2X", a[3]);
+  DEBUG_INFO("byte at a[4] is 0x%.2X", a[4]);
+  DEBUG_INFO("byte at a[5] is 0x%.2X", a[5]);
+  DEBUG_INFO("byte at a[6] is 0x%.2X", a[6]);
+  DEBUG_INFO("byte at a[7] is 0x%.2X", a[7]);
+  DEBUG_INFO("byte at a[8] is 0x%.2X", a[8]);
 
   //
   // Display the EEPROM contents.
