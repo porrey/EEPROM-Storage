@@ -4,7 +4,7 @@
     "name": "Daniel Porrey",
     "maintainer": true
   },
-  "keywords": "EEPROM",
+  "keywords": "arduino  microcontroller  storage checksum  embedded-systems data-persistence  arduino-library non-volatile-memory  easy-to-use memory-management  eeprom non-volatile-storage  eeprom-storage eeprom-variables  byte-checksum eeprom-memory  eeprom-library",
   "description": "Generic class to wrap an EEPROM variable on the Arduino platforms.",
   "repository": {
     "type": "git",
