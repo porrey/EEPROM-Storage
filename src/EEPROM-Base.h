@@ -30,8 +30,8 @@
   #include <Particle.h>
 #endif
 
-#include <EEPROM-Util.h>
-#include <EEPROM-Checksum.h>
+#include "EEPROM-Util.h"
+#include "EEPROM-Checksum.h"
 
 //
 // Generic class to wrap an EEPROM variable.
