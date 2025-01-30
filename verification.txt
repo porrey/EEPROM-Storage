@@ -6,7 +6,7 @@ How to verify this library
 
 3. Push the firmware to the device. Note that in cases the tests may take more RAM that is available.
 
-4. Run the command "particle serial monitor". There is a 5 second delay built into the firmware to allow time to get the serial port monitor attached.
+4. Run the command "particle serial monitor".
 
 5. Check the output of the serial device for the number of passed tests. 100% of the tests should pass.
 
