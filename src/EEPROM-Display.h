@@ -46,6 +46,9 @@
 #include "EEPROM-Vars.h"
 #include <Arduino_DebugUtils.h>
 
+#define WIDTH 32
+#define LINE_WIDTH (WIDTH * 3) + 8
+
 class EEPROMDisplayClass
 {
   public:
@@ -73,66 +76,69 @@ class EEPROMDisplayClass
     //
     // Displays the contents of the EEPROM
     //
-    void displayEEPROM(uint width = 32)
+    void displayEEPROM()
     {
       DEBUG_INFO("\r\nEEPROM Contents:");
 
       //
       // Draw a line.
       //
-      this->drawLine(width + 2);
+      this->drawLine(WIDTH + 2);
 
       //
-      // Display header addresses
+      // Create a buffer for a line of characters.
       //
-      Debug.newlineOff();
-      DEBUG_INFO("     | ");
+      char buffer[LINE_WIDTH] = "     | ";
       
-      for(uint i = 0; i < width; i++)
+      //
+      // Add string terminating character.
+      //
+      buffer[LINE_WIDTH - 1] = 0;
+
+      //
+      // Build the header address line.
+      //
+      for(uint i = 0; i < WIDTH; i++)
       {
-        DEBUG_INFO("%2u ", i);
+        char b[3];
+        sprintf(b, "%2u ", i);
+        buffer[(i * 3) + 7] = b[0];
+        buffer[(i * 3) + 8] = b[1];
+        buffer[(i * 3) + 9] = b[2];
       }
 
-      Debug.newlineOn();
-      DEBUG_INFO("");
+      //
+      // Display header addresses.
+      //
+      DEBUG_INFO("%s", buffer);
 
       //
       // Draw a line.
       //
-      this->drawLine(width + 2);
+      this->drawLine(WIDTH + 2);
 
       //
       // Get every byte from EEPROM
       //
-      Debug.newlineOff();
-      uint lineNumber = 0;
-      DEBUG_INFO("%4d | ", lineNumber);
-      
-      for (uint i = 0; i < EEPROM.length(); i++)
+      uint maxLines = EEPROM.length() / WIDTH;
+      uint i = 0;
+
+      for (uint row = 0; row < maxLines; row++)
       {
-        //
-        // Display the value in HEX.
-        //
-        byte value = EEPROM[i];
-        DEBUG_INFO("%.2X ", value);
+        uint lineNumber = row * WIDTH;
+        sprintf(buffer, "%4d | ", lineNumber);
 
-        //
-        // Start a new line when the width is encountered.
-        //
-        if ((i + 1) % width == 0)
+        for(uint j = 0; j < WIDTH; j++)
         {
-          lineNumber += width;
-
-          if (lineNumber < EEPROM.length())
-          {
-            DEBUG_INFO("\r\n");
-            DEBUG_INFO("%4d | ", lineNumber);
-          }
+          char b[3];
+          sprintf(b, "%.2X ", (byte)EEPROM[i++]);
+          buffer[(j * 3) + 7] = b[0];
+          buffer[(j * 3) + 8] = b[1];
+          buffer[(j * 3) + 9] = b[2];
         }
-      }
 
-      Debug.newlineOn();
-      DEBUG_INFO("");
+        DEBUG_INFO("%s", buffer);
+      }
     }
 
     //
@@ -163,15 +169,22 @@ class EEPROMDisplayClass
       //
       void drawLine(uint width)
       {
-        Debug.newlineOff();
+        //
+        // Create a buffer for a line of characters.
+        //
+        char buffer[LINE_WIDTH];
+        
+        //
+        // Add string terminating character.
+        //
+        buffer[LINE_WIDTH - 1] = 0;
 
-        for(uint i = 0; i < width; i++)
+        for(uint i = 0; i < LINE_WIDTH - 2; i++)
         {
-          DEBUG_INFO("---");
+          buffer[i] = '-';
         }
 
-        Debug.newlineOn();
-        DEBUG_INFO("");
+        DEBUG_INFO("%s", buffer);
       }
 };
 

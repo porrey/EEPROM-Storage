@@ -25,17 +25,6 @@
 #include <EEPROM-Display.h>
 #include <Arduino_DebugUtils.h>
 
-//
-// Define the EEPROM variables.
-//
-EEPROMStorage<uint8_t> a(0, 0);
-EEPROMStorage<uint16_t> b(a.nextAddress(), 0);
-EEPROMStorage<uint32_t> c(b.nextAddress(), 0);
-EEPROMStorage<uint64_t> d(c.nextAddress(), 0);
-EEPROMStorage<float> e(d.nextAddress(), 0);
-EEPROMStorage<double> f(e.nextAddress(), 0);
-EEPROMStorage<char> g(f.nextAddress(), ' ');
-
 void setup()
 {
   //
@@ -66,7 +55,18 @@ void setup()
   // Clear EEPROM.
   //
   EEPROMUtil.clearEEPROM();
-  
+
+  //
+  // Define the EEPROM variables.
+  //
+  EEPROMStorage<uint8_t> a(0, 0);
+  EEPROMStorage<uint16_t> b(a.nextAddress(), 0);
+  EEPROMStorage<uint32_t> c(b.nextAddress(), 0);
+  EEPROMStorage<uint64_t> d(c.nextAddress(), 0);
+  EEPROMStorage<float> e(d.nextAddress(), 0);
+  EEPROMStorage<double> f(e.nextAddress(), 0);
+  EEPROMStorage<char> g(f.nextAddress(), ' ');
+
   //
   // Initialize the random number generator.
   //

@@ -158,61 +158,61 @@ bool AssertClass::AreNotEqual(const double value1, const double value2)
 //
 bool AssertClass::DebugPassFail(bool value)
 {
-  DEBUG_INFO((value ? "-PASSED!" : "-FAILED!"));
+  DEBUG_INFO((value ? "\tPASSED" : "\tFAILED"));
   return value;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, bool value1, bool value2)
 {
-  DEBUG_INFO(" [%s %s %s]", (value1 ? "true" : "false"), (equal ? " == " : " != "), (value2 ? "true" : "false"));
+  DEBUG_INFO("\t[%s %s %s]", (value1 ? "true" : "false"), (equal ? " == " : " != "), (value2 ? "true" : "false"));
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, unsigned char value1, unsigned char value2)
 {
-  DEBUG_INFO(" [%c %s %c]", value1, (equal ? " == " : " != "), value2);
+  DEBUG_INFO("\t[%c %s %c]", value1, (equal ? " == " : " != "), value2);
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, char value1, char value2)
 {
-  DEBUG_INFO(" [%c %s %c]", value1, (equal ? " == " : " != "), value2);
+  DEBUG_INFO("\t[%c %s %c]", value1, (equal ? " == " : " != "), value2);
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, int value1, int value2)
 {
-  DEBUG_INFO(" [%d %s %d]", value1, (equal ? " == " : " != "), value2);
+  DEBUG_INFO("\t[%d %s %d]", value1, (equal ? " == " : " != "), value2);
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, unsigned int value1, unsigned int value2)
 {
-  DEBUG_INFO(" [%u %s %u]", value1, (equal ? " == " : " != "), value2);
+  DEBUG_INFO("\t[%u %s %u]", value1, (equal ? " == " : " != "), value2);
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, long value1, long value2)
 {
-  DEBUG_INFO(" [%d %s %d]", value1, (equal ? " == " : " != "), value2);
+  DEBUG_INFO("\t[%d %s %d]", value1, (equal ? " == " : " != "), value2);
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, unsigned long value1, unsigned long value2)
 {
-  DEBUG_INFO(" [%u %s %u]", value1, (equal ? " == " : " != "), value2);
+  DEBUG_INFO("\t[%u %s %u]", value1, (equal ? " == " : " != "), value2);
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, short value1, short value2)
 {
-  DEBUG_INFO(" [%d %s %d]", value1, (equal ? " == " : " != "), value2);
+  DEBUG_INFO("\t[%d %s %d]", value1, (equal ? " == " : " != "), value2);
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, unsigned short value1, unsigned short value2)
 {
-  DEBUG_INFO(" [%u %s %u]", value1, (equal ? " == " : " != "), value2);
+  DEBUG_INFO("\t[%u %s %u]", value1, (equal ? " == " : " != "), value2);
   return equal;
 };
 
@@ -224,7 +224,7 @@ bool AssertClass::DebugEqualNotEqual(bool equal, float value1, float value2)
   char buffer2[11];
   dtostrf(value2, 6, 2, buffer2);
 
-  DEBUG_INFO(" [%s %s %s]", buffer1, (equal ? " == " : " != "), buffer2);
+  DEBUG_INFO("\t[%s %s %s]", buffer1, (equal ? " == " : " != "), buffer2);
   return equal;
 };
 
@@ -236,6 +236,6 @@ bool AssertClass::DebugEqualNotEqual(bool equal, double value1, double value2)
   char buffer2[11];
   dtostrf(value2, 6, 2, buffer2);
 
-  DEBUG_INFO(" [%s %s %s]", buffer1, (equal ? " == " : " != "), buffer2);
+  DEBUG_INFO("\t[%s %s %s]", buffer1, (equal ? " == " : " != "), buffer2);
   return equal;
 };

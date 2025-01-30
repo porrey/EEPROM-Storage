@@ -41,8 +41,18 @@ void setup()
 
   //
   // Disable output by uncommenting the next line.
+  // Levels: 
+  // DBG_NONE, DBG_ERROR, DBG_WARNING, 
+  // DBG_INFO, DBG_DEBUG, DBG_VERBOSE
   //
   //Debug.setDebugLevel(DBG_NONE);
+
+  //
+  // Other option to try...
+  //
+  //Debug.timestampOn();
+  //Debug.formatTimestampOn();
+  //Debug.debugLabelOn();
 
 	//
 	// wait for serial port to connect. Needed
