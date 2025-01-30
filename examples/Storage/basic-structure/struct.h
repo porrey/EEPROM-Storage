@@ -49,7 +49,7 @@ void displayStruct(const char* label, const char* prefix, Matrix m)
   //
   // Display the struct property values.
   //
-  DEBUG_INFO("\r\n");
+  DEBUG_INFO("");
   DEBUG_INFO(label);
   DEBUG_INFO("----------------------------------------");
   DEBUG_INFO("%s.sa = %u", prefix, m.sa);

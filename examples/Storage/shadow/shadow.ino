@@ -69,7 +69,8 @@ void setup()
   //
   // Assign the value of 16 to a.
   //
-  DEBUG_INFO("\r\nAssigning a value of 16 to a.");
+  DEBUG_INFO("");
+  DEBUG_INFO("Assigning a value of 16 to a.");
   a = 16;
 
   //
@@ -82,7 +83,8 @@ void setup()
   //
   // Assign the value of 11 to shadowVar.
   //
-  DEBUG_INFO("\r\nAssigning shadowVar the value of 11.");
+  DEBUG_INFO("");
+  DEBUG_INFO("Assigning shadowVar the value of 11.");
   shadowVar = 11;
 
   //

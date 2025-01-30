@@ -60,7 +60,8 @@ class InitializationTest : public RunOnceTest<T>
       //
       DEBUG_INFO("\tValue Initialized: ");
       int returnValue = Assert.AreEqual(item, initValue);
-      DEBUG_INFO("\r\n\tVariable Is Initialized: ");
+      DEBUG_INFO("");
+      DEBUG_INFO("\tVariable Is Initialized: ");
       returnValue += Assert.IsTrue(item.isInitialized());
 
       this->_totalPassed += returnValue;

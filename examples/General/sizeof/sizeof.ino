@@ -51,7 +51,8 @@ void setup()
   //
   DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
 
-  DEBUG_INFO("\r\nThe size of byte is %u.", sizeof(byte));
+  DEBUG_INFO("");
+  DEBUG_INFO("The size of byte is %u.", sizeof(byte));
   DEBUG_INFO("The size of char is %u.", sizeof(char));
   DEBUG_INFO("The size of bool is %u.", sizeof(bool));
   DEBUG_INFO("The size of boolean is %u.", sizeof(boolean));
@@ -61,7 +62,7 @@ void setup()
   DEBUG_INFO("The size of long is %u.", sizeof(long));
   DEBUG_INFO("The size of float is %u.", sizeof(float));
   DEBUG_INFO("The size of double is %u.", sizeof(double));
-  DEBUG_INFO("\r\n");
+  DEBUG_INFO("");
 
   DEBUG_INFO("The size of unsigned char is %u.", sizeof(unsigned char));
   DEBUG_INFO("The size of unsigned byte is %u.", sizeof(unsigned byte));
@@ -69,19 +70,19 @@ void setup()
   DEBUG_INFO("The size of unsigned word is %u.", sizeof(unsigned word));
   DEBUG_INFO("The size of unsigned int is %u.", sizeof(unsigned int));
   DEBUG_INFO("The size of unsigned long is %u.", sizeof(unsigned long));
-  DEBUG_INFO("\r\n");
+  DEBUG_INFO("");
 
   DEBUG_INFO("The size of uint8_t is %u.", sizeof(uint8_t));
   DEBUG_INFO("The size of uint16_t is %u.", sizeof(uint16_t));
   DEBUG_INFO("The size of uint32_t is %u.", sizeof(uint32_t));
   DEBUG_INFO("The size of uint64_t is %u.", sizeof(uint64_t));
-  DEBUG_INFO("\r\n");
+  DEBUG_INFO("");
 
   DEBUG_INFO("The size of int8_t is %u.", sizeof(int8_t));
   DEBUG_INFO("The size of int16_t is %u.", sizeof(int16_t));
   DEBUG_INFO("The size of int32_t is %u.", sizeof(int32_t));
   DEBUG_INFO("The size of int64_t is %u.", sizeof(int64_t));
-  DEBUG_INFO("\r\n");
+  DEBUG_INFO("");
 }
 
 void loop()

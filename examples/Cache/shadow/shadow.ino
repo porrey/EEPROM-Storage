@@ -82,7 +82,8 @@ void setup()
   // Display the values of a and shadowVar. Both
   // variables will have the value of 16.
   //
-  DEBUG_INFO("\r\na = %u.", a.get());
+  DEBUG_INFO("");
+  DEBUG_INFO("a = %u.", a.get());
 
   //
   // Restore the value of shadowVar from EEPROM.

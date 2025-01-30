@@ -84,9 +84,10 @@ void setup()
   //
   // Show the state of the variable. Note that
   // it has not been initialized since we have
-  // not calle commit() yet.
+  // not called commit() yet.
   //
-  DEBUG_INFO("\r\nVariable x BEFORE calling commit():");
+  DEBUG_INFO("");
+  DEBUG_INFO("Variable x BEFORE calling commit():");
   EEPROMDisplay.displayVariable("x", x);
 
   //
@@ -103,7 +104,8 @@ void setup()
   // Show the state of the variable. Now the 
   // variable will show initialed.
   //
-  DEBUG_INFO("\r\nVariable x AFTER calling commit():");
+  DEBUG_INFO("");
+  DEBUG_INFO("Variable x AFTER calling commit():");
   EEPROMDisplay.displayVariable("x", x);
   DEBUG_INFO("The value of variable x is %u.", x.get());
 
@@ -127,7 +129,8 @@ void setup()
   // Show the values. The will be different because
   // we have not called commit() yet.
   //
-  DEBUG_INFO("\r\nVariable x BEFORE calling commit():");
+  DEBUG_INFO("");
+  DEBUG_INFO("Variable x BEFORE calling commit():");
   DEBUG_INFO("The value of x in EEPROM is %u (the previous value).", eepromValue);
   DEBUG_INFO("The value of x in Memory is %u (the new value).", memoryValue);
 
@@ -150,7 +153,8 @@ void setup()
   // Show the values. The will be different because
   // we have not called commit() yet.
   //
-  DEBUG_INFO("\r\nVariable x AFTER calling commit():");
+  DEBUG_INFO("");
+  DEBUG_INFO("Variable x AFTER calling commit():");
   DEBUG_INFO("The value of x in EEPROM is %u (the previous value).", eepromValue);
   DEBUG_INFO("The value of x in Memory is %u (the new value).", memoryValue);
 
@@ -160,7 +164,8 @@ void setup()
   // previous value from EEPROM.
   //
   x = random(20000, 30000);
-  DEBUG_INFO("\r\nThe new value of x in memory is %u.", x.get());
+  DEBUG_INFO("");
+  DEBUG_INFO("The new value of x in memory is %u.", x.get());
   DEBUG_INFO("Restoring EEPROM value...");
 
   x.restore();

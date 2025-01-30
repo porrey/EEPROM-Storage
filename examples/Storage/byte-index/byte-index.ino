@@ -72,9 +72,10 @@ void setup()
   EEPROMDisplay.displayVariable("a", a);
 
   //
-  // Disply the byte values of the variable.
+  // Display the byte values of the variable.
   //
-  DEBUG_INFO("\r\nbyte values of EEROM variable a:");
+  DEBUG_INFO("");
+  DEBUG_INFO("byte values of EEROM variable a:");
   DEBUG_INFO("byte at a[0] is 0x%.2X", a[0]);
   DEBUG_INFO("byte at a[1] is 0x%.2X", a[1]);
   DEBUG_INFO("byte at a[2] is 0x%.2X", a[2]);

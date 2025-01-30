@@ -77,9 +77,10 @@ void setup()
   x.copyTo(data, 9);
 
   //
-  // Disply the values of the byte array.
+  // Display the values of the byte array.
   //
-  DEBUG_INFO("\r\nValues of byte array:");
+  DEBUG_INFO("");
+  DEBUG_INFO("alues of byte array:");
   DEBUG_INFO("byte at data[0] is 0x%.2X", data[0]);
   DEBUG_INFO("byte at data[1] is 0x%.2X", data[1]);
   DEBUG_INFO("byte at data[2] is 0x%.2X", data[2]);

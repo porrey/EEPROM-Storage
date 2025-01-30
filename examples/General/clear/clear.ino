@@ -61,9 +61,10 @@ void setup()
   EEPROMDisplay.displayEEPROM();
 
   //
-  // Cleat the EEPROM contents.
+  // Clear the EEPROM contents.
   //
-  DEBUG_INFO("\r\nClearing EEPROM contents.");
+  DEBUG_INFO("");
+  DEBUG_INFO("Clearing EEPROM contents.");
   EEPROMUtil.clearEEPROM();
 
   //

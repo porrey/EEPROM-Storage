@@ -60,7 +60,8 @@ void setup()
   //
   // Assign the value of 128 to a.
   //
-  DEBUG_INFO("\r\nAssigning of the EEPROM variable a the value of 128.");
+  DEBUG_INFO("");
+  DEBUG_INFO("Assigning of the EEPROM variable a the value of 128.");
   a = 128;
 
   //
@@ -71,7 +72,8 @@ void setup()
   //
   // Set the value of b to 20.
   //
-  DEBUG_INFO("\r\nAssigning of the EEPROM variabl b the value of 20.");
+  DEBUG_INFO("");
+  DEBUG_INFO("Assigning of the EEPROM variable b the value of 20.");
   b = 20;
 
   //
@@ -82,19 +84,22 @@ void setup()
   //
   // Create a variable i and set the value to 10.
   //
-  DEBUG_INFO("\r\nCreated integer i and set value to 10.");
+  DEBUG_INFO("");
+  DEBUG_INFO("Created integer i and set value to 10.");
   int i = 10;
 
   //
   // Increment i by the value of b.
   //
   i += b;
-  DEBUG_INFO("\r\nIncremented i by the value of b. i = %u.", i);
+  DEBUG_INFO("");
+  DEBUG_INFO("Incremented i by the value of b. i = %u.", i);
 
   //
   // Multiply the value of b by 10.
   //
-  DEBUG_INFO("\r\nMultiplying b by 10.");
+  DEBUG_INFO("");
+  DEBUG_INFO("Multiplying b by 10.");
   b *= 10;
 
   //

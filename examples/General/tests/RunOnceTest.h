@@ -79,7 +79,8 @@ class RunOnceTest
     {
       int returnValue = 0;
 
-      DEBUG_INFO("\r\n----> TEST: %s\r\n", this->_name);
+      DEBUG_INFO("");
+      DEBUG_INFO("----> TEST: %s\r\n", this->_name);
       this->setup();
       returnValue = this->onRunOnce();
 

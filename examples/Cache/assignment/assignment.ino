@@ -71,7 +71,8 @@ void setup()
     //
     // Display the values of a and b.
     //
-    DEBUG_INFO("\r\nValues at startup: ");
+    DEBUG_INFO("");
+    DEBUG_INFO("Values at startup: ");
     DEBUG_INFO("a: %u", a.get());
     DEBUG_INFO("b: %u", b.get());
 
@@ -80,16 +81,19 @@ void setup()
     //
     if (a == b)
     {
-      DEBUG_INFO("\r\nTest passed!");
+      DEBUG_INFO("");
+      DEBUG_INFO("Test passed!");
     }
     else
     {
-      DEBUG_INFO("\r\nTest failed!");
+      DEBUG_INFO("");
+      DEBUG_INFO("Test failed!");
     }
   }
   else
   {
-    DEBUG_INFO("\r\nClearing EEPROM and resetting variables.");
+    DEBUG_INFO("");
+    DEBUG_INFO("Clearing EEPROM and resetting variables.");
 
     //
     // Clear EEPROM.
@@ -127,7 +131,8 @@ void loop()
     //
     // Asign the value of a to b.
     //
-    DEBUG_INFO("\r\nAssigning b the value of a.");
+    DEBUG_INFO("");
+    DEBUG_INFO("Assigning b the value of a.");
 
     b = a;
     b.commit();
@@ -136,11 +141,13 @@ void loop()
     //
     // Display the new values.
     //
-    DEBUG_INFO("\r\nNew values: ");
+    DEBUG_INFO("");
+    DEBUG_INFO("New values: ");
     DEBUG_INFO("a: %u", a.get());
     DEBUG_INFO("b: %u", b.get());
 
-    DEBUG_INFO("\r\nReset the arduino now, the value of b at startup should be the same as a.");
+    DEBUG_INFO("");
+    DEBUG_INFO("Reset the arduino now, the value of b at startup should be the same as a.");
 
     //
     // Loop forever so the microcontroller can be rebooted.

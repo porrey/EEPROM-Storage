@@ -60,7 +60,8 @@ void setup()
   // Create a local variable scoped to the
   // setup method.
   //
-  DEBUG_INFO("\r\nCreating a new EEPROM variable x at address 0 in setup().");
+  DEBUG_INFO("");
+  DEBUG_INFO("Creating a new EEPROM variable x at address 0 in setup().");
   EEPROMStorage<uint32_t> x(0, 0);
 
   //
@@ -79,7 +80,8 @@ void loop()
   // loop method. The value will match the
   // value of the variable x.
   //
-  DEBUG_INFO("\r\nCreating a new EEPROM variable y at address 0 in setup().");
+  DEBUG_INFO("");
+  DEBUG_INFO("Creating a new EEPROM variable y at address 0 in setup().");
   EEPROMStorage<uint32_t> y(0, 0);
   DEBUG_INFO("The value of the EEPROM variable y is %u.", y.get());
 

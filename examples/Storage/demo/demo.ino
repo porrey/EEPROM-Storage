@@ -67,14 +67,16 @@ void setup()
   // necessary in the dmemo).
   //
   uint address = random(0, EEPROM.length() - 5);
-  DEBUG_INFO("\r\nUsing address %u for the EEPROM variable.", address);
+  DEBUG_INFO("");
+  DEBUG_INFO("Using address %u for the EEPROM variable.", address);
 
   //
   // Create a variable x using the random
   // address generated above with an initial
   // value of 0.
   //
-  DEBUG_INFO("\r\nCreating a new EEPROM variable x.");
+  DEBUG_INFO("");
+  DEBUG_INFO("Creating a new EEPROM variable x.");
   EEPROMStorage<uint32_t> x(address, 0);
 
   //
@@ -88,13 +90,15 @@ void setup()
   //
   uint32_t value = random(1000, 5000);
   x = value;
-  DEBUG_INFO("\r\nAssigning a value of %u to the EEPROM variable.", value);
+  DEBUG_INFO("");
+  DEBUG_INFO("Assigning a value of %u to the EEPROM variable.", value);
   DEBUG_INFO("The value of x is %u.", x.get());
   
   //
-  // Assign the varaible to another "normal" variable.
+  // Assign the variable to another "normal" variable.
   //
-  DEBUG_INFO("\r\nAssigning the value of x to the new variable y.");
+  DEBUG_INFO("");
+  DEBUG_INFO("Assigning the value of x to the new variable y.");
   uint32_t y = x;
 
   //
@@ -106,7 +110,8 @@ void setup()
   // Change the value of x to a random
   // number between 6000 and 9000.
   //
-  DEBUG_INFO("\r\nAssigning a random number to the EEPROMvariable x.");
+  DEBUG_INFO("");
+  DEBUG_INFO("Assigning a random number to the EEPROMvariable x.");
   x = random(6000, 9000);
 
   //

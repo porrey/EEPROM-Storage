@@ -63,7 +63,8 @@ void setup()
   //
   // Display the EEPROM properties.
   //
-  DEBUG_INFO("\r\nThe variable starts 2 bytes before the end of EEPROM which does not allow enough space to hold the value and the checksum.");
+  DEBUG_INFO("");
+  DEBUG_INFO("The variable starts 2 bytes before the end of EEPROM which does not allow enough space to hold the value and the checksum.");
   DEBUG_INFO("The variable will not initialize.");
   EEPROMDisplay.displayHeader();
   EEPROMDisplay.displayVariable("a", a);
@@ -71,7 +72,8 @@ void setup()
   //
   // Show that the variable does not have a value.
   //
-  DEBUG_INFO("\r\nValue of EEPROM variable a is %u.", a.get());
+  DEBUG_INFO("");
+  DEBUG_INFO("Value of EEPROM variable a is %u.", a.get());
    
   //
   // Display the EEPROM contents.

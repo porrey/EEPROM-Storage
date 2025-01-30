@@ -78,7 +78,8 @@ class EEPROMDisplayClass
     //
     void displayEEPROM()
     {
-      DEBUG_INFO("\r\nEEPROM Contents:");
+      DEBUG_INFO("");
+      DEBUG_INFO("EEPROM Contents:");
 
       //
       // Draw a line.
@@ -159,7 +160,8 @@ class EEPROMDisplayClass
       //
       // Display the EEPROM properties.
       //
-      DEBUG_INFO("\r\nEEPROM<T> Properties:");
+      DEBUG_INFO("");
+      DEBUG_INFO("EEPROM<T> Properties:");
       this->drawLine(50);
     }
 

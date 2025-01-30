@@ -81,7 +81,7 @@ void setup()
   //
   // Display the EEPROM properties.
   //
-  DEBUG_INFO("\r\n");
+  DEBUG_INFO("");
   DEBUG_INFO("EEPROM<T> Properties:");
   DEBUG_INFO("--------------------------------------------------------------------------------------------------------------");
   EEPROMDisplay.displayVariable("a", a);
