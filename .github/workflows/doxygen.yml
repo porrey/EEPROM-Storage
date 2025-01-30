@@ -3,8 +3,11 @@ name: Generate Doxygen Documentation
 on:
   push:
     branches:
-      - main  # Change to your default branch
+      - master  # Change to your default branch
 
+permissions:
+  contents: write
+  
 jobs:
   build:
     runs-on: ubuntu-latest
