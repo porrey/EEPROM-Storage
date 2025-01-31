@@ -1,0 +1,30 @@
+name: Build Arduino Sketch
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Arduino CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+          echo "$HOME/bin" >> $GITHUB_PATH
+
+      - name: Configure Arduino CLI
+        run: |
+          arduino-cli config init
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr  # Install Arduino AVR core
+
+      - name: Compile Sketch address1
+        run: |
+          arduino-cli compile --fqbn arduino:avr:mega examples/address1/address1.ino || exit 1
