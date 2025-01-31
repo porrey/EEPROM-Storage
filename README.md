@@ -1,4 +1,4 @@
-![Arduino Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino.yml/badge.svg?branch=main)
+![Arduino Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino.yml/badge.svg?branch=master)
 
 # EEPROM-Storage Library
 ## Overview ##
