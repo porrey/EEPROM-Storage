@@ -26,7 +26,7 @@
 #if defined(ARDUINO) && ARDUINO >= 100
   #include <Arduino.h>
   #include <EEPROM.h>
-#elif defined(SPARK)
+#elif defined(PARTICLE)
   #include <Particle.h>
 #endif
 
@@ -198,7 +198,7 @@ class EEPROMBase
     //
     virtual T get() const
     {
-      #if defined(SPARK)
+      #if defined(PARTICLE)
       return (T)0;
       #endif
     }

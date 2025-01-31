@@ -25,7 +25,7 @@
 //
 #if defined(ARDUINO) && ARDUINO >= 100
   #include <Arduino.h>
-#elif defined(SPARK)
+#elif defined(PARTICLE)
   #include <Particle.h>
 #endif
 

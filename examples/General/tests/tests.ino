@@ -32,7 +32,7 @@
 #include <EEPROM-Util.h>
 #include "TestRunner.h"
 
-#if defined(SPARK)
+#if defined(PARTICLE)
 //
 // Cloud function variables.
 //
@@ -44,7 +44,7 @@ int _failedTests = 0;
 
 void setup() 
 {
-  #if defined(SPARK)
+  #if defined(PARTICLE)
   //
   // Initial the cloud variables and functions.
   //
@@ -103,7 +103,7 @@ void setup()
   DEBUG_INFO("%u of %u tests passed.", results.totalPassed, results.totalTests);
   DEBUG_INFO("%u of %u tests failed.",results.totalFailed(), results.totalTests);
 
-  #if defined(SPARK)
+  #if defined(PARTICLE)
   _isCompleted = 1;
   _totalTests = results.totalTests;
   _passedTests = results.totalPassed;
@@ -115,7 +115,7 @@ void loop()
 {
 }
 
-#if defined(SPARK)
+#if defined(PARTICLE)
 //
 // Returns 1 if the tests completed.
 //

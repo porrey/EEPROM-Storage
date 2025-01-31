@@ -27,7 +27,7 @@
   #define uint unsigned int
 #endif
 
-#if defined(SPARK)
+#if defined(PARTICLE)
   #define word short
 #endif
 

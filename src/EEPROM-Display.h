@@ -27,7 +27,7 @@
 #ifndef DEBUG
   #if defined(ARDUINO) && ARDUINO >= 100
     #define DEBUG Serial
-  #elif defined(SPARK)
+  #elif defined(PARTICLE)
     #define DEBUG USBSerial
   #endif
 #endif
@@ -38,7 +38,7 @@
 #if defined(ARDUINO) && ARDUINO >= 100
   #include <Arduino.h>
   #include <EEPROM.h>
-#elif defined(SPARK)
+#elif defined(PARTICLE)
   #include <Particle.h>
 #endif
 
