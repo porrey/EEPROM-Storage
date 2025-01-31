@@ -29,9 +29,35 @@ jobs:
       - name: Install Arduino_DebugUtils Library
         run: |
           arduino-cli lib install "Arduino_DebugUtils"
-          arduino-cli lib list
-          ls $HOME
 
-      - name: Compile Sketch address1
+      - name: Compile Sketches
         run: |
-          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/address1/address1.ino || exit 1
+          # Cache
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/address/address.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/advanced-structure/advanced-structure.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/assignment/assignment.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/basic-structure/basic-structure.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/byte-index/byte-inde.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/demo/demo.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/scope/scope.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/shadow/shadow.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/simple/simple.ino || exit 1
+          # General
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/General/address/address.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/General/clear/clear.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/General/debug/debug.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/General/sizeof/sizeof.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/General/tests/tests.ino || exit 1
+          # Storage
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/address/address.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/advanced-structure/advanced-structure.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/assignment/assignment.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/basic-structure/basic-structure.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/byte-index/byte-index.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/checksum/checksum.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/copy-to/copy-to.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/demo/demo.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/invalid-address/invalid-address.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/scope/scope.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/shadow/shadow.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/simple/simple.ino || exit 1
