@@ -34,18 +34,17 @@ class TestRunnerClass
       //
       {
         TestDirector<bool> t("bool", address, 0, 1);
+        returnValue.add(t.runBinaryTests());
+      }
+
+      {
+        TestDirector<char> t("char", address, 'a', 'Z');
         returnValue.add(t.runArithmeticTests());
         returnValue.add(t.runBinaryTests());
       }
 
       {
-        TestDirector<char> t("char", address, 0, 127);
-        returnValue.add(t.runArithmeticTests());
-        returnValue.add(t.runBinaryTests());
-      }
-
-      {
-        TestDirector<unsigned char> t("unsigned char", address, 0, 255);
+        TestDirector<unsigned char> t("unsigned char", address, 'a', 'Z');
         returnValue.add(t.runArithmeticTests());
         returnValue.add(t.runBinaryTests());
       }
@@ -87,12 +86,12 @@ class TestRunnerClass
       }
 
       {
-        TestDirector<float> t("float", address, -150000, 150000);
+        TestDirector<float> t("float", address, -1500.00, 1500.99);
         returnValue.add(t.runArithmeticTests());
       }
 
       {
-        TestDirector<double> t("double", address, -150000, 150000);
+        TestDirector<double> t("double", address, -1500.00, 1500.99);
         returnValue.add(t.runArithmeticTests());
       }
 

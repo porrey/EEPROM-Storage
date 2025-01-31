@@ -99,6 +99,7 @@ void setup()
   //
   // Display results.
   //
+  DEBUG_INFO("");
   DEBUG_INFO("Ran a total of %u tests", results.totalTests);
   DEBUG_INFO("%u of %u tests passed.", results.totalPassed, results.totalTests);
   DEBUG_INFO("%u of %u tests failed.",results.totalFailed(), results.totalTests);

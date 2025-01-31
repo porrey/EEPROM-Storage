@@ -25,7 +25,7 @@
 
 //
 // Define an integer at address 0 (first argument) with a
-// default value of 11 (second agument).
+// default value of 11 (second argument).
 //
 EEPROMStorage<int> _cloudVariable(0, 11);
 

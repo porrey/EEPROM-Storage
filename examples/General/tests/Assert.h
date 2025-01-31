@@ -34,44 +34,44 @@
 class AssertClass
 {
   public:
-    bool IsTrue(const bool);
-    bool IsFalse(const bool);
+    bool IsTrue(bool);
+    bool IsFalse(bool);
     
-    bool AreEqual(const bool, const bool);
-    bool AreEqual(const unsigned char, const unsigned char);
-    bool AreEqual(const char, const char);
-    bool AreEqual(const int, const int);
-    bool AreEqual(const unsigned int, const unsigned int);
-    bool AreEqual(const long, const long);
-    bool AreEqual(const unsigned long, const unsigned long);
-    bool AreEqual(const short, const short);
-    bool AreEqual(const unsigned short, const unsigned short);
-    bool AreEqual(const float, const float);
-    bool AreEqual(const double, const double);
+    bool AreEqual(bool, bool);
+    bool AreEqual(char, char);
+    bool AreEqual(unsigned char, unsigned char);
+    bool AreEqual(int, int);
+    bool AreEqual(unsigned int, unsigned int);
+    bool AreEqual(long, long);
+    bool AreEqual(unsigned long, unsigned long);
+    bool AreEqual(short, short);
+    bool AreEqual(unsigned short, unsigned short);
+    bool AreEqual(float, float);
+    bool AreEqual(double, double);
 
-    bool AreNotEqual(const bool, const bool);
-    bool AreNotEqual(const unsigned char, const unsigned char);
-    bool AreNotEqual(const char, const char);
-    bool AreNotEqual(const int, const int);
-    bool AreNotEqual(const unsigned int, const unsigned int);
-    bool AreNotEqual(const long, const long);
-    bool AreNotEqual(const unsigned long, const unsigned long);
-    bool AreNotEqual(const short, const short);
-    bool AreNotEqual(const unsigned short, const unsigned short);
-    bool AreNotEqual(const float, const float);
-    bool AreNotEqual(const double, const double);
+    bool AreNotEqual(bool, bool);
+    bool AreNotEqual(char, char);
+    bool AreNotEqual(unsigned char, unsigned char);
+    bool AreNotEqual(int, int);
+    bool AreNotEqual(unsigned int, unsigned int);
+    bool AreNotEqual(long, long);
+    bool AreNotEqual(unsigned long, unsigned long);
+    bool AreNotEqual(short, short);
+    bool AreNotEqual(unsigned short, unsigned short);
+    bool AreNotEqual(float, float);
+    bool AreNotEqual(double, double);
 
   protected:
       bool DebugPassFail(bool);
       bool DebugEqualNotEqual(bool, bool, bool);
-      bool DebugEqualNotEqual(bool, unsigned char, unsigned char);
       bool DebugEqualNotEqual(bool, char, char);
+      bool DebugEqualNotEqual(bool, unsigned char, unsigned char);
       bool DebugEqualNotEqual(bool, int, int);
       bool DebugEqualNotEqual(bool, unsigned int, unsigned int);
       bool DebugEqualNotEqual(bool, long, long);
       bool DebugEqualNotEqual(bool, unsigned long, unsigned long);
       bool DebugEqualNotEqual(bool, short, short);
-      bool DebugEqualNotEqual(bool, unsigned short,unsigned short);
+      bool DebugEqualNotEqual(bool, unsigned short, unsigned short);
       bool DebugEqualNotEqual(bool, float, float);
       bool DebugEqualNotEqual(bool, double, double);
 };

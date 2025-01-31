@@ -3,82 +3,82 @@
 //
 // Boolean
 //
-bool AssertClass::IsTrue(const bool value)
+bool AssertClass::IsTrue(bool value)
 {
   this->DebugPassFail(value);
-  return this->DebugEqualNotEqual(value == true, value, true); 
+  return this->DebugEqualNotEqual(value, value, (bool)true); 
 };
 
-bool AssertClass::IsFalse(const bool value)
+bool AssertClass::IsFalse(bool value)
 {
   this->DebugPassFail(!value);
-  return this->DebugEqualNotEqual(value == false, value, false); 
+  return this->DebugEqualNotEqual(!value, value, (bool)false); 
 };
 
 //
 // Are Equal
 //
-bool AssertClass::AreEqual(const bool value1, const bool value2)
+bool AssertClass::AreEqual(bool value1, bool value2)
 {
   this->DebugPassFail(value1 == value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreEqual(const unsigned char value1, const unsigned char value2)
+bool AssertClass::AreEqual(unsigned char value1, unsigned char value2)
 {
   this->DebugPassFail(value1 == value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreEqual(const char value1, const char value2)
+bool AssertClass::AreEqual(char value1, char value2)
 {
   this->DebugPassFail(value1 == value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreEqual(const int value1, const int value2)
+bool AssertClass::AreEqual(int value1, int value2)
 {
   this->DebugPassFail(value1 == value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreEqual(const unsigned int value1, const unsigned int value2)
+bool AssertClass::AreEqual(unsigned int value1, unsigned int value2)
 {
   this->DebugPassFail(value1 == value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreEqual(const long value1, const long value2)
+bool AssertClass::AreEqual(long value1, long value2)
 {
   this->DebugPassFail(value1 == value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreEqual(const unsigned long value1, const unsigned long value2)
+bool AssertClass::AreEqual(unsigned long value1, unsigned long value2)
 {
   this->DebugPassFail(value1 == value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreEqual(const short value1, const short value2)
+bool AssertClass::AreEqual(short value1, short value2)
 {
   this->DebugPassFail(value1 == value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreEqual(const unsigned short value1, const unsigned short value2)
+bool AssertClass::AreEqual(unsigned short value1, unsigned short value2)
 {
   this->DebugPassFail(value1 == value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreEqual(const float value1, const float value2)
+bool AssertClass::AreEqual(float value1, float value2)
 {
   this->DebugPassFail(value1 == value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreEqual(const double value1, const double value2)
+bool AssertClass::AreEqual(double value1, double value2)
 {
   this->DebugPassFail(value1 == value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
@@ -87,67 +87,67 @@ bool AssertClass::AreEqual(const double value1, const double value2)
 //
 // Are Equal
 //
-bool AssertClass::AreNotEqual(const bool value1, const bool value2)
+bool AssertClass::AreNotEqual(bool value1, bool value2)
 {
   this->DebugPassFail(value1 != value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreNotEqual(const unsigned char value1, const unsigned char value2)
+bool AssertClass::AreNotEqual(unsigned char value1, unsigned char value2)
 {
   this->DebugPassFail(value1 != value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreNotEqual(const char value1, const char value2)
+bool AssertClass::AreNotEqual(char value1, char value2)
 {
   this->DebugPassFail(value1 != value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreNotEqual(const int value1, const int value2)
+bool AssertClass::AreNotEqual(int value1, int value2)
 {
   this->DebugPassFail(value1 != value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreNotEqual(const unsigned int value1, const unsigned int value2)
+bool AssertClass::AreNotEqual(unsigned int value1, unsigned int value2)
 {
   this->DebugPassFail(value1 != value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreNotEqual(const long value1, const long value2)
+bool AssertClass::AreNotEqual(long value1, long value2)
 {
   this->DebugPassFail(value1 != value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreNotEqual(const unsigned long value1, const unsigned long value2)
+bool AssertClass::AreNotEqual(unsigned long value1, unsigned long value2)
 {
   this->DebugPassFail(value1 != value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreNotEqual(const short value1, const short value2)
+bool AssertClass::AreNotEqual(short value1, short value2)
 {
   this->DebugPassFail(value1 != value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreNotEqual(const unsigned short value1, const unsigned short value2)
+bool AssertClass::AreNotEqual(unsigned short value1, unsigned short value2)
 {
   this->DebugPassFail(value1 != value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreNotEqual(const float value1, const float value2)
+bool AssertClass::AreNotEqual(float value1, float value2)
 {
   this->DebugPassFail(value1 != value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
 };
 
-bool AssertClass::AreNotEqual(const double value1, const double value2)
+bool AssertClass::AreNotEqual(double value1, double value2)
 {
   this->DebugPassFail(value1 != value2);
   return this->DebugEqualNotEqual(value1 == value2, value1, value2);
@@ -168,13 +168,13 @@ bool AssertClass::DebugEqualNotEqual(bool equal, bool value1, bool value2)
   return equal;
 };
 
-bool AssertClass::DebugEqualNotEqual(bool equal, unsigned char value1, unsigned char value2)
+bool AssertClass::DebugEqualNotEqual(bool equal, char value1, char value2)
 {
   DEBUG_INFO("\t[%c %s %c]", value1, (equal ? " == " : " != "), value2);
   return equal;
 };
 
-bool AssertClass::DebugEqualNotEqual(bool equal, char value1, char value2)
+bool AssertClass::DebugEqualNotEqual(bool equal, unsigned char value1, unsigned char value2)
 {
   DEBUG_INFO("\t[%c %s %c]", value1, (equal ? " == " : " != "), value2);
   return equal;
@@ -218,24 +218,34 @@ bool AssertClass::DebugEqualNotEqual(bool equal, unsigned short value1, unsigned
 
 bool AssertClass::DebugEqualNotEqual(bool equal, float value1, float value2)
 {
-  char buffer1[11];
-  dtostrf(value1, 6, 2, buffer1);
+  #if defined(PARTICLE)
+    DEBUG_INFO("\t[%.2f %.2f %.2f]", value1, (equal ? " == " : " != "), value2);
+  #elif defined(ARDUINO) && ARDUINO >= 100
+    char buffer1[11];
+    dtostrf(value1, 6, 2, buffer1);
 
-  char buffer2[11];
-  dtostrf(value2, 6, 2, buffer2);
+    char buffer2[11];
+    dtostrf(value2, 6, 2, buffer2);
 
-  DEBUG_INFO("\t[%s %s %s]", buffer1, (equal ? " == " : " != "), buffer2);
+    DEBUG_INFO("\t[%s %s %s]", buffer1, (equal ? " == " : " != "), buffer2);
+  #endif
+
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, double value1, double value2)
 {
-  char buffer1[11];
-  dtostrf(value1, 6, 2, buffer1);
+  #if defined(PARTICLE)
+    DEBUG_INFO("\t[%.2f %.2f %.2f]", value1, (equal ? " == " : " != "), value2);
+  #elif defined(ARDUINO) && ARDUINO >= 100
+    char buffer1[11];
+    dtostrf(value1, 6, 2, buffer1);
 
-  char buffer2[11];
-  dtostrf(value2, 6, 2, buffer2);
+    char buffer2[11];
+    dtostrf(value2, 6, 2, buffer2);
 
-  DEBUG_INFO("\t[%s %s %s]", buffer1, (equal ? " == " : " != "), buffer2);
+    DEBUG_INFO("\t[%s %s %s]", buffer1, (equal ? " == " : " != "), buffer2);
+  #endif
+
   return equal;
 };
