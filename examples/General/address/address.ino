@@ -23,7 +23,7 @@
 // EEPROM-Storage variables.
 // ---------------------------------------------------------------------------------------
 
-#include "Types.h"
+#include "types.h"
 #include <EEPROM.h>
 #include <Arduino_DebugUtils.h>
 
