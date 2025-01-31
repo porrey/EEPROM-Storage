@@ -26,6 +26,10 @@ jobs:
           arduino-cli core update-index
           arduino-cli core install arduino:avr  # Install Arduino AVR core
 
+      - name: Install Arduino_DebugUtils Library
+        run: |
+          arduino-cli lib install "Arduino_DebugUtils"
+
       - name: Compile Sketch address1
         run: |
-          arduino-cli compile --fqbn arduino:avr:mega --libraries /home/runner/work/EEPROM-Storage/EEPROM-Storage/src examples/address1/address1.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --libraries /home/runner/work/EEPROM-Storage/EEPROM-Storage/src /home/runner/work/EEPROM-Storage/EEPROM-Storage/examples/address1/address1.ino || exit 1
