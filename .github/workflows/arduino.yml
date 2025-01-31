@@ -30,10 +30,8 @@ jobs:
         run: |
           arduino-cli lib install "Arduino_DebugUtils"
           arduino-cli lib list
-          ls
-          ls ../
-          ls ../../
+          ls $HOME
 
       - name: Compile Sketch address1
         run: |
-          arduino-cli compile --fqbn arduino:avr:mega --libraries src examples/address1/address1.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/address1/address1.ino || exit 1
