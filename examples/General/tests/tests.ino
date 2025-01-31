@@ -58,14 +58,19 @@ void setup()
   // Initialize the serial port. On a Particle
   // device the baud rate will be ignored.
   //
+  #if defined(ARDUINO) && ARDUINO >= 100
   Serial.begin(115200);
+  #endif
 
   //
   // wait for serial port to connect. Needed
   // for native USB port only
   //
   while (!Serial);
+
+  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("\r\n");
+  #endif
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -89,7 +94,10 @@ void setup()
   // too often to the same address.
   //
   uint address = EEPROM.length() - random(20, EEPROM.length() / 2);
+  
+  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("Using address %u  for the test variables.", address);
+  #endif
 
   //
   // Run predefined tests.
@@ -99,10 +107,12 @@ void setup()
   //
   // Display results.
   //
+  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("");
   DEBUG_INFO("Ran a total of %u tests", results.totalTests);
   DEBUG_INFO("%u of %u tests passed.", results.totalPassed, results.totalTests);
   DEBUG_INFO("%u of %u tests failed.",results.totalFailed(), results.totalTests);
+  #endif
 
   #if defined(PARTICLE)
   _isCompleted = 1;

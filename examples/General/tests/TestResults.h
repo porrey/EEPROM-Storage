@@ -21,7 +21,7 @@
 #define TEST_RESULTS_H
 
 //
-// Define a complex structure to store in EEPROM.
+// Define the test results structure.
 //
 class TestResults
 {

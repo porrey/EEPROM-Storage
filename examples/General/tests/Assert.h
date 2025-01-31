@@ -25,11 +25,10 @@
 //
 #if defined(ARDUINO) && ARDUINO >= 100
   #include <Arduino.h>
+  #include <Arduino_DebugUtils.h>
 #elif defined(PARTICLE)
   #include <Particle.h>
 #endif
-
-#include <Arduino_DebugUtils.h>
 
 class AssertClass
 {
