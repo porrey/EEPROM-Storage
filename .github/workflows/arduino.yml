@@ -1,0 +1,37 @@
+name: Arduino Build
+
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Arduino CLI (Prebuilt)
+        run: |
+          wget https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz
+          tar -xvf arduino-cli_latest_Linux_64bit.tar.gz
+          sudo mv arduino-cli /usr/local/bin/
+
+      - name: Configure Arduino CLI
+        run: |
+          arduino-cli config init
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr  # Install Arduino AVR core
+
+      - name: Install Arduino_DebugUtils Library
+        run: |
+          arduino-cli lib install "Arduino_DebugUtils"
+          arduino-cli lib list
+          ls $HOME
+
+      - name: Compile Sketch address1
+        run: |
+          arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/address1/address1.ino || exit 1
