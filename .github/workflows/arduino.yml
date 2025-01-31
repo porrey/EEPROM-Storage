@@ -14,12 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Arduino CLI
-        run: |
-          curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
-          echo "$HOME/bin" >> $GITHUB_PATH
-          echo "PATH=$HOME/bin:$PATH" >> $GITHUB_ENV
-
       - name: Install Arduino CLI (Prebuilt)
         run: |
           wget https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz
@@ -28,14 +22,10 @@ jobs:
 
       - name: Configure Arduino CLI
         run: |
-          echo "$HOME/bin" >> $GITHUB_PATH
-          echo "PATH=$HOME/bin:$PATH" >> $GITHUB_ENV
           arduino-cli config init
           arduino-cli core update-index
           arduino-cli core install arduino:avr  # Install Arduino AVR core
 
       - name: Compile Sketch address1
         run: |
-          echo "$HOME/bin" >> $GITHUB_PATH
-          echo "PATH=$HOME/bin:$PATH" >> $GITHUB_ENV
-          arduino-cli compile --fqbn arduino:avr:mega examples/address1/address1.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --libraries ../../src examples/address1/address1.ino || exit 1
