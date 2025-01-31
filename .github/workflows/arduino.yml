@@ -28,4 +28,4 @@ jobs:
 
       - name: Compile Sketch address1
         run: |
-          arduino-cli compile --fqbn arduino:avr:mega --libraries src examples/address1/address1.ino || exit 1
+          arduino-cli compile --fqbn arduino:avr:mega --libraries ../../../src examples/address1/address1.ino || exit 1
