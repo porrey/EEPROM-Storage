@@ -31,6 +31,8 @@ jobs:
           arduino-cli lib install "Arduino_DebugUtils"
           arduino-cli lib list
           ls
+          ls ../
+          ls ../../
 
       - name: Compile Sketch address1
         run: |
