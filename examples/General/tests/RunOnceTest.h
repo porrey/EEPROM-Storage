@@ -79,8 +79,11 @@ class RunOnceTest
     {
       int returnValue = 0;
 
+      #if defined(ARDUINO) && ARDUINO >= 100
       DEBUG_INFO("");
       DEBUG_INFO("----> TEST: %s\r\n", this->_name);
+      #endif
+
       this->setup();
       returnValue = this->onRunOnce();
 

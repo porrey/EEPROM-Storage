@@ -58,11 +58,17 @@ class InitializationTest : public RunOnceTest<T>
       //
       // Assert
       //
+      #if defined(ARDUINO) && ARDUINO >= 100
       DEBUG_INFO("\tValue Initialized: ");
+      #endif
+
       int returnValue = Assert.AreEqual(item, initValue);
+
+      #if defined(ARDUINO) && ARDUINO >= 100
       DEBUG_INFO("");
       DEBUG_INFO("\tVariable Is Initialized: ");
       returnValue += Assert.IsTrue(item.isInitialized());
+      #endif
 
       this->_totalPassed += returnValue;
       return returnValue;

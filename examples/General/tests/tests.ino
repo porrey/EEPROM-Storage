@@ -28,7 +28,6 @@
 #define TARGET_STORAGE
 //#define TARGET_CACHE
 
-#include <EEPROM-Display.h>
 #include <EEPROM-Util.h>
 #include "TestRunner.h"
 

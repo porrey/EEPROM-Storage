@@ -38,225 +38,235 @@ class TestDirector
 
     TestResults runArithmeticTests()
     {
+      #if defined(ARDUINO) && ARDUINO >= 100
       DEBUG_INFO("-----------------------------------------------------------------------------------------------------------------------------");
       DEBUG_INFO("Running Arithmetic tests on Type %s.", this->_typeName);
       DEBUG_INFO("-----------------------------------------------------------------------------------------------------------------------------");
-    
+      #endif
+
       {
-        InitializationTest<T> t("Initialization", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        InitializationTest<T> test("Initialization", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        AdditionTest<T> t("+", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        AdditionTest<T> test("+", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        SubtractionTest<T> t("-", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        SubtractionTest<T> test("-", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        MultiplicationTest<T> t("*", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        MultiplicationTest<T> test("*", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        DivisionTest<T> t("/", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        DivisionTest<T> test("/", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        IncrementPostfixTest<T> t("x++", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        IncrementPostfixTest<T> test("x++", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        IncrementPrefixTest<T> t("++x", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        IncrementPrefixTest<T> test("++x", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        PlusEqualTest<T> t("+=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        PlusEqualTest<T> test("+=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        MinusEqualTest<T> t("-=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        MinusEqualTest<T> test("-=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        MultiplyEqualTest<T> t("*=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        MultiplyEqualTest<T> test("*=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        DivideEqualTest<T> t("/=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        DivideEqualTest<T> test("/=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        GreaterThanValueTest<T> t("> x", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        GreaterThanValueTest<T> test("> x", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        GreaterThanVariableTest<T> t("x >", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        GreaterThanVariableTest<T> test("x >", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        LessThanValueTest<T> t("< x", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        LessThanValueTest<T> test("< x", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        LessThanVariableTest<T> t("x <", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        LessThanVariableTest<T> test("x <", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
      {
-        GreaterThanOrEqualToValueTest<T> t(">= x", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        GreaterThanOrEqualToValueTest<T> test(">= x", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        GreaterThanOrEqualToVariableTest<T> t("x >=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        GreaterThanOrEqualToVariableTest<T> test("x >=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        LessThanOrEqualToValueTest<T> t("<= x", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        LessThanOrEqualToValueTest<T> test("<= x", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        LessThanOrEqualToVariableTest<T> t("x <=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        LessThanOrEqualToVariableTest<T> test("x <=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        EqualityTest<T> t("==", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        EqualityTest<T> test("==", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        NotEqualityTest<T> t("!=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        NotEqualityTest<T> test("!=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(ARDUINO) && ARDUINO >= 100
       DEBUG_INFO("");
+      #endif
+
       return this->_testResults;
     }
 
     TestResults runBinaryTests()
     {
+      #if defined(ARDUINO) && ARDUINO >= 100
       DEBUG_INFO("-----------------------------------------------------------------------------------------------------------------------------");
       DEBUG_INFO("Running Binary tests on Type %s.", this->_typeName);
       DEBUG_INFO("-----------------------------------------------------------------------------------------------------------------------------");
-    
+      #endif
+
       {
-        ModuloTest<T> t("%", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        ModuloTest<T> test("%", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        ModuloEqualTest<T> t("%=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        ModuloEqualTest<T> test("%=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        BitwiseAndTest<T> t("&", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        BitwiseAndTest<T> test("&", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        BitwiseAndEqualTest<T> t("&=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        BitwiseAndEqualTest<T> test("&=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        BitwiseOrTest<T> t("|", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        BitwiseOrTest<T> test("|", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        BitwiseOrEqualTest<T> t("|=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        BitwiseOrEqualTest<T> test("|=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        BitwiseXorTest<T> t("^", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        BitwiseXorTest<T> test("^", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        BitwiseXorEqualTest<T> t("^=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        BitwiseXorEqualTest<T> test("^=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        BitwiseNotTest<T> t("~", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        BitwiseNotTest<T> test("~", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        LeftShiftTest<T> t("<<", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        LeftShiftTest<T> test("<<", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        LeftShiftEqualTest<T> t("<<=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        LeftShiftEqualTest<T> test("<<=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        RightShiftTest<T> t(">>", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        RightShiftTest<T> test(">>", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
       {
-        RightShiftEqualTest<T> t(">>=", this->_address, this->_minValue, this->_maxValue);
-        this->_testResults.totalTests += t.totalTests();
-        this->_testResults.totalPassed += t.runOnce();
+        RightShiftEqualTest<T> test(">>=", this->_address, this->_minValue, this->_maxValue);
+        this->_testResults.totalTests += test.totalTests();
+        this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(ARDUINO) && ARDUINO >= 100
       DEBUG_INFO("");
+      #endif
+      
       return this->_testResults;
     }
 
