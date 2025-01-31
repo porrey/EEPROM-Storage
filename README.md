@@ -1,4 +1,5 @@
 ![Arduino Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino.yml/badge.svg?branch=master)
+![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage)
 
 # EEPROM-Storage Library
 ## Overview ##
