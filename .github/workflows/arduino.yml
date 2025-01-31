@@ -61,3 +61,4 @@ jobs:
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/scope/scope.ino || exit 1
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/shadow/shadow.ino || exit 1
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/simple/simple.ino || exit 1
+  
