@@ -51,11 +51,6 @@ void setup()
   DEBUG_INFO("The total size of EEPROM on this device is %d bytes", EEPROM.length());
   
   //
-  // Set the serial port for the EEPROM Utility class.
-  //
-  EEPROMDisplay.setSerial(&Serial);
-
-  //
   // Display the EEPROM contents.
   //
   EEPROMDisplay.displayEEPROM();
