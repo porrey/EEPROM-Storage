@@ -26,6 +26,7 @@
 #if defined(ARDUINO) && ARDUINO >= 100
   #include <Arduino.h>
   #include <EEPROM.h>
+  #include <Arduino_DebugUtils.h>
 #elif defined(PARTICLE)
   #include <Particle.h>
 #endif
