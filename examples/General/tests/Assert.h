@@ -62,18 +62,18 @@ class AssertClass
     bool AreNotEqual(double, double);
 
   protected:
-      bool DebugPassFail(bool);
-      bool DebugEqualNotEqual(bool, bool, bool);
-      bool DebugEqualNotEqual(bool, char, char);
-      bool DebugEqualNotEqual(bool, unsigned char, unsigned char);
-      bool DebugEqualNotEqual(bool, int, int);
-      bool DebugEqualNotEqual(bool, unsigned int, unsigned int);
-      bool DebugEqualNotEqual(bool, long, long);
-      bool DebugEqualNotEqual(bool, unsigned long, unsigned long);
-      bool DebugEqualNotEqual(bool, short, short);
-      bool DebugEqualNotEqual(bool, unsigned short, unsigned short);
-      bool DebugEqualNotEqual(bool, float, float);
-      bool DebugEqualNotEqual(bool, double, double);
+    bool DebugPassFail(bool);
+    bool DebugEqualNotEqual(bool, bool, bool);
+    bool DebugEqualNotEqual(bool, char, char);
+    bool DebugEqualNotEqual(bool, unsigned char, unsigned char);
+    bool DebugEqualNotEqual(bool, int, int);
+    bool DebugEqualNotEqual(bool, unsigned int, unsigned int);
+    bool DebugEqualNotEqual(bool, long, long);
+    bool DebugEqualNotEqual(bool, unsigned long, unsigned long);
+    bool DebugEqualNotEqual(bool, short, short);
+    bool DebugEqualNotEqual(bool, unsigned short, unsigned short);
+    bool DebugEqualNotEqual(bool, float, float);
+    bool DebugEqualNotEqual(bool, double, double);
 };
 
 static AssertClass Assert;
