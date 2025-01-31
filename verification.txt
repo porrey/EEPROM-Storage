@@ -4,7 +4,7 @@ How to verify this library
 
 2. Connect the device to your compute via a USB cable.
 
-3. Push the firmware to the device. Note that in cases the tests may take more RAM that is available.
+3. Push the firmware to the device. Note that some boards the tests may take more RAM that is available.
 
 4. Run the command "particle serial monitor".
 
