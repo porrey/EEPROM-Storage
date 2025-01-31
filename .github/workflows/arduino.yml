@@ -1,4 +1,4 @@
-name: Build Arduino Sketch
+name: Arduino Build
 
 on: 
   push:
