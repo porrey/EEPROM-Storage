@@ -3,10 +3,10 @@ name: Particle Compile
 on:
   push:
     branches:
-      - main
+      - v2.0.0
   pull_request:
     branches:
-      - main
+      - v2.0.0
 
 jobs:
   compile:
@@ -20,5 +20,9 @@ jobs:
           npm install -g particle-cli
           particle --version
 
+      - name: Authenticate Particle CLI
+        run: |
+          particle login --token ${{ secrets.PARTICLE_ACCESS_TOKEN }}
+        
       - name: Compile firmware
         run: particle compile photon exampls/General/Tests --saveTo firmware.bin
