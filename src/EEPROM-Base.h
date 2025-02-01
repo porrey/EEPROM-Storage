@@ -329,7 +329,7 @@ class EEPROMBase
     }
 
     //
-    // Calcuate the checksum of the
+    // Calculate the checksum of the
     // data in the EEPROM for this instance.
     //
     byte checksum() const
