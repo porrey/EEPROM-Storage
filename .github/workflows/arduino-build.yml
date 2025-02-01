@@ -26,9 +26,8 @@ jobs:
           arduino-cli core update-index
           arduino-cli core install arduino:avr  # Install Arduino AVR core
 
-      - name: Compile Sketches
+      - name: Compile Cache Sketches
         run: |
-          # Cache
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/address/address.ino || exit 1
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/advanced-structure/advanced-structure.ino || exit 1
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/assignment/assignment.ino || exit 1
@@ -38,13 +37,17 @@ jobs:
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/scope/scope.ino || exit 1
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/shadow/shadow.ino || exit 1
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Cache/simple/simple.ino || exit 1
-          # General
+      
+      - name: Compile General Sketches
+        run: |
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/General/address/address.ino || exit 1
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/General/clear/clear.ino || exit 1
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/General/debug/debug.ino || exit 1
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/General/sizeof/sizeof.ino || exit 1
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/General/tests/tests.ino || exit 1
-          # Storage
+          
+      - name: Compile Storage Sketches
+        run: |          
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/address/address.ino || exit 1
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/advanced-structure/advanced-structure.ino || exit 1
           arduino-cli compile --fqbn arduino:avr:mega --library src --library $HOME/Arduino/libraries/ examples/Storage/assignment/assignment.ino || exit 1
