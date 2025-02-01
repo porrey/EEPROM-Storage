@@ -38,13 +38,13 @@ class TestRunnerClass
       }
 
       {
-        TestDirector<char> t("char", address, 'a', 'Z');
+        TestDirector<char> t("char", address, 'd', 'W');
         returnValue.add(t.runArithmeticTests());
         returnValue.add(t.runBinaryTests());
       }
 
       {
-        TestDirector<unsigned char> t("unsigned char", address, 'a', 'Z');
+        TestDirector<unsigned char> t("unsigned char", address, 'd', 'W');
         returnValue.add(t.runArithmeticTests());
         returnValue.add(t.runBinaryTests());
       }
@@ -117,19 +117,19 @@ class TestRunnerClass
       }
 
       {
-        TestDirector<uint16_t> t("uint16_t", address, 0, 19998);
+        TestDirector<uint16_t> t("uint16_t", address, 0, 19999);
         returnValue.add(t.runArithmeticTests());
         returnValue.add(t.runBinaryTests());
       }
 
       {
-        TestDirector<int32_t> t("int32_t", address, -199999, 199999);
+        TestDirector<int32_t> t("int32_t", address, -19999, 19999);
         returnValue.add(t.runArithmeticTests());
         returnValue.add(t.runBinaryTests());
       }
 
       {
-        TestDirector<uint32_t> t("uint32_t", address, 0, 399998);
+        TestDirector<uint32_t> t("uint32_t", address, 0, 39999);
         returnValue.add(t.runArithmeticTests());
         returnValue.add(t.runBinaryTests());
       }

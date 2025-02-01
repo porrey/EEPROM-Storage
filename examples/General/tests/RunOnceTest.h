@@ -20,13 +20,14 @@
 #ifndef RUN_ONCE_TEST_H
 #define RUN_ONCE_TEST_H
 
+#include <EEPROM-Debug.h>
+
 //
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
 #if defined(ARDUINO) && ARDUINO >= 100
   #include <Arduino.h>
   #include <EEPROM.h>
-  #include <Arduino_DebugUtils.h>
 #elif defined(PARTICLE)
   #include <Particle.h>
 #endif
@@ -80,10 +81,8 @@ class RunOnceTest
     {
       int returnValue = 0;
 
-      #if defined(ARDUINO) && ARDUINO >= 100
       DEBUG_INFO("");
       DEBUG_INFO("----> TEST: %s\r\n", this->_name);
-      #endif
 
       this->setup();
       returnValue = this->onRunOnce();

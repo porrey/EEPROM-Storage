@@ -23,6 +23,7 @@
 #include "TestResults.h"
 #include "ArithmeticTests.h"
 #include "BinaryTests.h"
+#include <EEPROM-Debug.h>
 
 template <typename T>
 class TestDirector
@@ -38,11 +39,9 @@ class TestDirector
 
     TestResults runArithmeticTests()
     {
-      #if defined(ARDUINO) && ARDUINO >= 100
       DEBUG_INFO("-----------------------------------------------------------------------------------------------------------------------------");
       DEBUG_INFO("Running Arithmetic tests on Type %s.", this->_typeName);
       DEBUG_INFO("-----------------------------------------------------------------------------------------------------------------------------");
-      #endif
 
       {
         InitializationTest<T> test("Initialization", this->_address, this->_minValue, this->_maxValue);
@@ -50,11 +49,19 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         AdditionTest<T> test("+", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         SubtractionTest<T> test("-", this->_address, this->_minValue, this->_maxValue);
@@ -62,17 +69,29 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         MultiplicationTest<T> test("*", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         DivisionTest<T> test("/", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+      
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         IncrementPostfixTest<T> test("x++", this->_address, this->_minValue, this->_maxValue);
@@ -80,11 +99,19 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         IncrementPrefixTest<T> test("++x", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         PlusEqualTest<T> test("+=", this->_address, this->_minValue, this->_maxValue);
@@ -92,11 +119,19 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         MinusEqualTest<T> test("-=", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         MultiplyEqualTest<T> test("*=", this->_address, this->_minValue, this->_maxValue);
@@ -104,11 +139,19 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         DivideEqualTest<T> test("/=", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         GreaterThanValueTest<T> test("> x", this->_address, this->_minValue, this->_maxValue);
@@ -116,11 +159,19 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         GreaterThanVariableTest<T> test("x >", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         LessThanValueTest<T> test("< x", this->_address, this->_minValue, this->_maxValue);
@@ -128,17 +179,29 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         LessThanVariableTest<T> test("x <", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
 
-     {
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
+      {
         GreaterThanOrEqualToValueTest<T> test(">= x", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         GreaterThanOrEqualToVariableTest<T> test("x >=", this->_address, this->_minValue, this->_maxValue);
@@ -146,11 +209,19 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         LessThanOrEqualToValueTest<T> test("<= x", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         LessThanOrEqualToVariableTest<T> test("x <=", this->_address, this->_minValue, this->_maxValue);
@@ -158,11 +229,19 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         EqualityTest<T> test("==", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         NotEqualityTest<T> test("!=", this->_address, this->_minValue, this->_maxValue);
@@ -179,17 +258,19 @@ class TestDirector
 
     TestResults runBinaryTests()
     {
-      #if defined(ARDUINO) && ARDUINO >= 100
       DEBUG_INFO("-----------------------------------------------------------------------------------------------------------------------------");
       DEBUG_INFO("Running Binary tests on Type %s.", this->_typeName);
       DEBUG_INFO("-----------------------------------------------------------------------------------------------------------------------------");
-      #endif
-
+      
       {
         ModuloTest<T> test("%", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         ModuloEqualTest<T> test("%=", this->_address, this->_minValue, this->_maxValue);
@@ -197,11 +278,19 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         BitwiseAndTest<T> test("&", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         BitwiseAndEqualTest<T> test("&=", this->_address, this->_minValue, this->_maxValue);
@@ -209,11 +298,19 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         BitwiseOrTest<T> test("|", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         BitwiseOrEqualTest<T> test("|=", this->_address, this->_minValue, this->_maxValue);
@@ -221,11 +318,19 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         BitwiseXorTest<T> test("^", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         BitwiseXorEqualTest<T> test("^=", this->_address, this->_minValue, this->_maxValue);
@@ -233,11 +338,19 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         BitwiseNotTest<T> test("~", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         LeftShiftTest<T> test("<<", this->_address, this->_minValue, this->_maxValue);
@@ -245,11 +358,19 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         LeftShiftEqualTest<T> test("<<=", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
+
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
 
       {
         RightShiftTest<T> test(">>", this->_address, this->_minValue, this->_maxValue);
@@ -257,15 +378,17 @@ class TestDirector
         this->_testResults.totalPassed += test.runOnce();
       }
 
+      #if defined(PARTICLE)
+      Particle.process();
+      #endif
+
       {
         RightShiftEqualTest<T> test(">>=", this->_address, this->_minValue, this->_maxValue);
         this->_testResults.totalTests += test.totalTests();
         this->_testResults.totalPassed += test.runOnce();
       }
 
-      #if defined(ARDUINO) && ARDUINO >= 100
       DEBUG_INFO("");
-      #endif
       
       return this->_testResults;
     }

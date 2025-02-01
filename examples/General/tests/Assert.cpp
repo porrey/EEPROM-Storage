@@ -158,91 +158,61 @@ bool AssertClass::AreNotEqual(double value1, double value2)
 //
 bool AssertClass::DebugPassFail(bool value)
 {
-  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO((value ? "\tPASSED" : "\tFAILED"));
-  #endif
-
   return value;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, bool value1, bool value2)
 {
-  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("\t[%s %s %s]", (value1 ? "true" : "false"), (equal ? " == " : " != "), (value2 ? "true" : "false"));
-  #endif
-
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, char value1, char value2)
 {
-  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("\t[%c %s %c]", value1, (equal ? " == " : " != "), value2);
-  #endif
-  
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, unsigned char value1, unsigned char value2)
 {
-  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("\t[%c %s %c]", value1, (equal ? " == " : " != "), value2);
-  #endif
-  
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, int value1, int value2)
 {
-  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("\t[%d %s %d]", value1, (equal ? " == " : " != "), value2);
-  #endif
-  
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, unsigned int value1, unsigned int value2)
 {
-  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("\t[%u %s %u]", value1, (equal ? " == " : " != "), value2);
-  #endif
-  
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, long value1, long value2)
 {
-  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("\t[%d %s %d]", value1, (equal ? " == " : " != "), value2);
-  #endif
-  
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, unsigned long value1, unsigned long value2)
 {
-  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("\t[%u %s %u]", value1, (equal ? " == " : " != "), value2);
-  #endif
-  
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, short value1, short value2)
 {
-  #if defined(ARDUINO) && ARDUINO >= 100
-  DEBUG_INFO("\t[%d %s %d]", value1, (equal ? " == " : " != "), value2);
-  #endif
-  
+  DEBUG_INFO("\t[%d %s %d]", value1, (equal ? " == " : " != "), value2);  
   return equal;
 };
 
 bool AssertClass::DebugEqualNotEqual(bool equal, unsigned short value1, unsigned short value2)
 {
-  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("\t[%u %s %u]", value1, (equal ? " == " : " != "), value2);
-  #endif
-
   return equal;
 };
 
@@ -256,6 +226,8 @@ bool AssertClass::DebugEqualNotEqual(bool equal, float value1, float value2)
     dtostrf(value2, 6, 2, buffer2);
 
     DEBUG_INFO("\t[%s %s %s]", buffer1, (equal ? " == " : " != "), buffer2);
+  #else
+    DEBUG_INFO("\t[%.2F %s %.2F]", value1, (equal ? " == " : " != "), value2);
   #endif
 
   return equal;
@@ -271,6 +243,8 @@ bool AssertClass::DebugEqualNotEqual(bool equal, double value1, double value2)
     dtostrf(value2, 6, 2, buffer2);
 
     DEBUG_INFO("\t[%s %s %s]", buffer1, (equal ? " == " : " != "), buffer2);
+  #else
+    DEBUG_INFO("\t[%.2F %s %.2F]", value1, (equal ? " == " : " != "), value2);
   #endif
 
   return equal;

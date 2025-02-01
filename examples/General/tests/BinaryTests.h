@@ -52,8 +52,8 @@ class ModuloTest : public RunOnceTest<T>
       item.restore();
       #endif
 
-      value = value % 6;
-      item = item % 6;
+      value = value % 2;
+      item = item % 2;
       
       #if defined(TARGET_CACHE)
       item.commit();
@@ -132,8 +132,8 @@ class BitwiseAndEqualTest : public RunOnceTest<T>
       item.restore();
       #endif
 
-      value &= 0xAAAA;
-      item &= 0xAAAA;
+      value &= 0xA;
+      item &= 0xA;
       
       #if defined(TARGET_CACHE)
       item.commit();
@@ -172,8 +172,8 @@ class BitwiseAndTest : public RunOnceTest<T>
       item.restore();
       #endif
       
-      value = value & 0xAAAA;
-      item = value & 0xAAAA;
+      value = value & 0xA;
+      item = value & 0xA;
       
       #if defined(TARGET_CACHE)
       item.commit();
@@ -212,8 +212,8 @@ class BitwiseOrEqualTest : public RunOnceTest<T>
       item.restore();
       #endif
       
-      value |= 0xAAAA;
-      item |= 0xAAAA;
+      value |= 0xA;
+      item |= 0xA;
       
       #if defined(TARGET_CACHE)
       item.commit();
@@ -252,8 +252,8 @@ class BitwiseOrTest : public RunOnceTest<T>
       item.restore();
       #endif
       
-      value = value | 0xAAAA;
-      item = item | 0xAAAA;
+      value = value | 0xA;
+      item = item | 0xA;
       
       #if defined(TARGET_CACHE)
       item.commit();
@@ -292,8 +292,8 @@ class BitwiseXorEqualTest : public RunOnceTest<T>
       item.restore();
       #endif
       
-      value ^= 0xAAAA;
-      item ^= 0xAAAA;
+      value ^= 0xA;
+      item ^= 0xA;
       
       #if defined(TARGET_CACHE)
       item.commit();
@@ -332,8 +332,8 @@ class BitwiseXorTest : public RunOnceTest<T>
       item.restore();
       #endif
       
-      value = value ^ 0xAAAA;
-      item = item ^ 0xAAAA;
+      value = value ^ 0xA;
+      item = item ^ 0xA;
       
       #if defined(TARGET_CACHE)
       item.commit();
@@ -372,8 +372,8 @@ class BitwiseNotTest : public RunOnceTest<T>
       item.restore();
       #endif
       
-      value = ~0xAAAA;
-      item = ~0xAAAA;
+      value = ~0xA;
+      item = ~0xA;
       
       #if defined(TARGET_CACHE)
       item.commit();

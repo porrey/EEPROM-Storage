@@ -33,6 +33,17 @@
 
 #if defined(PARTICLE)
 //
+// Let Device OS manage the connection to the Particle Cloud
+//
+SYSTEM_MODE(AUTOMATIC);
+
+//
+// Show system, cloud connectivity, and application logs over USB
+// View logs with CLI using 'particle serial monitor --follow'
+//
+SerialLogHandler logHandler(LOG_LEVEL_INFO);
+
+//
 // Cloud function variables.
 //
 int _isCompleted = 0;
@@ -44,6 +55,11 @@ int _failedTests = 0;
 void setup() 
 {
   #if defined(PARTICLE)
+  //
+  // Initialize the Serial port.
+  //
+  Serial.begin();
+
   //
   // Initial the cloud variables and functions.
   //
@@ -58,18 +74,19 @@ void setup()
   // device the baud rate will be ignored.
   //
   #if defined(ARDUINO) && ARDUINO >= 100
+  //
+  // Initialize the Serial port.
+  //
   Serial.begin(115200);
-  #endif
 
   //
   // wait for serial port to connect. Needed
   // for native USB port only
   //
   while (!Serial);
-
-  #if defined(ARDUINO) && ARDUINO >= 100
-  DEBUG_INFO("\r\n");
   #endif
+
+  DEBUG_INFO("\r\nTests Started.");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
@@ -77,11 +94,6 @@ void setup()
   #if defined(ESP8266)
   EEPROM.begin(4096);
   #endif
-
-  //
-  // Clear the EEPROM.
-  //
-  EEPROMUtil.clearEEPROM();
 
   //
   // Initialize the random number generator.
@@ -93,25 +105,20 @@ void setup()
   // too often to the same address.
   //
   uint address = EEPROM.length() - random(20, EEPROM.length() / 2);
-  
-  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("Using address %u  for the test variables.", address);
-  #endif
 
   //
   // Run predefined tests.
   //
-  TestResults results =  TestRunner.runAll(address);
+  TestResults results = TestRunner.runAll(address);
 
   //
   // Display results.
   //
-  #if defined(ARDUINO) && ARDUINO >= 100
   DEBUG_INFO("");
   DEBUG_INFO("Ran a total of %u tests", results.totalTests);
   DEBUG_INFO("%u of %u tests passed.", results.totalPassed, results.totalTests);
   DEBUG_INFO("%u of %u tests failed.",results.totalFailed(), results.totalTests);
-  #endif
 
   #if defined(PARTICLE)
   _isCompleted = 1;
