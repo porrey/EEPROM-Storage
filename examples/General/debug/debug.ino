@@ -21,7 +21,7 @@
 // This example demonstrates ho to adjust the Arduino Debug library output.
 // ---------------------------------------------------------------------------------------
 
-#include <Arduino_DebugUtils.h>
+#include <EEPROM-Debug.h>
 
 unsigned int _i = 0;
 

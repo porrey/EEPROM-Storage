@@ -44,7 +44,7 @@
 
 #include "EEPROM-Base.h"
 #include "EEPROM-Vars.h"
-#include <Arduino_DebugUtils.h>
+#include "EEPROM-Debug.h"
 
 #define WIDTH 32
 #define LINE_WIDTH (WIDTH * 3) + 8

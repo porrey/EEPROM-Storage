@@ -20,7 +20,7 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
-#include <Arduino_DebugUtils.h>
+#include <EEPROM-Debug.h>
 
 //
 // Define a complex structure to store in EEPROM.

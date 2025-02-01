@@ -23,7 +23,7 @@
 
 #include <EEPROM.h>
 #include <EEPROM-Vars.h>
-#include <Arduino_DebugUtils.h>
+#include <EEPROM-Debug.h>
 
 void setup()
 {

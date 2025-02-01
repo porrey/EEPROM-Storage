@@ -22,7 +22,7 @@
 // ---------------------------------------------------------------------------------------
 
 #include <EEPROM-Storage.h>
-#include <Arduino_DebugUtils.h>
+#include <EEPROM-Debug.h>
 
 #define VALUE 1395478
 

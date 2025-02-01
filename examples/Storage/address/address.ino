@@ -23,7 +23,7 @@
 
 #include <EEPROM-Storage.h>
 #include <EEPROM-Display.h>
-#include <Arduino_DebugUtils.h>
+#include <EEPROM-Debug.h>
 
 void setup()
 {

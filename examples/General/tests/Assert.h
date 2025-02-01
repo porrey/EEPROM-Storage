@@ -20,12 +20,13 @@
 #ifndef ASSERT_H
 #define ASSERT_H
 
+#include <EEPROM-Debug.h>
+
 //
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
 #if defined(ARDUINO) && ARDUINO >= 100
   #include <Arduino.h>
-  #include <Arduino_DebugUtils.h>
 #elif defined(PARTICLE)
   #include <Particle.h>
 #endif

@@ -25,7 +25,7 @@
 
 #include "types.h"
 #include <EEPROM.h>
-#include <Arduino_DebugUtils.h>
+#include <EEPROM-Debug.h>
 
 void setup()
 {
