@@ -25,4 +25,5 @@ jobs:
           particle login --token ${{ secrets.PARTICLE_ACCESS_TOKEN }}
         
       - name: Compile firmware
-        run: particle compile photon examples/General/tests --saveTo firmware.bin
+        run: |
+          particle compile photon examples/General/tests --saveTo firmware.bin
