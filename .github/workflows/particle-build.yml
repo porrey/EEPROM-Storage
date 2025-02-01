@@ -24,7 +24,10 @@ jobs:
         run: |
           particle login --token ${{ secrets.PARTICLE_ACCESS_TOKEN }}
         
-      - name: Compile firmware
+      - name: Compile tests.ino firmware
         run: |
           particle compile photon examples/General/tests --saveTo firmware.bin || exit 1
+
+      - name: Compile cloud.ino firmware
+        run: |
           particle compile photon examples/Particle/cloud --saveTo firmware.bin || exit 1
