@@ -26,4 +26,4 @@ jobs:
         
       - name: Compile firmware
         run: |
-          particle compile photon examples/General/tests --saveTo firmware.bin
+          particle compile photon examples/General/tests --saveTo firmware.bin || exit 1
