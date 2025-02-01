@@ -1,5 +1,6 @@
 /*
-   This file is part of Arduino_DebugUtils.
+   This file is part of EEPROMDebug. Modified by
+   Daniel M Porrey to work on the Particle platform.
 
    Copyright 2019 ARDUINO SA (http://www.arduino.cc/)
 
@@ -46,11 +47,11 @@ int  getDebugMessageLevel();
    CLASS DECLARATION
  ******************************************************************************/
 
-class Arduino_DebugUtils {
+class EEPROMDebug {
 
   public:
 
-    Arduino_DebugUtils();
+    EEPROMDebug();
 
     void setDebugLevel(int const debug_level);
     int  getDebugLevel() const;
@@ -93,7 +94,7 @@ class Arduino_DebugUtils {
    EXTERN
  ******************************************************************************/
 
-extern Arduino_DebugUtils Debug;
+extern EEPROMDebug Debug;
 
 /**************************************************************************************
  * DEFINE

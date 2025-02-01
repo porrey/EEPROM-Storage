@@ -1,6 +1,6 @@
 /*
-   This file is part of Arduino_DebugUtils. Modified to
-   work on the Particle platform.
+   This file is part of EEPROMDebug. Modified by
+   Daniel M Porrey to work on the Particle platform.
 
    Copyright 2019 ARDUINO SA (http://www.arduino.cc/)
 
@@ -33,7 +33,7 @@ static Stream *  DEFAULT_OUTPUT_STREAM = &Serial;
    CTOR/DTOR
  ******************************************************************************/
 
-Arduino_DebugUtils::Arduino_DebugUtils() {
+EEPROMDebug::EEPROMDebug() {
   timestampOff();
   newlineOn();
   debugLabelOff();
@@ -46,51 +46,51 @@ Arduino_DebugUtils::Arduino_DebugUtils() {
    PUBLIC MEMBER FUNCTIONS
  ******************************************************************************/
 
-void Arduino_DebugUtils::setDebugLevel(int const debug_level) {
+void EEPROMDebug::setDebugLevel(int const debug_level) {
   _debug_level = debug_level;
 }
 
-int Arduino_DebugUtils::getDebugLevel() const {
+int EEPROMDebug::getDebugLevel() const {
   return _debug_level;
 }
 
-void Arduino_DebugUtils::setDebugOutputStream(Stream * stream) {
+void EEPROMDebug::setDebugOutputStream(Stream * stream) {
   _debug_output_stream = stream;
 }
 
-void Arduino_DebugUtils::newlineOn() {
+void EEPROMDebug::newlineOn() {
     _newline_on = true;
 }
 
-void Arduino_DebugUtils::newlineOff() {
+void EEPROMDebug::newlineOff() {
     _newline_on = false;
 }
 
-void Arduino_DebugUtils::debugLabelOn() {
+void EEPROMDebug::debugLabelOn() {
   _print_debug_label = true;
 }
 
-void Arduino_DebugUtils::debugLabelOff() {
+void EEPROMDebug::debugLabelOff() {
   _print_debug_label = false;
 }
 
-void Arduino_DebugUtils::formatTimestampOn() {
+void EEPROMDebug::formatTimestampOn() {
   _format_timestamp_on = true;
 }
 
-void Arduino_DebugUtils::formatTimestampOff() {
+void EEPROMDebug::formatTimestampOff() {
   _format_timestamp_on = false;
 }
 
-void Arduino_DebugUtils::timestampOn() {
+void EEPROMDebug::timestampOn() {
   _timestamp_on = true;
 }
 
-void Arduino_DebugUtils::timestampOff() {
+void EEPROMDebug::timestampOff() {
   _timestamp_on = false;
 }
 
-void Arduino_DebugUtils::print(int const debug_level, const char * fmt, ...)
+void EEPROMDebug::print(int const debug_level, const char * fmt, ...)
 {
   if (!shouldPrint(debug_level))
     return;
@@ -107,7 +107,7 @@ void Arduino_DebugUtils::print(int const debug_level, const char * fmt, ...)
   va_end(args);
 }
 
-void Arduino_DebugUtils::print(int const debug_level, const __FlashStringHelper * fmt, ...)
+void EEPROMDebug::print(int const debug_level, const __FlashStringHelper * fmt, ...)
 {
   if (!shouldPrint(debug_level))
     return;
@@ -130,7 +130,7 @@ void Arduino_DebugUtils::print(int const debug_level, const __FlashStringHelper 
    PRIVATE MEMBER FUNCTIONS
  ******************************************************************************/
 
-void Arduino_DebugUtils::vPrint(char const * fmt, va_list args) {
+void EEPROMDebug::vPrint(char const * fmt, va_list args) {
   // calculate required buffer length
   int msg_buf_size = vsnprintf(nullptr, 0, fmt, args) + 1; // add one for null terminator
 #if defined(ARDUINO) && ARDUINO >= 100
@@ -160,7 +160,7 @@ void Arduino_DebugUtils::vPrint(char const * fmt, va_list args) {
 #endif
 }
 
-void Arduino_DebugUtils::printTimestamp()
+void EEPROMDebug::printTimestamp()
 {
   char timestamp[32];
 
@@ -198,7 +198,7 @@ void Arduino_DebugUtils::printTimestamp()
   _debug_output_stream->print(timestamp);
 }
 
-void Arduino_DebugUtils::printDebugLabel(int const debug_level)
+void EEPROMDebug::printDebugLabel(int const debug_level)
 {
   static char const * DEBUG_MODE_STRING[5] =
   {
@@ -216,7 +216,7 @@ void Arduino_DebugUtils::printDebugLabel(int const debug_level)
   _debug_output_stream->print(DEBUG_MODE_STRING[debug_level]);
 }
 
-bool Arduino_DebugUtils::shouldPrint(int const debug_level) const
+bool EEPROMDebug::shouldPrint(int const debug_level) const
 {
   return ((debug_level >= DBG_ERROR) && (debug_level <= DBG_VERBOSE) && (debug_level <= _debug_level));
 }
@@ -225,7 +225,7 @@ bool Arduino_DebugUtils::shouldPrint(int const debug_level) const
    CLASS INSTANTIATION
  ******************************************************************************/
 
-Arduino_DebugUtils Debug;
+EEPROMDebug Debug;
 
 void setDebugMessageLevel(int const debug_level) {
   Debug.setDebugLevel(debug_level);
