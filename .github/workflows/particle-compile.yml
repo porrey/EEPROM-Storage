@@ -1,0 +1,24 @@
+name: Particle Compile
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Particle CLI
+        run: |
+          npm install -g particle-cli
+          particle --version
+
+      - name: Compile firmware
+        run: particle compile photon exampls/General/Tests --saveTo firmware.bin
