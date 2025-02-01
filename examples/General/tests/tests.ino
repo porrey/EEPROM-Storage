@@ -56,11 +56,6 @@ void setup()
 {
   #if defined(PARTICLE)
   //
-  // Initialize the Serial port.
-  //
-  Serial.begin();
-
-  //
   // Initial the cloud variables and functions.
   //
   Particle.function("GetTotalTests", getTotalTests);
@@ -73,10 +68,6 @@ void setup()
   // Initialize the serial port. On a Particle
   // device the baud rate will be ignored.
   //
-  #if defined(ARDUINO) && ARDUINO >= 100
-  //
-  // Initialize the Serial port.
-  //
   Serial.begin(115200);
 
   //
@@ -84,16 +75,13 @@ void setup()
   // for native USB port only
   //
   while (!Serial);
-  #endif
-
-  DEBUG_INFO("\r\nTests Started.");
 
   //
   // On ESP8266 platforms EEPROM must be initialized.
   //
-  #if defined(ESP8266)
   EEPROM.begin(4096);
-  #endif
+
+  DEBUG_INFO("\r\nTests Started.");
 
   //
   // Initialize the random number generator.
