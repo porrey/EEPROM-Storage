@@ -1,5 +1,5 @@
-![Arduino Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino.yml/badge.svg?branch=v2.0.0)
-![Particle Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-compile.yml/badge.svg?branch=v2.0.0)
+![Arduino Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-build.yml/badge.svg?branch=v2.0.0)
+![Particle Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml/badge.svg?branch=v2.0.0)
 ![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?label=Latest%20Release)
 
 # EEPROM-Storage Library
