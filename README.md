@@ -147,6 +147,14 @@ The `EEPROMStorage` class also defines a `get()` method that can be used.
 
 	int x = myInt.get();
 
+## Platform/Boards Used in Testing
+1. Arduino on Mega 2560
+2. Arduino on ESP8266 [ESPino (ESP-12 Module)]
+3. Particle on Argon with OS version 6.2.1
+4. Particle on Photon with OS version 3.3.1
+
+
 ## LICENSE
-*Copyright 2017-2025 Daniel Porrey*
 *Licensed under the GPL-3.0 license*
+
+*Copyright 2017-2025 Daniel Porrey*
