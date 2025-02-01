@@ -15,7 +15,7 @@
   "platforms": "avr, renesas_uno, esp8266",
   "license": "LGPL-3",
   "homepage": "https://github.com/porrey/EEPROM-Storage/blob/master/README.md",
-  "headers": "EEPROM-Cache.h, EEPROM-Storage.h, EEPROM-Util.h, EEPROM-Vars.h, EEPROM-Display.h, EEPROM-Checksum.h, EEPROM-Base.h",
+  "headers": "EEPROM-Cache.h, EEPROM-Storage.h, EEPROM-Util.h, EEPROM-Vars.h, EEPROM-Display.h, EEPROM-Checksum.h, EEPROM-Base.h, EEPROM-Debug.h",
   "dependencies": {
     "external-zip": "https://github.com/arduino-libraries/Arduino_DebugUtils/archive/refs/heads/master.zip"
   }
