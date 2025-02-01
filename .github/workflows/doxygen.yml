@@ -3,7 +3,7 @@ name: Generate Doxygen Documentation
 on:
   push:
     branches:
-      - master  # Change to your default branch
+      - v.2.0.0  # Change to your default branch
 
 permissions:
   contents: write
