@@ -79,7 +79,9 @@ void setup()
   //
   // On ESP8266 platforms EEPROM must be initialized.
   //
+  #if defined(ESP8266)
   EEPROM.begin(4096);
+  #endif
 
   DEBUG_INFO("\r\nTests Started.");
 
