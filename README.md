@@ -152,7 +152,7 @@ The `EEPROMStorage` class also defines a `get()` method that can be used.
 2. Arduino on ESP8266 [ESPino (ESP-12 Module)]
 3. Particle on Argon with OS version 6.2.1
 4. Particle on Photon with OS version 3.3.1
-
+5. Particle on Electron with OS version 3.3.1
 
 ## LICENSE
 *Licensed under the GPL-3.0 license*
