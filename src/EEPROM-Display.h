@@ -21,23 +21,41 @@
 #define EEPROM_DISPLAY_H
 
 //
+// Define a Serial port to used 
+// for displaying output.
+//
+#ifndef DEBUG
+  #if defined(ARDUINO) && ARDUINO >= 100
+    #define DEBUG Serial
+  #elif defined(PARTICLE)
+    #define DEBUG USBSerial
+  #endif
+#endif
+
+//
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
 #if defined(ARDUINO) && ARDUINO >= 100
-#include "Arduino.h"
-#include <EEPROM.h>
-#elif defined(SPARK)
-#include "Particle.h"
+  #include <Arduino.h>
+  #include <EEPROM.h>
+#elif defined(PARTICLE)
+  #include <Particle.h>
 #endif
 
-#include "EEPROM-Var.h"
+#include "EEPROM-Base.h"
+#include "EEPROM-Vars.h"
+#include "EEPROM-Debug.h"
+
+#define WIDTH 32
+#define LINE_WIDTH (WIDTH * 3) + 8
 
 class EEPROMDisplayClass
 {
   public:
-    EEPROMDisplayClass(HardwareSerial* serial)
+    void begin()
     {
-      this->setSerial(serial);
+        Debug.timestampOff();
+        Debug.debugLabelOff();
     }
 
     //
@@ -45,97 +63,93 @@ class EEPROMDisplayClass
     //
     void displayPaddedHexByte(byte value, bool showPrefix = true)
     {
-      if (showPrefix) this->getSerial()->print("0x");
-      if (value <= 0x0F) this->getSerial()->print("0");
-      this->getSerial()->print(value, HEX);
+      if (showPrefix)
+      {
+        DEBUG_INFO("0x%2X ", value);
+      }
+      else
+      {
+        DEBUG_INFO("%2X ", value);
+      }
     }
 
     //
     // Displays the contents of the EEPROM
     //
-    void displayEEPROM(uint width = 32)
+    void displayEEPROM()
     {
-      this->getSerial()->println("EEPROM Contents:");
+      DEBUG_INFO("");
+      DEBUG_INFO("EEPROM Contents:");
 
       //
       // Draw a line.
       //
-      this->drawLine(width + 2);
+      this->drawLine(WIDTH + 2);
 
       //
-      // Display header addresses
+      // Create a buffer for a line of characters.
       //
-      this->getSerial()->print("     | ");
+      char buffer[LINE_WIDTH] = "     | ";
       
-      for(uint i = 0; i < width; i++)
+      //
+      // Add string terminating character.
+      //
+      buffer[LINE_WIDTH - 1] = 0;
+
+      //
+      // Build the header address line.
+      //
+      for(uint i = 0; i < WIDTH; i++)
       {
-        this->display2Digits(i);
-        this->getSerial()->print(" ");
+        char b[3];
+        sprintf(b, "%2u ", i);
+        buffer[(i * 3) + 7] = b[0];
+        buffer[(i * 3) + 8] = b[1];
+        buffer[(i * 3) + 9] = b[2];
       }
 
-      this->getSerial()->println();
+      //
+      // Display header addresses.
+      //
+      DEBUG_INFO("%s", buffer);
 
       //
       // Draw a line.
       //
-      this->drawLine(width + 2);
+      this->drawLine(WIDTH + 2);
 
       //
       // Get every byte from EEPROM
       //
-      uint lineNumber = 0;
-      this->displayLineNumber(lineNumber);
-      
-      for (uint i = 0; i < EEPROM.length(); i++)
+      uint maxLines = EEPROM.length() / WIDTH;
+      uint i = 0;
+
+      for (uint row = 0; row < maxLines; row++)
       {
-        //
-        // Display the byt in HEX with the leading 0x.
-        //
-        displayPaddedHexByte(EEPROM[i], false);
+        uint lineNumber = row * WIDTH;
+        sprintf(buffer, "%4d | ", lineNumber);
 
-        //
-        // Add a space after the HEX.
-        //
-        this->getSerial()->print(" ");
-
-        //
-        // Start a new line when the width is encountered.
-        //
-        if ((i + 1) % width == 0)
+        for(uint j = 0; j < WIDTH; j++)
         {
-          lineNumber += width;
-
-          if (lineNumber < EEPROM.length())
-          {
-            this->getSerial()->println();
-            this->displayLineNumber(lineNumber);
-          }
+          char b[3];
+          sprintf(b, "%.2X ", (byte)EEPROM[i++]);
+          buffer[(j * 3) + 7] = b[0];
+          buffer[(j * 3) + 8] = b[1];
+          buffer[(j * 3) + 9] = b[2];
         }
-      }
 
-      this->getSerial()->println();
+        DEBUG_INFO("%s", buffer);
+      }
     }
 
     //
     // Display the properties of a variable.
     //
     template<typename T>
-    void displayVariable(String name, EEPROMStorage<T> value)
+    void displayVariable(const char* name, EEPROMBase<T> value)
     {
-      this->getSerial()->print(name);
-      this->getSerial()->print(": Variable Size: ");
-      this->display2Digits(value.size());
-      this->getSerial()->print(", Memory Length = ");
-      this->display2Digits(value.length());
-      this->getSerial()->print(", Start Address = ");
-      this->display2Digits(value.getAddress());
-      this->getSerial()->print(", Checksum Address = ");
-      this->display2Digits(value.checksumAddress());
-      this->getSerial()->print(", Checksum Value = ");
-      this->displayPaddedHexByte(value.checksumByte());
-      this->getSerial()->print(", Initialized = ");
-      this->getSerial()->print(value.isInitialized() ? "Yes" : "No");
-      this->getSerial()->println();
+      DEBUG_INFO("%s: Variable Size: %2d, Memory Length = %2d, Start Address = %2d, Checksum Address = %2d, Checksum Value = %2d, Initialized = %s",
+                  name, value.size(), value.length(), value.getAddress(), value.checksumAddress(), value.checksumByte(), value.isInitialized() ? "Yes" : "No");
     }
 
     //
@@ -146,94 +160,38 @@ class EEPROMDisplayClass
       //
       // Display the EEPROM properties.
       //
-      this->getSerial()->println();
-      this->getSerial()->println("EEPROM<T> Properties:");
+      DEBUG_INFO("");
+      DEBUG_INFO("EEPROM<T> Properties:");
       this->drawLine(50);
     }
 
-    //
-    // Get a pointer to serial device being used by this instance.
-    //
-    HardwareSerial* getSerial()
-    {
-      return this->_serial;
-    }
-
-    //
-    // Set a pointer to serial device being used by this instance.
-    //
-    void setSerial(HardwareSerial* serial)
-    {
-      this->_serial = serial;
-    }
-
     private:
-      //
-      // A pointer to a serial device. This instance will write all
-      // output to this serial device.
-      //
-      HardwareSerial* _serial;
-
-      //
-      // Display a number of the serial port to use two positions with
-      // the text aligned to the right padded with spaces.
-      //
-      void display2Digits(uint number)
-      {
-        if (number < 10)
-        {
-          this->getSerial()->print(" ");
-        }
-
-        this->getSerial()->print(number);
-      }
-
-      //
-      // Display a number of the serial port to use four positions with
-      // the text aligned to the right padded with spaces.
-      //
-      void display4Digits(uint number)
-      {
-        if (number < 10)
-        {
-          this->getSerial()->print("   ");
-        }
-        else if (number < 100)
-        {
-          this->getSerial()->print("  ");
-        }
-        else if (number < 1000)
-        {
-          this->getSerial()->print(" ");
-        }
-
-        this->getSerial()->print(number);
-      }
-
-      //
-      // Dispays the line number down the left side of the grid.
-      //
-      void displayLineNumber(uint lineNumber)
-      {
-        display4Digits(lineNumber);
-        this->getSerial()->print(" | ");
-      }
-
       //
       // Draw a line using dashes with the given width.
       //
       void drawLine(uint width)
       {
-        for(uint i = 0; i < width; i++)
+        //
+        // Create a buffer for a line of characters.
+        //
+        char buffer[LINE_WIDTH];
+        
+        //
+        // Add string terminating character.
+        //
+        buffer[LINE_WIDTH - 1] = 0;
+
+        for(uint i = 0; i < LINE_WIDTH - 2; i++)
         {
-          this->getSerial()->print("---");
+          buffer[i] = '-';
         }
-        this->getSerial()->println();
+
+        DEBUG_INFO("%s", buffer);
       }
 };
 
 //
-// Create a static instance of EEPROMUtilClass.
+// Create a static instance of EEPROMDisplayClass.
 //
-static EEPROMDisplayClass EEPROMDisplay(&Serial);
+static EEPROMDisplayClass EEPROMDisplay;
 #endif

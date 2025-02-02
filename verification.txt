@@ -1,13 +1,21 @@
 How to verify this library
 
-1. Load the sketch named tests.ino.
+1. Download and instal the Particle CLI.
 
-2. Connect the device to your compute via a USB cable.
+2. Clone the EEPROM-Storage Library.
 
-3. Push the firmware to the device. Note that in cases the tests may take more RAM that is available.
+3. Modify the path and the PROJECT_DIR to match the path to where the tests.ino file is found.
 
-4. Run the command "particle serial monitor".
+4. Change the PLATFORM value if you are suing a device other than the argon. 
 
-5. Check the output of the serial device for the number of passed tests. 100% of the tests should pass.
+5. In a terminal, change to the directory EEPROM-Storage/examples/General/tests.
 
-NOTE: In this case comment out some of the tests and push the firmware. After a successful run change the commented sections and push the firmware again.
+6. Make sure the file build.sh is executable (chmod +x build.sh)
+
+7. Connect the device to your computer via a USB cable.
+
+8. Run the build script (./build.sh)
+
+9. The script should Run the command "particle serial monitor", if not run this command.
+
+10. Check the output of the serial device for the number of passed tests. 100% of the tests should pass.

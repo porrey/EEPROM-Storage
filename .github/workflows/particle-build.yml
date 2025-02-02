@@ -1,0 +1,33 @@
+name: Particle Compile
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Particle CLI
+        run: |
+          npm install -g particle-cli
+          particle --version
+
+      - name: Authenticate Particle CLI
+        run: |
+          particle login --token ${{ secrets.PARTICLE_ACCESS_TOKEN }}
+        
+      - name: Compile tests.ino firmware
+        run: |
+          particle compile photon examples/General/tests --saveTo firmware.bin || exit 1
+
+      - name: Compile cloud.ino firmware
+        run: |
+          particle compile photon examples/Particle/cloud --saveTo firmware.bin || exit 1

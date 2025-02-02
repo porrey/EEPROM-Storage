@@ -6,7 +6,15 @@
 # Datatypes (KEYWORD1)
 #######################################
 
+EEPROMBase	KEYWORD1
+EEPROMCache	KEYWORD1
 EEPROMStorage	KEYWORD1
+EEPROMUtilClass KEYWORD1
+EEPROMUtil KEYWORD1
+EEPROMDisplayClass KEYWORD1
+EEPROMDisplay KEYWORD1
+Checksum KEYWORD1
+uint KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -14,22 +22,34 @@ EEPROMStorage	KEYWORD1
 
 get	KEYWORD2
 set	KEYWORD2
+read	KEYWORD2
+write	KEYWORD2
 isInitialized	KEYWORD2
 length	KEYWORD2
+size	KEYWORD2
 unset	KEYWORD2
 checksumAddress	KEYWORD2
 checksumByte	KEYWORD2
 checksum	KEYWORD2
 copyTo	KEYWORD2
 getAddress	KEYWORD2
-getDefaultValue	KEYWORD2
 nextAddress	KEYWORD2
+getDefaultValue	KEYWORD2
+restore	KEYWORD2
+commit KEYWORD2
 clearEEPROM KEYWORD2
+updateEEPROM KEYWORD2
 displayEEPROM KEYWORD2
+displayVariable KEYWORD2
+displayHeader KEYWORD2
+getSerial KEYWORD2
+setSerial KEYWORD2
 displayPaddedHexByte KEYWORD2
+get KEYWORD2
+getEEPROM KEYWORD2
 
 ######################################
 # Constants (LITERAL1)
 #######################################
 
-MAX_VARIABLE_LENGTH LITERAL1
+UNSET_VALUE LITERAL1
