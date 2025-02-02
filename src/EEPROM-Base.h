@@ -198,9 +198,7 @@ class EEPROMBase
     //
     virtual T get() const
     {
-      #if defined(PARTICLE) || defined(ESP8266)
       return (T)0;
-      #endif
     }
 
     //
