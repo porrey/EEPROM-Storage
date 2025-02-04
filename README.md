@@ -6,6 +6,8 @@
 ## Overview
 The EEPROM Storage library provides the ability to access variables stored in EEPROM just as if they were stored in normal RAM.
 
+Detailed library class and code documentation can be found here: https://porrey.github.io/EEPROM-Storage
+
 ## EEPROMStorage\<T\> vs EEPROMCache\<T\>
 There are two classes that provide the similar access to EEEPROM. The first is the Direct Storage class which reads and writes to directly to and from EEPROM. The second is the Cache Access whichs reads and writes from memory and writes to the EEPROM when directed.
 
