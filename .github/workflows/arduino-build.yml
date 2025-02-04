@@ -8,6 +8,10 @@ on:
     branches:
       - master
 
+concurrency:
+  group: "Arduino-Build"
+  cancel-in-progress: false
+  
 jobs:
   build:
     runs-on: ubuntu-latest
