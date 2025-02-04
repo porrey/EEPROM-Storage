@@ -8,6 +8,10 @@ on:
     branches:
       - master
 
+concurrency:
+  group: "Particle-Build"
+  cancel-in-progress: false
+  
 jobs:
   compile:
     runs-on: ubuntu-latest
