@@ -6,6 +6,9 @@ on:
     workflows: ["Generate Doxygen Documentation"]
     types:
       - completed
+  pull_request:
+    branches:
+      - gh-pages
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
