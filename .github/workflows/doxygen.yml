@@ -25,6 +25,9 @@ jobs:
       - name: Install Doxygen
         run: sudo apt-get install -y doxygen
 
+      - name: Download Doxygen Awesome CSS
+        run: wget https://github.com/jothepro/doxygen-awesome-css/releases/latest/download/doxygen-awesome.css -P docs/
+        
       - name: Generate Documentation
         run: doxygen Doxyfile
 
