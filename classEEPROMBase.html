@@ -105,6 +105,9 @@ $(document).ready(function(){initNavTree('classEEPROMBase.html',''); initResizab
 </div><!--header-->
 <div class="contents">
 
+<p>Base class to wrap an EEPROM variable.  
+ <a href="classEEPROMBase.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for EEPROMBase&lt; T &gt;:</div>
@@ -120,6 +123,7 @@ Inheritance diagram for EEPROMBase&lt; T &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad3e33b13339ac748af138688fa47d834" id="r_ad3e33b13339ac748af138688fa47d834"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#ad3e33b13339ac748af138688fa47d834">EEPROMBase</a> (const uint address)</td></tr>
+<tr class="memdesc:ad3e33b13339ac748af138688fa47d834"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an instance of EEPROMBase&lt;T&gt; with the specified address.  <br /></td></tr>
 <tr class="separator:ad3e33b13339ac748af138688fa47d834"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af101f41d14096ee0d017809dca682d4f" id="r_af101f41d14096ee0d017809dca682d4f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#af101f41d14096ee0d017809dca682d4f">EEPROMBase</a> (const uint address, T defaultValue)</td></tr>
 <tr class="separator:af101f41d14096ee0d017809dca682d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,8 +204,15 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
-class EEPROMBase&lt; T &gt;</div>
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00040">40</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+class EEPROMBase&lt; T &gt;</div><p>Base class to wrap an EEPROM variable. </p>
+<p>This class contains the methods and properties to allow reading and writing EEPROM, storing the location of the variable (address), calculating, storing and comparing the variable checksum, computing the next address for subsequent EEPROM variables, standard operator functionality, and implicit conversion to the value type from the class instance. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of the variable stored. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00048">48</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad3e33b13339ac748af138688fa47d834" name="ad3e33b13339ac748af138688fa47d834"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad3e33b13339ac748af138688fa47d834">&#9670;&#160;</a></span>EEPROMBase() <span class="overload">[1/2]</span></h2>
@@ -229,7 +240,15 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00046">46</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Initialize an instance of EEPROMBase&lt;T&gt; with the specified address. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>The address (or index) of the variable within EEPROM. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00055">55</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -269,7 +288,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00055">55</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00064">64</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -299,7 +318,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00335">335</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00344">344</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -328,7 +347,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00318">318</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00327">327</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -357,7 +376,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00326">326</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00335">335</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -397,7 +416,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00344">344</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00353">353</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -428,7 +447,7 @@ template&lt;typename T &gt; </div>
 
 <p>Reimplemented in <a class="el" href="classEEPROMCache.html#a310f74f5397403fb8ef219223f8b6ea9">EEPROMCache&lt; T &gt;</a>, and <a class="el" href="classEEPROMStorage.html#a82429b5d7152796b4c3f62e53d7bfbe3">EEPROMStorage&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00199">199</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00208">208</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -457,7 +476,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00357">357</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00366">366</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -486,7 +505,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00374">374</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00383">383</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -515,7 +534,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00273">273</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00282">282</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -544,7 +563,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00282">282</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00291">291</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -573,7 +592,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00366">366</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00375">375</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -603,7 +622,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00396">396</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00405">405</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -632,7 +651,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00064">64</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00073">73</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -662,7 +681,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00159">159</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00168">168</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -692,7 +711,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00167">167</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00176">176</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -722,7 +741,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00135">135</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00144">144</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -751,7 +770,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00093">93</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00102">102</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -781,7 +800,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00083">83</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00092">92</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -811,7 +830,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00119">119</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00128">128</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -840,7 +859,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00111">111</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00120">120</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -870,7 +889,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00101">101</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00110">110</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -900,7 +919,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00127">127</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00136">136</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -930,7 +949,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00143">143</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00152">152</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -960,7 +979,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00183">183</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00192">192</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -990,7 +1009,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00191">191</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00200">200</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1020,7 +1039,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00074">74</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00083">83</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1050,7 +1069,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00151">151</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00160">160</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1080,7 +1099,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00175">175</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00184">184</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1109,7 +1128,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00218">218</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00227">227</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1141,7 +1160,7 @@ template&lt;typename T &gt; </div>
 
 <p>Reimplemented in <a class="el" href="classEEPROMCache.html#a0da91797fbda1b55e657468a2ea7cf71">EEPROMCache&lt; T &gt;</a>, and <a class="el" href="classEEPROMStorage.html#ad43e4efc0c4e37c89bae3b4290809ad0">EEPROMStorage&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00209">209</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00218">218</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1170,7 +1189,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00294">294</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00303">303</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1200,7 +1219,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00306">306</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00315">315</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1230,7 +1249,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00250">250</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00259">259</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1257,7 +1276,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00384">384</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00393">393</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1283,7 +1302,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00391">391</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00400">400</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
