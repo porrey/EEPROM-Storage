@@ -33,16 +33,25 @@
 #include "EEPROM-Util.h"
 #include "EEPROM-Checksum.h"
 
-//
-// Generic class to wrap an EEPROM variable.
-//
+/**
+ * @class EEPROMBase
+ * @brief Base class to wrap an EEPROM variable.
+ * @details This class contains the methods and properties to
+ * allow reading and writing EEPROM, storing the location of 
+ * the variable (address), calculating, storing and comparing 
+ * the variable checksum, computing the next address for 
+ * subsequent EEPROM variables, standard operator functionality,
+ * and implicit conversion to the value type from the class instance.
+ * @tparam T The type of the variable stored.
+ */
 template <typename T>
 class EEPROMBase
 {
   public:
-    //
-    // Initialize an instance of EEPROMBase<T> with the specified address.
-    //
+    /**
+     * @brief Initialize an instance of EEPROMBase<T> with the specified address.
+     * @param address The address (or index) of the variable within EEPROM.
+     */
     EEPROMBase(const uint address)
     {
       this->_address = this->normalizeAddress(address);
