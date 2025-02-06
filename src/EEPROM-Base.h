@@ -22,7 +22,7 @@
 
 /**
  * @file EEPROM-Base.h
- * @brief This file contains the EEPROMBase definition.
+ * @brief This file contains the EEPROMBase<T> definition.
  */
 
 //
@@ -61,11 +61,6 @@ class EEPROMBase
     {
       this->_address = this->normalizeAddress(address);
     }
-
-    //
-    // Initialize an instance of EEPROMBase<T> with the specified address
-    // and default value.
-    //
 
     /**
      * @brief Initialize an instance of EEPROMBase with the specified address and default value.

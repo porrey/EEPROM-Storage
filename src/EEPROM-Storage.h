@@ -20,6 +20,11 @@
 #ifndef EEPROM_STORAGE_H
 #define EEPROM_STORAGE_H
 
+/**
+ * @file EEPROM-Storage.h
+ * @brief This file contains the EEPROMStorage<T> definition.
+ */
+
 //
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
@@ -32,58 +37,75 @@
 
 #include "EEPROM-Base.h"
 
-//
-// Generic class to wrap an EEPROM variable that reads and writes
-// directly to and from the EEPROm storage.
-//
+/**
+ * @class EEPROMStorage
+ * @brief Provides direct access to an EEPROM variable.
+ * @details This class provides direct access to an EEPROM variable
+ * wrapped as type T. Accessing the value of the variable is done
+ * directly from the EEPROM variable. Subsequently, writing the
+ * variable value is done directly to the EEPROM memory.
+ * @tparam T The type of the variable stored.
+ */
 template <typename T>
 class EEPROMStorage : public EEPROMBase<T>
 {
   public:
-    //
-    // Initialize an instance of EEPROMStorage<T> with the specified address.
-    //
+    /**
+     * @brief Initialize an instance of EEPROMStorage<T> with the specified address.
+     * @param address The address (or index) of the variable within EEPROM.
+     */
     EEPROMStorage(const uint address) : EEPROMBase<T>(address)
     {
     }
 
-    //
-    // Initialize an instance of EEPROMStorage<T> with the specified address
-    // and default value.
-    //
+    /**
+     * @brief Initialize an instance of EEPROMBase with the specified address and default value.
+     * @param address The address (or index) of the variable within EEPROM.
+     * @tparam defaultValue The default value returned when the variable has not been initialized.
+     */
     EEPROMStorage(const uint address, T defaultValue) : EEPROMBase<T>(address, defaultValue)
     {
     }
 
-    //
-    // Accounts for EEPROMStorage<T> = T
-    //
-    EEPROMStorage<T> operator = (T const& value)
+    /**
+     * @brief Allows assignment of a variable of type T value to be 
+     * this instance's value.
+     * @details Accounts for EEPROMStorage<T> = T.
+     * @tparam item The new value to store in EEPROM.
+     * @return A reference to the EEPROMStorage<T> variable.
+     */
+    EEPROMStorage<T>& operator = (T const& value)
     {
       this->set(value);
       return *this;
     }
 
-    //
-    // Accounts for EEPROMStorage<T> = EEPROMStorage<T>
-    //
-    EEPROMStorage<T> operator = (EEPROMStorage<T> const& item)
+    /**
+     * @brief Allows assignment of one EEPROMStorage<T> value to another.
+     * @details Accounts for EEPROMStorage<T> = EEPROMStorage<T>.
+     * @tparam item The new value to store in EEPROM.
+     * @return A reference to the EEPROMStorage<T> variable.
+     */
+    EEPROMStorage<T>& operator = (EEPROMStorage<T> const& item)
     {
       this->set(item.get());
       return *this;
     }
 
-    //
-    // Get the variable value from the EEPROM.
-    //
+    /**
+     * @brief Get the variable value.
+     * @return The current value of the variable as type T.
+     */
     T get() const
     {
       return this->read();
     }
 
-    //
-    // Save the variable value to the EEPROM.
-    //
+    /**
+     * @brief Set the variable value.
+     * @tparam value The new value to store in EEPROM.
+     * @return The stored value as type T.
+     */
     T set(T const& value)
     {
       this->write(value);
