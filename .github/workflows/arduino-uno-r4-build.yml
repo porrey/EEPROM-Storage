@@ -6,7 +6,7 @@ on:
       - master
 
 concurrency:
-  group: "Arduino Build"
+  group: "Arduino UNO R4 WiFi Build"
   cancel-in-progress: false
   
 jobs:
