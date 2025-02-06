@@ -6,7 +6,7 @@ on:
       - master
 
 concurrency:
-  group: "Arduino-Build"
+  group: "Arduino-Build 2"
   cancel-in-progress: false
   
 jobs:
@@ -27,7 +27,7 @@ jobs:
         run: |
           arduino-cli config init
           arduino-cli core update-index
-          arduino-cli core install arduino:renesas_un  # Install board
+          arduino-cli core install renesas  # Install board
 
       - name: Compile Cache Sketches
         run: |
