@@ -1,4 +1,4 @@
-name: Arduino Build
+name: Arduino Build 2
 
 on: 
   push:
@@ -27,7 +27,7 @@ jobs:
         run: |
           arduino-cli config init
           arduino-cli core update-index
-          arduino-cli core install arduino:avr  # Install Arduino AVR core
+          arduino-cli core install arduino:renesas_un  # Install board
 
       - name: Compile Cache Sketches
         run: |
