@@ -1,4 +1,4 @@
-name: Arduino Build 2
+name: Arduino UNO R4 WiFi Build
 
 on: 
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 concurrency:
-  group: "Arduino-Build 2"
+  group: "Arduino Build"
   cancel-in-progress: false
   
 jobs:
