@@ -20,6 +20,11 @@
 #ifndef EEPROM_VAR_H
 #define EEPROM_VAR_H
 
+/**
+ * @file EEPROM-Util.h
+ * @brief This file contains the definitions used by the library.
+ */
+
 //
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
@@ -31,6 +36,6 @@
   #define word short
 #endif
 
-#define UNSET_VALUE 0xFF
+#define UNSET_VALUE 0xFF ///< Defines th default value used when clearing the EEPROM memory.
 
 #endif

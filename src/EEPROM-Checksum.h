@@ -20,6 +20,11 @@
 #ifndef CHECKSUM_H
 #define CHECKSUM_H
 
+/**
+ * @file EEPROM-Checksum.h
+ * @brief This file contains the Checksum definition.
+ */
+
 //
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
@@ -29,14 +34,27 @@
   #include <Particle.h>
 #endif
 
-//
-// Computes a single-byte checksum on any data type or directly
-// from an EEPROM address.
-//
+/**
+ * @class Checksum
+ * @brief Provides checksum calculation options.
+ * @details Computes a single-byte checksum on any data 
+ * type or directly from an EEPROM address.
+ * @tparam T The type of the variable against whose value 
+ * the checksum will be calculated.
+ */
 template <typename T>
 class Checksum
 {
   public:
+    /**
+     * @brief Calculate the checksum of a byte array.
+     * @details Calculate the checksum of the byte array specified by 
+     * the data parameter whose number of bytes is specified by the 
+     * length parameter.
+     * @param data Points to the starting byte in the array.
+     * @param length The length of the byte array.
+     * @return The calculated checksum as a byte.
+     */
     static byte get(byte* data, uint length)
     {
       byte returnValue = 0;
@@ -69,6 +87,15 @@ class Checksum
       return returnValue;
     }
 
+    /**
+     * @brief Calculates the checksum from data in the EEPROM.
+     * @details Calculate the checksum of the byte array in EEPROM
+     * specified by the address parameter whose number of bytes 
+     * is specified by the length parameter.
+     * @param address The EEPROM address of the first byte of the array.
+     * @param length The number of EEPROM bytes to read.
+     * @return The calculated checksum as a byte.
+     */
     static byte getEEPROM(uint address, uint length)
     {
       byte returnValue = 0;
@@ -101,6 +128,11 @@ class Checksum
       return returnValue;
     }
 
+    /**
+     * @brief Calculates the checksum of the value of T.
+     * @param value The value whose checksum will be calculated.
+     * @return The calculated checksum as a byte.
+     */
     static byte get(T value)
     {
       //
@@ -110,7 +142,7 @@ class Checksum
       byte *ptr = (byte*) &value;
 
       //
-      // Calculate and return the checksim.
+      // Calculate and return the checksum.
       //
       return Checksum<T>::get(ptr, sizeof(T));
     }
