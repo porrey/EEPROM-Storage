@@ -27,7 +27,7 @@ jobs:
         run: |
           arduino-cli config init
           arduino-cli core update-index
-          arduino-cli core install renesas  # Install board
+          arduino-cli core install arduino:renesas_uno
 
       - name: Compile Cache Sketches
         run: |
