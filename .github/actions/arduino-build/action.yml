@@ -10,6 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: Compile Cache Sketches
+      shell: bash
       run: |
         arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/address/address.ino || exit 1
         arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/advanced-structure/advanced-structure.ino || exit 1
@@ -20,8 +21,9 @@ runs:
         arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/scope/scope.ino || exit 1
         arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/shadow/shadow.ino || exit 1
         arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/simple/simple.ino || exit 1
-    
+
     - name: Compile General Sketches
+      shell: bash
       run: |
         arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/General/address/address.ino || exit 1
         arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/General/clear/clear.ino || exit 1
@@ -30,6 +32,7 @@ runs:
         arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/General/tests/tests.ino || exit 1
         
     - name: Compile Storage Sketches
+      shell: bash
       run: |          
         arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/address/address.ino || exit 1
         arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/advanced-structure/advanced-structure.ino || exit 1
