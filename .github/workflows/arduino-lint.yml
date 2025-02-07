@@ -1,0 +1,23 @@
+on: 
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: "Arduino Lint"
+  cancel-in-progress: false
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Run Lint
+        uses: arduino/arduino-lint-action@v2
+        with:
+          library-manager: update
+          compliance: strict
+          verbose: true
