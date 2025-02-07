@@ -3,9 +3,10 @@
 [![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/porrey/EEPROM-Storage/.github/workflows/arduino-esp8266-build.yml?style=for-the-badge&label=Arduino%20ESP8266%20Build&logo=github)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-esp8266-build.yml)
 [![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/porrey/EEPROM-Storage/.github/workflows/particle-build.yml?style=for-the-badge&label=Particle%20Build&logo=github)](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml)
 
-[![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?style=for-the-badge&label=Latest%20Release&branch=master)](https://github.com/porrey/EEPROM-Storage/releases/)
-![GitHub license](https://img.shields.io/github/license/porrey/EEPROM-Storage.svg?style=for-the-badge)
-![GitHub issues](https://img.shields.io/github/issues/porrey/EEPROM-Storage.svg?style=for-the-badge)
+[![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?style=for-the-badge&label=Latest%20Release&branch=master&logo=github)](https://github.com/porrey/EEPROM-Storage/releases/)
+![GitHub license](https://img.shields.io/github/license/porrey/EEPROM-Storage.svg?style=for-the-badge&logo=github)
+![GitHub issues](https://img.shields.io/github/issues/porrey/EEPROM-Storage.svg?style=for-the-badge&logo=github)
+[![Custom Badge](https://img.shields.io/badge/Library-Documentation-green?style=for-the-badge&logo=github)](https://porrey.github.io/EEPROM-Storage)
 
 # EEPROM-Storage Library
 ## Overview
