@@ -30,6 +30,6 @@ jobs:
           arduino-cli core install arduino:avr
 
       - name: Compile Sketches
-        uses: .github/actions/arduino-build
+        uses: ./.github/actions/arduino-build
         with:
           board: "arduino:avr:mega"

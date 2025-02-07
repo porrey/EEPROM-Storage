@@ -30,6 +30,6 @@ jobs:
           arduino-cli core install arduino:renesas_uno
 
       - name: Compile Sketches
-        uses: .github/actions/arduino-build
+        uses: ./.github/actions/arduino-build
         with:
           board: "arduino:renesas_uno:unor4wifi"
