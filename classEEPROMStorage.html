@@ -105,6 +105,9 @@ $(document).ready(function(){initNavTree('classEEPROMStorage.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
+<p>Provides direct access to an EEPROM variable.  
+ <a href="classEEPROMStorage.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for EEPROMStorage&lt; T &gt;:</div>
@@ -119,92 +122,140 @@ Inheritance diagram for EEPROMStorage&lt; T &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2a8a5c73f1f70487832db3533ece8c97" id="r_a2a8a5c73f1f70487832db3533ece8c97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMStorage.html#a2a8a5c73f1f70487832db3533ece8c97">EEPROMStorage</a> (const uint address)</td></tr>
+<tr class="memdesc:a2a8a5c73f1f70487832db3533ece8c97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an instance of EEPROMStorage&lt;T&gt; with the specified address.  <br /></td></tr>
 <tr class="separator:a2a8a5c73f1f70487832db3533ece8c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d12beb6cde891b366a6bdb1abcde7c7" id="r_a1d12beb6cde891b366a6bdb1abcde7c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMStorage.html#a1d12beb6cde891b366a6bdb1abcde7c7">EEPROMStorage</a> (const uint address, T defaultValue)</td></tr>
+<tr class="memdesc:a1d12beb6cde891b366a6bdb1abcde7c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an instance of <a class="el" href="classEEPROMBase.html" title="Base class to wrap an EEPROM variable.">EEPROMBase</a> with the specified address and default value.  <br /></td></tr>
 <tr class="separator:a1d12beb6cde891b366a6bdb1abcde7c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac59b5abb915a720baa3496596b8603d" id="r_aac59b5abb915a720baa3496596b8603d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMStorage.html#aac59b5abb915a720baa3496596b8603d">operator=</a> (T const &amp;value)</td></tr>
-<tr class="separator:aac59b5abb915a720baa3496596b8603d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adaf54e2fb214b62e189aadd075fdcb14" id="r_adaf54e2fb214b62e189aadd075fdcb14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMStorage.html#adaf54e2fb214b62e189aadd075fdcb14">operator=</a> (<a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt; const &amp;item)</td></tr>
-<tr class="separator:adaf54e2fb214b62e189aadd075fdcb14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae023de5e1138a9b62c7be871f14294af" id="r_ae023de5e1138a9b62c7be871f14294af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMStorage.html#ae023de5e1138a9b62c7be871f14294af">operator=</a> (T const &amp;value)</td></tr>
+<tr class="memdesc:ae023de5e1138a9b62c7be871f14294af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows assignment of a variable of type T value to be this instance's value.  <br /></td></tr>
+<tr class="separator:ae023de5e1138a9b62c7be871f14294af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b3ac0155911042b6d43f47f21de123b" id="r_a4b3ac0155911042b6d43f47f21de123b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMStorage.html#a4b3ac0155911042b6d43f47f21de123b">operator=</a> (<a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt; const &amp;item)</td></tr>
+<tr class="memdesc:a4b3ac0155911042b6d43f47f21de123b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows assignment of one EEPROMStorage&lt;T&gt; value to another.  <br /></td></tr>
+<tr class="separator:a4b3ac0155911042b6d43f47f21de123b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82429b5d7152796b4c3f62e53d7bfbe3" id="r_a82429b5d7152796b4c3f62e53d7bfbe3"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMStorage.html#a82429b5d7152796b4c3f62e53d7bfbe3">get</a> () const</td></tr>
+<tr class="memdesc:a82429b5d7152796b4c3f62e53d7bfbe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the variable value.  <br /></td></tr>
 <tr class="separator:a82429b5d7152796b4c3f62e53d7bfbe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad43e4efc0c4e37c89bae3b4290809ad0" id="r_ad43e4efc0c4e37c89bae3b4290809ad0"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMStorage.html#ad43e4efc0c4e37c89bae3b4290809ad0">set</a> (T const &amp;value)</td></tr>
+<tr class="memdesc:ad43e4efc0c4e37c89bae3b4290809ad0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the variable value.  <br /></td></tr>
 <tr class="separator:ad43e4efc0c4e37c89bae3b4290809ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10bbe2897e50a2b5489f7e6db26cc2b2" id="r_a10bbe2897e50a2b5489f7e6db26cc2b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a10bbe2897e50a2b5489f7e6db26cc2b2">operator T</a> ()</td></tr>
+<tr class="memdesc:a10bbe2897e50a2b5489f7e6db26cc2b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implicitly converts the class instance to the value of type T. This allows the variable to be used on the right side of the equal sign.  <br /></td></tr>
 <tr class="separator:a10bbe2897e50a2b5489f7e6db26cc2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f430e0b7683d5aae86d01e2c7bde133" id="r_a9f430e0b7683d5aae86d01e2c7bde133"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a9f430e0b7683d5aae86d01e2c7bde133">operator[]</a> (const uint index)</td></tr>
+<tr class="memdesc:a9f430e0b7683d5aae86d01e2c7bde133"><td class="mdescLeft">&#160;</td><td class="mdescRight">Treating the variable as a byte array, get the byte at position index where index is between 0 and length.  <br /></td></tr>
 <tr class="separator:a9f430e0b7683d5aae86d01e2c7bde133"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86df192bb4d41f8031ccf4e52c256d5f" id="r_a86df192bb4d41f8031ccf4e52c256d5f"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a86df192bb4d41f8031ccf4e52c256d5f">operator++</a> (int)</td></tr>
+<tr class="memdesc:a86df192bb4d41f8031ccf4e52c256d5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Postfix increment operator.  <br /></td></tr>
 <tr class="separator:a86df192bb4d41f8031ccf4e52c256d5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab344389a1066d6dd0ce087b574f45543" id="r_ab344389a1066d6dd0ce087b574f45543"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#ab344389a1066d6dd0ce087b574f45543">operator++</a> ()</td></tr>
+<tr class="memdesc:ab344389a1066d6dd0ce087b574f45543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prefix increment operator.  <br /></td></tr>
 <tr class="separator:ab344389a1066d6dd0ce087b574f45543"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a042b89d6f7c3c832aa478e54ee0538c7" id="r_a042b89d6f7c3c832aa478e54ee0538c7"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a042b89d6f7c3c832aa478e54ee0538c7">operator--</a> (int)</td></tr>
+<tr class="memdesc:a042b89d6f7c3c832aa478e54ee0538c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Postfix decrement operator.  <br /></td></tr>
 <tr class="separator:a042b89d6f7c3c832aa478e54ee0538c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc0238fc5f81f74a23827b5e45b7545d" id="r_acc0238fc5f81f74a23827b5e45b7545d"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#acc0238fc5f81f74a23827b5e45b7545d">operator--</a> ()</td></tr>
+<tr class="memdesc:acc0238fc5f81f74a23827b5e45b7545d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Postfix decrement operator.  <br /></td></tr>
 <tr class="separator:acc0238fc5f81f74a23827b5e45b7545d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3702f90bf63d6abc7ff4ec7afc2264fe" id="r_a3702f90bf63d6abc7ff4ec7afc2264fe"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a3702f90bf63d6abc7ff4ec7afc2264fe">operator+=</a> (T const &amp;value)</td></tr>
+<tr class="memdesc:a3702f90bf63d6abc7ff4ec7afc2264fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Addition assignment operator.  <br /></td></tr>
 <tr class="separator:a3702f90bf63d6abc7ff4ec7afc2264fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78822285207b05cbee760d7cd4fecf72" id="r_a78822285207b05cbee760d7cd4fecf72"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a78822285207b05cbee760d7cd4fecf72">operator-=</a> (T const &amp;value)</td></tr>
+<tr class="memdesc:a78822285207b05cbee760d7cd4fecf72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtraction assignment operator.  <br /></td></tr>
 <tr class="separator:a78822285207b05cbee760d7cd4fecf72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae95c5741cabcce4fbb69f2784d328893" id="r_ae95c5741cabcce4fbb69f2784d328893"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#ae95c5741cabcce4fbb69f2784d328893">operator*=</a> (T const &amp;value)</td></tr>
+<tr class="memdesc:ae95c5741cabcce4fbb69f2784d328893"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication assignment operator.  <br /></td></tr>
 <tr class="separator:ae95c5741cabcce4fbb69f2784d328893"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65145b2eb148d8e80484b65dcea20d10" id="r_a65145b2eb148d8e80484b65dcea20d10"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a65145b2eb148d8e80484b65dcea20d10">operator/=</a> (T const &amp;value)</td></tr>
+<tr class="memdesc:a65145b2eb148d8e80484b65dcea20d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Division assignment operator.  <br /></td></tr>
 <tr class="separator:a65145b2eb148d8e80484b65dcea20d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8523ebb8284d68f085cfc531200a02be" id="r_a8523ebb8284d68f085cfc531200a02be"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a8523ebb8284d68f085cfc531200a02be">operator^=</a> (T const &amp;value)</td></tr>
+<tr class="memdesc:a8523ebb8284d68f085cfc531200a02be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitwise XOR assignment operator.  <br /></td></tr>
 <tr class="separator:a8523ebb8284d68f085cfc531200a02be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe9902526dd3fbde09407b3838a6bbe9" id="r_afe9902526dd3fbde09407b3838a6bbe9"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#afe9902526dd3fbde09407b3838a6bbe9">operator%=</a> (T const &amp;value)</td></tr>
+<tr class="memdesc:afe9902526dd3fbde09407b3838a6bbe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modulus assignment operator.  <br /></td></tr>
 <tr class="separator:afe9902526dd3fbde09407b3838a6bbe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae53eef84d02d8bc92c7a11af4f2b6ae0" id="r_ae53eef84d02d8bc92c7a11af4f2b6ae0"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#ae53eef84d02d8bc92c7a11af4f2b6ae0">operator&amp;=</a> (T const &amp;value)</td></tr>
+<tr class="memdesc:ae53eef84d02d8bc92c7a11af4f2b6ae0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitwise AND assignment operator.  <br /></td></tr>
 <tr class="separator:ae53eef84d02d8bc92c7a11af4f2b6ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20a391d3408cfba30219cdfb550b28a8" id="r_a20a391d3408cfba30219cdfb550b28a8"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a20a391d3408cfba30219cdfb550b28a8">operator|=</a> (T const &amp;value)</td></tr>
+<tr class="memdesc:a20a391d3408cfba30219cdfb550b28a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitwise OR assignment operator.  <br /></td></tr>
 <tr class="separator:a20a391d3408cfba30219cdfb550b28a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b8cdab7ed4beebbb6741825535a6075" id="r_a6b8cdab7ed4beebbb6741825535a6075"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a6b8cdab7ed4beebbb6741825535a6075">operator&lt;&lt;=</a> (T const &amp;value)</td></tr>
+<tr class="memdesc:a6b8cdab7ed4beebbb6741825535a6075"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitwise left shift assignment operator.  <br /></td></tr>
 <tr class="separator:a6b8cdab7ed4beebbb6741825535a6075"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd5a9fcc31ead7d2ce184c21b21d5e82" id="r_abd5a9fcc31ead7d2ce184c21b21d5e82"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#abd5a9fcc31ead7d2ce184c21b21d5e82">operator&gt;&gt;=</a> (T const &amp;value)</td></tr>
+<tr class="memdesc:abd5a9fcc31ead7d2ce184c21b21d5e82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitwise right shift assignment operator.  <br /></td></tr>
 <tr class="separator:abd5a9fcc31ead7d2ce184c21b21d5e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a230351fb811d3ff35aaafb6bb6db196f" id="r_a230351fb811d3ff35aaafb6bb6db196f"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a230351fb811d3ff35aaafb6bb6db196f">read</a> () const</td></tr>
+<tr class="memdesc:a230351fb811d3ff35aaafb6bb6db196f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the variable value from the EEPROM using the address in this variable.  <br /></td></tr>
 <tr class="separator:a230351fb811d3ff35aaafb6bb6db196f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06679ca0fc8fd727d0a31a6707b09519" id="r_a06679ca0fc8fd727d0a31a6707b09519"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a06679ca0fc8fd727d0a31a6707b09519">write</a> (T const &amp;value) const</td></tr>
+<tr class="memdesc:a06679ca0fc8fd727d0a31a6707b09519"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the value to the EEPROM using the address in this instance.  <br /></td></tr>
 <tr class="separator:a06679ca0fc8fd727d0a31a6707b09519"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3847b391cdd747cda9b1b8817391dba1" id="r_a3847b391cdd747cda9b1b8817391dba1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a3847b391cdd747cda9b1b8817391dba1">isInitialized</a> () const</td></tr>
+<tr class="memdesc:a3847b391cdd747cda9b1b8817391dba1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the EEPROM variable has been initialized.  <br /></td></tr>
 <tr class="separator:a3847b391cdd747cda9b1b8817391dba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefaf02542bb944b84d46263b9c3b248e" id="r_aefaf02542bb944b84d46263b9c3b248e"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#aefaf02542bb944b84d46263b9c3b248e">length</a> () const</td></tr>
+<tr class="memdesc:aefaf02542bb944b84d46263b9c3b248e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of EEPROM bytes used.  <br /></td></tr>
 <tr class="separator:aefaf02542bb944b84d46263b9c3b248e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56dec09b93fd6f912c3c15007ed3f634" id="r_a56dec09b93fd6f912c3c15007ed3f634"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a56dec09b93fd6f912c3c15007ed3f634">size</a> () const</td></tr>
+<tr class="memdesc:a56dec09b93fd6f912c3c15007ed3f634"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of EEPROM bytes used by T.  <br /></td></tr>
 <tr class="separator:a56dec09b93fd6f912c3c15007ed3f634"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada5e07e8e9a6dedebd7845d2172e6c15" id="r_ada5e07e8e9a6dedebd7845d2172e6c15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#ada5e07e8e9a6dedebd7845d2172e6c15">unset</a> (byte unsetValue=<a class="el" href="EEPROM-Vars_8h.html#a6593eb9acd2ca727ed311ea18469da4e">UNSET_VALUE</a>)</td></tr>
+<tr class="memdesc:ada5e07e8e9a6dedebd7845d2172e6c15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unset the variable.  <br /></td></tr>
 <tr class="separator:ada5e07e8e9a6dedebd7845d2172e6c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02b0e1fd845d1fc27a94c04ca9748403" id="r_a02b0e1fd845d1fc27a94c04ca9748403"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a02b0e1fd845d1fc27a94c04ca9748403">checksumAddress</a> () const</td></tr>
+<tr class="memdesc:a02b0e1fd845d1fc27a94c04ca9748403"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the address of the checksum byte in EEPROM for this variable.  <br /></td></tr>
 <tr class="separator:a02b0e1fd845d1fc27a94c04ca9748403"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d6d274577da7e1cd5e2914c21f4ce91" id="r_a7d6d274577da7e1cd5e2914c21f4ce91"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a7d6d274577da7e1cd5e2914c21f4ce91">checksumByte</a> () const</td></tr>
-<tr class="separator:a7d6d274577da7e1cd5e2914c21f4ce91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9a9909fb5590ff7db1d71d9c4480044" id="r_ad9a9909fb5590ff7db1d71d9c4480044"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#ad9a9909fb5590ff7db1d71d9c4480044">checksumByte</a> () const</td></tr>
+<tr class="memdesc:ad9a9909fb5590ff7db1d71d9c4480044"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the stored checksum byte.  <br /></td></tr>
+<tr class="separator:ad9a9909fb5590ff7db1d71d9c4480044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb8fe15f40993284a78369c22a240f7f" id="r_aeb8fe15f40993284a78369c22a240f7f"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#aeb8fe15f40993284a78369c22a240f7f">checksum</a> () const</td></tr>
+<tr class="memdesc:aeb8fe15f40993284a78369c22a240f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the checksum of the data in the EEPROM for this instance.  <br /></td></tr>
 <tr class="separator:aeb8fe15f40993284a78369c22a240f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f0721baf6ba2605af61cc6044488096" id="r_a9f0721baf6ba2605af61cc6044488096"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a9f0721baf6ba2605af61cc6044488096">copyTo</a> (byte *data, uint <a class="el" href="classEEPROMBase.html#aefaf02542bb944b84d46263b9c3b248e">length</a>) const</td></tr>
+<tr class="memdesc:a9f0721baf6ba2605af61cc6044488096"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the EEPROM bytes of this instance to a byte array.  <br /></td></tr>
 <tr class="separator:a9f0721baf6ba2605af61cc6044488096"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0687f9495a9762478f9b0bd75935111" id="r_af0687f9495a9762478f9b0bd75935111"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#af0687f9495a9762478f9b0bd75935111">getAddress</a> () const</td></tr>
+<tr class="memdesc:af0687f9495a9762478f9b0bd75935111"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the EEPROM address of the variable.  <br /></td></tr>
 <tr class="separator:af0687f9495a9762478f9b0bd75935111"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1776386768f93d18b950c15956135593" id="r_a1776386768f93d18b950c15956135593"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a1776386768f93d18b950c15956135593">nextAddress</a> () const</td></tr>
+<tr class="memdesc:a1776386768f93d18b950c15956135593"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the next EEPROM address after this variable.  <br /></td></tr>
 <tr class="separator:a1776386768f93d18b950c15956135593"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adebc3838d5ac97ad4a1585732d5dd6d3" id="r_adebc3838d5ac97ad4a1585732d5dd6d3"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#adebc3838d5ac97ad4a1585732d5dd6d3">getDefaultValue</a> () const</td></tr>
+<tr class="memdesc:adebc3838d5ac97ad4a1585732d5dd6d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the default value for this instance.  <br /></td></tr>
 <tr class="separator:adebc3838d5ac97ad4a1585732d5dd6d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:a0f8ac83a91fbaf3703cb65c9e0dfb949" id="r_a0f8ac83a91fbaf3703cb65c9e0dfb949"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a0f8ac83a91fbaf3703cb65c9e0dfb949">computeChecksum</a> (T value)</td></tr>
+<tr class="memdesc:a0f8ac83a91fbaf3703cb65c9e0dfb949"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the checksum of the given value.  <br /></td></tr>
+<tr class="separator:a0f8ac83a91fbaf3703cb65c9e0dfb949"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72a8f15940fbca6307e4c759837d9160" id="r_a72a8f15940fbca6307e4c759837d9160"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a72a8f15940fbca6307e4c759837d9160">normalizeAddress</a> (uint address) const</td></tr>
+<tr class="memdesc:a72a8f15940fbca6307e4c759837d9160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalize the given EEPROM address to ensure it is within valid range.  <br /></td></tr>
 <tr class="separator:a72a8f15940fbca6307e4c759837d9160"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a2789b5be97b16d961cbf75a7c55508f3" id="r_a2789b5be97b16d961cbf75a7c55508f3"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a2789b5be97b16d961cbf75a7c55508f3">_address</a> = 0</td></tr>
+<tr class="memdesc:a2789b5be97b16d961cbf75a7c55508f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The address of this variable in the EEPROM.  <br /></td></tr>
 <tr class="separator:a2789b5be97b16d961cbf75a7c55508f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1bf1d0b5fb7c9238b02c12287591616f" id="r_a1bf1d0b5fb7c9238b02c12287591616f"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMBase.html#a1bf1d0b5fb7c9238b02c12287591616f">_defaultValue</a></td></tr>
+<tr class="memdesc:a1bf1d0b5fb7c9238b02c12287591616f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default value.  <br /></td></tr>
 <tr class="separator:a1bf1d0b5fb7c9238b02c12287591616f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
-class EEPROMStorage&lt; T &gt;</div>
-<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00040">40</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
+class EEPROMStorage&lt; T &gt;</div><p>Provides direct access to an EEPROM variable. </p>
+<p>This class provides direct access to an EEPROM variable wrapped as type T. Accessing the value of the variable is done directly from the EEPROM variable. Subsequently, writing the variable value is done directly to the EEPROM memory. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of the variable stored. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00050">50</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2a8a5c73f1f70487832db3533ece8c97" name="a2a8a5c73f1f70487832db3533ece8c97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2a8a5c73f1f70487832db3533ece8c97">&#9670;&#160;</a></span>EEPROMStorage() <span class="overload">[1/2]</span></h2>
@@ -232,7 +283,15 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00046">46</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
+<p>Initialize an instance of EEPROMStorage&lt;T&gt; with the specified address. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>The address (or index) of the variable within EEPROM. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00057">57</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
 
 </div>
 </div>
@@ -272,7 +331,21 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00054">54</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
+<p>Initialize an instance of <a class="el" href="classEEPROMBase.html" title="Base class to wrap an EEPROM variable.">EEPROMBase</a> with the specified address and default value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>The address (or index) of the variable within EEPROM. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">defaultValue</td><td>The default value returned when the variable has not been initialized. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00066">66</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
 
 </div>
 </div>
@@ -302,7 +375,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00344">344</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Calculate the checksum of the data in the EEPROM for this instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>The calculated checksum as a byte. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00386">386</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -331,12 +407,15 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00327">327</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Gets the address of the checksum byte in EEPROM for this variable. </p>
+<dl class="section return"><dt>Returns</dt><dd>The EEPROM address of the checksum as an unsigned integer. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00368">368</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
-<a id="a7d6d274577da7e1cd5e2914c21f4ce91" name="a7d6d274577da7e1cd5e2914c21f4ce91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d6d274577da7e1cd5e2914c21f4ce91">&#9670;&#160;</a></span>checksumByte()</h2>
+<a id="ad9a9909fb5590ff7db1d71d9c4480044" name="ad9a9909fb5590ff7db1d71d9c4480044"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9a9909fb5590ff7db1d71d9c4480044">&#9670;&#160;</a></span>checksumByte()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -347,7 +426,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint <a class="el" href="classEEPROMBase.html">EEPROMBase</a>&lt; T &gt;::checksumByte </td>
+          <td class="memname">byte <a class="el" href="classEEPROMBase.html">EEPROMBase</a>&lt; T &gt;::checksumByte </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -360,7 +439,47 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00335">335</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Gets the stored checksum byte. </p>
+<dl class="section return"><dt>Returns</dt><dd>The checksum value read from EEPROM for this variable as a byte. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00377">377</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+
+</div>
+</div>
+<a id="a0f8ac83a91fbaf3703cb65c9e0dfb949" name="a0f8ac83a91fbaf3703cb65c9e0dfb949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f8ac83a91fbaf3703cb65c9e0dfb949">&#9670;&#160;</a></span>computeChecksum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">byte <a class="el" href="classEEPROMBase.html">EEPROMBase</a>&lt; T &gt;::computeChecksum </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the checksum of the given value. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">value</td><td>The value to compute the checksum for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The computed checksum as a byte. </dd></dl>
 
 </div>
 </div>
@@ -400,7 +519,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00353">353</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Copy the EEPROM bytes of this instance to a byte array. </p>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00394">394</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -429,9 +550,12 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Get the variable value. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current value of the variable as type T. </dd></dl>
+
 <p>Reimplemented from <a class="el" href="classEEPROMBase.html#ac1803a9e89a2c33e25851e00d3c64372">EEPROMBase&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00079">79</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00099">99</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
 
 </div>
 </div>
@@ -460,7 +584,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00366">366</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Get the EEPROM address of the variable. </p>
+<dl class="section return"><dt>Returns</dt><dd>The memory address in EEPROM as an unsigned integer. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00407">407</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -489,7 +616,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00383">383</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Gets the default value for this instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>The default value as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00426">426</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -518,7 +648,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00282">282</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Checks whether the EEPROM variable has been initialized. </p>
+<p>Determines if the variable has been initialized by comparing the stored checksum to the actual checksum of the bytes stored. </p><dl class="section return"><dt>Returns</dt><dd>True if the EEPROM variable has been initialized, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00318">318</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -547,7 +680,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00291">291</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Returns the number of EEPROM bytes used. </p>
+<p>Returns the number of EEPROM bytes used by this instance including the checksum byte. </p><dl class="section return"><dt>Returns</dt><dd>The number of bytes used in the EEPROM as an unsigned integer . </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00328">328</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -576,7 +712,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00375">375</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Gets the next EEPROM address after this variable. </p>
+<p>This can be used to set the address of another EEPROM variable. </p><dl class="section return"><dt>Returns</dt><dd>The next address in EEPROM as an unsigned integer. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00417">417</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -606,7 +745,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00405">405</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Normalize the given EEPROM address to ensure it is within valid range. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>The address to normalize. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The normalized address as an unsigned integer. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00458">458</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -635,7 +783,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00073">73</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Implicitly converts the class instance to the value of type T. This allows the variable to be used on the right side of the equal sign. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current value of the variable as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00080">80</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -665,7 +816,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00168">168</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Modulus assignment operator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">value</td><td>The value to mod with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the modulus operation as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00193">193</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -695,7 +855,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00176">176</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Bitwise AND assignment operator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">value</td><td>The value to AND with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the AND operation as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00203">203</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -725,7 +894,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00144">144</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Multiplication assignment operator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">value</td><td>The value to multiply by. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the multiplication as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00163">163</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -754,7 +932,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00102">102</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Prefix increment operator. </p>
+<dl class="section return"><dt>Returns</dt><dd>The value after incrementing as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00113">113</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -784,7 +965,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00092">92</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Postfix increment operator. </p>
+<dl class="section return"><dt>Returns</dt><dd>The value before incrementing as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00102">102</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -814,7 +998,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00128">128</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Addition assignment operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the addition as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00143">143</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -843,7 +1036,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00120">120</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Postfix decrement operator. </p>
+<dl class="section return"><dt>Returns</dt><dd>The value before decrementing as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00133">133</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -873,7 +1069,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00110">110</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Postfix decrement operator. </p>
+<dl class="section return"><dt>Returns</dt><dd>The value before decrementing as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00122">122</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -903,7 +1102,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00136">136</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Subtraction assignment operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value to subtract. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the subtraction as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00153">153</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -933,7 +1141,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00152">152</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Division assignment operator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">value</td><td>The value to divide by. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the division as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00173">173</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -963,12 +1180,21 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00192">192</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Bitwise left shift assignment operator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">value</td><td>The value to shift by. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the left shift operation as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00223">223</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
-<a id="adaf54e2fb214b62e189aadd075fdcb14" name="adaf54e2fb214b62e189aadd075fdcb14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adaf54e2fb214b62e189aadd075fdcb14">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+<a id="a4b3ac0155911042b6d43f47f21de123b" name="a4b3ac0155911042b6d43f47f21de123b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b3ac0155911042b6d43f47f21de123b">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -979,7 +1205,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt; <a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt;::operator= </td>
+          <td class="memname"><a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt; &amp; <a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt;::operator= </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt; const &amp;&#160;</td>
           <td class="paramname"><em>item</em></td><td>)</td>
@@ -993,12 +1219,21 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00070">70</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
+<p>Allows assignment of one EEPROMStorage&lt;T&gt; value to another. </p>
+<p>Accounts for EEPROMStorage&lt;T&gt; = EEPROMStorage&lt;T&gt;. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">item</td><td>The new value to store in EEPROM. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the EEPROMStorage&lt;T&gt; variable. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00089">89</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
 
 </div>
 </div>
-<a id="aac59b5abb915a720baa3496596b8603d" name="aac59b5abb915a720baa3496596b8603d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac59b5abb915a720baa3496596b8603d">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+<a id="ae023de5e1138a9b62c7be871f14294af" name="ae023de5e1138a9b62c7be871f14294af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae023de5e1138a9b62c7be871f14294af">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1009,7 +1244,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt; <a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt;::operator= </td>
+          <td class="memname"><a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt; &amp; <a class="el" href="classEEPROMStorage.html">EEPROMStorage</a>&lt; T &gt;::operator= </td>
           <td>(</td>
           <td class="paramtype">T const &amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
@@ -1023,7 +1258,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00061">61</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
+<p>Allows assignment of a variable of type T value to be this instance's value. </p>
+<p>Accounts for EEPROMStorage&lt;T&gt; = T. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">item</td><td>The new value to store in EEPROM. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the EEPROMStorage&lt;T&gt; variable. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00077">77</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
 
 </div>
 </div>
@@ -1053,7 +1297,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00200">200</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Bitwise right shift assignment operator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">value</td><td>The value to shift by. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the right shift operation as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00233">233</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1083,7 +1336,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00083">83</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Treating the variable as a byte array, get the byte at position index where index is between 0 and length. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index position. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The byte at the specified index as a byte. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00092">92</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1113,7 +1375,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00160">160</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Bitwise XOR assignment operator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">value</td><td>The value to XOR with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the XOR operation as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00183">183</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1143,7 +1414,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00184">184</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Bitwise OR assignment operator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">value</td><td>The value to OR with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of the OR operation as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00213">213</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1172,7 +1452,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00227">227</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Read the variable value from the EEPROM using the address in this variable. </p>
+<dl class="section return"><dt>Returns</dt><dd>The value read from EEPROM as type T. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00264">264</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1202,9 +1485,18 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Set the variable value. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">value</td><td>The new value to store in EEPROM. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The stored value as type T. </dd></dl>
+
 <p>Reimplemented from <a class="el" href="classEEPROMBase.html#a66e3bac5f497cd707f06330a42e63ad2">EEPROMBase&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00087">87</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EEPROM-Storage_8h_source.html#l00109">109</a> of file <a class="el" href="EEPROM-Storage_8h_source.html">EEPROM-Storage.h</a>.</p>
 
 </div>
 </div>
@@ -1233,7 +1525,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00303">303</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Returns the number of EEPROM bytes used by T. </p>
+<p>Returns the number of EEPROM bytes used by this instance NOT including the checksum byte. </p><dl class="section return"><dt>Returns</dt><dd>The number of bytes used by T in the EEPROM as n unsigned integer. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00342">342</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1263,7 +1558,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00315">315</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Unset the variable. </p>
+<p>Change the EEPROM values back to UNSET_VALUE as if the variable has never been written to the EEPROM. The <a class="el" href="classEEPROMBase.html#a3847b391cdd747cda9b1b8817391dba1" title="Checks whether the EEPROM variable has been initialized.">isInitialized()</a> method will return false. </p>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00355">355</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1293,7 +1591,15 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00259">259</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>Write the value to the EEPROM using the address in this instance. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">value</td><td>The new value to store in EEPROM. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00296">296</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1320,7 +1626,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00393">393</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>The address of this variable in the EEPROM. </p>
+<p>This variable cannot/will not be modified after instantiation. </p>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00436">436</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>
@@ -1346,7 +1655,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00400">400</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
+<p>The default value. </p>
+<p>The default value to return when the EEPROM has not been initialized. The address of this variable in the EEPROM. This variable cannot/will not be modified after instantiation. </p>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Base_8h_source.html#l00444">444</a> of file <a class="el" href="EEPROM-Base_8h_source.html">EEPROM-Base.h</a>.</p>
 
 </div>
 </div>

@@ -103,25 +103,35 @@ $(document).ready(function(){initNavTree('classEEPROMDisplayClass.html',''); ini
 </div><!--header-->
 <div class="contents">
 
+<p>Provides methods to display EEPROM data for debugging.  
+ <a href="classEEPROMDisplayClass.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad0e4eaa1c6dbdc622f1d52ab40250630" id="r_ad0e4eaa1c6dbdc622f1d52ab40250630"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMDisplayClass.html#ad0e4eaa1c6dbdc622f1d52ab40250630">begin</a> ()</td></tr>
+<tr class="memdesc:ad0e4eaa1c6dbdc622f1d52ab40250630"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets default behavior for the Arduino Debug Utils library.  <br /></td></tr>
 <tr class="separator:ad0e4eaa1c6dbdc622f1d52ab40250630"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f6f0d50b579f48a4e263ac92a24d55d" id="r_a1f6f0d50b579f48a4e263ac92a24d55d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMDisplayClass.html#a1f6f0d50b579f48a4e263ac92a24d55d">displayPaddedHexByte</a> (byte value, bool showPrefix=true)</td></tr>
+<tr class="memdesc:a1f6f0d50b579f48a4e263ac92a24d55d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a byte value in HEX with leading 0x.  <br /></td></tr>
 <tr class="separator:a1f6f0d50b579f48a4e263ac92a24d55d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a9824f87dd6bd4358952d7a70c81496" id="r_a2a9824f87dd6bd4358952d7a70c81496"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMDisplayClass.html#a2a9824f87dd6bd4358952d7a70c81496">displayEEPROM</a> ()</td></tr>
+<tr class="memdesc:a2a9824f87dd6bd4358952d7a70c81496"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the contents of the EEPROM.  <br /></td></tr>
 <tr class="separator:a2a9824f87dd6bd4358952d7a70c81496"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a983e407e553151db4774b8cf229f7da0" id="r_a983e407e553151db4774b8cf229f7da0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a983e407e553151db4774b8cf229f7da0"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classEEPROMDisplayClass.html#a983e407e553151db4774b8cf229f7da0">displayVariable</a> (const char *name, <a class="el" href="classEEPROMBase.html">EEPROMBase</a>&lt; T &gt; value)</td></tr>
+<tr class="memdesc:a983e407e553151db4774b8cf229f7da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the properties of a variable.  <br /></td></tr>
 <tr class="separator:a983e407e553151db4774b8cf229f7da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cc2935c11d4336007863f0d01d52219" id="r_a3cc2935c11d4336007863f0d01d52219"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEEPROMDisplayClass.html#a3cc2935c11d4336007863f0d01d52219">displayHeader</a> ()</td></tr>
+<tr class="memdesc:a3cc2935c11d4336007863f0d01d52219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display a header that can be used for listing variable properties.  <br /></td></tr>
 <tr class="separator:a3cc2935c11d4336007863f0d01d52219"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="EEPROM-Display_8h_source.html#l00052">52</a> of file <a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>.</p>
+<div class="textblock"><p>Provides methods to display EEPROM data for debugging. </p>
+<p>This class provides methods to display the contents of EEPROM, the properties of an EEPROM variable and other useful option for debugging code related to using this library. </p>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Display_8h_source.html#l00063">63</a> of file <a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad0e4eaa1c6dbdc622f1d52ab40250630" name="ad0e4eaa1c6dbdc622f1d52ab40250630"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad0e4eaa1c6dbdc622f1d52ab40250630">&#9670;&#160;</a></span>begin()</h2>
@@ -146,7 +156,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Display_8h_source.html#l00055">55</a> of file <a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>.</p>
+<p>Sets default behavior for the Arduino Debug Utils library. </p>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Display_8h_source.html#l00069">69</a> of file <a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>.</p>
 
 </div>
 </div>
@@ -173,7 +185,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Display_8h_source.html#l00079">79</a> of file <a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>.</p>
+<p>Displays the contents of the EEPROM. </p>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Display_8h_source.html#l00093">93</a> of file <a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>.</p>
 
 </div>
 </div>
@@ -200,7 +214,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Display_8h_source.html#l00158">158</a> of file <a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>.</p>
+<p>Display a header that can be used for listing variable properties. </p>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Display_8h_source.html#l00174">174</a> of file <a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>.</p>
 
 </div>
 </div>
@@ -238,7 +254,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Display_8h_source.html#l00064">64</a> of file <a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>.</p>
+<p>Print a byte value in HEX with leading 0x. </p>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Display_8h_source.html#l00078">78</a> of file <a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +296,21 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EEPROM-Display_8h_source.html#l00149">149</a> of file <a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>.</p>
+<p>Display the properties of a variable. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the variable. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">value</td><td>The value of the variable. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="EEPROM-Display_8h_source.html#l00165">165</a> of file <a class="el" href="EEPROM-Display_8h_source.html">EEPROM-Display.h</a>.</p>
 
 </div>
 </div>
