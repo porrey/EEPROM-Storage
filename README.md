@@ -1,8 +1,11 @@
-[![Arduino Mega 2560 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-mega-2560-build.yml/badge.svg?branch=master)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-mega-2560-build.yml)
-[![Arduino Uno R4 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-uno-r4-build.yml/badge.svg?branch=master)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-uno-r4-build.yml)
-[![Arduino ESP8266 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-esp8266-build.yml/badge.svg?branch=master)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-esp8266-build.yml)
-[![Particle Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml/badge.svg?branch=master)](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml)
-[![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?label=Latest%20Release&branch=master)](https://github.com/porrey/EEPROM-Storage/releases/)
+[![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/porrey/EEPROM-Storage/.github/workflows/arduino-mega-2560-build.yml?style=for-the-badge&label=Arduino%20Mega%202560%20Build&logo=github)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-mega-2560-build.yml)
+[![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/porrey/EEPROM-Storage/.github/workflows/arduino-uno-r4-build.yml?style=for-the-badge&label=Arduino%20Uno%20R4%20Build&logo=github)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-uno-r4-build.yml)
+[![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/porrey/EEPROM-Storage/.github/workflows/arduino-esp8266-build.yml?style=for-the-badge&label=Arduino%20ESP8266%20Build&logo=github)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-esp8266-build.yml)
+[![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/porrey/EEPROM-Storage/.github/workflows/particle-build.yml?style=for-the-badge&label=Particle%20Build&logo=github)](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml)
+
+[![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?style=for-the-badge&label=Latest%20Release&branch=master)](https://github.com/porrey/EEPROM-Storage/releases/)
+![GitHub license](https://img.shields.io/github/license/porrey/EEPROM-Storage.svg?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/porrey/EEPROM-Storage.svg?style=for-the-badge)
 
 # EEPROM-Storage Library
 ## Overview
