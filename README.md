@@ -2,6 +2,7 @@
 [![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/porrey/EEPROM-Storage/.github/workflows/arduino-uno-r4-build.yml?style=for-the-badge&label=Arduino%20Uno%20R4%20Build&logo=github)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-uno-r4-build.yml)
 [![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/porrey/EEPROM-Storage/.github/workflows/arduino-esp8266-build.yml?style=for-the-badge&label=Arduino%20ESP8266%20Build&logo=github)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-esp8266-build.yml)
 [![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/porrey/EEPROM-Storage/.github/workflows/particle-build.yml?style=for-the-badge&label=Particle%20Build&logo=github)](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml)
+[![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/porrey/EEPROM-Storage/.github/workflows/arduino-lint.yml?style=for-the-badge&label=Arduino%20Lint&logo=github)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-lint.yml)
 
 [![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?style=for-the-badge&label=Latest%20Release&branch=master&logo=github)](https://github.com/porrey/EEPROM-Storage/releases/)
 ![GitHub license](https://img.shields.io/github/license/porrey/EEPROM-Storage.svg?style=for-the-badge&logo=github)
