@@ -6,7 +6,7 @@
 [![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?style=for-the-badge&label=Latest%20Release&branch=master&logo=github)](https://github.com/porrey/EEPROM-Storage/releases/)
 ![GitHub license](https://img.shields.io/github/license/porrey/EEPROM-Storage.svg?style=for-the-badge&logo=github)
 ![GitHub issues](https://img.shields.io/github/issues/porrey/EEPROM-Storage.svg?style=for-the-badge&logo=github)
-[![Custom Badge](https://img.shields.io/badge/Library-Documentation-green?style=for-the-badge&logo=github)](https://porrey.github.io/EEPROM-Storage)
+[![Custom Badge](https://img.shields.io/badge/Library-Documentation-purple?style=for-the-badge&logo=github)](https://porrey.github.io/EEPROM-Storage)
 
 # EEPROM-Storage Library
 ## Overview
