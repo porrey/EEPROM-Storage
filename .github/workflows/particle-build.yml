@@ -1,4 +1,4 @@
-name: Particle Compile
+name: Particle Build
 
 on:
   push:
