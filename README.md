@@ -165,6 +165,23 @@ The library was compiled and uploaded to the boards listed below for testing.
 4. Particle on Photon with OS version 3.3.1
 5. Particle on Electron with OS version 3.3.1
 
+## 💖 Support This Project
+
+Hey there! If you find this project useful, consider supporting its development. Your contributions help keep this project alive, improve features, and ensure regular updates.
+
+### 🚀 How You Can Help
+- ⭐ Star this repository – It helps others discover the project!
+
+- 💵 Sponsor on GitHub Sponsors – Recurring support keeps the project sustainable.
+
+- ☕ Buy Me a Coffee – One-time support via Buy Me a Coffee.
+
+- 💳 PayPal Donations – Direct support via PayPal.
+
+- 🏢 Business Support – If your company uses this project, consider a sponsorship.
+
+Your support means a lot and helps me continue improving this project. Thank you! ❤️
+
 ## LICENSE
 *Licensed under the GPL-3.0 license*
 
