@@ -31,6 +31,6 @@ jobs:
           arduino-cli core install esp8266:esp8266
 
       - name: Compile Sketches
-        uses: porrey/EEPROM-Storage/.github/workflows/arduino-build.yml@master
+        uses: ./github/actions/arduino-build
         with:
           board: "esp8266:esp8266:espino"
