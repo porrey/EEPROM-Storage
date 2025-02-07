@@ -3,12 +3,12 @@ name: Arduino UNO R4 WiFi Build
 on: 
   push:
     branches:
-      - master
+      - v2.0.1
 
 concurrency:
   group: "Arduino UNO R4 WiFi Build"
   cancel-in-progress: false
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest

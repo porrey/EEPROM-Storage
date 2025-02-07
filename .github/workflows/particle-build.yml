@@ -3,12 +3,12 @@ name: Particle Build
 on:
   push:
     branches:
-      - master
+      - v2.0.1
 
 concurrency:
   group: "Particle-Build"
   cancel-in-progress: false
-  
+
 jobs:
   compile:
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
       - name: Authenticate Particle CLI
         run: |
           particle login --token ${{ secrets.PARTICLE_ACCESS_TOKEN }}
-        
+
       - name: Compile tests.ino firmware
         run: |
           particle compile photon examples/General/tests --saveTo firmware.bin || exit 1

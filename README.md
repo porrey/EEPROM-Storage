@@ -1,8 +1,8 @@
-![Arduino Mega 2560 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-mega-2560-build.yml/badge.svg?branch=master)
-![Arduino Uno R4 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-uno-r4-build.yml/badge.svg?branch=master)
-![Arduino ESP8266 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-esp8266-build.yml/badge.svg?branch=master)
-![Particle Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml/badge.svg?branch=master)
-![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?label=Latest%20Release)
+![Arduino Mega 2560 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-mega-2560-build.yml/badge.svg?branch=v2.0.1)
+![Arduino Uno R4 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-uno-r4-build.yml/badge.svg?branch=v2.0.1)
+![Arduino ESP8266 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-esp8266-build.yml/badge.svg?branch=v2.0.1)
+![Particle Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml/badge.svg?branch=v2.0.1)
+![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?label=Latest%20Release&branch=v2.0.1)
 
 # EEPROM-Storage Library
 ## Overview
@@ -152,6 +152,8 @@ The `EEPROMStorage` class also defines a `get()` method that can be used.
 	int x = myInt.get();
 
 ## Platform/Boards Used in Testing
+The library was compile and loaded onto the boards listed below for testing.
+
 1. Arduino on Mega 2560
 2. Arduino on ESP8266 [ESPino (ESP-12 Module)]
 3. Particle on Argon with OS version 6.2.1
