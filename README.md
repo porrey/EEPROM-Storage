@@ -1,8 +1,8 @@
-![Arduino Mega 2560 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-mega-2560-build.yml/badge.svg?branch=master)
-![Arduino Uno R4 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-uno-r4-build.yml/badge.svg?branch=master)
-![Arduino ESP8266 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-esp8266-build.yml/badge.svg?branch=master)
-![Particle Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml/badge.svg?branch=master)
-![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?label=Latest%20Release&branch=master)
+[![Arduino Mega 2560 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-mega-2560-build.yml/badge.svg?branch=master)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-mega-2560-build.yml)
+[![Arduino Uno R4 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-uno-r4-build.yml/badge.svg?branch=master)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-uno-r4-build.yml)
+[![Arduino ESP8266 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-esp8266-build.yml/badge.svg?branch=master)](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-esp8266-build.yml)
+[![Particle Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml/badge.svg?branch=master)](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml)
+[![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?label=Latest%20Release&branch=master)](https://github.com/porrey/EEPROM-Storage/releases/)
 
 # EEPROM-Storage Library
 ## Overview
