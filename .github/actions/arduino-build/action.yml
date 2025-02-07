@@ -1,0 +1,48 @@
+name: "Arduino Build"
+description: "Compiles an Arduino sketch for a specified board. Requires Arduino CLI to be installed already."
+inputs:
+  board:
+    description: "The Arduino Fully Qualified Board Name (fqbn)"
+    required: true
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+    - name: Compile Cache Sketches
+      shell: bash
+      run: |
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/address/address.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/advanced-structure/advanced-structure.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/assignment/assignment.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/basic-structure/basic-structure.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/byte-index/byte-index.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/demo/demo.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/scope/scope.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/shadow/shadow.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Cache/simple/simple.ino || exit 1
+
+    - name: Compile General Sketches
+      shell: bash
+      run: |
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/General/address/address.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/General/clear/clear.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/General/debug/debug.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/General/sizeof/sizeof.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/General/tests/tests.ino || exit 1
+        
+    - name: Compile Storage Sketches
+      shell: bash
+      run: |          
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/address/address.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/advanced-structure/advanced-structure.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/assignment/assignment.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/basic-structure/basic-structure.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/byte-index/byte-index.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/checksum/checksum.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/copy-to/copy-to.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/demo/demo.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/invalid-address/invalid-address.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/scope/scope.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/shadow/shadow.ino || exit 1
+        arduino-cli compile --fqbn ${{ inputs.board }} --library src --library $HOME/Arduino/libraries/ examples/Storage/simple/simple.ino || exit 1
