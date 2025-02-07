@@ -157,7 +157,7 @@ The `EEPROMStorage` class also defines a `get()` method that can be used.
 	int x = myInt.get();
 
 ## Platform/Boards Used in Testing
-The library was compile and loaded onto the boards listed below for testing.
+The library was compiled and uploaded to the boards listed below for testing.
 
 1. Arduino on Mega 2560
 2. Arduino on ESP8266 [ESPino (ESP-12 Module)]
