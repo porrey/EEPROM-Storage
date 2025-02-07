@@ -20,6 +20,11 @@
 #ifndef EEPROM_BASE_H
 #define EEPROM_BASE_H
 
+/**
+ * @file EEPROM-Base.h
+ * @brief This file contains the EEPROMBase<T> definition.
+ */
+
 //
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
@@ -57,38 +62,43 @@ class EEPROMBase
       this->_address = this->normalizeAddress(address);
     }
 
-    //
-    // Initialize an instance of EEPROMBase<T> with the specified address
-    // and default value.
-    //
+    /**
+     * @brief Initialize an instance of EEPROMBase with the specified address and default value.
+     * @param address The address (or index) of the variable within EEPROM.
+     * @tparam defaultValue The default value returned when the variable has not been initialized.
+     */
     EEPROMBase(const uint address, T defaultValue) : EEPROMBase(address)
     {
       this->_defaultValue = defaultValue;
     }
 
-    //
-    // Allows the variable to be used on the right side of
-    // the equal sign.
-    //
+    /**
+     * @brief Implicitly converts the class instance to the value of type T. This 
+     * allows the variable to be used on the right side of the equal sign.
+     * @return The current value of the variable as type T.
+     */
     operator T()
     {
       return this->get();
     }
 
-    //
-    // Treating the variable as a byte array, get the byte
-    // at position index where index is between 0 and
-    // length.
-    //
+    /**
+     * @brief Treating the variable as a byte array, get the byte
+     * at position index where index is between 0 and
+     * length.
+     * @param index The index position.
+     * @return The byte at the specified index as a byte.
+     */
     byte operator[] (const uint index)
     {
       uint address = this->normalizeAddress(this->getAddress() + index);
       return EEPROM[address];
     }
 
-    //
-    // ++ postfix
-    //
+    /**
+     * @brief Postfix increment operator.
+     * @return The value before incrementing as type T.
+     */
     T operator ++ (int)
     {
       T oldValue = this->get();
@@ -96,17 +106,19 @@ class EEPROMBase
       return oldValue;
     }
 
-    //
-    // ++ prefix
-    //
+    /**
+     * @brief Prefix increment operator.
+     * @return The value after incrementing as type T.
+     */
     T operator ++ ()
     {
       return this->set(this->get() + 1);
     }
 
-    //
-    // -- postifx
-    //
+    /**
+     * @brief Postfix decrement operator.
+     * @return The value before decrementing as type T.
+     */
     T operator -- (int)
     {
       T oldValue = this->get();
@@ -114,116 +126,141 @@ class EEPROMBase
       return oldValue;
     }
 
-    //
-    // -- prefix
-    //
+    /**
+     * @brief Postfix decrement operator.
+     * @return The value before decrementing as type T.
+     */
     T operator -- ()
     {
       return this->set(this->get() - 1);
     }
 
-    //
-    // += operator
-    //
+    /**
+     * @brief Addition assignment operator.
+     * @param value The value to add.
+     * @return The result of the addition as type T.
+     */
     T operator += (T const& value)
     {
       return this->set(this->get() + value);
     }
 
-    //
-    // -= operator
-    //
+    /**
+     * @brief Subtraction assignment operator.
+     * @param value The value to subtract.
+     * @return The result of the subtraction as type T.
+     */
     T operator -= (T const& value)
     {
       return this->set(this->get() - value);
     }
 
-    //
-    // *= operator
-    //
+    /**
+     * @brief Multiplication assignment operator.
+     * @tparam value The value to multiply by.
+     * @return The result of the multiplication as type T.
+     */
     T operator *= (T const& value)
     {
       return this->set(this->get() * value);
     }
 
-    //
-    // /= operator
-    //
+    /**
+     * @brief Division assignment operator.
+     * @tparam value The value to divide by.
+     * @return The result of the division as type T.
+     */
     T operator /= (T const& value)
     {
       return this->set(this->get() / value);
     }
 
-    //
-    // ^= operator (NEW)
-    //
+    /**
+     * @brief Bitwise XOR assignment operator.
+     * @tparam value The value to XOR with.
+     * @return The result of the XOR operation as type T.
+     */
     T operator ^= (T const& value)
     {
       return this->set(this->get() ^ value);
     }
 
-    //
-    // %= operator
-    //
+    /**
+     * @brief Modulus assignment operator.
+     * @tparam value The value to mod with.
+     * @return The result of the modulus operation as type T.
+     */
     T operator %= (T const& value)
     {
       return this->set(this->get() % value);
     }
 
-    //
-    // &= operator
-    //
+    /**
+     * @brief Bitwise AND assignment operator.
+     * @tparam value The value to AND with.
+     * @return The result of the AND operation as type T.
+     */
     T operator &= (T const& value)
     {
       return this->set(this->get() & value);
     }
 
-    //
-    // |= operator
-    //
+    /**
+     * @brief Bitwise OR assignment operator.
+     * @tparam value The value to OR with.
+     * @return The result of the OR operation as type T.
+     */
     T operator |= (T const& value)
     {
       return this->set(this->get() | value);
     }
 
-    //
-    // <<= operator (NEW)
-    //
+    /**
+     * @brief Bitwise left shift assignment operator.
+     * @tparam value The value to shift by.
+     * @return The result of the left shift operation as type T.
+     */
     T operator <<= (T const& value)
     {
       return this->set(this->get() << value);
     }
 
-    //
-    // >>= operator (NEW)
-    //
+    /**
+     * @brief Bitwise right shift assignment operator.
+     * @tparam value The value to shift by.
+     * @return The result of the right shift operation as type T.
+     */
     T operator >>= (T const& value)
     {
       return this->set(this->get() >> value);
     }
 
-    //
-    // Get the variable value.
-    //
+    /**
+     * @brief Get the variable value.
+     * @return The current value of the variable as type T.
+     */
     virtual T get() const
     {
-      #if defined(PARTICLE) || defined(ESP8266)
-      return (T)0;
-      #endif
+      //
+      // Use default initialization.
+      //
+      return T{};
     }
 
-    //
-    // Save the variable value.
-    //
+    /**
+     * @brief Set the variable value.
+     * @tparam value The new value to store in EEPROM.
+     * @return The stored value as type T.
+     */
     virtual T set(T const& value)
     {
       return value;
     }
 
-    //
-    // Read the variable value from the EEPROM
-    // using the address in this instance.
-    //
+    /**
+     * @brief Read the variable value from the EEPROM using the address in this variable.
+     * @return The value read from EEPROM as type T.
+     */
     T read() const
     {
       T returnValue;
@@ -252,10 +289,10 @@ class EEPROMBase
       return returnValue;
     }
 
-    //
-    // Write the value to the EEPROM
-    // using the address in this instance.
-    //
+    /**
+     * @brief Write the value to the EEPROM using the address in this instance.
+     * @tparam value The new value to store in EEPROM.
+     */
     void write(T const& value) const
     {
       //
@@ -273,21 +310,21 @@ class EEPROMBase
       EEPROMUtil.updateEEPROM(this->checksumAddress(), checksum);
     }
 
-    //
-    // Determines if the variable has been
-    // initialized by comparing the
-    // stored checksum to the actual checksum
-    // of the bytes stored.
-    //
+    /**
+     * @brief Checks whether the EEPROM variable has been initialized.
+     * @details Determines if the variable has been initialized by comparing the stored checksum to the actual checksum of the bytes stored.
+     * @return True if the EEPROM variable has been initialized, false otherwise.
+     */
     bool isInitialized() const
     {
       return (this->checksum() == this->checksumByte());
     }
 
-    //
-    // Returns the number of EEPROM bytes
-    // used by this instance.
-    //
+    /**
+     * @brief Returns the number of EEPROM bytes used.
+     * @details Returns the number of EEPROM bytes used by this instance including the checksum byte.
+     * @return The number of bytes used in the EEPROM as an unsigned integer .
+     */
     uint length() const
     {
       //
@@ -296,10 +333,12 @@ class EEPROMBase
       return this->size() + 1;
     }
 
-    //
-    // Returns the number of EEPROM bytes
-    // used by T.
-    //
+    /**
+     * @brief Returns the number of EEPROM bytes used by T.
+     * @details Returns the number of EEPROM bytes used by this instance NOT including the 
+     * checksum byte.
+     * @return The number of bytes used by T in the EEPROM as n unsigned integer.
+     */
     uint size() const
     {
       //
@@ -308,10 +347,11 @@ class EEPROMBase
       return sizeof(T);
     }
 
-    //
-    // Unset the variable (change the EEPROM values
-    // back to UNSET_VALUE).
-    //
+    /**
+     * @brief Unset the variable.
+     * @details Change the EEPROM values back to UNSET_VALUE as if the variable has never 
+     * been written to the EEPROM. The isInitialized() method will return false. 
+     */
     void unset(byte unsetValue = UNSET_VALUE)
     {
       for (uint i = 0; i < this->length(); i++)
@@ -321,35 +361,36 @@ class EEPROMBase
       }
     }
 
-    //
-    // Gets the address of the checksum byte.
-    //
+    /**
+     * @brief Gets the address of the checksum byte in EEPROM for this variable.
+     * @return The EEPROM address of the checksum as an unsigned integer.
+     */
     uint checksumAddress() const
     {
       return this->normalizeAddress(this->_address + this->length() - 1);
     }
 
-    //
-    // Gets the stored checksum byte.
-    //
-    uint checksumByte() const
+    /**
+     * @brief Gets the stored checksum byte.
+     * @return The checksum value read from EEPROM for this variable as a byte.
+     */
+    byte checksumByte() const
     {
       return EEPROM.read(this->checksumAddress());
     }
 
-    //
-    // Calculate the checksum of the
-    // data in the EEPROM for this instance.
-    //
+    /**
+     * @brief Calculate the checksum of the data in the EEPROM for this instance.
+     * @return The calculated checksum as a byte.
+     */
     byte checksum() const
     {
       return Checksum<T>::getEEPROM(this->getAddress(), sizeof(T));
     }
 
-    //
-    // Copy the EEPROM bytes of this instance to
-    // a byte array.
-    //
+    /**
+     * @brief Copy the EEPROM bytes of this instance to a byte array.
+     */
     void copyTo(byte* data, uint length) const
     {
       for (uint i = 0; i < length; i++)
@@ -359,49 +400,61 @@ class EEPROMBase
       }
     }
 
-    //
-    // The the EEPROM address of the variable represented
-    // in this instance.
-    //
+    /**
+     * @brief Get the EEPROM address of the variable.
+     * @return The memory address in EEPROM as an unsigned integer.
+     */
     uint getAddress() const
     {
       return this->_address;
     }
 
-    //
-    // Get the next EEPROM address after this variable. This can be used to set the
-    // address of another EEPROM variable.
-    //
+    /**
+     * @brief Gets the next EEPROM address after this variable.
+     * @details This can be used to set the address of another EEPROM variable.
+     * @return The next address in EEPROM as an unsigned integer.
+     */
     uint nextAddress() const
     {
       return this->normalizeAddress(this->getAddress() + this->length());
     }
 
-    //
-    // Return the default value for this instance.
-    //
+    /**
+     * @brief Gets the default value for this instance.
+     * @return The default value as type T.
+     */
     T getDefaultValue() const
     {
       return this->_defaultValue;
     }
 
   protected:
-    //
-    // The address of this variable in the EEPROM. This variable
-    // cannot/will not be modified after the class is initialized.
-    //
+    /**
+     * @brief The address of this variable in the EEPROM.
+     * @details This variable cannot/will not be modified after instantiation.
+     */
     uint _address = 0;
 
-    //
-    // The default value to return when the EEPROM has not been 
-    // initialized.  This variable cannot/will not be modified 
-    // after the class is initialized.
-    //
+   /**
+     * @brief The default value.
+     * @details The default value to return when the EEPROM has not 
+     * been initialized. The address of this variable in the EEPROM. 
+     * This variable cannot/will not be modified after instantiation.
+     */
     T _defaultValue;
 
-    //
-    // Don't allow an address to go beyond the end of the EEPROM space.
-    //
+    /**
+     * @brief Computes the checksum of the given value.
+     * @tparam value The value to compute the checksum for.
+     * @return The computed checksum as a byte.
+     */
+    byte computeChecksum(T value);
+    
+    /**
+     * @brief Normalize the given EEPROM address to ensure it is within valid range.
+     * @param address The address to normalize.
+     * @return The normalized address as an unsigned integer.
+     */
     uint normalizeAddress(uint address) const
     {
       return min(address, EEPROM.length() - 1);

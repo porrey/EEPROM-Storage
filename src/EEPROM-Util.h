@@ -20,6 +20,11 @@
 #ifndef EEPROM_UTIL_H
 #define EEPROM_UTIL_H
 
+/**
+ * @file EEPROM-Util.h
+ * @brief This file contains the EEPROMUtilClass definition.
+ */
+
 //
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
@@ -32,12 +37,21 @@
 
 #include "EEPROM-Vars.h"
 
+/**
+ * @class EEPROMUtilClass
+ * @brief Provides the ability to clear the EEPROM memory.
+ */
 class EEPROMUtilClass
 {
   public:
-    //
-    // Resets the contents of EEPROM to UNSET_VALUE
-    //
+    /**
+     * @brief Resets the contents of EEPROM to the value specified.
+     * @details Writes the byte specified by the parameter value to every
+     * memory location in EEPROM. If value is not specified then UNSET_VALUE
+     * is used which is defined s 0xFF.
+     * @param value The value to write to the EEPROM.
+     * @return A reference to the EEPROMStorage<T> variable.
+     */
     void clearEEPROM(uint value = UNSET_VALUE)
     {
       for (uint i = 0; i < EEPROM.length(); i++)
@@ -45,7 +59,15 @@ class EEPROMUtilClass
         this->updateEEPROM(i, value);
       }
     }
-      
+    
+    /**
+     * @brief Provides a unified method od writing to the EEPROM
+     * on multiple platforms.alignas
+     * @details This method prefers usage of EEPROM.update() over
+     * EEPROM.write() to reduce the number of writes to EEPROM memory.
+     * @param address The address in EEPROM to write the value in.
+     * @param value The value to write to the EEPROM.
+     */
     void updateEEPROM(uint address, byte value)
     {
       if (address < EEPROM.length())
@@ -59,8 +81,8 @@ class EEPROMUtilClass
     }
 };
 
-//
-// Create a static instance of EEPROMUtilClass.
-//
+/**
+ * @brief Defines a static instance of EEPROMUtilClass.
+ */
 static EEPROMUtilClass EEPROMUtil;
 #endif

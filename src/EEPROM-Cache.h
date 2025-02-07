@@ -20,6 +20,11 @@
 #ifndef EEPROM_CACHE_H
 #define EEPROM_CACHE_H
 
+/**
+ * @file EEPROM-Cache.h
+ * @brief This file contains the EEPROMCache<T> definition.
+ */
+
 //
 // Cross-compatable with Arduino, GNU C++ for tests, and Particle.
 //
@@ -32,18 +37,26 @@
 
 #include "EEPROM-Base.h"
 
-//
-// Generic class to wrap a cached EEPROM variable. The variable
-// is stored in memory and is only written to the EEPROM when
-// commit() is called.
-//
+/**
+ * @class EEPROMCache
+ * @brief Provides indirect access to an EEPROM variable.
+ * @details This class provides indirect access to an EEPROM variable
+ * wrapped as type T. Accessing the value of the variable is done
+ * through a cached value. Subsequently, writing the
+ * variable value is done to the cached value. A call to restore()
+ * is required to read the value from EEPROM while a call
+ * to commit() is required to write the value to EEPROM. This version
+ * will perform faster and have less ware on the delicate EEPROM memory.
+ * @tparam T The type of the variable stored.
+ */
 template <typename T>
 class EEPROMCache : public EEPROMBase<T>
 {
   public:
-    //
-    // Initialize an instance of EEPROMCache<T> with the specified address.
-    //
+    /**
+     * @brief Initialize an instance of EEPROMCache<T> with the specified address.
+     * @param address The address (or index) of the variable within EEPROM.
+     */
     EEPROMCache(const uint address) : EEPROMBase<T>(address)
     {
       //
@@ -52,53 +65,65 @@ class EEPROMCache : public EEPROMBase<T>
       this->restore();
     }
 
-    //
-    // Initialize an instance of EEPROMCache<T> with the specified address
-    // and value.
-    //
+    /**
+     * @brief Initialize an instance of EEPROMBase with the specified address and initial value.
+     * @param address The address (or index) of the variable within EEPROM.
+     * @tparam value The initial value of the variable before restore() is called.
+     */
     EEPROMCache(const uint address, T value) : EEPROMBase<T>(address, value)
     {
       this->_value = value;
     }
     
-    //
-    // Accounts for EEPROMCache<T> = T
-    //
-    EEPROMCache<T> operator = (T const& value)
+    /**
+     * @brief Allows assignment of a variable of type T value to be 
+     * this instance's value.
+     * @details Accounts for EEPROMCache<T> = T.
+     * @tparam item The new value to store in EEPROM.
+     * @return A reference to the EEPROMCache<T> variable.
+     */
+    EEPROMCache<T>& operator = (T const& value)
     {
       this->set(value);
       return *this;
     }
 
-    //
-    // Accounts for EEPROMCache<T> = EEPROMCache<T>
-    //
-    EEPROMCache<T> operator = (EEPROMCache<T> const& item)
+    /**
+     * @brief Allows assignment of one EEPROMCache<T> value to another.
+     * @details Accounts for EEPROMCache<T> = EEPROMCache<T>.
+     * @tparam item The new value to store in EEPROM.
+     * @return A reference to the EEPROMCache<T> variable.
+     */
+    EEPROMCache<T>& operator = (EEPROMCache<T> const& item)
     {
       this->set(item.get());
       return *this;
     }
 
-    //
-    // Get the variable value from memory.
-    //
+    /**
+     * @brief Get the variable value.
+     * @return The current value of the variable as type T.
+     */
     T get() const
     {
       return this->_value;
     }
 
-    //
-    // Save the variable value to memory.
-    //
+    /**
+     * @brief Set the variable value.
+     * @tparam value The new value to store in EEPROM.
+     * @return The stored value as type T.
+     */
     T set(T const& value)
     {
       this->_value = value;
       return this->_value;
     }
 
-    //
-    // Restores the value by reading from EEPROM.
-    //
+    /**
+     * @brief Restores the cached value by reading from EEPROM.
+     * @return The value as type T.
+     */
     T restore()
     {
       //
@@ -108,9 +133,10 @@ class EEPROMCache : public EEPROMBase<T>
       return this->_value;
     }
 
-    //
-    // Commit the cached value to the EEPROM.
-    //
+    /**
+     * @brief Commit the cached value to the EEPROM.
+     * @return The value as type T.
+     */
     T commit()
     {
       this->write(this->_value);
@@ -118,9 +144,6 @@ class EEPROMCache : public EEPROMBase<T>
     }
 
   protected:
-    //
-    // The cached value of the EEPROM variable.
-    //
-    T _value;
+    T _value; ///< The cached value of the EEPROM variable.
 };
 #endif
