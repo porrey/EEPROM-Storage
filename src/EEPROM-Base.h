@@ -241,7 +241,10 @@ class EEPROMBase
      */
     virtual T get() const
     {
-      return (T)0;
+      //
+      // Use default initialization.
+      //
+      return T{};
     }
 
     /**
