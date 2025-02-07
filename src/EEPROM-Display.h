@@ -20,10 +20,14 @@
 #ifndef EEPROM_DISPLAY_H
 #define EEPROM_DISPLAY_H
 
-//
-// Define a Serial port to used 
-// for displaying output.
-//
+/**
+ * @file EEPROM-Util.h
+ * @brief This file contains the EEPROMDisplayClass definition.
+ */
+
+/**
+ * @brief Define a Serial port to used for displaying output.
+ */
 #ifndef DEBUG
   #if defined(ARDUINO) && ARDUINO >= 100
     #define DEBUG Serial
@@ -49,18 +53,28 @@
 #define WIDTH 32
 #define LINE_WIDTH (WIDTH * 3) + 8
 
+/**
+ * @class EEPROMDisplayClass
+ * @brief Provides methods to display EEPROM data for debugging.
+ * @details This class provides methods to display the contents
+ * of EEPROM, the properties of an EEPROM variable and other 
+ * useful option for debugging code related to using this library.
+ */
 class EEPROMDisplayClass
 {
   public:
+    /**
+     * @brief Sets default behavior for the Arduino Debug Utils library.
+     */
     void begin()
     {
         Debug.timestampOff();
         Debug.debugLabelOff();
     }
 
-    //
-    // Print a byte value in HEX with leading 0x.
-    //
+    /**
+     * @brief Print a byte value in HEX with leading 0x.
+     */
     void displayPaddedHexByte(byte value, bool showPrefix = true)
     {
       if (showPrefix)
@@ -73,9 +87,9 @@ class EEPROMDisplayClass
       }
     }
 
-    //
-    // Displays the contents of the EEPROM
-    //
+    /**
+     * @brief Displays the contents of the EEPROM.
+     */
     void displayEEPROM()
     {
       DEBUG_INFO("");
@@ -142,9 +156,11 @@ class EEPROMDisplayClass
       }
     }
 
-    //
-    // Display the properties of a variable.
-    //
+    /**
+     * @brief Display the properties of a variable.
+     * @param name The name of the variable.
+     * @tparam value The value of the variable.
+     */
     template<typename T>
     void displayVariable(const char* name, EEPROMBase<T> value)
     {
@@ -152,9 +168,9 @@ class EEPROMDisplayClass
                   name, value.size(), value.length(), value.getAddress(), value.checksumAddress(), value.checksumByte(), value.isInitialized() ? "Yes" : "No");
     }
 
-    //
-    // Display a header that can be used for listing variable properties.
-    //
+    /**
+     * @brief Display a header that can be used for listing variable properties.
+     */
     void displayHeader()
     {
       //
@@ -190,8 +206,8 @@ class EEPROMDisplayClass
       }
 };
 
-//
-// Create a static instance of EEPROMDisplayClass.
-//
+/**
+ * @brief Defines a static instance of EEPROMDisplayClass.
+ */
 static EEPROMDisplayClass EEPROMDisplay;
 #endif
