@@ -3,7 +3,7 @@ name: Arduino ESP8266 Build
 on: 
   push:
     branches:
-      - v2.0.1
+      - master
 
 concurrency:
   group: "Arduino ESP8266 Build"

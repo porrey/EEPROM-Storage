@@ -3,7 +3,7 @@ name: Particle Build
 on:
   push:
     branches:
-      - v2.0.1
+      - master
 
 concurrency:
   group: "Particle-Build"

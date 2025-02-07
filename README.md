@@ -1,8 +1,8 @@
-![Arduino Mega 2560 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-mega-2560-build.yml/badge.svg?branch=v2.0.1)
-![Arduino Uno R4 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-uno-r4-build.yml/badge.svg?branch=v2.0.1)
-![Arduino ESP8266 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-esp8266-build.yml/badge.svg?branch=v2.0.1)
-![Particle Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml/badge.svg?branch=v2.0.1)
-![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?label=Latest%20Release&branch=v2.0.1)
+![Arduino Mega 2560 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-mega-2560-build.yml/badge.svg?branch=master)
+![Arduino Uno R4 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-uno-r4-build.yml/badge.svg?branch=master)
+![Arduino ESP8266 Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/arduino-esp8266-build.yml/badge.svg?branch=master)
+![Particle Build](https://github.com/porrey/EEPROM-Storage/actions/workflows/particle-build.yml/badge.svg?branch=master)
+![GitHub release](https://img.shields.io/github/v/release/porrey/EEPROM-Storage?label=Latest%20Release&branch=master)
 
 # EEPROM-Storage Library
 ## Overview
@@ -11,9 +11,9 @@ The EEPROM Storage library provides the ability to access variables stored in EE
 Detailed library class and code documentation can be found here: https://porrey.github.io/EEPROM-Storage
 
 ## EEPROMStorage\<T\> vs EEPROMCache\<T\>
-There are two classes that provide the similar access to EEEPROM. The first is the Direct Storage class which reads and writes to directly to and from EEPROM. The second is the Cache Access whichs reads and writes from memory and writes to the EEPROM when directed.
+There are two classes that provide the similar access to EEEPROM. The first is the Direct Storage class which reads and writes to directly to and from EEPROM. The second is the Cache Access which reads and writes from memory and writes to the EEPROM when directed.
 
-Other than the `restore()` and `commit()` (*see description below*) methods on the cache based class, these objects can be used interchangably.
+Other than the `restore()` and `commit()` (*see description below*) methods on the cache based class, these objects can be used interchangeably.
 
 ### Direct Storage (EEPROMStorage\<T\>)
 This class writes directly to the EEPROM whenever the variable value is updated and reads directly from EEPROM when the variable value is accessed.
