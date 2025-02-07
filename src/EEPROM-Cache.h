@@ -37,12 +37,6 @@
 
 #include "EEPROM-Base.h"
 
-//
-// Generic class to wrap a cached EEPROM variable. The variable
-// is stored in memory and is only written to the EEPROM when
-// commit() is called.
-//
-
 /**
  * @class EEPROMCache
  * @brief Provides indirect access to an EEPROM variable.
