@@ -36,6 +36,6 @@
   #define word short
 #endif
 
-#define UNSET_VALUE 0xFF ///< Defines th default value used when clearing the EEPROM memory.
+#define UNSET_VALUE 0xFF ///< Defines the default value used when clearing the EEPROM memory.
 
 #endif
