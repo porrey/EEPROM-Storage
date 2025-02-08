@@ -13,7 +13,7 @@
 ## Overview
 The EEPROM Storage library provides the ability to access variables stored in EEPROM just as if they were stored in normal RAM.
 
-Detailed library class and code documentation can be found here: <a href="https://porrey.github.io/EEPROM-Storage" target="_blank">View Documentation</a>
+Detailed library class and code documentation can be found here: <a href="https://porrey.github.io/EEPROM-Storage" target="_blank">View Documentation</a> (*Ctrl+Click (Windows/Linux) or Cmd+Click (Mac) to open in a new tab*).
 
 
 ## EEPROMStorage\<T\> vs EEPROMCache\<T\>
