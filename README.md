@@ -184,6 +184,6 @@ Hey there! If you find this project useful, consider supporting its development.
 Your support means a lot and helps me continue improving this project. Thank you! ❤️
 
 ## LICENSE
-*Licensed under the GPL-3.0 license*
+*Licensed under the LGPL-3.0 license*
 
 *Copyright 2017-2025 Daniel Porrey*
